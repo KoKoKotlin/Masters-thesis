@@ -1,0 +1,77 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[outer={2.5cm},inner={4cm},tmargin={2.5cm},bmargin={2cm}]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{babel}[english]
+\usepackage{hyperref}
+\usepackage{colonequals}
+\usepackage{xfrac}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usepackage{graphicx}
+\usepackage{caption}
+
+\setlength{\parindent}{0mm}
+\setcounter{MaxMatrixCols}{100}
+
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\T}[0]{\mathcal{T}}
+\newcommand{\NB}[0]{\mathcal{N}}
+\newcommand*{\logeq}{\ratio\Leftrightarrow}
+\newcommand*{\longeq}{\ratio\Longleftrightarrow}
+\newcommand*{\bigdot}{\mathpalette\bigcdot@{.5}}
+  
+\title{Masters thesis\\Title}
+\author{Yannik Höll}
+\date{\today}
+
+\newtheoremstyle{break}%
+{7pt}{7pt}%
+{}{}%
+{\bfseries}{:}% % Note that final punctuation is omitted.
+{\newline}{}
+
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{break}
+\newtheorem{defin}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{col}[thm]{Corollary}
+\newtheorem{ex}[thm]{Example}
+
+% for centering the title page
+\usepackage{titling}
+
+\linespread{1.5}
+\begin{document}
+
+\begin{titlingpage}
+    \maketitle
+\end{titlingpage}
+\clearpage
+
+\tableofcontents
+\pagebreak
+
+\clearpage
+
+\nocite{*}
+
+
+\section*{Abstract}
+\section{Introduction}
+\section{Topology, Topological Algebra and Algebraic Topology}
+\section{Simplicial Homology}
+\section{Graph Theory}
+\section{$L_0$-Groups and Ameanability}
+
+\clearpage
+\bibliographystyle{alpha}
+\bibliography{ref}
+
+\end{document}
