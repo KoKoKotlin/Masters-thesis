@@ -20,9 +20,11 @@
 \newcommand{\N}[0]{\mathbb{N}}
 \newcommand{\T}[0]{\mathcal{T}}
 \newcommand{\NB}[0]{\mathcal{N}}
+\newcommand{\PowS}[0]{\mathfrak{P}}
 \newcommand*{\logeq}{\ratio\Leftrightarrow}
 \newcommand*{\longeq}{\ratio\Longleftrightarrow}
 \newcommand*{\bigdot}{\mathpalette\bigcdot@{.5}}
+\newcommand{\sd}{{\rm sd}}
   
 \title{Masters thesis\\Title}
 \author{Yannik Höll}
@@ -38,14 +40,20 @@
 \newtheorem{thm}{Theorem}[section]
 
 \theoremstyle{break}
-\newtheorem{defin}[thm]{Definition}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{lemma}[thm]{Lemma}
+\newtheorem{defin/}[thm]{Definition}
 \newtheorem{col}[thm]{Corollary}
 \newtheorem{ex}[thm]{Example}
 
+\newenvironment{defin}
+    {\renewcommand{\qedsymbol}{$\spadesuit$}\pushQED{\qed}\begin{defin/}}
+    {\popQED\end{defin/}}
+
 % for centering the title page
 \usepackage{titling}
+
+% TODO: add a ending mark (solid black square) as the end of definitions
 
 \linespread{1.5}
 \begin{document}
@@ -66,7 +74,9 @@
 \section*{Abstract}
 \section{Introduction}
 \section{Topology, Topological Algebra and Algebraic Topology}
-\section{Simplicial Homology}
+
+\input{03-simplical-homology.tex}
+
 \section{Graph Theory}
 \section{$L_0$-Groups and Ameanability}
 
