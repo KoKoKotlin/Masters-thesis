@@ -25,6 +25,8 @@
 \newcommand*{\longeq}{\ratio\Longleftrightarrow}
 \newcommand*{\bigdot}{\mathpalette\bigcdot@{.5}}
 \newcommand{\sd}{{\rm sd}}
+\newcommand{\dom}{{\rm dom}}
+\renewcommand{\P}{\mathcal{P}}
   
 \title{Masters thesis\\Title}
 \author{Yannik Höll}
@@ -73,13 +75,10 @@
 
 \section*{Abstract}
 \section{Introduction}
-\section{Topology, Topological Algebra and Algebraic Topology}
-
+\input{02-topology.tex}
 \input{03-simplical-homology.tex}
-
 \section{Graph Theory}
-\section{$L_0$-Groups and Ameanability}
-
+\input{05-l0-groups.tex}
 \clearpage
 \bibliographystyle{alpha}
 \bibliography{ref}

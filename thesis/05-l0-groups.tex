@@ -1,0 +1,28 @@
+\section{$L_0$-Groups, connection between extrem ameanability and chromatic numbers}
+
+In this chapter, we want to establish a connection between the extrem ameanability of a $L_0$-Group and the boundedness of the chromatic numbers of a sequence of graphs.
+These graphs will be constructed using the structure of the $L_0$-groups.
+
+\begin{defin}
+  Let $X$ be a set. Then ${\rm PartFin}(X)$ is the set of all finite partitions of $X$, which means:
+  \begin{equation*}
+    {\rm PartFin(X)} := \left\{ \mathcal{A} \subseteq \P(X)\colon \forall A,B \in \mathcal{A}: A \cap B = \emptyset \: \land \: \bigcup\mathcal{A} = X \right\}
+  \end{equation*}
+\end{defin}
+
+\begin{defin}
+  Let $(X, \mathcal{A})$ be a measureable space and $\mu\colon \mathcal{A} \to [0, \infty]$. The map $\mu$ is called a submeasure on $X$ if
+  \begin{enumerate}
+    \item $\mu(\emptyset) = 0$,
+    \item $\forall A, B \in \mathcal{A}\colon A \subseteq B \Rightarrow \mu(A) \leq \mu(B)$,
+    \item $\forall A, B \in \mathcal{A}\colon \mu(A \cup B) \leq \mu(A) + \mu(B)$.
+  \end{enumerate}
+\end{defin}
+
+\begin{lemma}
+  Let $X$ be a set, $\mu\colon X \to [0, \infty]$ a submeasure on $X$ and let $G$ be an abelian group. Then the following are equivalent:
+  \begin{enumerate}
+    \item $L_0(\mu, G)$ is extremely ameanable,
+    \item $\forall \varepsilon > 0$ there is no finite bound on $\chi(\Gamma_{\varepsilon}^{\mathcal{P}}(\mu))$, where $\mathcal{P} \in {\rm Part}(X)$
+  \end{enumerate}
+\end{lemma}

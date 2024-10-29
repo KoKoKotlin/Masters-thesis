@@ -1,5 +1,15 @@
 \section{Simplicial Homology}
 
+\textbf{Notation:}
+
+Let $f, g$ be partial functions from the set $X$ to set $Y$: $\dom(f) \cap \dom(g) = \emptyset$ then
+\begin{equation*}
+  f \frown g: \dom(f) \cup \dom(g) \to Y, \: x \mapsto \begin{cases}
+    f(x), \: x \in \dom(f), \\
+    g(x), \: x \in \dom(g).
+  \end{cases}
+\end{equation*}
+
 \subsection{Abstract simplicial complexes}
 
 \begin{defin}

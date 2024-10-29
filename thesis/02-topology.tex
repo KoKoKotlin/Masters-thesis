@@ -1,0 +1,31 @@
+\section{Topology, Topological Algebra and Algebraic Topology}
+In this whole section, $X$ will be a set.
+
+\subsection{Topology}
+
+\begin{defin}
+  A \textbf{topology} $\mathcal{T}$ on $X$ is a collection of subsets of $X$ obeying the follwing axioms
+  \begin{enumerate}
+    \item $X \in \mathcal{T} \ni \emptyset$,
+    \item $\bigcup\limits_{\alpha \in I}A_{\alpha} \in \mathcal{T}$, where $I$ is an abitrary index set and $A_{\alpha} \in \mathcal{T}$ for all $\alpha \in I$,
+    \item $\bigcap\limits_{i=0}^n A_i$ for $n \in \N$ and $A_i \in \mathcal{T}$.
+  \end{enumerate}
+\end{defin}
+
+\begin{defin}
+  A \textbf{filter} $\mathcal{F}$ on a set $X$ is a collection of subsets of $X$ such that:
+  \begin{enumerate}
+    \item $X \in \mathcal{F}$, $\emptyset \notin \mathcal{F}$,
+    \item $\forall A, B \in \mathcal{F}\colon A\cap B \in \mathcal{F}$,
+    \item $\forall A \subseteq B \subseteq X: A \in \mathcal{F} \Rightarrow B \in \mathcal{F}$.
+  \end{enumerate}
+\end{defin}
+
+\begin{defin} 
+  An \textbf{ultrafilter} $\mathcal{F}$ on $X$ is a filter on $X$ with the property that if there is another filter on X called $\mathcal{F}'$ such that $\mathcal{F} \subseteq \mathcal{F}'$ it follows that $\mathcal{F} = \mathcal{F}'$.
+  If $\bigcap \mathcal{F} = \emptyset$ the ultrafilter is called \textbf{non-principle}.
+\end{defin}
+
+\subsection{Topological Algebra}
+
+\subsection{Algebraic Topology}
