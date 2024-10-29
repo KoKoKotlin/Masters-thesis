@@ -1,15 +1,32 @@
 \section{Topology, Topological Algebra and Algebraic Topology}
-In this whole section, $X$ will be a set.
-
 \subsection{Topology}
 
 \begin{defin}
-  A \textbf{topology} $\mathcal{T}$ on $X$ is a collection of subsets of $X$ obeying the follwing axioms
+  Let $X$ be a set. A \textbf{topology} $\T$ on $X$ is a collection of subsets of $X$ obeying the follwing axioms
   \begin{enumerate}
-    \item $X \in \mathcal{T} \ni \emptyset$,
-    \item $\bigcup\limits_{\alpha \in I}A_{\alpha} \in \mathcal{T}$, where $I$ is an abitrary index set and $A_{\alpha} \in \mathcal{T}$ for all $\alpha \in I$,
-    \item $\bigcap\limits_{i=0}^n A_i$ for $n \in \N$ and $A_i \in \mathcal{T}$.
+    \item $X \in \T \ni \emptyset$,
+    \item $\bigcup\limits_{\alpha \in I}A_{\alpha} \in \T$, where $I$ is an abitrary index set and $A_{\alpha} \in \T$ for all $\alpha \in I$,
+    \item $\bigcap\limits_{i=0}^n A_i$ for $n \in \N$ and $A_i \in \T$.
   \end{enumerate}
+\end{defin}
+
+In general if $X$ is a topological space, then in this thesis $\T_X$ will be the topology of the space $X$.
+
+\begin{defin}
+  Let $X$ and $Y$ be topological spaces. A map $f\colon X \to Y$ is called \textbf{continuous} if for all $A \in \T_Y$ it follows that $f^{-1}(A) \in \T_X$.  
+\end{defin}
+
+\begin{defin}
+  Let $X$ be a topological space and let $A \subseteq X$. A cover of $A$ is a collection of subsets $\left\{A_i \in \P(X)\colon i \in I \right\}$ with index set $I$ which has the following property
+  \begin{equation}\label{eq:cover}
+    \bigcup\limits_{i\in I}A_i = A.
+  \end{equation}
+  If the elements of the cover are open subsets of $X$ the cover is called an \textbf{open} cover.
+  A subcollection of a cover of $A$ is called a \textbf{subcover} if it still fulfills equation \ref{eq:cover}.
+\end{defin}
+
+\begin{defin}
+  Let $X$ be a topological space and $A \subseteq X$. $A$ is called \textbf{compact} if every open cover of $A$ has a finite subcover. 
 \end{defin}
 
 \begin{defin}
@@ -27,5 +44,20 @@ In this whole section, $X$ will be a set.
 \end{defin}
 
 \subsection{Topological Algebra}
+
+\begin{defin}
+  Let $G$ be a group with group operation $\cdot_G$ and $\T$ a topology on the undelying set of $G$. Additionally define $m\colon G \times G \to G, (g, h) \mapsto g \cdot_G h$ as the multiplication map of $G$ and $\iota\colon G \to G, g \mapsto g^{-1}$ as the inverse map of $G$. Then $G$ is called a \textbf{topological group} if both $m$ and $\iota$ are continous maps with respect to $\T$.
+  Let $X$ be a set. An action of $G$ on $X$ is a map $\lambda\colon G\times X \to X, (g, x) \mapsto \lambda(g, x) =: g \anddot x$ if it fulfills the following properties
+  \begin{enumerate}
+    \item $\forall g, h \in G: h \anddot (g \anddot x) = (h \cdot g) \anddot x$,
+    \item For neutral element $e_G \in G$: $\lambda(e, x) = x$ for all $x \in X$.
+  \end{enumerate}
+  If $X$ is a topological space, then the action of $G$ on $X$ is continuous if $\lambda$ is a continuous map.
+\end{defin}
+
+% TODO: explenation why this property is so important and hat it is used for
+\begin{defin}
+  A topological group $G$ is called \textbf{extremly ameanable} if each every continous action of G on a compact space has a fixed point.
+\end{defin}
 
 \subsection{Algebraic Topology}
