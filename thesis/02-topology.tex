@@ -125,6 +125,7 @@ In the following a more general definition of convergence in a topological space
     \item $\forall A, B \in \F\colon A\cap B \in \F$,
     \item $\forall A \subseteq B \subseteq X: A \in \F \Rightarrow B \in \F$.
   \end{enumerate}
+  Let $\F'$ be another filter on $X$. If $\F \subseteq F'$ we call $\F'$ finer than $\F$ or $\F$ coarser then $\F'$.
 \end{defin}
 
 \begin{defin} 
@@ -142,11 +143,18 @@ In the following a more general definition of convergence in a topological space
 Indeed the new definition of convergence extends the old one from \ref{def:convtop}. Let $X$ be a topological space and let $(x_n)_{n\in\N}$ be a sequence in $X$ which converges to $x \in X$. Then there exists a filter on $X$ which converges to $x$ namely $\mathcal{N}_x$. The inverse is of course not true because the new definition of convergence now allows the convergence to the point $\omega_1$ in the above example. And it is also true that if $A \subseteq X$ and $a \in \bar{A}$ then there exists a filter that converges to $a$. This is not true for sequences by example \ref{ex:ordertop-uncount}.
 
 \begin{thm}
-  % TODO: for all a \in \bar{A} there is a filter converging to $a$.
+  Let $X$ be a topological space and let $A \subseteq X$. Then
+  \begin{equation*}
+    x \in \bar{A} \: \iff \: \exists \F \in {\rm Flt}(X): A \in \F \: \land \: \F \to x.
+  \end{equation*}
 \end{thm}
 
+\begin{proof}
+ % TODO: filter basis, accumulation point of filters 
+\end{proof}
+
 \begin{defin}
-  The \textbf{Cofinite-Filter} $\F_{CF}$ on a infinite set $X$ is defined as 
+  The \textbf{Cofinite-Filter} $\F_{CF}$ on an infinite set $X$ is defined as 
   \begin{equation*}
     \F_{CF} := \{ F \in \P(X)\colon \left| F^c \right| < \infty\}.
   \end{equation*}
@@ -179,7 +187,20 @@ Indeed the new definition of convergence extends the old one from \ref{def:convt
 \end{thm}
 
 \begin{proof}
-  
+  Let $\F$ be a filter on $X$ and let $\Phi$ be the set of all filters on $X$ that are finer than $\F$. This set forms a partial order together with the $\subseteq$ relation.
+  If $\Phi_1$ is a totally ordered subset of $\Phi$ then define $\F' := \bigcup\limits_{\mathcal{G} \in \Phi} \mathcal{G}$.
+  \textbf{Claim: } $\F'$ is a filter on $X$. The first property is clear because every filter contains $X$ and does not contain $\emptyset$.
+  Now let $A, B \in \F'$. This means that there are filters $\mathcal{G}_1$ and $\mathcal{G}_2$ in $\F'$ with $A \in \mathcal{G}_1$ and $B \in \mathcal{G}_2$.
+  Since $\mathcal{G}_1 \in \Phi_1$ and $\mathcal{G}_2 \in \Phi_1$ it follows that $\mathcal{G}_1 \subseteq \mathcal{G}_2$ or $\mathcal{G}_2 \subseteq \mathcal{G}_1$. Suppose w.l.o.g. that $\mathcal{G}_1 \subseteq \mathcal{G}_2$.
+  It follows that
+  \begin{equation*}
+    A \in \mathcal{G}_2 \Rightarrow A \cup B \in \mathcal{G}_2 \Rightarrow A \cup B \in \F'.
+  \end{equation*}
+  Now suppose that $A \in \F'$ and $A \subseteq B \subseteq X$. Since there is an $\mathcal{G} \in \Phi_1$ with $A \in \mathcal{G}$ we can conclude that
+  \begin{equation*}
+    B \in \mathcal{G} \Rightarrow B \in \F'.
+  \end{equation*}
+  This proofs the claim. $\F'$ is an upper bound of $\Phi_1$ and thus $\Phi_1$ is inductively sorted. The existence of an ultrafilter on $X$ follows from Zorn's Lemma. \cite[5.12 Satz]{BvQMT}
 \end{proof}
 
 \begin{col}
