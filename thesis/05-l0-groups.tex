@@ -6,23 +6,96 @@ These graphs will be constructed using the structure of the $L_0$-groups.
 \begin{defin}
   Let $X$ be a set. Then ${\rm PartFin}(X)$ is the set of all finite partitions of $X$, which means:
   \begin{equation*}
-    {\rm PartFin(X)} := \left\{ \mathcal{A} \subseteq \P(X)\colon \forall A,B \in \mathcal{A}: A \cap B = \emptyset \: \land \: \bigcup\mathcal{A} = X \right\}
+    {\rm PartFin}(X) := \left\{ \mathcal{A} \subseteq \P(X)\colon (\forall A,B \in \mathcal{A}\colon A \cap B = \emptyset) \: \land \: \bigcup\mathcal{A} = X \: \land \: \left| \mathcal{A} \right| < \infty \right\}.
+  \end{equation*}
+  Let $\P_1, \P_2 \in {\rm PartFin}(X)$. $\P_1$ is said to \textbf{refine} $\P_2$ if
+  \begin{equation*}
+    \forall A \in \P_1\exists B \in \P_2\colon A \subseteq B.
   \end{equation*}
 \end{defin}
 
+\begin{rem}\label{rem:partfinsze}
+  If $X$ is an infinite set then ${\rm PartFin}(X)$ is also infinite.
+\end{rem}
+
+\begin{proof}
+  Define $\P \subseteq {\rm PartFin}(X)$ as follows
+  \begin{equation*}
+    \P := \Big\{ \{ \{x\}, \: X\setminus\{x\}\}\colon \: \forall x \in X \Big\}.
+  \end{equation*}
+  It is now clear that $\left| \P \right| = \left| X \right|$ and since $\P \subseteq {\rm PartFin}(X)$ it follows that 
+  \begin{equation*}
+    \left| X \right| \leq \left| {\rm PartFin}(X) \right|.
+  \end{equation*}
+\end{proof}
+
 \begin{defin}
-  Let $(X, \mathcal{A})$ be a measureable space and $\mu\colon \mathcal{A} \to [0, \infty]$. The map $\mu$ is called a submeasure on $X$ if
+  Let $X$ and $Y$ be sets. A step function $f\colon X \to Y$ with finite range induces a finite partion on X called $\P_f$ in the following way
+  \begin{equation*}
+    \P_f := \{f^{-1}(\{y\})\colon \forall y \in Y\}.
+  \end{equation*}
+  This is a well-defined finite partion because of the assumption that $f$ has finite range.
+\end{defin}
+
+\begin{defin}
+  Let $(X, \mathcal{B})$ be a measureable space and $\mu\colon \mathcal{B} \to [0, \infty]$. The map $\mu$ is called a submeasure on $X$ if
   \begin{enumerate}
     \item $\mu(\emptyset) = 0$,
-    \item $\forall A, B \in \mathcal{A}\colon A \subseteq B \Rightarrow \mu(A) \leq \mu(B)$,
-    \item $\forall A, B \in \mathcal{A}\colon \mu(A \cup B) \leq \mu(A) + \mu(B)$.
+    \item $\forall A, B \in \mathcal{B}\colon A \subseteq B \Rightarrow \mu(A) \leq \mu(B)$,
+    \item $\forall A, B \in \mathcal{B}\colon \mu(A \cup B) \leq \mu(A) + \mu(B)$.
   \end{enumerate}
 \end{defin}
 
+\begin{defin}
+  Let $(X, \mathcal{B})$ be a measureable space and let $\mu\colon \mathcal{B} \to [0, \infty]$ be a submeasure on $X$. Then the set
+  \begin{equation*}
+    S(\mu, G) := \left\{ f: X \to G\colon f \:\:\mu-\text{measureable} \: \land \: \left| f(X) \right| < \infty \right\}
+  \end{equation*}
+  for a group $G$ is the set of all measurable step functions with finite range on $X$ and values on $G$.
+\end{defin}
+
+This set of simple functions is dense in the set $L_0(\mu, G)$. But since in general $L_0(\mu, G)$ is not a metric space, the standard metric notion of completion does not work. Instead it is true that the Raikov completion $\widehat{S(\mu, G)} = L_0(\mu, G)$. Look at \cite{} for further information of this completion. This fact about the simple functions is needed because of the following theorem:
+\begin{thm}
+  
+\end{thm}
+
+In the following that symbols $\bar{1}$ represents the constant function which sends each element to 1 in the set $S(\mu, \Z)$. 
+
 \begin{lemma}
-  Let $X$ be a set, $\mu\colon X \to [0, \infty]$ a submeasure on $X$ and let $G$ be an abelian group. Then the following are equivalent:
+  Let $(X, \mathcal{B})$ be a measurable space and let $\mu$ be a submeasure on $X$. Additionally, let $\P \in {\rm PartFin}(X)$ and $\varepsilon \in \R_{>0}$ then for $f,g \in \Z^\P$ with $f - g \in \bar{1} + V_\varepsilon$ it follows that $f$ and $g$ are connected in $\Gamma_\varepsilon^\P(\mu)$ by an edge.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    f - g \in \bar{1} + V_\varepsilon   &\iff \mu(\{x \in X\colon (f-g)(x) \neq 1\}) < \varepsilon \\
+                                      &\iff \mu(\{x \in X\colon f(x) \neq g(x) + 1\}) < \varepsilon \\
+                                      &\iff \mu(\bigcup \{A \in \P \colon f(A) \neq g(A) + 1\}) < \varepsilon
+  \end{align*}
+\end{proof}
+
+\begin{lemma}\lemma{lem:colve}
+  Let $X$ be an infinite set, $\mu\colon \mathcal{B} \to [0, \infty]$ a submeasure on $X$ where $\mathcal{B}$ is a $\sigma$-algebra and let $G$ be an abelian group. Then the following are equivalent:
   \begin{enumerate}
     \item $L_0(\mu, G)$ is extremely ameanable,
-    \item $\forall \varepsilon > 0$ there is no finite bound on $\chi(\Gamma_{\varepsilon}^{\mathcal{P}}(\mu))$, where $\mathcal{P} \in {\rm Part}(X)$
+    \item $\forall \varepsilon > 0$ there is no finite bound on $\chi(\Gamma_{\varepsilon}^{\mathcal{P}}(\mu))$, where $\mathcal{P} \in {\rm PartFin}(X)$.
   \end{enumerate}
 \end{lemma}
+
+%TODO: define S(\mu, G) and the property of inheritance of ameanability through the raikov completion
+\begin{proof}
+  Assume there exists a finite bound $d \in \N$ for the chromatic number for some $\varepsilon \in \R_{>0}$, i.e.
+  \begin{equation*}
+    \forall \P \in {\rm PartFin}(X)\colon \chi(\Gamma_\varepsilon^{\P}(\mu)) \leq d. 
+  \end{equation*}
+  Given this assumption we claim that the the group $L_0(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma_{\varepsilon}^{\P}(\mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in {\rm PartFin}(X)$. Now let $\mathcal{F}$ be a free ultrafilter on ${\rm PartFin}(X)$ the existence of which follows from Corollary \ref{col:exfreeuf} and Remark \ref{rem:partfinsze} and let $\P_f$ be the finite partion of $X$ induced by $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
+  \begin{equation*}
+    f_\P(A) = k \iff \exists B \in f^{-1}(\{k\})\colon A \subseteq B. 
+  \end{equation*}
+  This functions is well-defined because of the definition of refinment of partitions and thus also $f \in S(\mu, \Z)$.
+  Now define a coloring $c: S(\mu, G) \to \{1, \ldots, d\}$ of $S(\mu, G)$ as the limit over the ultrafilter
+  \begin{equation*}
+    c(f) := \lim\limits_{\P \to \mathcal{U}} c_{\P}(f_\P).
+  \end{equation*}
+  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. By Lemma \ref{lem:colve} it follows that $c_\P(f) \neq c_\P(g)$ for $f - g \in \bar{1} + V_\varepsilon$.
+  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cup (X_i - X_i)$ for each $i = 1, \ldots, d$ and thus $X_i - X_i$ is not dense at $\bar{1}$. By Pestovs characterization of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. Hence, $L_0(\mu, \Z)$ is not extremly ameanable by Theorem \ref{}. 
+\end{proof}
