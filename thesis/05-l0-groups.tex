@@ -1,18 +1,56 @@
 \section{$L_0$-Groups, connection between extrem ameanability and chromatic numbers}
-
+%TODO: cite paper of friedrich martin with the definitions of raikov and submeasures
 In this chapter, we want to establish a connection between the extrem ameanability of a $L_0$-Group and the boundedness of the chromatic numbers of a sequence of graphs.
 These graphs will be constructed using the structure of the $L_0$-groups.
+
+\begin{defin}
+  Let $\mathcal{A}$ be a boolean algebra and $\mu\colon \mathcal{B} \to [0, \infty)$. The map $\mu$ is called a \textbf{submeasure} if
+  \begin{enumerate}
+    \item $\mu(0) = 0$,
+    \item $\forall A, B \in \mathcal{A}\colon A \leq B \Rightarrow \mu(A) \leq \mu(B)$,
+    \item $\forall A, B \in \mathcal{A}\colon \mu(A \lor B) \leq \mu(A) + \mu(B)$.
+  \end{enumerate}
+\end{defin}
+
+From here a submeasure on a set $X$ is a submeasure on the power set algebra on $X$.
 
 \begin{defin}
   Let $X$ be a set. Then ${\rm PartFin}(X)$ is the set of all finite partitions of $X$, which means:
   \begin{equation*}
     {\rm PartFin}(X) := \left\{ \mathcal{A} \subseteq \P(X)\colon (\forall A,B \in \mathcal{A}\colon A \cap B = \emptyset) \: \land \: \bigcup\mathcal{A} = X \: \land \: \left| \mathcal{A} \right| < \infty \right\}.
   \end{equation*}
-  Let $\P_1, \P_2 \in {\rm PartFin}(X)$. $\P_1$ is said to \textbf{refine} $\P_2$ if
+  Let $\P_1, \P_2 \in {\rm PartFin}(X)$. $\P_1$ is said to \textbf{refine} $\P_2$ ($\P_2 \preccurlyeq \P_1$) if
   \begin{equation*}
     \forall A \in \P_1\exists B \in \P_2\colon A \subseteq B.
   \end{equation*}
+  For every $\P \in {\rm PartFin}(X)$ define the map $\iota_\P\colon X \to \P$ with
+  \begin{equation*}
+    \iota_\P\colon x \mapsto \begin{cases}
+      &A_1, \: \text{if } x \in A_1, \\
+      &A_2, \: \text{if } x \in A_2, \\
+      &\vdots \\
+      &A_n, \: \text{if } x \in A_n,
+    \end{cases}
+  \end{equation*}
+  where $k = \left|\P\right|$.    
+  %TODO: is this needed?
+  The set ${\rm PartFin}_\mu(X)$ contains all finite partitions of $X$ but with the additional constraint that they have to be measurable with respect to a submeasure $\mu$ on the boolean algebra of subsets of $X$. 
 \end{defin}
+
+%TODO: directed set in appendix? or definition above?
+\begin{thm}\label{thm:algdirected}
+  Let $X$ be a set. Then the set ${\rm PartFin}(X)$ together with the binary operation $\preccurlyeq$ is a directed set.
+\end{thm}
+
+% TODO: picture of refinments of the square
+\begin{proof}
+  Reflexivity and transitivity follow directly from the reflexivity and transitivity of the $\subseteq$ relation.
+  Now let $\P_1, \P_2 \in {\rm PartFin}(X)$. Define $\P_3 := \{ P \cap P' \colon P \in \P_1, \:P' \in \P_2 \}$.
+  Since for any two sets $A, B$ it holds that $A \cap B \subseteq A$ and $A \cap B \subseteq B$ it follows that
+  \begin{equation*}
+    \P_1 \preccurlyeq \P_3 \land \P_2 \preccurlyeq \P_3.
+  \end{equation*}
+\end{proof}
 
 \begin{rem}\label{rem:partfinsze}
   If $X$ is an infinite set then ${\rm PartFin}(X)$ is also infinite.
@@ -38,15 +76,6 @@ These graphs will be constructed using the structure of the $L_0$-groups.
 \end{defin}
 
 \begin{defin}
-  Let $(X, \mathcal{B})$ be a measureable space and $\mu\colon \mathcal{B} \to [0, \infty]$. The map $\mu$ is called a submeasure on $X$ if
-  \begin{enumerate}
-    \item $\mu(\emptyset) = 0$,
-    \item $\forall A, B \in \mathcal{B}\colon A \subseteq B \Rightarrow \mu(A) \leq \mu(B)$,
-    \item $\forall A, B \in \mathcal{B}\colon \mu(A \cup B) \leq \mu(A) + \mu(B)$.
-  \end{enumerate}
-\end{defin}
-
-\begin{defin}
   Let $(X, \mathcal{B})$ be a measureable space and let $\mu\colon \mathcal{B} \to [0, \infty]$ be a submeasure on $X$. Then the set
   \begin{equation*}
     S(\mu, G) := \left\{ f: X \to G\colon f \:\:\mu-\text{measureable} \: \land \: \left| f(X) \right| < \infty \right\}
@@ -61,7 +90,7 @@ This set of simple functions is dense in the set $L_0(\mu, G)$. But since in gen
 
 In the following that symbols $\bar{1}$ represents the constant function which sends each element to 1 in the set $S(\mu, \Z)$. 
 
-\begin{lemma}
+\begin{lemma}\label{lem:1}
   Let $(X, \mathcal{B})$ be a measurable space and let $\mu$ be a submeasure on $X$. Additionally, let $\P \in {\rm PartFin}(X)$ and $\varepsilon \in \R_{>0}$ then for $f,g \in \Z^\P$ with $f - g \in \bar{1} + V_\varepsilon$ it follows that $f$ and $g$ are connected in $\Gamma_\varepsilon^\P(\mu)$ by an edge.
 \end{lemma}
 
@@ -82,12 +111,19 @@ In the following that symbols $\bar{1}$ represents the constant function which s
 \end{lemma}
 
 %TODO: define S(\mu, G) and the property of inheritance of ameanability through the raikov completion
+%TODO: syndetic set definition
+%TODO: correctly cite pestov
 \begin{proof}
   Assume there exists a finite bound $d \in \N$ for the chromatic number for some $\varepsilon \in \R_{>0}$, i.e.
   \begin{equation*}
     \forall \P \in {\rm PartFin}(X)\colon \chi(\Gamma_\varepsilon^{\P}(\mu)) \leq d. 
   \end{equation*}
-  Given this assumption we claim that the the group $L_0(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma_{\varepsilon}^{\P}(\mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in {\rm PartFin}(X)$. Now let $\mathcal{F}$ be a free ultrafilter on ${\rm PartFin}(X)$ the existence of which follows from Corollary \ref{col:exfreeuf} and Remark \ref{rem:partfinsze} and let $\P_f$ be the finite partion of $X$ induced by $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
+  Given this assumption we claim that the the group $L_0(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma_{\varepsilon}^{\P}(\mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in {\rm PartFin}(X)$. Consider the family of sets
+  \begin{equation*}
+    \mathcal{A} := \{\{ \P \in {\rm PartFin}(X)\colon \P_0 \preccurlyeq \P\}\colon \P_0 \in {\rm PartFin}(X)\}.
+  \end{equation*} 
+  This is a well-defined filter basis by Theorem \ref{thm:algdirected} and Lemma \ref{lem:filbas}. From Theorem \ref{thm:ulfil} it follows that there is an ultrafilter $\mathcal{U}$ containing the filter $\mathcal{F}(\mathcal{A})$.
+ Let $\P_f$ be the finite partion of $X$ induced by $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
   \begin{equation*}
     f_\P(A) = k \iff \exists B \in f^{-1}(\{k\})\colon A \subseteq B. 
   \end{equation*}
@@ -96,6 +132,38 @@ In the following that symbols $\bar{1}$ represents the constant function which s
   \begin{equation*}
     c(f) := \lim\limits_{\P \to \mathcal{U}} c_{\P}(f_\P).
   \end{equation*}
-  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. By Lemma \ref{lem:colve} it follows that $c_\P(f) \neq c_\P(g)$ for $f - g \in \bar{1} + V_\varepsilon$.
-  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cup (X_i - X_i)$ for each $i = 1, \ldots, d$ and thus $X_i - X_i$ is not dense at $\bar{1}$. By Pestovs characterization of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. Hence, $L_0(\mu, \Z)$ is not extremly ameanable by Theorem \ref{}. 
+  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. By Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$ for $f - g \in \bar{1} + V_\varepsilon$.
+  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cup (X_i - X_i)$ for each $i = 1, \ldots, d$ and thus $X_i - X_i$ is not dense at $\bar{1}$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. Hence, $L_0(\mu, \Z)$ is not extremly ameanable by Theorem \ref{}. 
+
+  For the second implication suppose that $S(\mu, G)$ is not extremely ameanable. Let $d \in \N$ and let $S_1, \ldots, S_d$ be a finite covering of $S(\mu, G)$ such that there is an $i \in \{1, \ldots, d\}$ with $G \neq \overline{S_i - S_i}$. The existence of such an finite covering with an element that is not everywhere dense follows from Pestovs characterization of extreme ameanability \cite[Theorem 3.4.9]{PestovDyn}.
+  Now let $S := S_i$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
+  \begin{equation*}
+    (f + W_\varepsilon) \cap (S - S) = \emptyset
+  \end{equation*}
+  for $W_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \notin W\}) < \varepsilon\}$ since $f$ is not in the closure of $S - S$. 
+  Now let $V_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \neq e_G\}) < \varepsilon\}$. Since $e_G \in W$ it follows that $V_\varepsilon \subseteq W_\varepsilon$ and hence
+  \begin{equation*}
+    (f + V_\varepsilon) \cap (\overline{S - S}) = \emptyset.
+  \end{equation*}
+  Define the partition $\P_f$ induced by $f$.
+  Now let $\P \in {\rm PartFin}(X)$ with $\P_f \preccurlyeq \P$ and let $k \in \Z^\P$.
+  Define
+  \begin{equation*}
+    g_k\colon X \to G, \: g_k(x) \mapsto k(\iota_\P(x))f(x)
+  \end{equation*}
+  which is an element of $S(\mu, G)$ and define the mapping $c\colon \Z^\P \to \{1,\ldots, d\}$ as
+  \begin{equation*}
+    c\colon k \mapsto i \iff g_k \in S_i.
+  \end{equation*}
+
+  \textbf{Claim:} The mapping $c$ is a coloring of the graph $\Gamma_\varepsilon^\P(\mu)$. To this end suppose there are two nodes $k, l \in \Z^\P$ which are connected and have the same color $i \in \{1, \ldots, d\}$. Let $B := \bigcup\{A\in\P\colon k(A) \neq l(A) + 1\}$. It holds that $\mu(B) \leq \varepsilon$ since $k$ and $l$ are connected in $\Gamma_\varepsilon^\P(\mu)$. For $x \in X\setminus B$ it holds that
+  \begin{equation*}
+    g_k(x) - g_l(x) = k(\iota_\P(x))f(x) - l(\iota_\P(x))f(x) = (k(\iota_\P(x)) - l(\iota_\P(x)) f(x) = f(x)
+  \end{equation*}
+  since $k(A) = l(A) + 1$ for $x \notin B$. It follows that
+  \begin{equation*}
+    \mu(\{x\in X\colon g_k(x) - g_l(x) \neq f(x)\}) < \varepsilon.
+  \end{equation*}
+  which means $g_k - g_l \in f + V_\varepsilon$. Furthermore we have $g_k, g_l \in S_i$ becasue of the definition of $c$. Hence $g_k - g_k \in (f + V_\varepsilon) \cap (S_i - S_i) \lightning$.
+  This proofs the claim that $c$ is a coloring of $\Gamma_\varepsilon^\P(\mu)$ with $d$ colors.
 \end{proof}
