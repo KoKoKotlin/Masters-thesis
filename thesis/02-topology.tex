@@ -286,3 +286,126 @@ Indeed the new definition of convergence extends the old one from \ref{def:convt
 \end{defin}
 
 \subsection{Algebraic Topology}
+
+\textbf{Notation:}
+\begin{enumerate}
+  \item Let $Y$ be a topological space with the topology $\T_Y$,
+  \item Let $X$ be a metric space with the metric $d_X$ which is also a topological space with the topology induced by its metric,
+  \item If $Z_1, Z_2$ are topological spaces, then $C(Z_1, Z_2)$ is the set of all continuous maps from $Z_1$ to $Z_2$,
+  \item Let $y \in Y$, then $\NB_y$ is the set of all neighbourhoods of the element $y$,
+  \item For $\varepsilon \in \R_{>0}$ and $x \in X$, let $B_{\varepsilon}(x) := \{ y\in X \: | \: d_X(x, y) < \varepsilon\}$.
+\end{enumerate}
+
+\begin{defin}
+  A \textbf{path} $\gamma$ in $Y$ is a continuous map $[0,1] \to Y$ where $[0,1]$ is seen as a subspace of $\R$.
+\end{defin}
+
+\begin{defin}
+  Let $\gamma_1, \gamma_2 \in C([0, 1], Y)$. A \textbf{free homotopy} $H\colon [0,1]^2 \to Y$ between $\gamma_1$ and $\gamma_2$ is a continuous map such that
+  \begin{equation*}
+    \forall s \in [0,1]\colon H(s, 0) = \gamma_1(s) \: \land \: H(s, 1) = \gamma_2(s)
+  \end{equation*}
+
+  Now let $\gamma_1, \gamma_2 \in C([0, 1], Y)$ such that $\gamma_1(0) = \gamma_2(0)$ and $\gamma_1(1) = \gamma_2(1)$ i.e. the two paths start and end at the same point.
+  The homotopy $H \in C([0,1]^2, Y)$ is called \textbf{endpoint preserving} if it is a free homotopy between $\gamma_1$ and $\gamma_2$ and it has the following property:
+  \begin{equation*}
+    \forall t\in[0,1]\forall i\in \{1,2\}\colon H(0, t) = \gamma_i(0) \: \land \: H(1, t) = \gamma_i(1).
+  \end{equation*}
+
+  If a free homotopy $H$ between the two paths $\gamma_1$ and $\gamma_2$ exists they are called \textbf{freely homotopic} $\gamma_1 \overset{\cdot}{\sim}_H \gamma_2$.
+  If the two paths $\gamma_1$ and $\gamma_2$ have the same start and end point and there exists an endpoint preserving homotopy $H$ between them then they are called 
+  \textbf{homotopic} $\gamma_1 \sim_H \gamma_2$. If a path is (freely) homotopic to a constant path ($[0,1] \to Y, t \mapsto y \in Y$) then it is called \textbf{null-homotopic}.
+
+  Lastly define the homotopy relation $\sim$ on $C([0,1], Y)$ where 
+  \begin{equation*}
+    \forall\gamma_1, \gamma_2 \in C([0,1], Y)\colon \gamma_1 \sim \gamma_2 \iff \exists H \text{ homotopy between } \gamma_1 \text{ and } \gamma_2.
+  \end{equation*}
+\end{defin}
+
+In this thesis all homotopies are endpoint preserving if it is not explicitly stated that they should be free homotopies.
+
+\begin{defin} \label{def:connectedness}
+  \begin{itemize}
+    \item[] % this has to be here because of the newline after the definition label
+    \item $Y$ \textbf{connected} $\;\longeq\; \forall A,B \in \T_Y\colon (A \cap B = \emptyset \: \land \: Y = A \cup B) \Rightarrow (A = \emptyset \: \lor \: B = \emptyset)$
+    \item $Y$ \textbf{path-connected} $\;\longeq\; \forall x,y \in Y \exists\gamma \in C([0,1], Y)\colon \gamma(0) = x \: \land \: \gamma(1) = y$
+  \end{itemize}
+\end{defin}
+
+\begin{lemma} \label{lem:homotopy-equivalence}
+  The homotopy relation $\sim$ of paths is an equivalence relation on the set $C([0,1],Y)$.
+\end{lemma}
+
+\begin{proof}
+  Let $\gamma_1, \gamma_2, \gamma_3 \in C([0,1],Y)$ with $\gamma_1(0) = \gamma_2(0) = \gamma_3(0)$ and $\gamma_1(1) = \gamma_2(1) = \gamma_3(1)$.
+  
+  \textit{Reflexivity:}
+  Consider the homotopy $H\colon [0,1]^2 \to Y, \: (s, t) \mapsto \gamma_1(s)$. 
+  
+  It holds that for all $s\in [0,1]\colon H(s, 0) = \gamma_1(s),\: H(s, 1) = \gamma_1(s)$. And thus $\gamma_1 \sim_H \gamma_1 \Rightarrow \gamma_1 \sim \gamma_1$.
+
+  \textit{Symmetry:} 
+  Assume that $\gamma_1 \sim \gamma_2$. This means there exists a homotopy $H$ such that $\gamma_1 \sim_H \gamma_2$. 
+  Now define the homotopy $F\colon [0,1]^2 \to Y, \: (s, t) \mapsto H(s, 1-t)$. 
+  
+  From this definition it follows that for all $s \in [0,1]:$
+  \begin{align*}
+    F(s, 0) &= H(s, 1 - 0) = \gamma_2(s) \\
+    F(s, 1) &= H(s, 1 - 1) = \gamma_1(s)
+  \end{align*}
+  and hence $\gamma_2 \sim_F \gamma_1 \Rightarrow \gamma_2 \sim \gamma_1$.
+
+  \textit{Transitivity:}
+  Assume that $\gamma_1 \sim \gamma_2$ and $\gamma_2 \sim \gamma_3$. Let $H$ be a homotopy between $\gamma_1$ and $\gamma_2$ and let $F$ be a homotopy between $\gamma_2$ and $\gamma_3$. 
+  Define the homotopy
+  \begin{equation*} 
+    G: [0,1]^2 \to Y, \: (s,t) \mapsto \begin{cases}
+      H(s, 2t), &t \in [0, {1 \over 2}], \\
+      F(s, 2t - 1), &t \in [{1 \over 2}, 1].
+    \end{cases}
+  \end{equation*}
+
+  Then the following equations hold
+  \begin{align*}
+    G(s,0) &= H(s,0) = \gamma_1(s), \\
+    G\left(s, \tfrac{1}{2}\right) &= H(s, 1) = \gamma_2(s) = F(s, 0), \\
+    G(s, 1) &= F(s, 1) = \gamma_3(s),
+  \end{align*}
+  and thus $\gamma_1 \sim_G \gamma_3 \Rightarrow \gamma_1 \sim \gamma_3$.
+\end{proof}
+
+\begin{rem} \label{rem:reparam}
+  Let $\alpha: [0,1] \to [0,1]$ be a continuous map with $\alpha(0) = 0, \alpha(1) = 1$ and let $\gamma \in C([0,1], Y)$. Then it follows that $\gamma \sim \gamma \circ \alpha$.
+\end{rem}
+
+\begin{proof}
+  Let $F\colon [0,1]^2 \to Y, (s, t) \mapsto \gamma((1 - t)s + t\alpha(s))$.
+
+  At first let $s \in [0,1]$ fixed and let $\alpha(s) \in [0,1]$ then $(1 - t)s + t\alpha(s)$ is a convex combination of the two points. 
+  $[0,1]$ is a convex set and thus for all $t\in[0,1]$ it is true that $(1 - t)s + t\alpha(s) \in [0,1]$. Because of the continuity of the operations $+$ and $\cdot$ in $[0,1]$ 
+  and the continuity of $\alpha$ the map $F$ is continuous and the following hold
+  \begin{align*}
+    F(s, 0) &= \gamma(s), \\
+    F(s, 1) &= \gamma(\alpha(s)),
+  \end{align*}
+  and thus $\gamma \sim_F \gamma \circ \alpha$ which means $\gamma \sim \gamma \circ \alpha$.
+\end{proof}
+
+\begin{defin}
+  Let $X$ and $Y$ be topological spaces. The \textbf{homotopy class} of $f \in C(X, Y)$ is $[f]_{\sim} = \{g \in C(X, Y)\colon f \simeq g\}$. A continuous function $f \in C(X, Y)$ is calles a \textbf{homotopy equivalence} if there exists a $g \in C(Y, X)$ such that
+  \begin{equation*}
+    g \circ f \simeq \id_X \: \land \: f \circ g \simeq \id_Y.
+  \end{equation*}
+  The two spaces $X$ and $Y$ are \textbf{homotopy equivalent} ($X \simeq Y$) if there exists a homotopy equivalence $f \in C(X, Y)$ between them.
+\end{defin}
+
+\begin{lemma}
+  Let $X$ and $Y$ be topological spaces, then
+  \begin{equation*}
+    X \cong Y \: \Rightarrow \: X \simeq Y.
+  \end{equation*}
+\end{lemma}
+
+\begin{proof}
+  Let $\psi\colon X \to Y$ be a homeomorphism. Then it follows that $\psi \circ \psi^{-1} \simeq \id_Y$ and $\psi^{–1} \circ \psi \simeq \id_X$.  
+\end{proof}
