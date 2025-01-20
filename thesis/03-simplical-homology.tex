@@ -142,6 +142,18 @@ or the points lie in a straight line, this is not true. When it is assumed that 
     \item $\forall \sigma_1, \sigma_2\in \mathcal{K}\colon ({\rm co}f(\sigma_1)) \cap ({\rm co} f(\sigma_2)) = {\rm co}f(\sigma_1 \cap \sigma_2)$.
   \end{enumerate}
     Given a geometric realization $f$ for $\mathcal{K}$, then $\lVert K \rVert_f = f(\mathcal{K})$. The symbol $\lVert \mathcal{K} \rVert$ refers the an arbitrary geometric realization of $\mathcal{K}$ in the smallest dimension $d$ that is possible.
+    Let $x \in \lVert K \rVert_f$. Then $x$ is in ${\rm co}A_x$ for exactly one set $\{f(v_1), f(v_2), \ldots, f(v_k)\} = A_x \subseteq f(V(\mathcal{K}))$ for which the following equations hold 
+    \begin{equation*}
+      x = \sum\limits_{i=1}^k t_i \cdot f(v_i), \hspace*{30px} \sum\limits_{i=1}^k t_i = 1, 
+    \end{equation*}
+    where $k\in \N^+$ and $t_i \in [0, 1]$ for all $i \in \{1, 2, \ldots, k\}$. Define $\alpha_v(x)$ as
+    \begin{equation*}
+      \alpha_v(x) = \begin{cases}
+        &t_i, \: v \in A_x, \\
+        &0, \: \text{otherwise}
+      \end{cases}
+    \end{equation*}
+    for $v \in V(\mathcal{K})$.
 \end{defin} 
 
 To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is well-defined, we need the following theorem.
@@ -151,7 +163,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \end{thm}
 
 \begin{proof}
-  In \cite[]{}.
+  This is a direct consequence of \cite[Lemma 5.1.1]{using2003}.
 \end{proof}
 
 \begin{defin}
@@ -176,11 +188,13 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   \begin{equation*}
     \mathcal{K} \star \mathcal{L} := \{\sigma \sqcup \tau\colon \sigma \in \mathcal{K}, \tau \in \mathcal{L} \}.
   \end{equation*}
+  The special case ${\rm Cone}(\mathcal{K}) = \mathcal{K} \star \{ \Delta \}$ is the cone of $\mathcal{K}$ with a cone point $\Delta$. 
   Now define basepoints $v_k \in V(\mathcal{K}), v_l \in V(\mathcal{L})$ of the two simplicial complexes. The \textbf{wedge} of $\mathcal{K}$ with $\mathcal{L}$ is defined as
   \begin{equation*}
     \mathcal{K} \lor \mathcal{L} := \: \faktor{\mathcal{K} \sqcup \mathcal{L}}{\sim}
   \end{equation*}
   where $\sim$ is the equivalence relation, that identifies the basepoints.
+  The $n$-fold wedge is the $n$-fold disjoint union with the same equivalence relation.
 \end{defin}
 
 \begin{ex}

@@ -1,11 +1,128 @@
-\section{The Borsuk-Ulam-Theorem and its Generalization}
+\section{The Borsuk-Ulam Theorem and a generalization}
 
-The following section describes the important Borsuk-Ulam theorem and a generelization needed to prove the following claim:
-\begin{thm}
+The following section describes the Borsuk-Ulam theorem and an important generelization by Volovikov needed to prove the following claim:
+\begin{thm}\label{thm:confun}
   If $p \in \mathbb{P}$ and $n, l \in \mathbb{N}$ with $n \geq l$ such that
   \begin{equation*}
     d(p-1) \leq l - n,
   \end{equation*}
-  then for every continuous map $f\colon\lVert K_p^{n,l}\rVert \to \R^d$ there is a point in $\lVert K_p^{n,l}\rVert$ whose $\Z_p$-Orbit is mapped to a single point in $\R^d$ by $f$.
+  then for every continuous map $f\colon\lVert K_p(n,l)\rVert \to \R^d$ there is a point in $\lVert K_p(n,l)\rVert$ whose $\Z_p$-Orbit is mapped to a single point in $\R^d$ by $f$.
 \end{thm}
 This theorem will be needed later to prove a bound on the chromatic numbers of the graphs $\Gamma(\mu, \P, \varepsilon)$.
+An important tool needed in the proof of Theorem \ref{thm:confun} is a result of Volovikov which he described in \cite{vol1980}. It is a generalization of the Borsuk-Ulam theorem.
+\begin{lemma}\label{lem:vol}
+  Let $X$ be a connected paracompact Hausdorff space, acted on without fixed points by a cyclic group $\Z_p$ of prime order $p$. For any continuous function $f\colon X \to M$ and generator of $T \in \Z_p$ let
+  \begin{equation*}
+    A(f) := \{x\in X\colon f(x) = f(Tx) = \cdots = f(T^{p-1}x)\}
+  \end{equation*}
+  be the set of points of which the $\Z_p$-orbit is mapped by $f$ to a single point. Suppose that $\tilde{H}^i(X; \Z_p) = 0$ for $0 < i < n$ and $M$ is a compact $\Z_p$ orientiable topological manifold of dimension $m$. If the map $f^*\colon \tilde{H}^n(X; \Z_p) \to \tilde{H}^n(M; \Z_p)$ has zero image then the cohomological dimension over $\Z_p$ of $A(f)$ is at least $n-m(p-1)$. 
+\end{lemma}
+
+In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compiled various formulations of the Borsuk-Ulam theorem and described it can be generalized with the concept of $\Z_2$ spaces and more generally whith $E_nG$ spaces, there $G$ is a group. In our case $G = \Z_p$ and instead of two there will be $p \in \mathbb{P}$ points that get mapped to the same point by any continuous function. 
+
+\subsection{The simplicial complex $K_p(n, l)$}
+
+% TODO: illustration of component interval of a function
+\begin{defin}
+  Let $n, p \in \N$, then $\tau \subseteq [n+1] \times [p]$ is called a \textbf{partial function} if \[\restr{\tau}{\dom(\tau)} = \tau \cap (\dom(\tau) \times [p])\] is a function. Let $\tau_1, \tau_2$ be partial functions from $[n+1]$ to $[p]$. Now define
+  \begin{equation*}
+    \tau_1 \subseteq_f \tau_2 \longeq \dom(\tau_1) \subseteq \dom(\tau_2) \: \land \: \forall k \in \dom(\tau_1)\colon \tau_1(k) = \tau_2(k).
+  \end{equation*}
+  A \textbf{component interval} of $\tau$ is any maximal interval $I \subseteq [n+1]$ such that $\tau$ is constant on $I \cap \dom(\tau)$.
+\end{defin}
+
+\begin{defin}
+  Let $l \in \N$ and $p \in \mathbb{P}$. Let $V_p(n, l)$ be the set of of non-empty partial functions $\tau\colon [n+1] \to [p]$ which the additional properties
+  \begin{enumerate}[label=\roman*.)]
+    \item $n - l \leq |\dom(\tau)|$,
+    \item the number of component intervals of $\tau$ is at most $l+1$.
+  \end{enumerate}
+\end{defin}
+
+\begin{defin}
+  Let $K_p(n,l)$ be an abstract simplicial complex with
+  \begin{enumerate}[label=\roman*.)]
+    \item $V(K_p(n,l)) = V_p(n,l)$,
+    \item the simplicies in $K_p(n,l)$ are chains of $V_p(n,l)$ with repect to $\subseteq_f$.
+  \end{enumerate}
+  This complex is a $\Z_p$ complex with the action
+  \begin{equation*}
+    \Z_p \times V_p(n,l) \to V_p(n,l), \: (k, \tau) \mapsto \lambda(k, \tau) = k +_f \tau,
+  \end{equation*}
+  with $\dom(k +_f \tau) = \dom(\tau)$ and $\forall i\in \dom(k +_f \tau)\colon (k+_f\tau)(i) = k +_p \tau(i)$.
+\end{defin}
+
+\begin{defin}
+  Let $n \in \N$ and $p \in \mathbb{P}$. Define $S_p(n)$ as the abstract simplicial complex with
+  \begin{enumerate}[label=\roman*.)]
+    \item $V(S_p(n)) = \{\tau\colon [n+1]\to [p]\colon |\dom(\tau)| = 1\}$,
+    \item $\sigma \in S_p(n)\setminus\emptyset \: \longeq \: \forall \tau_1,\tau_2\in\sigma\colon \: (\tau_1 \neq \tau_2) \Rightarrow (\dom(\tau_1) \cap \dom(\tau_2) = \emptyset)$.
+  \end{enumerate}
+\end{defin}
+
+\begin{defin}
+  Let $n \in \N$ and $p\in\mathbb{P}$. For $a \in (\Z_p\setminus\{0\})^{n+1}$ define $S_p(n,a)$ as
+  \begin{equation*}
+    S_p(n,a) := \{0, a(0)\} \star \{0,a(1)\} \star \ldots \star \{0,a(n)\}.
+  \end{equation*}
+\end{defin}
+
+\begin{rem}\label{rem:s}
+  By \ref{} it holds that $\lVert S_p(n,a) \rVert \cong \mathbb{S}^{n}$ for $n\in\N$.
+\end{rem}
+
+Now, our goal is to show that the complex has all trivial reduced cohomology groups $\tilde{H}^i(K_p(n,l); \Z_p)$ with coefficients in $\Z_p$ such that we can apply lemma \ref{lem:vol}. Since $\Z_p$ together with $+_p$ and the multiplication of the natural numbers $\hspace*{-5px}\mod p$ is a field, it is sufficient to show that the reduced homology groups $\tilde{H}_i(K_p(n,l); \Z_p)$ are trivial. The triviality of the cohomology groups follows from the universal coefficient theorem \ref{}. 
+
+\begin{lemma}
+  Let $n \in \N$ and let $p \in \mathbb{P}$. Then
+  \begin{equation*}
+    \lVert K_p(n,n) \rVert \: \simeq \: \bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^{n}.
+  \end{equation*}
+\end{lemma}
+
+\begin{proof}
+  First notice that $\Z_p \cong \bigvee_{i=1}^{p-1}\mathbb{S}^0 =: S$ with basepoint $1$ via the isomorphism
+  \begin{equation*}
+    V(\Z_p) \to V(S), \: k \mapsto \begin{cases}
+      &[(1, 1)]_\sim, \: k = 0, \\
+      &[(-1,k)]_\sim, \: k \neq 0.
+    \end{cases}
+  \end{equation*}
+  Furthermore it holds that $\lVert S_p(n) \rVert \simeq?? \left\lVert \bigvee_{i=0}^n\Z_p \right\rVert \simeq \left\lVert \bigvee_{i=0}^n\bigvee_{j=1}^{p-1}\mathbb{S}^0 \right\rVert$ and thus
+  \begin{equation*}
+    \lVert S_p(n) \rVert \simeq?? \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}} \hspace*{-17px}S_p(n,a) \right\rVert \overset{\ref{rem:s}}{\simeq} \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \right\rVert.
+  \end{equation*}
+
+  It is clear that $V(S_p(n)) \cong V_p(n,n)$ because the vertecies in $\sd(S_p(n))$ are maximal chains in $S_p(n)$ which are the total functions from $[n+1]$ to $[p]$ by definition and thus $K_p(n,n) \cong \sd(S_p(n))$. By \ref{} it follows that
+  \begin{equation*}
+    \lVert K_p(n, n) \rVert \simeq \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \right\rVert \simeq \left\lVert \bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^n \right\rVert
+  \end{equation*}
+  since $\left|(\Z_p\setminus\{0\})^{n+1}\right| = (p-1)^{n+1}$.
+\end{proof}
+
+In the following it will be needed to show that $K_p(n,n)$ has also a wedge-decomposition similiar to $S_p(n)$.
+\begin{defin}
+  Let $n\in\N$ and $p\in \mathbb{P}$. Define the abstract simplicial complex $K_p(n,a)$ for $a \in (\Z_p\setminus\{0\})^{n+1}$ as
+  \begin{equation*}
+    K_p(n,a) = \{\tau \in K_p(n,n)\colon \forall k\colon\dom(\tau)\colon \tau(m) = 0 \: \lor \: t(m) = a(m)\}\}.
+  \end{equation*}
+\end{defin}
+
+\begin{rem}
+  Let $n\in\N$, $p\in\mathbb{P}$ and $a\in (\Z_p\setminus\{0\})^{n+1}$. It holds that
+  \begin{equation*}
+    K_p(n,a) \cong \sd(S_p(n,a)).
+  \end{equation*}
+\end{rem}
+
+\begin{proof}
+  Rememeber that the vertecies of $\sd(S_p(n,a))$ are the total chains in $S_p(n,a)$ which are isomorphic to $V_p(n,n)$ which means they represent total functions which are either 0 or have the same value as the function $a$ which is the definition of an element in $K_p(n,a)$.
+\end{proof}
+
+Now the following decomposition of $K_p(n,n)$ can be proven:
+\begin{lemma}
+  Let $n\in\N$ and $p\in\mathbb{P}$. Then it follows that
+  \begin{equation*}
+    \left\lVert K_p(n,n) \right\rVert \simeq \left\lVert \bigvee_{a\in(\Z_p\setminus\{0\})^{n+1}}\hspace*{-24px}K_p(n,a)\right\rVert.
+  \end{equation*}
+\end{lemma}

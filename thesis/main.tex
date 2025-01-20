@@ -12,6 +12,7 @@
 \usepackage{stmaryrd}
 \usepackage{enumitem}
 \usepackage{faktor}
+\usepackage{enumitem}
 
 \usepackage{graphicx}
 \usepackage{caption}
@@ -33,6 +34,7 @@
 \newcommand{\sd}{{\rm sd}}
 \newcommand{\dom}{{\rm dom}}
 \newcommand{\id}{{\rm id}}
+\newcommand{\cone}{{\rm Cone}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand*{\anddot}{%
   \mathclose{}%
@@ -41,7 +43,18 @@
   \;%
   \mathopen{}%
 }
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \littletaller % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
 
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
+
+\usepackage{colonequals}
+%\newcommand*{\logeq}{\ratio\Leftrightarrow}
+%\newcommand*{\longeq}{\ratio\Longleftrightarrow}
   
 \title{Masters thesis\\Title}
 \author{Yannik Höll}
