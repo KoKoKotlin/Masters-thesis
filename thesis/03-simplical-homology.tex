@@ -289,3 +289,81 @@ The fact that the join of a two points with two points results in a simplicial c
   - define $f_n$ realization inductively
   - proof that polyhedra are triangulation of sphere
 \end{proof}
+
+% Universal coefficient theorem
+% Alexanders Duality
+% Mayer Vietoris Sequence
+\subsection{Homology Theory}
+Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the definitions from Category theory used in this section look at Appendix \ref{}. 
+
+\begin{defin}
+  Let $X$ be a topolgical space and let $A \subseteq X$ be a non-empty closed subspace, that is a deformation retract of a neighborhood in $X$. Then $(X, A)$ is a \textbf{good pair}.
+\end{defin}
+
+\begin{lemma}\label{lem:holwe}
+  Let $X_\alpha$ be a sequence of topological spaces with basepoints $x_\alpha\in X_\alpha$ and let $\iota_\alpha\colon X_\alpha \to \bigvee\limits_{\alpha \in I}X_\alpha$ for $\alpha \in I$ where $I$ is an arbitrary index set such that $(X_\alpha, x_\alpha)$ are good. Then it holds that the maps $\iota_\alpha$ induce an isomorphism
+  \begin{equation*}
+    \bigoplus_{\alpha \in I}\iota_\alpha^* \colon \bigoplus\limits_{\alpha\in I} \tilde{H}_n(X_\alpha)\to \tilde{H}_n\left(\bigvee\limits_{\alpha\in I} X_\alpha\right).
+  \end{equation*}
+\end{lemma}
+
+\begin{proof}
+  
+\end{proof}
+
+Proofs in the later sections will only involve reasoning about homology groups. Their is a dualized concept of homology called cohomology.
+The dualization in the sense of category theory works be replacing the homology groups in the chain complex by $\underline{\rm Grp}(H_n(X); G)$ where $G \in \underline{\rm Ab}$ is an abelian group. There is no need to also develop the theory of cohomology in this thesis nor a need to use it later in the proofs because of the following result. Its called \textbf{Alexander duality} and connects homology and cohomology groups.
+
+% TODO: check and insert the correct version of alexanders duality here
+% in the prove of the lemma in section 6 the reference goes into spanier
+% but it is unclear how the duality is used and which version is referenced
+\begin{thm}\label{thm:alex}
+  Let $n \in \N$ and $p \in \mathbb{P}$. If $A \subseteq \mathbb{S}^n$ is a compact, non-empty and contractible subspace then
+  \begin{equation*}
+    \tilde{H}_k(\mathbb{S}^n \setminus A) \cong \tilde{H}^{n-k-1}(A)
+  \end{equation*}
+  for all $q \in \N$.
+\end{thm}
+
+\begin{proof}
+  
+\end{proof}
+
+\subsection{Theorem of Mayer-Vietoris}
+Often we can calculate the homology of simple subspaces of a larger space and want to deduce the homology of the larger space from them.
+This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a homological version of the \textbf{Van Kampen-Theorem} (see \cite[Chapter 1.2]{hatcher}).
+
+\begin{defin}
+  Let $(G_n)_{n\in\N}$ be a sequence of abelian groups and let $(\varphi_n)_{n\in\N}$ be a sequence of homomorphisms such that
+  \begin{equation*}
+    \varphi_n\colon G_n \to G_{n-1}
+  \end{equation*}
+  for $n \in \N^+$ and $\varphi_0\colon G_0 \to 0$.
+  The sequence is called \textbf{exact} if
+  \begin{equation*}
+    \im\varphi_{n+1} = \ker\varphi_n.
+  \end{equation*}
+  for all $n \in \N$.
+  An exact sequence of the form
+  \begin{equation*}
+    0 \to A \to B \to C \to 0
+  \end{equation*}
+  that is exact is called a \textbf{short exact sequence}.
+\end{defin}
+
+\begin{thm}\label{thm:mvs}
+  Let $X$ be a topological space and let $A, B \subseteq X$ subspaces of $X$ such that \[X = \dot{A} \cup \dot{B}, \: A \cap B \neq \emptyset.\]
+  The \textbf{Mayer-Vietoris-Sequence}
+  \begin{equation*}
+    \ldots \to H_n(A\cap B) \overset{\Phi}{\to} H_n(A) \oplus H_n(B) \overset{\Psi}{\to} H_n(A \cup B) \overset{\partial}{\to} H_{n-1}(A\cap B) \to \ldots \to 0
+  \end{equation*}
+  is an exact sequence where the mappings $\Phi$ and $\Psi$ are defined as
+  \begin{align*}
+    &\Phi\colon H_n(A\cap B) \to H_n(A) \oplus H_n(B),\: z + B_n(A\cap B) \mapsto (z+B_n(A), -z + B_n(B)), \\
+    &\Psi\colon H_n(A) \oplus H_n(B) \to H_n(A\cup B), \: (z_1+ B_n(A), z_2 + B_n(B)) \mapsto (z_1 + z_2) + B_n(A \cup B).
+  \end{align*}
+\end{thm}
+
+\begin{proof}
+  For a detailed derivation of this Theorem look at \cite[p. 149]{hatcher}. 
+\end{proof}
