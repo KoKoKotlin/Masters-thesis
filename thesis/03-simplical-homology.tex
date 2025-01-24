@@ -296,8 +296,198 @@ The fact that the join of a two points with two points results in a simplicial c
 \subsection{Homology Theory}
 Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the definitions from Category theory used in this section look at Appendix \ref{}. 
 
+\begin{cons}
+  Let $S$ be a finite set and $p \in \mathbb{P}$. Define \[A(S) := \{f \in \Z^S\colon |\im f| < \infty \}\] be maps from $S$ to $Z_p$ with finite image. $A(S)$ is an abelian group together with the operation of pointwise addition of maps.
+  Then the set \[\{\mathds{1}_x\colon x\in S\} \subseteq A(S)\] forms a basis of the abelian group $A(S)$.
+  Let $T$ be another set. For a map $\varphi\colon S \to T$ define the map $A(T; p)$ as
+  \begin{equation*}
+    A(\varphi)\colon A(S) \to A(T),\; f \mapsto \sum\limits_{x \in S}f(x)\cdot \mathds{1}_{\varphi(x)}.
+  \end{equation*}
+  This map is a homomorphisms of abelian groups.
+\end{cons}
+
+\begin{proof} 
+  The fact that $A(S)$ is abelian follows from the fact that the group $\Z$ is abelian and thus the pointwise addition is associative and commutative, the neutral element is the constant $0$ function and the inverse of an element $f \in A(S)$ is defined as $f^{-1}(s) = -f(s)$ for $s \in S$.
+
+  Now let $f \in A(S)$ and consider the function \[\tilde{f}\colon S \to \Z, \: s \mapsto \sum\limits_{x\in S} \alpha_x \mathds{1}_x(s)\] with $\alpha_x = f(x)$ for all $x \in S$. Let $s \in S$. It follows that
+  \begin{equation*}
+    \tilde{f}(s) = \sum\limits_{x \in S} \alpha_x \mathds{1}_x(s) = \alpha_s = f(s).
+  \end{equation*}
+
+  Now let $f,g \in A(S)$.
+  \begin{align*}
+    A(\varphi)(f+g^{-1}) &= \sum\limits_{x\in S} (f+g^{-1})(x)\cdot \mathds{1}_{\varphi(x)} \\
+                        &= \sum\limits_{x\in S} (f(x)-g(x)))\cdot \mathds{1}_{\varphi(x)} \\
+                        &= \sum\limits_{x\in S} f(x)\cdot\mathds{1}_{\varphi(x)} + (-g(x))\cdot \mathds{1}_{\varphi(x)} \\
+                        &= \sum\limits_{x\in S} f(x)\cdot\mathds{1}_{\varphi(x)} + \sum\limits_{x\in S} (-g(x))\cdot \mathds{1}_{\varphi(x)} \\
+                        &= A(\varphi)(f) + A(\varphi)(g)^{-1}.  
+  \end{align*}
+\end{proof}
+
+Since the collection of indicator functions is a basis of $A(S)$ it is a convention to write elements of $A(S)$ as formal linear combinations of elements of the generating set $S$. This means the group $A(S)$ can also be represented as
+\begin{equation*}
+  A(S) = \left\{\sum\limits_{i=1}^k r_i x_i\colon k\in \N, \: \forall i \in \{1, \ldots, k\}\colon x_i \in S, r_i \in \Z\right\}.
+\end{equation*}
+
+\begin{thm}\label{thm:isoab}
+  Let $S$ be a set and let $B$ be an abelian group. Then \[\Phi\colon \underline{\rm Ab}(A(S), B) \to B^X, \: \varphi \mapsto\varphi \circ \mathds\iota^S\footnote{$\iota^S\colon S \to A(S), \: s \mapsto \mathds{1}_s$}\] is a bijection.
+\end{thm}
+
+\begin{proof}
+  The map $\Phi$ is a homomorphism in of abelian groups. To this end let $\varphi, \psi \in \underline{\rm Ab}$.
+  The claim follows from the fact that $\varphi$ and $\psi$ are homomorphisms and \[(\varphi + \psi)(\mathds{1}_x) = \varphi(\mathds{1}_x) + \psi(\mathds{1}_x).\]
+  Let $\varphi \in \underline{\rm Ab}(A(S), B)$ and assume that $\varphi \circ \iota^S = 0$. Then it holds that
+  \begin{align*}
+    \varphi(f) &= \varphi\left(\sum\limits_{x \in S}f(x) \cdot \mathds{1}_s\right) \\
+    &= \sum\limits_{x \in S} f(x) \cdot \varphi(\mathds{1}_s) \\
+    &= \sum\limits_{x \in S} f(x) \cdot 0 = 0
+  \end{align*}
+  for all $f \in A(S)$ and thus $\varphi = 0$. This means $\ker \Phi = \{0\}$.
+  Now let $\psi \in B^S$. Then the map \[\xi\colon A(S) \to B, f \mapsto \sum\limits_{x \in S} f(x) \psi(x) \] is a homomorphism by
+  \begin{align*}
+    \xi(f + g) &= \xi\left(\sum\limits_{x \in S} (f+g)(x) \mathds{1}_x\right) \\
+    &= \sum\limits_{x \in S}(f+g)\psi(x) \\
+    &= \sum\limits_{x \in S} f(x)\psi(x) + \sum\limits_{x \in S}g(x)\psi(x) = \xi(f) + \xi(g).
+  \end{align*}
+  And now it follows that $\Phi(\xi) = (\xi \circ \iota^S)(x) = \mathds{1}_x(x) \cdot \psi(x) = \psi(x)$ for all $x \in X$ and hence $\Phi(\xi) = \psi$.
+\end{proof}
+
+The Theorem now tells us that any function from $X$ to an abelian group $B$ can be extended into a function from $A(X)$ to $B$ in a unique way. This may become clear looking at the commutative diagram in figure \ref{fig:com1}.
+
+\begin{figure}[h!]
+  \centering
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAA0QBfU9TXfIRQBGUsKq1GLNgCFuvEBmx4CRMuOr1mrRCACCACnYBKbhJhQA5vCKgAZgCcIAWyRkQOCEgBM1HHSwGNgALCAgAaxBqBiwwHRA4CBioKJBgmDoUxDAmBgZougAjGAYABX4VIRAHLEtgnFStaV0AHRb8fwA9Tmo4YKw7BsRiHnsnV2G-L0RRSW02NvoHNH75MZcfKaRZmLi2KAgcHAtUhiKS8uVBNhq6hs0peLaYAA8sOBw4AEI24LocYCLOjLfpcMxcIA
+  \begin{tikzcd}
+    X \arrow[d, "\iota^X"', hook] \arrow[rd, "\varphi"] &   \\
+    A(X) \arrow[r, "\exists!\hat{\varphi}"', dashed]    & B
+  \end{tikzcd}
+  \caption{Commutative diagram showing the statement of Theorem \ref{thm:isoab}}\label{fig:com1}
+\end{figure}
+
+\begin{defin}
+  Let $n\in\N$. The \textbf{geometric n-simplex} $\Delta_n$ is defined as
+  \begin{equation*}
+    \Delta_n := {\rm co}\{e_0\, \ldots, e_n\} \subseteq \R^{n+1}
+  \end{equation*}
+  where $e_i$ is the $i$-th canonical basis vector of $R_n$ for $i = 0,\ldots,n$. For all $i = 0, \ldots, n$ define the $i$-th face map as
+  \begin{equation*}
+    d_i\colon \Delta_{n-1} \to \Delta_n,\: (t_0,\ldots,t_{n-1}) \mapsto (t_0, \ldots, t_{i-1}, 0, t_i, \ldots, t_{n-1}).
+  \end{equation*}
+  Notice that $\im d_i \subseteq \Delta_n$. $\im d_i$ is called the $i$-th face of $\Delta_n$.
+\end{defin}
+
+\begin{defin}
+  Let $X$ be a topological space and let $n\in \N$ and $p \in \mathbb{P}$. A \textbf{singular $n$-simplex} in $X$ is a continuous map $\sigma \in \underline{\rm Top}(\Delta_n, X)$.
+  Now the \textbf{singular $n$-chain group} of $X$ is defined as $C_n(X) := A(\underline{\rm Top}(\Delta_n, X); p)$. An element $\sigma \in C_n(X)$ is called a singular $n$-chain in $X$.
+  The map \[\partial_n\colon C_n(X) \to C_{n-1}(X),\: \sigma \mapsto \sum\limits_{i=0}^n(-1)^i(\sigma \circ d_i)\] is called the $n$-th boundary map for $n\in\N^+$. It is a homomorphisms of abelian groups. For $n < 1$ define $\partial_n$ as the zero map as well as all $C_n$ as trivial abelian groups.
+
+  If $Y$ is another topological space and $f \in \underline{\rm Top}(X, Y)$ then $C_n(f)\colon C_n(X) \to C_n(Y)$ defined on the generators $\sigma \in C_n(X)$ as
+  \begin{equation*}
+    C(f)(\sigma) = f \circ \sigma.
+  \end{equation*}
+  This map is a homomorphism of abelian groups.
+\end{defin}
+
+\begin{lemma}
+  The composition $\partial_n \circ \partial_{n+1} = 0$ for all $n \in \N$.
+\end{lemma}
+
+\begin{proof}
+  See \cite[Theorem 29.1]{MunAlTop}.
+\end{proof}
+
+The lemma above is the so called fundamental theorem of homology theory. It allows for the following definition.
+
+\begin{defin}
+  Let $X$ be a topological space, then \[C_\bullet(X) := ((C_n(X))_{n\in \Z}), (\partial_n)_{n\in \Z})\] with
+  \[C_n(X) = \{0\}, \: \partial_n := 0\] for $n \in \Z\setminus\N$ is a chain complex.
+\end{defin}
+
+\begin{lemma}
+  Let $X, Y$ be topological spaces and $f \in \underline{\rm Top}(X, Y)$, then \[\forall n\in \N\colon \partial_n \circ C_n(f) = C_{n-1}(f) \circ \partial_n.\]
+\end{lemma}
+
+\begin{proof}
+  Let $n \in \N^+$ and let $\sigma \in \underline{\rm Top}(\Delta_n, X)$ then
+  \begin{align*}
+    \partial_n(C_n(f)(\sigma)) &= \partial_n(f\circ\sigma) \\
+    &= \sum\limits_{i=0}^n(-1)^if\circ\sigma\circ d_i \\
+    &= \sum\limits_{i=0}^n(-1)^iC_{n-1}(f)(\sigma\circ d_i) \\
+    &= C_{n-1}(f)(\sum\limits_{i=0}^n(-1)^i(\sigma\circ d_i)) \\
+    & = C_{n-1}(f)(\partial_n(\sigma)).
+  \end{align*}
+\end{proof}
+
+From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ with $C_n(f) = 0$ for $n < 0$ is a homomorphism between chain complexes $C_\bullet(X)$ and $C_\bullet(Y)$.
+
+\begin{lemma}\label{lem:cfunc}
+  $C_\bullet\colon \underline{\rm Top} \to \underline{\rm C}(\underline{\rm Ab})$ is a functor.
+\end{lemma}
+
+\begin{proof}
+  Let $X$ be a topological space and let $n \in \N$, then \[C_n(\id_X)(\sigma) = \id_X\circ \sigma = \sigma = \id_{C_n(X)}(\sigma)\]
+  for all $\sigma \in \underline{\rm Top}(\Delta_n, X)$ and hence $C_n(\id_X) = \id_{C_n(X)}$.
+  For $n < 0$ this is trivial.
+
+  Let $Y, Z$ be topological spaces and $f \in \underline{\rm Top}(X, Y), g\in \underline{\rm Top}(Y, Z)$, then for $n\in \N$ it follows that \[C_n(g\circ f)(\sigma) = g\circ f \circ \sigma = C_n(g)(f\circ \sigma) = (C_n(g) \circ C_n(f))(\sigma)\] for all $\sigma \in \underline{\rm Top}(\Delta_n, X)$ and thus $C_n(g \circ f) = C_n(g) \circ C_n(f)$.
+  Again the case for $n < 0$ is trivial.
+\end{proof}
+
+\begin{thm}\label{thm:hfunc}
+  Let $n \in \N$. Then \[H_n\colon \underline{\rm Top} \to \underline{\rm Ab} \]
+  defined by \[H_n(X) := H_n(C_\bullet(X)), \: H_n(f) := H_n(C_\bullet(f))\]
+  for a topological spaces $X$ and $Y$ and $f \in \underline{\rm Top}$ is called the $n$-th singular homology group and  is a functor. 
+\end{thm}
+
+\begin{proof}
+  Follows from the fact that the composition of functors is again a functor and Theorem \ref{}.
+\end{proof}
+
+\begin{thm}\label{thm:hhom}
+  Let $X$ and $Y$ be topological spaces. Then if $f, g\in \underline{\rm Top}(X, Y)$ are homotopic maps it follows that \[H_n(f) = H_n(g)\] for all $n \in \N$.
+\end{thm}
+
+\begin{proof}
+  See \cite[p. 112f]{hatcher}.
+\end{proof}
+
+\begin{col}
+  Let $X$ and $Y$ be topological spaces and $f \in \underline{\rm Top}(X, Y)$ is a homotopy equivalence between them, then $H_n(f)\colon H_n(X) \to H_n(Y)$ is an isomorphism for all $n \in \Z$.
+\end{col}
+
+\begin{proof}
+  This follows directly from Theorem \ref{thm:hhom}.
+\end{proof}
+
+\begin{proof}
+  Since $f$ is a homotopy equivalence $f$ is a bijection. This means that there is $f^{-1}\colon Y \to X$ and thus $H_n(f^{-1})\colon H_n(Y) \to H_n(X)$. Now with Theorem \ref{thm:hfunc} it follows that 
+  \begin{align*}
+    H_n(f) \circ H_n(f^{-1}) = H_n(f \circ f^{-1}) = H_n(\id_X) = \id_{H_n(X)}.
+  \end{align*}
+\end{proof}
+
+\begin{ex}
+  Take a topological space $X$. Then $H_0(X) \cong \Z^n$ where $n \in \N$ is the number of path-connected components in $X$. 
+\end{ex}
+
+The example above implies that the $0$-th homology group of for example a one point space is $\Z$. This complicates some other results in homology theory. Therefore there is a version of the homology groups called \textbf{reduced} homology groups $\tilde{H_n}$ where $\tilde{H}_n(X) = H_n(X)$ for all $n \in\N^+$ and $\tilde{H}_n \oplus \mathbb{Z} = H_n(\Z)$. This means that the $0$-th reduced homology group of a one point space the trivial group is instead of $\mathbb{Z}$.
+A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatcher}.
+
 \begin{defin}
   Let $X$ be a topolgical space and let $A \subseteq X$ be a non-empty closed subspace, that is a deformation retract of a neighborhood in $X$. Then $(X, A)$ is a \textbf{good pair}.
+\end{defin}
+
+\begin{defin}
+  Let $G_1, \ldots, G_n$ be abelian groups for $n \in \N$. Then the \textbf{external direct sum} of the groups is defined as
+  \begin{equation*}
+    G_1 \oplus \cdots \oplus G_n = \bigoplus_{i=1}^n G_i = \prod_{i=1}^n G_i.
+  \end{equation*}
+  This is again an abelian group with the operation \[g \cdot h = (g_1 \cdot_{G_1} h_1, \ldots, g_n \cdot_{G_n} h_n)\] for $g,h \in \bigoplus_{i=1}^n G_i$.
+  If $f_1, \ldots, f_n$ are homomorphisms with \[f_i\colon G_i \to H_i\] where $H_i$ are abelian groups for $i = 0,\ldots,n$. Then
+  \begin{equation*}
+    \bigoplus_{i=1}^nf_i\colon \bigoplus_{i=1}^n G_i\to \bigoplus_{i=1}^nH_i,\: g \mapsto (f_1(g_1),\ldots, f_n(g_n))
+  \end{equation*}
+  is a homomorphisms.
 \end{defin}
 
 \begin{lemma}\label{lem:holwe}
@@ -366,4 +556,29 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
 
 \begin{proof}
   For a detailed derivation of this Theorem look at \cite[p. 149]{hatcher}. 
+\end{proof}
+
+% Example Homology group of sphere
+\begin{ex}
+  The homology group of the $n$-dimensional sphere $\mathbb{S}^n$ are as follows
+  \begin{equation*}
+    H_k(\mathbb{S}^n) \cong \begin{cases}
+      0, &n \neq k, \\
+      \mathbb{Z}, &n = k,
+    \end{cases}
+  \end{equation*}
+  for $k \in \Z$.
+\end{ex}
+
+\begin{proof}
+  Let $A$ be the upper hemisphere and $B$ the lower hemisphere of $\mathbb{S}^n$. Then $A\cap B = \mathbb{S}^{n-1}$. Consider the Mayer-Vietoris sequence of this decomposition
+  \begin{equation*}
+    \ldots \overset{\partial'}{\to} H_k(\mathbb{S}^{n-1}) \to H_k(A) \oplus H_k(B) \to H_k(\mathbb{S}^n) \overset{\partial}{\to} H_{k-1}(\mathbb{S}^{n-1}) \to \ldots \to 0.
+  \end{equation*}
+  Since $A$ and $B$ are contractible it follows that $H_n(A) \cong H_n(B) \cong 0$ for all $n \in N$. This means that
+  \begin{align*}
+    0 &= \im \Psi = \ker \partial_k \\
+    H_k(\mathbb{S}^{n-1}) &= \ker \Phi = \im \partial_{n+1}.
+  \end{align*}
+  We get that the maps $\partial\colon H_k(\mathbb{S}^n) \to H_{k-1}(\mathbb{S}^{n-1})$ are isomorphism. And thus with the fact that $H_1(\mathbb{S}^1) \cong \Z$ the claim is proven by induction on $k$.\footnote{The fact that the first homology group of $\mathbb{S}^1$ is isomorphic to $\Z$ can easily be proven with another type of homology, namely simplicial homology \cite[p. 106]{hatcher}. And since the singular and simplicial homology groups are isomorphic for triangulable spaces it can be deduced that $H_1(\mathbb{S}^1) \cong \Z$ also in the singular case. A triangulation of $\mathbb{S}^1$ is the graph circle graph three vertecies.}
 \end{proof}
