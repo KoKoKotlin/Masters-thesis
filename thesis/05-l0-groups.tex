@@ -76,12 +76,36 @@ From here a submeasure on a set $X$ is a submeasure on the power set algebra on 
 \end{defin}
 
 \begin{defin}
-  Let $(X, \mathcal{B})$ be a measureable space and let $\mu\colon \mathcal{B} \to [0, \infty]$ be a submeasure on $X$. Then the set
+  Let $X$ be a set and let $\mu\colon \mathcal{B} \to [0, \infty)$ be a submeasure on $X$ with on the boolean algebra $\mathcal{B} \subseteq \P$. Then the set
   \begin{equation*}
     S(\mu, G) := \left\{ f: X \to G\colon f \:\:\mu-\text{measureable} \: \land \: \left| f(X) \right| < \infty \right\}
   \end{equation*}
-  for a group $G$ is the set of all measurable step functions with finite range on $X$ and values on $G$.
+  for a topological group $G$ is the set of all measurable step functions with finite range on $X$ and values on $G$.
 \end{defin}
+
+\begin{thm}
+  The set $S(\mu, G)$ for a submeasure $\mu$ on a set $X$ and a topological group $G$ is a group with group operation
+  \begin{equation*}
+    \star\colon S(\mu, G) \times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f \star g
+  \end{equation*}
+  where $(f\star g)(x) = f(x) \cdot_G g(x)$ for each $x \in X$. If $f$ is an element of $S(\mu, G)$ then define $f^{-1}$ as $f^{-1}(x) = (f(x))^{-1}$ for all $x \in X$. If we put the topology of convergence in submeasure on $S(\mu, G)$ it the group
+  becomes a topological group.
+
+  A basis element of the topology of convergence in submeasure is given by
+  \begin{equation*}
+    V_\varepsilon(f) := \{ h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot_G f(x)\}) < \varepsilon \}
+  \end{equation*}
+  where $V$ is a neighborhood of the identity on $G$, $f \in S(\mu, G)$ and $\varepsilon \in \R_{>0}$.
+\end{thm}
+
+\begin{proof}
+  Firstly let $f, g \in S(\mu, G)$. Since $f$ and $g$ induce partitions $\P_f, \P_g$ and the partition $\P = \{A \cap B\colon A \in \P_f, B \in \P_g\}$ is again a measurable partition it is clear that $f \star g \in S(\mu, G)$. The associativity, existence of a neutral element and existence of an inverse element follow from the fact that $\cdot_G$ is a group operation.
+  It remains to show that $mul\colon S(\mu, G)\times S(\mu, G) \to S(\mu, G), (f, g) \mapstop f\star g$ and ${\rm inv}: S(\mu, G) \to S(\mu, G), f \mapsto f^{-1}$ are continuous. To this end let $V$ be a neighborhood of the identity of $G$, $f \in S(\mu, G)$ and let $\varepsilon \in \R_{>0}$. Consider
+  \begin{align*}
+    {\rm inv}^{-1}(V_\varepsilon(f))
+  \end{align*}
+  
+\end{proof}
 
 This set of simple functions is dense in the set $L_0(\mu, G)$. But since in general $L_0(\mu, G)$ is not a metric space, the standard metric notion of completion does not work. Instead it is true that the Raikov completion $\widehat{S(\mu, G)} = L_0(\mu, G)$. Look at \cite{} for further information of this completion. This fact about the simple functions is needed because of the following theorem:
 \begin{thm}

@@ -473,10 +473,7 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
 The example above implies that the $0$-th homology group of for example a one point space is $\Z$. This complicates some other results in homology theory. Therefore there is a version of the homology groups called \textbf{reduced} homology groups $\tilde{H_n}$ where $\tilde{H}_n(X) = H_n(X)$ for all $n \in\N^+$ and $\tilde{H}_n \oplus \mathbb{Z} = H_n(\Z)$. This means that the $0$-th reduced homology group of a one point space the trivial group is instead of $\mathbb{Z}$.
 A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatcher}.
 
-\begin{defin}
-  Let $X$ be a topolgical space and let $A \subseteq X$ be a non-empty closed subspace, that is a deformation retract of a neighborhood in $X$. Then $(X, A)$ is a \textbf{good pair}.
-\end{defin}
-
+%TODO: change this definition to an arbitrary index set
 \begin{defin}
   Let $G_1, \ldots, G_n$ be abelian groups for $n \in \N$. Then the \textbf{external direct sum} of the groups is defined as
   \begin{equation*}
@@ -490,15 +487,19 @@ A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatche
   is a homomorphisms.
 \end{defin}
 
+\begin{defin}
+  Let $X$ be a topolgical space and let $A \subseteq X$ be a non-empty closed subspace, that is a deformation retract of a neighborhood in $X$. Then $(X, A)$ is a \textbf{good pair}.
+\end{defin}
+
 \begin{lemma}\label{lem:holwe}
   Let $X_\alpha$ be a sequence of topological spaces with basepoints $x_\alpha\in X_\alpha$ and let $\iota_\alpha\colon X_\alpha \to \bigvee\limits_{\alpha \in I}X_\alpha$ for $\alpha \in I$ where $I$ is an arbitrary index set such that $(X_\alpha, x_\alpha)$ are good. Then it holds that the maps $\iota_\alpha$ induce an isomorphism
   \begin{equation*}
-    \bigoplus_{\alpha \in I}\iota_\alpha^* \colon \bigoplus\limits_{\alpha\in I} \tilde{H}_n(X_\alpha)\to \tilde{H}_n\left(\bigvee\limits_{\alpha\in I} X_\alpha\right).
+    \bigoplus_{\alpha \in I}H_n(\iota_\alpha) \colon \bigoplus\limits_{\alpha\in I} \tilde{H}_n(X_\alpha)\to \tilde{H}_n\left(\bigvee\limits_{\alpha\in I} X_\alpha\right).
   \end{equation*}
 \end{lemma}
 
 \begin{proof}
-  
+  See \cite[Corollary 2.25]{hatcher}.
 \end{proof}
 
 Proofs in the later sections will only involve reasoning about homology groups. Their is a dualized concept of homology called cohomology.
