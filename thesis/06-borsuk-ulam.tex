@@ -1,5 +1,15 @@
 \section{The Borsuk-Ulam Theorem and a generalization}
 
+\textbf{Notation:}
+
+Let $f, g$ be partial functions from the set $X$ to set $Y$: $\dom(f) \cap \dom(g) = \emptyset$ then
+\begin{equation*}
+  f \frown g: \dom(f) \cup \dom(g) \to Y, \: x \mapsto \begin{cases}
+    f(x), \: x \in \dom(f), \\
+    g(x), \: x \in \dom(g).
+  \end{cases}
+\end{equation*}
+
 The following section describes the Borsuk-Ulam theorem and an important generelization by Volovikov needed to prove the following claim:
 \begin{thm}\label{thm:confun}
   If $p \in \mathbb{P}$ and $n, l \in \mathbb{N}$ with $n \geq l$ such that
@@ -108,45 +118,121 @@ In the following it will be needed to show that $K_p(n,n)$ has also a wedge-deco
   \end{equation*}
 \end{defin}
 
-\begin{rem}
-  Let $n\in\N$, $p\in\mathbb{P}$ and $a\in (\Z_p\setminus\{0\})^{n+1}$. It holds that
-  \begin{equation*}
-    K_p(n,a) \cong \sd(S_p(n,a)).
-  \end{equation*}
+\begin{rem}\label{rem:kcongs}
+  Let $n,l\in\N$ with $n \geq l$, $p\in\mathbb{P}$ and $a\in (\Z_p\setminus\{0\})^{n+1}$. It holds that
+  \begin{align*}
+    K_p(n,a) &\cong \sd(S_p(n,a)), \\
+    K_p(l,l) &\cong \sd(S_p(l)).
+  \end{align*}
 \end{rem}
 
 \begin{proof}
-  Rememeber that the vertecies of $\sd(S_p(n,a))$ are the total chains in $S_p(n,a)$ which are isomorphic to $V_p(n,n)$ which means they represent total functions which are either 0 or have the same value as the function $a$ which is the definition of an element in $K_p(n,a)$.
+  Rememeber that the vertecies of $\sd(S_p(n,a))$ are the total chains in $S_p(n,a)$ which are isomorphic to $V_p(n,n)$ which means they represent total functions which are either 0 or have the same value as the function $a$ which is the definition of an element in $K_p(n,a)$. The same argument can be applied for the second claim $K_p(l,l) \cong \sd(S_p(l))$
 \end{proof}
 
 Now the following decomposition of $K_p(n,n)$ can be proven:
-\begin{lemma}
+\begin{lemma}\label{lem:kpka}
   Let $n\in\N$ and $p\in\mathbb{P}$. Then it follows that
   \begin{equation*}
     \left\lVert K_p(n,n) \right\rVert \simeq \left\lVert \bigvee_{a\in(\Z_p\setminus\{0\})^{n+1}}\hspace*{-24px}K_p(n,a)\right\rVert.
   \end{equation*}
 \end{lemma}
 
+In the following the set $P(X, Y)$ denotes the set of partial functions from $X$ to $Y$.
+
+\begin{defin}
+  Let $\mathcal{K}$ be a simplicial complex, $p,m \in \N$ and let $(L_\sigma)_{\sigma \in P([p],[m])}$ be a family of subcomplexes of $\mathcal{K}$ such that $L_\sigma \subseteq L_\tau$ if $\tau \subseteq \sigma$. Define the complex ${\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma\in P([p],[m])})$ inductively. Firstly let $\mathcal{K}^0 = \mathcal{K}$ and let $L_\sigma^0 = L_\sigma$ for all $\sigma \in P([p],[m])$. Now define $X^k$ and $L_\sigma^k$ by induction on $k \leq m$ for $\sigma \in P([p], [k,m])$ as
+  \begin{align*}
+    X^{k+1} &= {\rm Cone}(X^k, (L^k_{(k+1,i)})_{i\in [p]}), \\
+    L^{k+1}_\sigma &= {\rm Cone}(L^k_\sigma, (L^k_{(k,i)\frown \sigma})_{i\in [p]})
+  \end{align*}
+  where $(j,i)$ denotes the partial function $\tau\colon [m] \to [p]$ with $\dom(\tau) = \{j\}$ and $\tau(j) = i$.
+  Addtionally this definition also works for a set $P \subseteq [m]$ and all $\sigma \in P(P, [p])$ only looking for partial functions with a resticted domain because $P$ inherits the natural order of $\N$.
+\end{defin}
+
+The well-definition of the induction step follows from the assumption that $A_\sigma \subseteq A_\tau$ if $\tau \subseteq \sigma$.
+
 \begin{lemma}
+  Let $\mathcal{K}$ be a simplicial complex and let $(L_\sigma)_{\sigma \in P(m,p)}$ be a sequence of subcomplexes for $p,m \in \N$ empty or contractible then \[\mathcal{K} \simeq {\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma \in P(m,p)}).\]  
+\end{lemma}
+
+\begin{proof}
+  We prove the claim by induction. So let $k = 0$. Then the claim follows directly from lemma \ref{lem:seqhom} since the sequence of subcomplexes is finite.
+  Suppose that the claim holds for an arbitrary $k \leq m - 1$. Then since the $L^k_\sigma$ are all empty or contractible by lemma \ref{lem:seqhom} we can deduce that $X^{k+1}$ is homotopy equivalent to $X^0$.
+\end{proof}
+
+\begin{col}\label{col:lnpkll}
+  For $n,l \in \N$ and $p \in P$ it holds that \[L_p(n,l) \simeq {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])})\]where $A_\sigma$ is defined as \[A_\sigma = \{\tau\in V_p(l,l)\colon \tau\frown\sigma \text{ has at most l component intervals}\}.\]
+\end{col}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{lemma}\label{lem:Lsigsimeq}
+  For each $\sigma \in P([l+1,n+1], [p])$ the set $L_\sigma$ is either empty or contractible.
+\end{lemma}
+
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{col}
+  For $p \in \N$ and $n,l\in \N$ with $n \geq l$ we have that \[L_p(n,l) \simeq S_p(l).\]
+\end{col}
+
+\begin{proof}
+  We know from Corollary \ref{col:lnpkll} that \[L_p(n,l) \simeq {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma\in P([l+1,n+1],[p])}) = K.\] Now this chain of equivalence follows
+  \begin{equation*}
+    \lVert K \rVert \underset{\ref{lem:seqhom}}{\overset{\text{\ref{lem:Lsigsimeq}}}{\simeq}} \lVert K_p(l,l) \rVert \overset{\text{\ref{rem:kcongs}}}{\simeq} \lVert \sd(S_p(l)) \rVert \overset{\ref{lem:sdsimeq}}{\simeq} \lVert S_p(l) \rVert.
+  \end{equation*}
+\end{proof}
+
+\begin{lemma}\label{lem:jc0}
   Let $n,l \in \N$ with $n \geq l$ and let $p \in \mathbb{P}$, then for each $0 \leq i \leq l$ it holds that
   \begin{equation*}
     \tilde{H}_i(J_p(n,l); \Z_p) \cong 0.
   \end{equation*}
 \end{lemma}
 
+% TODO: add the reasoning for alexanders duality
+% maybe only a reindexing of the original theorem
 \begin{proof}
-  
+  Let $C := \{\tau \in K_p(n,n)\colon |\dom(\tau)| < n - l\}$. From \cite[p. 2513, Remark]{mc2002} ($C$ is isomorphic to $E_{p,n-l}$) it follows that the dimension of $\lVert C \rVert$ is equal to $n-l$.
+  Let $E^n = D^n\setminus C$ and let $J_p(n;a) = K_p(n;a)$ for all $a \in (\Z_p\setminus \{0\})^{n+1}$. Now it follows that
+  \begin{equation}\label{eq:simeql}
+    \lVert J_p(n,l) \rVert \simeq \left\lVert \bigvee\limits_{a \in (\Z_p \setminus \{0\})^{n+1}} \hspace*{-20px}J_p(n;a) \right\rVert
+  \end{equation}
+  with the same reasoning as in the proof of Lemma \ref{lem:kpka}.
+  Now by \ref{thm:alex} we get that ?? $\tilde{H}_i(\lVert J_p(n;a) \rVert) = \tilde{H}_i(\rVert K_p(n;a)\setminus C \rVert) \cong \tilde{H}^{n-i-1}(\lVert C\rVert)$ ?? it follows that $\tilde{H}_i(\lVert J_p(n;a) \rVert) \cong 0$ for $0 \leq i \leq l$. The conditions of Theorem \ref{thm:alex} are trivially fulfilled since all spaces involved are geometric realizations of finite simplicial complexes. Now by Lemma \ref{lem:holwe} and equation \ref{eq:simeql} the claim is proven. 
 \end{proof}
 
 \begin{lemma}\label{lem:knp}
-  Let $n, l \in \N$ with $n \geq l$ and let $p \in \mathbb{P}$, then for each $0 \leq i \leq l$ it holds that
+  Let $n, l \in \N$ with $n \geq l$ and let $p \in \mathbb{P}$, then for each $0 \leq i \leq l-1$ it holds that
   \begin{equation*}
-    \tilde{H}_i(K_p(n,l); \Z_p) \cong 0.
+    \tilde{H}^i(K_p(n,l); \Z_p) \cong 0.
   \end{equation*}
 \end{lemma}
 
+% TODO: add more reasoning for alexanders duality
 \begin{proof}
-  
+  \textbf{Claim:} $K_p(n,l)$ is connected. Consider a $\tau \in V(K_p(n,l))$ which is not a total function. Then this node is contained in a chain with a total function $\tau' \in V(K_p(n,l))$ as its largest element with respect to $\subseteq_f$. Since $K_p(n,l)$ is a simplicial complex it follows that $\{\tau, \tau'\} \in K_p(n,l)$.
+  Now let $\tau$ and $\tau'$ be a total functions in $V(K_p(n,l))$ such that
+  \begin{align*}
+    \tau|_D &= \tau'|_D, \:\:\:\: D = [n+1]\setminus \{i\}, \\
+    \tau(i-1) &= \tau(i) \neq \tau(i+1), \\
+    \tau(i+1) &= \tau'(i)
+  \end{align*}
+  with $1 < i < n$.
+  Then there are chains $C_1 = \{\tau_0, \ldots, \tau'', \tau\}$ and $C_2 = \{\tau_0, \ldots, \tau'', \tau' \}$ in $K_p(n,l)$ with respect to $\subseteq_f$. This means that $\tau$ and $\tau'$ are connected via $\tau''$.
+  It follows that every total function $K_p(n,l)$ is connected to the total zero function by induction on $i$. Let $\tau$ be a total function. If $\tau(n) = 0$ then this follows immediately from the reasoning above. If not then let $\tau'$ be the total function with $\tau|_{[n]} = \tau'|_{[n]}$ and $\tau'(n) = 0$. Then these functions are connected via $\tau''$ with $\tau''|_{[n]} = \tau'|_{[n]} = \tau|_{[n]}$. Now the argument above can be applied to $\tau'$ and thus the claim is proven.
+  Now consider the following Mayer-Vietoris-Sequence (see Theorem \ref{thm:mvs})
+  \begin{align*}
+    \label{eq:mayvietk}
+    \cdots &\to \tilde{H}_i(J_p(n,l) \cap L_p(n,l), \Z_p) \\ &\to \tilde{H}_i(J_p(n,l), \Z_p) \oplus \tilde{H}_i(L_p(n,l), \Z_p) \\ &\to \tilde{H}_i(J_p(n,l) \cup L_p(n,l), \Z_p) \to \cdots \to 0.
+  \end{align*}
+  Remember that $J_p(n,l) \cap L_p(n,l) = K_p(n,l)$. Now by Lemma \ref{} we know that $\tilde{H}_i(J_p(n,l)) \cong 0$ and $\tilde{H}_i(L_p(n,l)) \cong 0$ by Lemma \ref{} for $1 \leq i \leq l$. Thus the direct sum of these groups is trivial. ?? Also it is clear that $\tilde{H}_i(J_p(n,l) \cup L_p(n,l)) \cong 0$ by an argument involving Alexanders duality like in the proof of Lemma \ref{lem:jc0} ??. The exactness of the sequence yields that $\tilde{H}_i(K_p(n,l)) \cong 0$ for $0 \leq i < l$. From the universal coefficient theorem \ref{thm:uct} it follows that \[\tilde{H}^i(K_p(n,l)) \cong 0\] as claimed.
 \end{proof}
 
 Now Theorem \ref{thm:confun} follows Volovikovs version of the Borsuk-Ulam Theorem \ref{lem:vol} using Lemma \ref{lem:knp}. 

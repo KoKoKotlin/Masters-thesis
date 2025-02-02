@@ -1,15 +1,5 @@
 \section{Simplicial Homology}
 
-\textbf{Notation:}
-
-Let $f, g$ be partial functions from the set $X$ to set $Y$: $\dom(f) \cap \dom(g) = \emptyset$ then
-\begin{equation*}
-  f \frown g: \dom(f) \cup \dom(g) \to Y, \: x \mapsto \begin{cases}
-    f(x), \: x \in \dom(f), \\
-    g(x), \: x \in \dom(g).
-  \end{cases}
-\end{equation*}
-
 \subsection{Abstract simplicial complexes}
 
 \begin{defin}
@@ -34,6 +24,7 @@ Let $f, g$ be partial functions from the set $X$ to set $Y$: $\dom(f) \cap \dom(
         \forall \sigma \in \mathcal{K}\colon f(\sigma) \in \mathcal{L}.
     \end{equation*}
     If $f$ is bijective and $f^{-1}\colon \mathcal{L} \to \mathcal{K}$ is a simplicial map then $f$ is an \textbf{combinatorial isomorphism}.
+    If $\iota\colon \mathcal{L} \to \mathcal{K}$ is an inclusion, we say that $\mathcal{L}$ is a \textbf{subcomplex} of $\mathcal{K}$ if $\iota$ is a simplicial map.
 \end{defin}
 
 % Simple example of a simplicial complex
@@ -92,8 +83,6 @@ are the elements of the poset and the binary relation of set inclusion is the pa
     Let $\sigma \in \sd(\mathcal{K})$. Now let $\tau \subseteq \sigma$. Since $\sigma$ was totally ordered $\tau$ is also totally ordered.
     This means that $\tau \in \mathcal{K}$.
 \end{proof}
-
-% TODO: example of barycentric subdivision of the triangle simplex 1,2,3
 
 We need a way to turn an abstract simplicial complex into a geometric structure such that it can be analyzed with the tools provided by algebraic topology. This means that there should be a map from the simplicies of the abstract complex to $n$-dimensional euclidian space. This map is called the \textbf{geometric realization} of the abstract simplicial complex which maps it to a geometric simplicial complex. 
 These geometric complexes consist of polyhedra. They are constructed by "gluing" 
@@ -166,6 +155,58 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   This is a direct consequence of \cite[Lemma 5.1.1]{using2003}.
 \end{proof}
 
+\begin{lemma}\label{lem:sdsimeq}
+  Let $\mathcal{K}$ be a simplicial complex. Then \[\lVert \mathcal{K} \rVert \simeq \lVert \sd(\mathcal{K}) \rVert.\]
+\end{lemma}
+
+\begin{proof}
+  See \cite[p. 84]{MunAlTop}.
+\end{proof}
+
+%TODO: white box under text
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}[scale=1.7]
+\node[fill=black, circle, inner sep=2pt, label=below:{$0$}] (A) at (0,0) {};
+\node[fill=black, circle, inner sep=2pt, label=below:{$2$}] (B) at (2,0) {};
+\node[fill=black, circle, inner sep=2pt, label=above:{$1$}] (C) at (1,2) {};
+\node[align=center] at (1,-0.5) (label1) {$\mathcal{K}$};
+
+\node[fill=black, circle, inner sep=2pt, label=below:{$0$}] (D) at (6,0) {};
+\node[fill=black, circle, inner sep=2pt, label=below:{$2$}] (E) at (8,0) {};
+\node[fill=black, circle, inner sep=2pt, label=above:{$1$}] (F) at (7,2) {};
+\node[fill=black, circle, inner sep=2pt, label=above:{$01$}] (G) at (6.5,1) {};
+\node[fill=black, circle, inner sep=2pt, label=above:{$12$}] (H) at (7.5,1) {};
+\node[fill=black, circle, inner sep=2pt, label=below:{$02$}] (I) at (7,0) {};
+\node[fill=black, circle, inner sep=2pt, label=above:{$123$}] (J) at (7,2/3) {}; 
+\node[align=center] at (1,-0.5) (label1) {$\mathcal{K}$};
+
+
+\node at (3, 1) (AS) {};
+\node at (5, 1) (AE) {};
+
+\draw (A) -- (B);
+\draw (B) -- (C);
+\draw (C) -- (A);
+
+
+\draw (D) -- (E);
+\draw (D) -- (F);
+\draw (F) -- (E);
+\draw (C) -- (A);
+\draw (D) -- (J);
+\draw (E) -- (J);
+\draw (F) -- (J);
+\draw (H) -- (J);
+\draw (I) -- (J);
+\draw (G) -- (J);
+
+\draw [|->, thick] (AS) -- node[above] {$\sd$} (AE);
+    \end{tikzpicture} 
+  \caption{Barycentric subdivision of the 2-dimensional simplex.}
+\end{figure}
+
+
 \begin{defin}
   Let $d \in \N^d$ and let $f\colon V(\mathcal{K}) \to \R^d$. The \textbf{affine extension} $\lVert f \rVert$ of this function is defined as
   \begin{equation*}
@@ -173,8 +214,6 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   \end{equation*}
 \end{defin}
 
-% TODO: add pictures for the geometric realizations
-% TODO: prove of the last statement in this example
 \begin{ex}
   Take the sequence of simplicial complexes $\mathcal{K}_n$ from example \ref{ex:seqcom}. A possible geometric realization of these complexes is
   \begin{equation*}
@@ -188,13 +227,20 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   \begin{equation*}
     \mathcal{K} \star \mathcal{L} := \{\sigma \sqcup \tau\colon \sigma \in \mathcal{K}, \tau \in \mathcal{L} \}.
   \end{equation*}
-  The special case ${\rm Cone}(\mathcal{K}) = \mathcal{K} \star \{ \Delta \}$ is the cone of $\mathcal{K}$ with a cone point $\Delta$. 
+  The $n$-fold join $\bigstar_{i \in [n]} \mathcal{K}_i$ is defined by
+  \begin{equation*}
+    \bigstar_{i=0}^{n-1} \mathcal{K}_i = \bigstar_{i \in [n]} K_i := \{\sigma_0 \sqcup \cdots \sqcup \sigma_{n-1}\colon \forall i\in [n]\colon \sigma_i \in \mathcal{K}_i\}.
+  \end{equation*}
+  Since the disjoint union is associative up to an isomorphism, this operation is well-defined.
+  The special case ${\rm Cone}(\mathcal{K}) = \mathcal{K} \star \{ \Delta \}$ is the cone of $\mathcal{K}$ with a cone point $\Delta$. Given a finite subsequence of simplical subcomplexes $(L_i)_{i\in [n]}$ of $\mathcal{K}$ define \[{\rm Cone}(\mathcal{K}, (L_i)_{i\in [n]}) := \mathcal{K} \cup {\rm Cone}(L_1) \cup \cdots \cup {\rm Cone}(L_{n-1})\] for $n \in \N$. The cone points are distinct for each cone.
+
+  
   Now define basepoints $v_k \in V(\mathcal{K}), v_l \in V(\mathcal{L})$ of the two simplicial complexes. The \textbf{wedge} of $\mathcal{K}$ with $\mathcal{L}$ is defined as
   \begin{equation*}
     \mathcal{K} \lor \mathcal{L} := \: \faktor{\mathcal{K} \sqcup \mathcal{L}}{\sim}
   \end{equation*}
   where $\sim$ is the equivalence relation, that identifies the basepoints.
-  The $n$-fold wedge is the $n$-fold disjoint union with the same equivalence relation.
+  The $n$-fold wedge $\bigwedge_{i=0}^{n-1} \mathcal{K}_i= \bigwedge\limits_{i \in [n]} \mathcal{K}_i$ for simplicial complexes $\mathcal{K}$ is the $n$-fold disjoint union with the same equivalence relation.
 \end{defin}
 
 \begin{ex}
@@ -242,7 +288,16 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
     \caption{Examples of the wedge of simplicial complexes.}\label{fig:simwe}
 \end{figure}
 
-Now consider the complexes $\mathcal{K} = \PowS_{1}(\{0, 1\})$ and $\mathcal{L} = \PowS_1(\{2, 3\})$. The geometric realization of the join $\mathcal{K} \star \mathcal{L}$ of these complexes can be seen in figure \ref{fig:simjo}. From the figure it becomese apperent that $\lVert \mathcal{K} \star \mathcal{L} \rVert$ is homeomorphic to $\mathbb{S}^1$.
+% TODO: add proof for this
+\begin{lemma}\label{lem:seqhom}
+  Let $\mathcal{K}$ be a simplicial complex and let $(L_i)_{i\in [p]}$ be a sequence of subcomplexes of $\mathcal{K}$ for $p \in \N$. If $L_i$ is empty or contractible for each $i \in [p]$ then \[{\rm Cone}(\mathcal{K}, (L_i)_{i\in [p]}) \simeq \mathcal{K}.\]
+\end{lemma}
+
+\begin{proof}
+  
+\end{proof}
+
+Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathcal{L} = \PowS_{\leq 1}(\{2, 3\})$. The geometric realization of the join $\mathcal{K} \star \mathcal{L}$ of these complexes can be seen in figure \ref{fig:simjo}. From the figure it becomese apperent that $\lVert \mathcal{K} \star \mathcal{L} \rVert$ is homeomorphic to $\mathbb{S}^1$.
 
   \begin{figure}[h!]
   \centering
@@ -278,21 +333,61 @@ Now consider the complexes $\mathcal{K} = \PowS_{1}(\{0, 1\})$ and $\mathcal{L} 
 The fact that the join of a two points with two points results in a simplicial complex that has a geometric realization that is homeomorphic does not only work with $\mathbb{S}^1$. This fact holds more generally for the n-fold join of 2-point simplicial complexes. 
 
 \begin{lemma}
-  Let $\mathcal{K}_n := \PowS_1(\{(0, n), (1, n)\})$ for $n \in \N^+$, then
+  Let $\mathcal{K}_n := \PowS_{\leq 1}(\{(-1, n), (1, n)\})$ for $n \in \N^+$, then
   \begin{equation*}
     \left\lVert \bigstar_{i=1}^k \mathcal{K}_i \right\rVert \: \cong \: \mathbb{S}^{k-1}.
   \end{equation*}
 \end{lemma}
 
-% TODO: finish proof or search for source of proof
 \begin{proof}
-  - define $f_n$ realization inductively
-  - proof that polyhedra are triangulation of sphere
+  A geometric realization of this complex is as follows
+  \begin{equation*}
+    f\colon V(\bigstar_{i=1}^k \mathcal{K}_i) \to \R^n, \: (x, i) \mapsto x \cdot e_i
+  \end{equation*}
+  which means that the vertecies get mapped to the canonical basis vectors of $\R^n$ and their negations. 
+  This geometric realization forms the boundary of the $n$-crosspolytope\footnote{This $n$-crosspolytope is $\{(x_1, \ldots, x_n) \in \R^n\colon |x_1| + \cdots + |x_n| \leq 1 \}$. The boundary $\partial P^n$ of the polytope is formed by all points with $1$-norm equal to $1$.} for each $n \in \N^+$. It is homeomorphic to the sphere by the homeomorphism
+  \begin{equation*}
+    \varphi\colon \mathbb{S}^n \to \partial P^n, \: x \mapsto \lVert x \rVert_1^{-1} \cdot x. 
+  \end{equation*}
 \end{proof}
 
-% Universal coefficient theorem
-% Alexanders Duality
-% Mayer Vietoris Sequence
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[thick,scale=4]
+
+\coordinate (D1) at (-1.8, 0.5);
+\coordinate (D2) at (-2.2,-0.5);
+
+\draw (D1) -- (D2);
+
+\coordinate (C1) at (-1.4,0);
+\coordinate (C2) at (-0.9,0.5);
+\coordinate (C3) at (-0.9,-0.5);
+\coordinate (C4) at (-0.4,0);
+
+\draw (C1) -- (C2) -- (C4) -- (C3) -- cycle;
+
+\coordinate (A1) at (0,0);
+\coordinate (A2) at (0.6,0.2);
+\coordinate (A3) at (1,0);
+\coordinate (A4) at (0.4,-0.2);
+\coordinate (B1) at (0.5,0.5);
+\coordinate (B2) at (0.5,-0.5);
+
+\begin{scope}[thick,dashed,,opacity=0.6]
+\draw (A1) -- (A2) -- (A3);
+\draw (B1) -- (A2) -- (B2);
+\end{scope}
+\draw[opacity=0.6] (A1) -- (A4) -- (B1);
+\draw[opacity=0.6] (A1) -- (A4) -- (B2);
+\draw[opacity=0.6] (A3) -- (A4) -- (B1);
+\draw[opacity=0.6] (A3) -- (A4) -- (B2);
+\draw (B1) -- (A1) -- (B2) -- (A3) --cycle;
+\end{tikzpicture}
+  \caption{Cross polytopes in dimensions one, two and three.}
+  \label{fig:cross}
+\end{figure}
+
 \subsection{Homology Theory}
 Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the definitions from Category theory used in this section look at Appendix \ref{}. 
 
@@ -459,13 +554,6 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
   This follows directly from Theorem \ref{thm:hhom}.
 \end{proof}
 
-\begin{proof}
-  Since $f$ is a homotopy equivalence $f$ is a bijection. This means that there is $f^{-1}\colon Y \to X$ and thus $H_n(f^{-1})\colon H_n(Y) \to H_n(X)$. Now with Theorem \ref{thm:hfunc} it follows that 
-  \begin{align*}
-    H_n(f) \circ H_n(f^{-1}) = H_n(f \circ f^{-1}) = H_n(\id_X) = \id_{H_n(X)}.
-  \end{align*}
-\end{proof}
-
 \begin{ex}
   Take a topological space $X$. Then $H_0(X) \cong \Z^n$ where $n \in \N$ is the number of path-connected components in $X$. 
 \end{ex}
@@ -505,24 +593,19 @@ A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatche
 Proofs in the later sections will only involve reasoning about homology groups. Their is a dualized concept of homology called cohomology.
 The dualization in the sense of category theory works be replacing the homology groups in the chain complex by $\underline{\rm Grp}(H_n(X); G)$ where $G \in \underline{\rm Ab}$ is an abelian group. There is no need to also develop the theory of cohomology in this thesis nor a need to use it later in the proofs because of the following result. Its called \textbf{Alexander duality} and connects homology and cohomology groups.
 
-% TODO: check and insert the correct version of alexanders duality here
-% in the prove of the lemma in section 6 the reference goes into spanier
-% but it is unclear how the duality is used and which version is referenced
 \begin{thm}\label{thm:alex}
-  Let $n \in \N$ and $p \in \mathbb{P}$. If $A \subseteq \mathbb{S}^n$ is a compact, non-empty and contractible subspace then
+  Let $n \in \N$. If $A \subseteq \mathbb{S}^n$ is a compact and non-empty subspace and ($\mathbb{S}^n, A$) is triangulable\footnote{This means that $A \subseteq \mathbb{S}^n$ and that there exists a triangulation $\mathcal{K}$ of $\mathbb{S^n}$ and a subcomplex $\mathcal{K}_0 \subseteq \mathcal{K}$ with an homeomorphism $(\mathcal{K}, \mathcal{K}_0) \to (\mathbb{S}^n, A)$.} then
   \begin{equation*}
-    \tilde{H}_k(\mathbb{S}^n \setminus A) \cong \tilde{H}^{n-k-1}(A)
+    \tilde{H}^k(A) \cong \tilde{H}_{n-k-1}(\mathbb{S}^n \setminus A)
   \end{equation*}
-  for all $q \in \N$.
+  for all $k \in \N$.
 \end{thm}
 
 \begin{proof}
-  
+  See \cite[Theorem 71.1]{MunAlTop}.
 \end{proof}
 
-\subsection{Theorem of Mayer-Vietoris}
-Often we can calculate the homology of simple subspaces of a larger space and want to deduce the homology of the larger space from them.
-This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a homological version of the \textbf{Van Kampen-Theorem} (see \cite[Chapter 1.2]{hatcher}).
+A second important tool linking homology and cohomology groups is the \textbf{universal coefficient theorem}. The next theorem is a version of it.
 
 \begin{defin}
   Let $(G_n)_{n\in\N}$ be a sequence of abelian groups and let $(\varphi_n)_{n\in\N}$ be a sequence of homomorphisms such that
@@ -541,6 +624,21 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
   \end{equation*}
   that is exact is called a \textbf{short exact sequence}.
 \end{defin}
+
+\begin{thm}\label{thm:uct}
+Let $C_n(X)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X)$ of $C_n(X)$ for a topological space $X$, then the cohomology groups $H^n(X; G)$ for a abelian group $G$ are determined by the exact sequence
+  \begin{equation*}
+    0 \to {\rm Ext}(H_{n-1}(X), G) \to H^n(X; G) \to \underline{\rm Ab}(H_n(X), G) \to 0.
+  \end{equation*}
+\end{thm}
+
+\begin{proof}
+  See \cite[Chapter 3.1]{hatcher}.
+\end{proof}
+
+\subsection{Theorem of Mayer-Vietoris}
+Often we can calculate the homology of simple subspaces of a larger space and want to deduce the homology of the larger space from them.
+This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a homological version of the \textbf{Van Kampen-Theorem} (see \cite[Chapter 1.2]{hatcher}).
 
 \begin{thm}\label{thm:mvs}
   Let $X$ be a topological space and let $A, B \subseteq X$ subspaces of $X$ such that \[X = \dot{A} \cup \dot{B}, \: A \cap B \neq \emptyset.\]
@@ -581,5 +679,5 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
     0 &= \im \Psi = \ker \partial_k \\
     H_k(\mathbb{S}^{n-1}) &= \ker \Phi = \im \partial_{n+1}.
   \end{align*}
-  We get that the maps $\partial\colon H_k(\mathbb{S}^n) \to H_{k-1}(\mathbb{S}^{n-1})$ are isomorphism. And thus with the fact that $H_1(\mathbb{S}^1) \cong \Z$ the claim is proven by induction on $k$.\footnote{The fact that the first homology group of $\mathbb{S}^1$ is isomorphic to $\Z$ can easily be proven with another type of homology, namely simplicial homology \cite[p. 106]{hatcher}. And since the singular and simplicial homology groups are isomorphic for triangulable spaces it can be deduced that $H_1(\mathbb{S}^1) \cong \Z$ also in the singular case. A triangulation of $\mathbb{S}^1$ is the graph circle graph three vertecies.}
+  We get that the maps $\partial\colon H_k(\mathbb{S}^n) \to H_{k-1}(\mathbb{S}^{n-1})$ are isomorphism. And thus with the fact that $H_1(\mathbb{S}^1) \cong \Z$ the claim is proven by induction on $k$.\footnote{The fact that the first homology group of $\mathbb{S}^1$ is isomorphic to $\Z$ can easily be proven with another type of homology, namely simplicial homology \cite[p. 106]{hatcher}. And since the singular and simplicial homology groups are isomorphic for triangulable spaces it can be deduced that $H_1(\mathbb{S}^1) \cong \Z$ also in the singular case. A triangulation of $\mathbb{S}^1$ is the circle graph with three vertecies.}
 \end{proof}

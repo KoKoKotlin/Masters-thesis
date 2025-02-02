@@ -100,11 +100,23 @@ From here a submeasure on a set $X$ is a submeasure on the power set algebra on 
 
 \begin{proof}
   Firstly let $f, g \in S(\mu, G)$. Since $f$ and $g$ induce partitions $\P_f, \P_g$ and the partition $\P = \{A \cap B\colon A \in \P_f, B \in \P_g\}$ is again a measurable partition it is clear that $f \star g \in S(\mu, G)$. The associativity, existence of a neutral element and existence of an inverse element follow from the fact that $\cdot_G$ is a group operation.
-  It remains to show that $mul\colon S(\mu, G)\times S(\mu, G) \to S(\mu, G), (f, g) \mapstop f\star g$ and ${\rm inv}: S(\mu, G) \to S(\mu, G), f \mapsto f^{-1}$ are continuous. To this end let $V$ be a neighborhood of the identity of $G$, $f \in S(\mu, G)$ and let $\varepsilon \in \R_{>0}$. Consider
+  It remains to show that ${\rm mul}\colon S(\mu, G)\times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f\star g$ and ${\rm inv}: S(\mu, G) \to S(\mu, G), f \mapsto f^{-1}$ are continuous. To this end let $V$ be a neighborhood of the identity of $G$, $f \in S(\mu, G)$ and let $\varepsilon \in \R_{>0}$. Consider
   \begin{align*}
-    {\rm inv}^{-1}(V_\varepsilon(f))
+    {\rm inv}^{-1}(V_\varepsilon(f)) &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon (h(x))^{-1} \notin V\cdot f(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V^{-1}\cdot (f(x))^{-1}\}) < \varepsilon\}
   \end{align*}
-  
+  where $V^{-1} := \{g^{-1}\colon g \in V\}$.
+  This is a neighborhood of $f^{-1}$ since $V^{-1}$ is also a neighborhood of the identity of $G$. 
+  Now consider $M := {\rm mul}^{-1}(V_\varepsilon(f))$ which means that \[M = \{(h, g) \in S(\mu, G) \times S(\mu, G)\colon \mu(\{x \in X\colon (h \star g)(x) \notin V\cdot f(x)\}) < \varepsilon\}.\]
+  This set is open since
+  \begin{align*}
+    \pi_1(M) &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon (h \star g)(x) \notin V\cdot f(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \cdot g(x) \notin V\cdot f(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot f(x) \cdot (g(x))^{-1}\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \exists \tilde{f}\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot \tilde{f}(x)\}) < \varepsilon\} \\
+    &= \bigcup\limits_{\tilde{f} \in S(\mu, G)}\{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot \tilde{f}(x)\}) < \varepsilon\}.
+  \end{align*}
+  $\pi_1$ is the projection to the first component. By symmetry reasons this also works for the second component.
 \end{proof}
 
 This set of simple functions is dense in the set $L_0(\mu, G)$. But since in general $L_0(\mu, G)$ is not a metric space, the standard metric notion of completion does not work. Instead it is true that the Raikov completion $\widehat{S(\mu, G)} = L_0(\mu, G)$. Look at \cite{} for further information of this completion. This fact about the simple functions is needed because of the following theorem:
