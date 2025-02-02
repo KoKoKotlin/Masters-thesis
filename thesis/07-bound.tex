@@ -1,1 +1,46 @@
 \section{Bound on the chromatic numbers}
+
+In this last section a bound on the chromatic numbers of the graph $\Gamma(\varepsilon, \P, \mu)$ is derived with the help of the main result of the last section.
+
+In this whole section let $X$ be a set, $\varepsilon \in \R_{\geq 0}$ and let $\mu$ be a diffused submeasure on the a subalgebra $\mathcal{B}$ of $\PowS(X)$.
+
+\begin{defin}
+  Define for each $\delta \in \R_{\geq 0}$ the minimal cardinality of $\P \in \Pi(\mathcal{B})$ for which it holds that \[\forall P \in \P\colon \mu(P) < \delta\] as $k_\mu(\delta)$. This is well-defined since $\mu$ is diffused.
+  Furthermore define the map $K_\mu^\varepsilon\colon \N \to \N$ as \[K_\mu^\varepsilon(n) = k_\mu\left({\varepsilon \over {4n}}\right)\] and define for each $n \in \N$ the element $\Q_\mu^\varepsilon(n) \in \Pi(\mathcal{B})$ as \[\Q_n^\varepsilon := \{I_1^\varepsilon,\ldots, I^\varepsilon_k\}\] where $k = {K_\mu^\varepsilon(n)}$ and $\mu(I_i) < {\varepsilon \over 4n}$ for each $i=1, \ldots, k$.
+\end{defin}
+
+\begin{rem}
+  The map $K_\mu^\varepsilon$ is increasing and bounded below by \[K^\varepsilon_\mu(n) \geq {4n \over \varepsilon} \cdot \mu(X)\] for each $n\in \N$.
+\end{rem}
+
+
+\begin{proof}
+  Firstly proof the bound on the map. To this end let consider the measurable partition $\Q_\mu^\varepsilon(n)$. By definition we know that $\mu(P) <  {\varepsilon \over 4n}$ for each $Q \in \Q_\mu^\varepsilon(n)$. Let $k = |\Q_\mu^\varepsilon(n)|$.
+  It follows that
+  \begin{equation*}
+    \mu(X) = \mu\left(\bigcup_{i=1}^k I_k\right) \leq \sum\limits_{i=1}^k \mu(I_k) < \sum\limits_{i=1}^k{\varepsilon \over 4n} = K_\mu^\varepsilon(n) \cdot {\varepsilon \over 4n}
+  \end{equation*}
+  and hence $K_\mu^\varepsilon(n) > {\varepsilon \over 4n} \cdot \mu(X)$. The fact that the map is increasing follows from this inequality.
+\end{proof}
+
+\begin{defin}
+  Let $F_\mu^\varepsilon\colon \N \to \N$ be an arbitrary increasing map such that \[K_\mu^\varepsilon \circ F_\mu^\varepsilon = \id_\N.\] The existence of such a map follows from the fact that $K_\mu^\varepsilon$ is increasing and unbounded by the previous remark.
+\end{defin}
+
+\begin{lemma}
+  The map $F_\mu^\varepsilon$ is unbounded.
+\end{lemma}
+
+\begin{proof}
+  Assume that there exists a bound on $F_\mu^\varepsilon$. Since this map takes values in $\N$ and is increasing this means that the map becomes eventually constant. But since $K_\mu^\varepsilon$ is increasing and unbounded this would be a contradiction to the definition of $F_\mu^\varepsilon$.
+\end{proof}
+
+\begin{defin}
+  Define $C_\mu^\varepsilon$ as \[C_\mu^\varepsilon := \sqrt[3]{\mu(X)^2 \over 16\varepsilon}.\]
+  Additionally define $\P^\varepsilon_\mu(n) \in \Pi(\mathcal{B})$ with cardinality $N_\mu^\varepsilon(n)$ such that $\mu(P) < {1 \over n}$ for each $P \in \P_\mu^\varepsilon(n)$ and \[\Q_\mu^\varepsilon(n) \preccurlyeq \P^\varepsilon_\mu(n)\] for $n \leq F_\mu^\varepsilon(C_\mu^\varepsilon \cdot \sqrt[3]{n})$. 
+\end{defin}
+
+\begin{thm}
+  For each $\varepsilon \in \R_{\geq 0}$ it holds that \[\chi(\Gamma(\varepsilon, \P^\varepsilon_\mu(n), \mu)) \geq F_\varepsilon^\mu(C^\varepsilon_\mu \cdot \sqrt[3]{n}).\]
+  
+\end{thm}

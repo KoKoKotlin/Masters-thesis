@@ -1,0 +1,6 @@
+
+## Chapter 5
+- rework the prove and statement of the main result
+
+## Chapter 7
+- check definition diffused submeasure
