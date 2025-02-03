@@ -14,7 +14,7 @@ The following section describes the Borsuk-Ulam theorem and an important generel
 \begin{thm}\label{thm:confun}
   If $p \in \mathbb{P}$ and $n, l \in \mathbb{N}$ with $n \geq l$ such that
   \begin{equation*}
-    d(p-1) \leq l - n,
+    d(p-1) \leq l-1,
   \end{equation*}
   then for every continuous map $f\colon\lVert K_p(n,l)\rVert \to \R^d$ there is a point in $\lVert K_p(n,l)\rVert$ whose $\Z_p$-Orbit is mapped to a single point in $\R^d$ by $f$.
 \end{thm}
@@ -38,18 +38,18 @@ In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compile
   \begin{equation*}
     \tau_1 \subseteq_f \tau_2 \longeq \dom(\tau_1) \subseteq \dom(\tau_2) \: \land \: \forall k \in \dom(\tau_1)\colon \tau_1(k) = \tau_2(k).
   \end{equation*}
-  A \textbf{component interval} of $\tau$ is any maximal interval $I \subseteq [n+1]$ such that $\tau$ is constant on $I \cap \dom(\tau)$.
+  A \textbf{component interval} of $\tau$ is any maximal interval $I \subseteq [n+1]$ such that $\tau$ is constant on $I \cap \dom(\tau)$. Define $\mathbb{I}(\tau)$ to be the set of component intervals of $\tau$. To make this
 \end{defin}
 
 \begin{defin}
   Let $l \in \N$ and $p \in \mathbb{P}$. Let $V_p(n, l)$ be the set of of non-empty partial functions $\tau\colon [n+1] \to [p]$ which the additional properties
   \begin{enumerate}[label=\roman*.)]
     \item $n - l \leq |\dom(\tau)|$,
-    \item the number of component intervals of $\tau$ is at most $l+1$.
+    \item $\left|\mathbb{I}(\tau)\right| \leq l+1$.
   \end{enumerate}
 \end{defin}
 
-\begin{defin}
+\begin{defin}\label{defin:kpnl}
   Let $K_p(n,l)$ be an abstract simplicial complex with
   \begin{enumerate}[label=\roman*.)]
     \item $V(K_p(n,l)) = V_p(n,l)$,
@@ -162,7 +162,7 @@ The well-definition of the induction step follows from the assumption that $A_\s
 \end{proof}
 
 \begin{col}\label{col:lnpkll}
-  For $n,l \in \N$ and $p \in P$ it holds that \[L_p(n,l) \simeq {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])})\]where $A_\sigma$ is defined as \[A_\sigma = \{\tau\in V_p(l,l)\colon \tau\frown\sigma \text{ has at most l component intervals}\}.\]
+  For $n,l \in \N$ and $p \in P$ it holds that \[L_p(n,l) \simeq {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])})\]where $A_\sigma$ is defined as \[A_\sigma = \{\tau\in V_p(l,l)\colon \left|\mathbb{I}(\tau\frown\sigma)\right| \leq l\}.\]
 \end{col}
 
 \begin{proof}
