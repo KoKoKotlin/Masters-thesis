@@ -13,6 +13,10 @@
 *.glo
 *.ist
 *.acn
+*.bcf
+*.ilg
+*.nlo
+*.nls
 */*.pdf
 
 .vscode/

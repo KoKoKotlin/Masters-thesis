@@ -1,3 +1,7 @@
+ - write introduction
+ - ask about abstract
+
+## 
 
 ## Chapter 5
 - rework the prove and statement of the main result

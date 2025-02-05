@@ -14,6 +14,7 @@
 \usepackage{faktor}
 \usepackage{enumitem}
 \usepackage{dsfont}
+\usepackage[style=alphabetic,backend=biber]{biblatex}
 
 \usepackage{graphicx}
 \usepackage{caption}
@@ -36,7 +37,7 @@
 \newcommand{\dom}{{\rm dom}}
 \newcommand{\cone}{{\rm Cone}}
 \newcommand{\id}{{\rm id}}
-\newcommand{\im}{\mathfrak{Im}}
+\newcommand{\im}{{\rm im}}
 \newcommand{\Q}{\mathcal{Q}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand*{\anddot}{%
@@ -87,35 +88,72 @@
 % for centering the title page
 \usepackage{titling}
 
-% TODO: add a ending mark (solid black square) as the end of definitions
+\usepackage{nomencl}
+\makenomenclature
 
+\nomenclature{$\emptyset$}{The empty set}
+\nomenclature{$\chi(G)$}{The chromatic number of the graph $G$, i.e., the smallest number of colors needed for a proper vertex coloring}
+\nomenclature{$\mathcal{T}_X$}{The topology of a top. space $X$}
+\nomenclature{$B_\varepsilon(x)$}{The open ball with radius $\varepsilon$ in a metric space $X$ around $x \in X$}
+\nomenclature{$d_X$}{The metric of the metric space $X$}
+\nomenclature{$X^Y$}{The set of all maps from $Y$ to $X$}
+\nomenclature{$C(X, Y)$}{The set of all continuous functions between top. spaces $X$ and $Y$}
+\nomenclature{$\{\rm Flt}(X)$}{The set of all filters on a set $X$}
+\nomenclature{$\{\rm UFlt}(X)$}{The set of all ultrafilters on a set $X$}
+\nomenclature{$\mid \hspace*{-2px} X \hspace*{-2px}\mid$}{The cardinality of the set $X$}
+\nomenclature{$[n]$}{The set $\{0, 1, \ldots, n-1\}$ for a natural number $n$}
+\nomenclature{$[k,n]$}{The set $[n]\setminus[k]$ for a natural numbers $n \geq k$}
+\nomenclature{$X^c$}{The complement of the set $X$}
+\nomenclature{$\PowS(X)$}{The set of all subsets of $X$}
+\nomenclature{$\PowS_{\leq n}(X)$}{The set of all subsets of $X$ with cardinality less than or equal to $n \in \N$}
+\nomenclature{$\PowSF(X)$}{The set of all \textbf{finite} subsets of $X$}
+\nomenclature{$\dom(f)$}{The domain of the map $f$ or relation $f$}
+\nomenclature{$\im(f)$}{The image of the map $f$ or relation $f$}
+\nomenclature{$\id_X$}{The map $X \to X, \: x \mapsto x$ on a set $X$}
+\nomenclature{$\mathds{1}_x$}{The indicator map for $x \in X$ on a set $X$}
+\nomenclature{$\N^+$}{The set of natural numbers excluding 0}
+\nomenclature{$\N$}{The set of natural numbers including 0}
+\nomenclature{$\mathcal{N}_x$}{The set of all open sets in a top. space $X$ containing the element $x \in X$}
+\nomenclature{$\mathbb{P}$}{The set of prime numbers}
+\nomenclature{$\R$}{The set of real numbers}
+\nomenclature{$\R_{\geq 0}$}{The set of real numbers greater or equal to 0}
+\nomenclature{$\Z$}{The set of integers}
+\nomenclature{$\Z_p$}{The group of integers modulo a prime $p$ with addition modulo $p$}
+% Custom format: dots between symbols and descriptions
+\renewcommand{\nompreamble}{\begin{flushleft}} % Align to left
+\renewcommand{\nompostamble}{\end{flushleft}}  % End alignment
+\renewcommand{\nomlabelwidth}{10em} % Space allocated for symbols
+\renewcommand{\nomlabel}[1]{\hspace{0pt}#1\dotfill} % Dots between symbol and description
+\setlength{\nomitemsep}{-0.8em} % Adjust spacing between entries
+
+\renewcommand{\nomname}{List of Symbols} % Change title
+
+\addbibresource{references.bib}
 \linespread{1.5}
 \begin{document}
 
 \begin{titlingpage}
     \maketitle
 \end{titlingpage}
-\clearpage
 
 \tableofcontents
 \pagebreak
 
-\clearpage
+\printnomenclature
+\pagebreak
 
 \nocite{*}
 
 \section*{Abstract}
-\section{Introduction}
+\input{01-introduction.tex}
 \input{02-topology.tex}
 \input{03-simplical-homology.tex}
-\section{Graph Theory}
 \input{05-l0-groups.tex}
 \input{06-borsuk-ulam.tex}
 \input{07-bound.tex}
 \appendix
-\section{Category Theory}
+\input{appendixA.tex}
 \clearpage
-\bibliographystyle{alpha}
-\bibliography{references}
+\printbibliography
 
 \end{document}

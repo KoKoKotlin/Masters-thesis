@@ -233,7 +233,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
     \bigstar_{i=0}^{n-1} \mathcal{K}_i = \bigstar_{i \in [n]} K_i := \{\sigma_0 \sqcup \cdots \sqcup \sigma_{n-1}\colon \forall i\in [n]\colon \sigma_i \in \mathcal{K}_i\}.
   \end{equation*}
   Since the disjoint union is associative up to an isomorphism, this operation is well-defined.
-  The special case ${\rm Cone}(\mathcal{K}) = \mathcal{K} \star \{ \Delta \}$ is the cone of $\mathcal{K}$ with a cone point $\Delta$. Given a finite subsequence of simplical subcomplexes $(L_i)_{i\in [n]}$ of $\mathcal{K}$ define \[{\rm Cone}(\mathcal{K}, (L_i)_{i\in [n]}) := \mathcal{K} \cup {\rm Cone}(L_1) \cup \cdots \cup {\rm Cone}(L_{n-1})\] for $n \in \N$. The cone points are distinct for each cone.
+  The special case ${\rm Cone}(\mathcal{K}) = \mathcal{K} \star \PowS_{\leq 1}(\{ \Delta \})$ is the cone of $\mathcal{K}$ with a cone point $\Delta$. Given a finite subsequence of simplical subcomplexes $(L_i)_{i\in [n]}$ of $\mathcal{K}$ define \[{\rm Cone}(\mathcal{K}, (L_i)_{i\in [n]}) := \mathcal{K} \cup {\rm Cone}(L_1) \cup \cdots \cup {\rm Cone}(L_{n-1})\] for $n \in \N$. The cone points are distinct for each cone.
 
   
   Now define basepoints $v_k \in V(\mathcal{K}), v_l \in V(\mathcal{L})$ of the two simplicial complexes. The \textbf{wedge} of $\mathcal{K}$ with $\mathcal{L}$ is defined as
@@ -241,7 +241,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
     \mathcal{K} \lor \mathcal{L} := \: \faktor{\mathcal{K} \sqcup \mathcal{L}}{\sim}
   \end{equation*}
   where $\sim$ is the equivalence relation, that identifies the basepoints.
-  The $n$-fold wedge $\bigwedge_{i=0}^{n-1} \mathcal{K}_i= \bigwedge\limits_{i \in [n]} \mathcal{K}_i$ for simplicial complexes $\mathcal{K}$ is the $n$-fold disjoint union with the same equivalence relation.
+  The $n$-fold wedge $\bigvee_{i=0}^{n-1} \mathcal{K}_i= \bigvee\limits_{i \in [n]} \mathcal{K}_i$ for simplicial complexes $\mathcal{K}$ is the $n$-fold disjoint union with the same equivalence relation.
 \end{defin}
 
 \begin{ex}
@@ -333,7 +333,7 @@ Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathca
 
 The fact that the join of a two points with two points results in a simplicial complex that has a geometric realization that is homeomorphic does not only work with $\mathbb{S}^1$. This fact holds more generally for the n-fold join of 2-point simplicial complexes. 
 
-\begin{lemma}
+\begin{lemma}\label{lem:simexkn}
   Let $\mathcal{K}_n := \PowS_{\leq 1}(\{(-1, n), (1, n)\})$ for $n \in \N^+$, then
   \begin{equation*}
     \left\lVert \bigstar_{i=1}^k \mathcal{K}_i \right\rVert \: \cong \: \mathbb{S}^{k-1}.

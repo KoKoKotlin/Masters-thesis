@@ -1,71 +1,20 @@
-\section{$L_0$-Groups, connection between extrem ameanability and chromatic numbers}
-%TODO: cite paper of friedrich martin with the definitions of raikov and submeasures
+\section{$L_0$-Groups, connection between extrem ameanability and chromatic numbers}\label{sec:l0groups}
 In this chapter, we want to establish a connection between the extrem ameanability of a $L_0$-Group and the boundedness of the chromatic numbers of a sequence of graphs.
 These graphs will be constructed using the structure of the $L_0$-groups.
 
-\begin{defin}
-  Let $\mathcal{A}$ be a boolean algebra and $\mu\colon \mathcal{B} \to [0, \infty)$. The map $\mu$ is called a \textbf{submeasure} if
-  \begin{enumerate}
-    \item $\mu(0) = 0$,
-    \item $\forall A, B \in \mathcal{A}\colon A \leq B \Rightarrow \mu(A) \leq \mu(B)$,
-    \item $\forall A, B \in \mathcal{A}\colon \mu(A \lor B) \leq \mu(A) + \mu(B)$.
-  \end{enumerate}
-\end{defin}
+Firstly we have to define what is meant by the symbol $L_0(\mu, G)$. Some authors already consider the set of simple functions from Defintion \ref{defin:sf} together with the operation $\star$ defined in Theorem \ref{thm:stop} as the topological group $L_0(\mu, G)$. In other works such as \cite{sl2024} this topological group is the Raikov completion (see \cite[Chapter 3.6]{atop2008}) of $S(\mu, G)$. In this case the topological group $S(\mu, G)$ would be a dense subgroup of $L_0(\mu, G)$.   
 
-From here a submeasure on a set $X$ is a submeasure on the power set algebra on $X$.
-
-\begin{defin}
-  Let $X$ be a set. Then ${\rm PartFin}(X)$ is the set of all finite partitions of $X$, which means:
-  \begin{equation*}
-    {\rm PartFin}(X) := \left\{ \mathcal{A} \subseteq \P(X)\colon (\forall A,B \in \mathcal{A}\colon A \cap B = \emptyset) \: \land \: \bigcup\mathcal{A} = X \: \land \: \left| \mathcal{A} \right| < \infty \right\}.
-  \end{equation*}
-  Let $\P_1, \P_2 \in {\rm PartFin}(X)$. $\P_1$ is said to \textbf{refine} $\P_2$ ($\P_2 \preccurlyeq \P_1$) if
-  \begin{equation*}
-    \forall A \in \P_1\exists B \in \P_2\colon A \subseteq B.
-  \end{equation*}
-  For every $\P \in {\rm PartFin}(X)$ define the map $\iota_\P\colon X \to \P$ with
-  \begin{equation*}
-    \iota_\P\colon x \mapsto \begin{cases}
-      &A_1, \: \text{if } x \in A_1, \\
-      &A_2, \: \text{if } x \in A_2, \\
-      &\vdots \\
-      &A_n, \: \text{if } x \in A_n,
-    \end{cases}
-  \end{equation*}
-  where $k = \left|\P\right|$.    
-  %TODO: is this needed?
-  The set ${\rm PartFin}_\mu(X)$ contains all finite partitions of $X$ but with the additional constraint that they have to be measurable with respect to a submeasure $\mu$ on the boolean algebra of subsets of $X$. 
-\end{defin}
-
-%TODO: directed set in appendix? or definition above?
-\begin{thm}\label{thm:algdirected}
-  Let $X$ be a set. Then the set ${\rm PartFin}(X)$ together with the binary operation $\preccurlyeq$ is a directed set.
+When talking about extrem ameanability of topological groups it is sufficient to prove it for dense subgroups because of the following theorem: 
+\begin{thm}\label{thm:da}
+  Let $G$ be a topological group and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely ameanable if and only if $G$ is extremely ameanable. 
 \end{thm}
 
-% TODO: picture of refinments of the square
 \begin{proof}
-  Reflexivity and transitivity follow directly from the reflexivity and transitivity of the $\subseteq$ relation.
-  Now let $\P_1, \P_2 \in {\rm PartFin}(X)$. Define $\P_3 := \{ P \cap P' \colon P \in \P_1, \:P' \in \P_2 \}$.
-  Since for any two sets $A, B$ it holds that $A \cap B \subseteq A$ and $A \cap B \subseteq B$ it follows that
-  \begin{equation*}
-    \P_1 \preccurlyeq \P_3 \land \P_2 \preccurlyeq \P_3.
-  \end{equation*}
+  Let $g \in G$ and let $X$ be a compact space. Take a continous action \[G \times X \to X, \: (g, x) \mapsto g \anddot x.\] This action restricts to a continous action on $H$. Since $H$ is dense in $G$, by Theorem \ref{thm:fcl} we can find $\mathcal{G} \in {\rm Flt}(H)$ that converges to $g$. Now let $\mathcal{F} \in {\rm UFlt}(X)$ with $\mathcal{G} \subseteq \mathcal{F}$. This exists due to Theorem \ref{thm:ulfil} and this filter still converges to $g$. Furthermore since $H$ is extremely ameanable there exists $x_0 \in X$ such that $h \anddot x_0 = x_0$. Now consider the map $f$ defined as \[f\colon G \to X, \: g \mapsto g\anddot x_0.\] It follows that \[\forall F\in \mathcal{F}\colon f(F) = \{x_0\}\] and thus \[g\anddot x_0 = f(\lim\limits_{F \to \mathcal{F}}F) = \lim\limits_{F\to \mathcal{F}} f(F) = x_0.\] The exchange of function application and limit is possible since $f$ is continuous by definition.
+  Then for the other implication assume that there is a subgroup $H$ that is not extremely ameanable. This means there exists an continous action $H \times X \to X$ which admits no fixed point. It is possible to extend the action in a continous way to the whole group $G$ as above. Then we have constructed an continuous action on $G$ with no fixed point.
 \end{proof}
 
-\begin{rem}\label{rem:partfinsze}
-  If $X$ is an infinite set then ${\rm PartFin}(X)$ is also infinite.
-\end{rem}
-
-\begin{proof}
-  Define $\P \subseteq {\rm PartFin}(X)$ as follows
-  \begin{equation*}
-    \P := \Big\{ \{ \{x\}, \: X\setminus\{x\}\}\colon \: \forall x \in X \Big\}.
-  \end{equation*}
-  It is now clear that $\left| \P \right| = \left| X \right|$ and since $\P \subseteq {\rm PartFin}(X)$ it follows that 
-  \begin{equation*}
-    \left| X \right| \leq \left| {\rm PartFin}(X) \right|.
-  \end{equation*}
-\end{proof}
+This result allows us in the main results of the thesis to only talk about the simple function because the extrem ameanability property is inherited by $L_0(\mu, G)$ from them.
 
 \begin{defin}
   Let $X$ and $Y$ be sets. A step function $f\colon X \to Y$ with finite range induces a finite partion on X called $\P_f$ in the following way
@@ -75,59 +24,18 @@ From here a submeasure on a set $X$ is a submeasure on the power set algebra on 
   This is a well-defined finite partion because of the assumption that $f$ has finite range.
 \end{defin}
 
+In the following the symbols $\bar{1}$ represents the constant function which sends each element of $X$ to 1 in the set $S(\mu, \Z)$. 
+
 \begin{defin}
-  Let $X$ be a set and let $\mu\colon \mathcal{B} \to [0, \infty)$ be a submeasure on $X$ with on the boolean algebra $\mathcal{B} \subseteq \P$. Then the set
-  \begin{equation*}
-    S(\mu, G) := \left\{ f: X \to G\colon f \:\:\mu-\text{measureable} \: \land \: \left| f(X) \right| < \infty \right\}
-  \end{equation*}
-  for a topological group $G$ is the set of all measurable step functions with finite range on $X$ and values on $G$.
+  Let $X$ be a set and $\mu$ be a submeasure on $X$ define on a subalgebra $\mathcal{B} \subseteq \PowS(X)$. Addtionally let $\varepsilon \in \R_{>0}$ and $\P \in \Pi(\mathcal{B})$ then define the graph $\Gamma(\varepsilon, \P, \mu)$ in the following way
+  \begin{itemize}
+    \item the vertex set of $\Gamma(\varepsilon, \P, \mu)$ is $\Z^\P$,
+    \item the vertecies $f, g \in \Z^\P$ are connected in $\Gamma(\varepsilon, \P, \mu)$ if \[\mu(\{P \in \P\colon f(P) \neq g(P) + 1\}) < \varepsilon \: \lor \: \mu(\{P \in \P\colon g(P) \neq f(P) + 1\}) < \varepsilon.\]
+  \end{itemize}
 \end{defin}
 
-\begin{thm}
-  The set $S(\mu, G)$ for a submeasure $\mu$ on a set $X$ and a topological group $G$ is a group with group operation
-  \begin{equation*}
-    \star\colon S(\mu, G) \times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f \star g
-  \end{equation*}
-  where $(f\star g)(x) = f(x) \cdot_G g(x)$ for each $x \in X$. If $f$ is an element of $S(\mu, G)$ then define $f^{-1}$ as $f^{-1}(x) = (f(x))^{-1}$ for all $x \in X$. If we put the topology of convergence in submeasure on $S(\mu, G)$ it the group
-  becomes a topological group.
-
-  A basis element of the topology of convergence in submeasure is given by
-  \begin{equation*}
-    V_\varepsilon(f) := \{ h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot_G f(x)\}) < \varepsilon \}
-  \end{equation*}
-  where $V$ is a neighborhood of the identity on $G$, $f \in S(\mu, G)$ and $\varepsilon \in \R_{>0}$.
-\end{thm}
-
-\begin{proof}
-  Firstly let $f, g \in S(\mu, G)$. Since $f$ and $g$ induce partitions $\P_f, \P_g$ and the partition $\P = \{A \cap B\colon A \in \P_f, B \in \P_g\}$ is again a measurable partition it is clear that $f \star g \in S(\mu, G)$. The associativity, existence of a neutral element and existence of an inverse element follow from the fact that $\cdot_G$ is a group operation.
-  It remains to show that ${\rm mul}\colon S(\mu, G)\times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f\star g$ and ${\rm inv}: S(\mu, G) \to S(\mu, G), f \mapsto f^{-1}$ are continuous. To this end let $V$ be a neighborhood of the identity of $G$, $f \in S(\mu, G)$ and let $\varepsilon \in \R_{>0}$. Consider
-  \begin{align*}
-    {\rm inv}^{-1}(V_\varepsilon(f)) &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon (h(x))^{-1} \notin V\cdot f(x)\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V^{-1}\cdot (f(x))^{-1}\}) < \varepsilon\}
-  \end{align*}
-  where $V^{-1} := \{g^{-1}\colon g \in V\}$.
-  This is a neighborhood of $f^{-1}$ since $V^{-1}$ is also a neighborhood of the identity of $G$. 
-  Now consider $M := {\rm mul}^{-1}(V_\varepsilon(f))$ which means that \[M = \{(h, g) \in S(\mu, G) \times S(\mu, G)\colon \mu(\{x \in X\colon (h \star g)(x) \notin V\cdot f(x)\}) < \varepsilon\}.\]
-  This set is open since
-  \begin{align*}
-    \pi_1(M) &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon (h \star g)(x) \notin V\cdot f(x)\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \cdot g(x) \notin V\cdot f(x)\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot f(x) \cdot (g(x))^{-1}\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \exists \tilde{f}\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot \tilde{f}(x)\}) < \varepsilon\} \\
-    &= \bigcup\limits_{\tilde{f} \in S(\mu, G)}\{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot \tilde{f}(x)\}) < \varepsilon\}.
-  \end{align*}
-  $\pi_1$ is the projection to the first component. By symmetry reasons this also works for the second component.
-\end{proof}
-
-This set of simple functions is dense in the set $L_0(\mu, G)$. But since in general $L_0(\mu, G)$ is not a metric space, the standard metric notion of completion does not work. Instead it is true that the Raikov completion $\widehat{S(\mu, G)} = L_0(\mu, G)$. Look at \cite{} for further information of this completion. This fact about the simple functions is needed because of the following theorem:
-\begin{thm}
-  
-\end{thm}
-
-In the following that symbols $\bar{1}$ represents the constant function which sends each element to 1 in the set $S(\mu, \Z)$. 
-
 \begin{lemma}\label{lem:1}
-  Let $(X, \mathcal{B})$ be a measurable space and let $\mu$ be a submeasure on $X$. Additionally, let $\P \in {\rm PartFin}(X)$ and $\varepsilon \in \R_{>0}$ then for $f,g \in \Z^\P$ with $f - g \in \bar{1} + V_\varepsilon$ it follows that $f$ and $g$ are connected in $\Gamma_\varepsilon^\P(\mu)$ by an edge.
+  Let $(X, \mathcal{B})$ be a measurable space and let $\mu$ be a submeasure on $X$. Additionally, let $\P \in \Pi(X)$ and $\varepsilon \in \R_{>0}$ then for $f,g \in \Z^\P$ with $f - g \in \bar{1} + V_\varepsilon$ it follows that $f$ and $g$ are connected in $\Gamma_\varepsilon^\P(\mu)$ by an edge.
 \end{lemma}
 
 \begin{proof}
@@ -139,24 +47,22 @@ In the following that symbols $\bar{1}$ represents the constant function which s
 \end{proof}
 
 \begin{thm}\label{thm:colve}
-  Let $X$ be an infinite set, $\mu\colon \mathcal{B} \to [0, \infty]$ a submeasure on $X$ where $\mathcal{B}$ is a $\sigma$-algebra and let $G$ be an abelian group. Then the following are equivalent:
+  Let $X$ be an infinite set, $\mu\colon \mathcal{B} \to [0, \infty]$ a diffused submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$ and let $G$ be an abelian topological group. Then the following are equivalent:
   \begin{enumerate}
-    \item $L_0(\mu, G)$ is extremely ameanable,
-    \item $\forall \varepsilon > 0$ there is no finite bound on $\chi(\Gamma_{\varepsilon}^{\mathcal{P}}(\mu))$, where $\mathcal{P} \in {\rm PartFin}(X)$.
+    \item $S(\mu, G)$ is extremely ameanable,
+    \item $\forall \varepsilon > 0$ there is no finite bound on each graph $\chi(\Gamma(\varepsilon, \mathcal{P}, \mu))$, where $\mathcal{P} \in \Pi(\mathcal{B})$.
   \end{enumerate}
 \end{thm}
 
-%TODO: define S(\mu, G) and the property of inheritance of ameanability through the raikov completion
 %TODO: syndetic set definition
-%TODO: correctly cite pestov
 \begin{proof}
-  Assume there exists a finite bound $d \in \N$ for the chromatic number for some $\varepsilon \in \R_{>0}$, i.e.
+  Assume there exists $d \in \N$ for $\varepsilon \in \R_{>0}$ such that
   \begin{equation*}
-    \forall \P \in {\rm PartFin}(X)\colon \chi(\Gamma_\varepsilon^{\P}(\mu)) \leq d. 
+    \forall \P \in \Pi(\mathcal{B})\colon \chi(\Gamma(\varepsilon, {\P}, \mu)) \leq d. 
   \end{equation*}
-  Given this assumption we claim that the the group $L_0(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma_{\varepsilon}^{\P}(\mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in {\rm PartFin}(X)$. Consider the family of sets
+  Given this assumption we claim that the the group $L_0(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma_{\varepsilon}^{\P}(\mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in \Pi(X)$. Consider the family of sets
   \begin{equation*}
-    \mathcal{A} := \{\{ \P \in {\rm PartFin}(X)\colon \P_0 \preccurlyeq \P\}\colon \P_0 \in {\rm PartFin}(X)\}.
+    \mathcal{A} := \{\{ \P \in \Pi(X)\colon \P_0 \preccurlyeq \P\}\colon \P_0 \in \Pi(X)\}.
   \end{equation*} 
   This is a well-defined filter basis by Theorem \ref{thm:algdirected} and Lemma \ref{lem:filbas}. From Theorem \ref{thm:ulfil} it follows that there is an ultrafilter $\mathcal{U}$ containing the filter $\mathcal{F}(\mathcal{A})$.
  Let $\P_f$ be the finite partion of $X$ induced by $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
@@ -169,7 +75,7 @@ In the following that symbols $\bar{1}$ represents the constant function which s
     c(f) := \lim\limits_{\P \to \mathcal{U}} c_{\P}(f_\P).
   \end{equation*}
   Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. By Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$ for $f - g \in \bar{1} + V_\varepsilon$.
-  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ for each $i = 1, \ldots, d$ and thus $X_i - X_i$ is not dense at $\bar{1}$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. Hence, $L_0(\mu, \Z)$ is not extremly ameanable by Theorem \ref{}. 
+  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ for each $i = 1, \ldots, d$ and thus $X_i - X_i$ is not dense at $\bar{1}$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. 
 
   For the second implication suppose that $S(\mu, G)$ is not extremely ameanable. Let $d \in \N$ and let $S_1, \ldots, S_d$ be a finite covering of $S(\mu, G)$ such that there is an $i \in \{1, \ldots, d\}$ with $G \neq \overline{S_i - S_i}$. The existence of such an finite covering with an element that is not everywhere dense follows from Pestovs characterization of extreme ameanability \cite[Theorem 3.4.9]{PestovDyn}.
   Now let $S := S_i$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
@@ -182,7 +88,7 @@ In the following that symbols $\bar{1}$ represents the constant function which s
     (f + V_\varepsilon) \cap (\overline{S - S}) = \emptyset.
   \end{equation*}
   Define the partition $\P_f$ induced by $f$.
-  Now let $\P \in {\rm PartFin}(X)$ with $\P_f \preccurlyeq \P$ and let $k \in \Z^\P$.
+  Now let $\P \in \Pi(X)$ with $\P_f \preccurlyeq \P$ and let $k \in \Z^\P$.
   Define
   \begin{equation*}
     g_k\colon X \to G, \: g_k(x) \mapsto k(\iota_\P(x))f(x)
