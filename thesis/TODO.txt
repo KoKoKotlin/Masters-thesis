@@ -1,10 +1,14 @@
  - write introduction
  - ask about abstract
 
-## 
+## Chapter 3
+ - picture barycentric subdivision white boxes behind the numbers
+
+## Chapter 4
+- rework the prove and statement of the main result
+- check if possible for general G instead of $\Z$ in prove of lemma
 
 ## Chapter 5
-- rework the prove and statement of the main result
-
-## Chapter 7
-- check definition diffused submeasure
+ - Lemma 5.9 remove question marks
+ - Check Definition 5.14
+ - Proof Corollary 5.16

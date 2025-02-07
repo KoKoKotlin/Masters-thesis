@@ -6,7 +6,7 @@ Firstly we have to define what is meant by the symbol $L_0(\mu, G)$. Some author
 
 When talking about extrem ameanability of topological groups it is sufficient to prove it for dense subgroups because of the following theorem: 
 \begin{thm}\label{thm:da}
-  Let $G$ be a topological group and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely ameanable if and only if $G$ is extremely ameanable. 
+  Let $G$ be a topological group that is Hausdorff and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely ameanable if and only if $G$ is extremely ameanable. 
 \end{thm}
 
 \begin{proof}
@@ -35,7 +35,7 @@ In the following the symbols $\bar{1}$ represents the constant function which se
 \end{defin}
 
 \begin{lemma}\label{lem:1}
-  Let $(X, \mathcal{B})$ be a measurable space and let $\mu$ be a submeasure on $X$. Additionally, let $\P \in \Pi(X)$ and $\varepsilon \in \R_{>0}$ then for $f,g \in \Z^\P$ with $f - g \in \bar{1} + V_\varepsilon$ it follows that $f$ and $g$ are connected in $\Gamma_\varepsilon^\P(\mu)$ by an edge.
+  Let $X$ be a set and let $\mu$ be a submeasure on a subalgebra $\mathcal{B} \subseteq \PowS(X)$. Additionally, let $\P \in \Pi(\mathcal{B})$ and $\varepsilon \in \R_{>0}$ then for $f,g \in \Z^\P$ with $f - g \in \bar{1} + V_\varepsilon$ it follows that $f$ and $g$ are connected in $\Gamma(\varepsilon, \P, \mu)$ by an edge.
 \end{lemma}
 
 \begin{proof}
@@ -47,58 +47,58 @@ In the following the symbols $\bar{1}$ represents the constant function which se
 \end{proof}
 
 \begin{thm}\label{thm:colve}
-  Let $X$ be an infinite set, $\mu\colon \mathcal{B} \to [0, \infty]$ a diffused submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$ and let $G$ be an abelian topological group. Then the following are equivalent:
+  Let $X$ a set, $\mu\colon \mathcal{B} \to [0, \infty]$ a diffused submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$. Then the following are equivalent:
   \begin{enumerate}
-    \item $S(\mu, G)$ is extremely ameanable,
-    \item $\forall \varepsilon > 0$ there is no finite bound on each graph $\chi(\Gamma(\varepsilon, \mathcal{P}, \mu))$, where $\mathcal{P} \in \Pi(\mathcal{B})$.
+    \item $S(\mu, G)$ is extremely ameanable for every non-trivial, Hausdorff, abelian topological group $G$,
+    \item $\forall \varepsilon > 0\colon \sup\limits_{\P \in \Pi(\mathcal{B})}\chi(\Gamma(\varepsilon, \mathcal{P}, \mu)) = \infty$.
   \end{enumerate}
 \end{thm}
 
-%TODO: syndetic set definition
 \begin{proof}
-  Assume there exists $d \in \N$ for $\varepsilon \in \R_{>0}$ such that
+  Let $\varepsilon \in \R_{>0}$ and assume that there exists $d \in \N$ such that
   \begin{equation*}
     \forall \P \in \Pi(\mathcal{B})\colon \chi(\Gamma(\varepsilon, {\P}, \mu)) \leq d. 
   \end{equation*}
-  Given this assumption we claim that the the group $L_0(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma_{\varepsilon}^{\P}(\mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in \Pi(X)$. Consider the family of sets
+  Given this assumption we claim that the the group $S(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma(\varepsilon, \P, \mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in \Pi(\mathcal{B})$. Now the goal is to define a coloring on the whole set $S(\mu, \Z)$. To this end define the family of sets
   \begin{equation*}
     \mathcal{A} := \{\{ \P \in \Pi(X)\colon \P_0 \preccurlyeq \P\}\colon \P_0 \in \Pi(X)\}.
-  \end{equation*} 
+  \end{equation*}
   This is a well-defined filter basis by Theorem \ref{thm:algdirected} and Lemma \ref{lem:filbas}. From Theorem \ref{thm:ulfil} it follows that there is an ultrafilter $\mathcal{U}$ containing the filter $\mathcal{F}(\mathcal{A})$.
- Let $\P_f$ be the finite partion of $X$ induced by $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
+ Let $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
   \begin{equation*}
     f_\P(A) = k \iff \exists B \in f^{-1}(\{k\})\colon A \subseteq B. 
   \end{equation*}
-  This functions is well-defined because of the definition of refinment of partitions and thus also $f \in S(\mu, \Z)$.
-  Now define a coloring $c: S(\mu, G) \to \{1, \ldots, d\}$ of $S(\mu, G)$ as the limit over the ultrafilter
+  This functions is well-defined because of the definition of refinment of partitions and thus also $f_\P \in S(\mu, \Z)$.
+  Now define a coloring $c\colon S(\mu, \Z) \to \{1, \ldots, d\}$ of $S(\mu, \Z)$ as the limit over the ultrafilter
   \begin{equation*}
     c(f) := \lim\limits_{\P \to \mathcal{U}} c_{\P}(f_\P).
   \end{equation*}
-  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. By Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$ for $f - g \in \bar{1} + V_\varepsilon$.
-  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ for each $i = 1, \ldots, d$ and thus $X_i - X_i$ is not dense at $\bar{1}$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. 
+  Convergence of the limit above is ensured by the fact that it is a limit in a finite and discrete space and thus the limit has to take one and only one value in $\{1, \ldots, d\}$.
+  
+  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. If $f - g\in \bar{1} + V_\varepsilon$ then by Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$.
+  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ and thus $X_i - X_i$ is not dense at $\bar{1}$ for each $i = 1, \ldots, d$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. 
 
-  For the second implication suppose that $S(\mu, G)$ is not extremely ameanable. Let $d \in \N$ and let $S_1, \ldots, S_d$ be a finite covering of $S(\mu, G)$ such that there is an $i \in \{1, \ldots, d\}$ with $G \neq \overline{S_i - S_i}$. The existence of such an finite covering with an element that is not everywhere dense follows from Pestovs characterization of extreme ameanability \cite[Theorem 3.4.9]{PestovDyn}.
-  Now let $S := S_i$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
+  For the second implication suppose that $S(\mu, G)$ is not extremely ameanable. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} we get the existence of a set $S \subseteq S(\mu, G)$ that is big on the left\footnote{This means that there exists a finite set $E \subseteq S(\mu, G)$ such that $S(\mu, G) = E + S.$ Additionally $\{e + S\colon e \in E\}$ is a covering of $S(\mu, G)$.} such that $S(\mu, G) \neq \overline{S - S}$. Let $E \subseteq S(\mu, G)$ finite with an enumeration $E = \{e_1, e_2, \ldots, e_n\}$ with $n \in \N$ such that $S(\mu, G) = E + S$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
   \begin{equation*}
     (f + W_\varepsilon) \cap (S - S) = \emptyset
   \end{equation*}
   for $W_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \notin W\}) < \varepsilon\}$ since $f$ is not in the closure of $S - S$. 
   Now let $V_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \neq e_G\}) < \varepsilon\}$. Since $e_G \in W$ it follows that $V_\varepsilon \subseteq W_\varepsilon$ and hence
   \begin{equation*}
-    (f + V_\varepsilon) \cap (\overline{S - S}) = \emptyset.
+    (f + V_\varepsilon) \cap (S - S) = \emptyset.
   \end{equation*}
   Define the partition $\P_f$ induced by $f$.
-  Now let $\P \in \Pi(X)$ with $\P_f \preccurlyeq \P$ and let $k \in \Z^\P$.
-  Define
+  Now let $\P \in \Pi(\mathcal{B})$ with $\P_f \preccurlyeq \P$ and let $k \in \Z^\P$.
+  Define $S_i := e_i + S$ for $i=1,\ldots,n$ and
   \begin{equation*}
     g_k\colon X \to G, \: g_k(x) \mapsto k(\iota_\P(x))f(x)
   \end{equation*}
-  which is an element of $S(\mu, G)$ and define the mapping $c\colon \Z^\P \to \{1,\ldots, d\}$ as
+  which is an element of $S(\mu, G)$. Now we can define the mapping $c\colon \Z^\P \to \{1,\ldots, d\}$ as
   \begin{equation*}
     c\colon k \mapsto i \iff g_k \in S_i.
   \end{equation*}
 
-  \textbf{Claim:} The mapping $c$ is a coloring of the graph $\Gamma_\varepsilon^\P(\mu)$. To this end suppose there are two nodes $k, l \in \Z^\P$ which are connected and have the same color $i \in \{1, \ldots, d\}$. Let $B := \bigcup\{A\in\P\colon k(A) \neq l(A) + 1\}$. It holds that $\mu(B) \leq \varepsilon$ since $k$ and $l$ are connected in $\Gamma_\varepsilon^\P(\mu)$. For $x \in X\setminus B$ it holds that
+  \textbf{Claim:} The mapping $c$ is a coloring of the graph $\Gamma(\varepsilon, \P, \mu)$. To this end suppose there are two nodes $k, l \in \Z^\P$ which are connected and have the same color $i \in \{1, \ldots, d\}$. Let $B := \bigcup\{A\in\P\colon k(A) \neq l(A) + 1\}$. It holds that $\mu(B) \leq \varepsilon$ since $k$ and $l$ are connected in $\Gamma(\varepsilon, \P, \mu)$. For $x \in X\setminus B$ it holds that
   \begin{equation*}
     g_k(x) - g_l(x) = k(\iota_\P(x))f(x) - l(\iota_\P(x))f(x) = (k(\iota_\P(x)) - l(\iota_\P(x)) f(x) = f(x)
   \end{equation*}
@@ -106,6 +106,6 @@ In the following the symbols $\bar{1}$ represents the constant function which se
   \begin{equation*}
     \mu(\{x\in X\colon g_k(x) - g_l(x) \neq f(x)\}) < \varepsilon.
   \end{equation*}
-  which means $g_k - g_l \in f + V_\varepsilon$. Furthermore we have $g_k, g_l \in S_i$ becasue of the definition of $c$. Hence $g_k - g_k \in (f + V_\varepsilon) \cap (S_i - S_i) \lightning$.
-  This proofs the claim that $c$ is a coloring of $\Gamma_\varepsilon^\P(\mu)$ with $d$ colors.
+  which means $g_k - g_l \in f + V_\varepsilon$. Furthermore we have $g_k, g_l \in S_i$ because of the definition of $c$. Hence $g_k - g_k \in (f + V_\varepsilon) \cap (S_i - S_i) \lightning$.
+  This proofs the claim that $c$ is a coloring of $\Gamma(\varepsilon,\P,\mu)$ with $d$ colors.
 \end{proof}
