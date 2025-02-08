@@ -1,5 +1,6 @@
  - write introduction
  - ask about abstract
+ - replace \underline{\rm Top} with C(X, Y)
 
 ## Chapter 3
  - picture barycentric subdivision white boxes behind the numbers
@@ -12,3 +13,5 @@
  - Lemma 5.9 remove question marks
  - Check Definition 5.14
  - Proof Corollary 5.16
+ - Check proof Lemma 5.20 H_i(\cup)
+ - Lemma 5.9 \simeq von S_p(n) to S_p(a) and S_p(n) to \Z_p

@@ -27,7 +27,7 @@
     If $\iota\colon \mathcal{L} \to \mathcal{K}$ is an inclusion, we say that $\mathcal{L}$ is a \textbf{subcomplex} of $\mathcal{K}$ if $\iota$ is a simplicial map.
 \end{defin}
 
-% Simple example of a simplicial complex
+% Simple Example of a simplicial complex
 \begin{ex}\label{ex:seqcom}
   Let $n \in \N^+$ then $\mathcal{K}_n$ defined as
   \begin{equation*}
@@ -216,7 +216,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \end{defin}
 
 \begin{ex}
-  Take the sequence of simplicial complexes $\mathcal{K}_n$ from example \ref{ex:seqcom}. A possible geometric realization of these complexes is
+  Take the sequence of simplicial complexes $\mathcal{K}_n$ from Example \ref{ex:seqcom}. A possible geometric realization of these complexes is
   \begin{equation*}
     f_n\colon V(\mathcal{K}_n) \to \R^n, k \mapsto e_k 
   \end{equation*}
@@ -245,7 +245,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \end{defin}
 
 \begin{ex}
-  Let $\mathcal{K} = \mathcal{L} = \mathcal{K}_2$ from example \ref{fig:simwe} and choose the basepoints $1 \in V(\mathcal{K}), 1 \in V(\mathcal{L})$. Then a geometric realization of the wedge $\mathcal{K} \lor \mathcal{L}$ is depicted in the figure \ref{ex:simwejo}.
+  Let $\mathcal{K} = \mathcal{L}$ with $V(\mathcal{K}) = [3]$ be the two-dimensional simplex (a triangle in the plain) and choose the basepoints $1 \in V(\mathcal{K}), 1 \in V(\mathcal{L})$. Then a geometric realization of the wedge $\mathcal{K} \lor \mathcal{L}$ is depicted in the Figure \ref{fig:simwejo}.
   \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
@@ -286,7 +286,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 
 \draw [->, thick] (AS) -- node[above] {$\lor$} (AE);
     \end{tikzpicture} 
-    \caption{Examples of the wedge of simplicial complexes.}\label{fig:simwe}
+    \caption{Examples of the wedge of simplicial complexes.}\label{fig:simwejo}
 \end{figure}
 
 % TODO: add proof for this
@@ -298,7 +298,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   
 \end{proof}
 
-Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathcal{L} = \PowS_{\leq 1}(\{2, 3\})$. The geometric realization of the join $\mathcal{K} \star \mathcal{L}$ of these complexes can be seen in figure \ref{fig:simjo}. From the figure it becomese apperent that $\lVert \mathcal{K} \star \mathcal{L} \rVert$ is homeomorphic to $\mathbb{S}^1$.
+Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathcal{L} = \PowS_{\leq 1}(\{2, 3\})$. The geometric realization of the join $\mathcal{K} \star \mathcal{L}$ of these complexes can be seen in Figure \ref{fig:simjo}. From the figure it becomese apperent that $\lVert \mathcal{K} \star \mathcal{L} \rVert$ is homeomorphic to $\mathbb{S}^1$.
 
   \begin{figure}[h!]
   \centering
@@ -390,7 +390,7 @@ The fact that the join of a two points with two points results in a simplicial c
 \end{figure}
 
 \subsection{Homology Theory}
-Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the definitions from Category theory used in this section look at Appendix \ref{}. 
+Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the definitions from Category theory used in this section look at Appendix \ref{appendixA}. 
 
 \begin{cons}
   Let $S$ be a finite set and $p \in \mathbb{P}$. Define \[A(S) := \{f \in \Z^S\colon |\im f| < \infty \}\] be maps from $S$ to $Z_p$ with finite image. $A(S)$ is an abelian group together with the operation of pointwise addition of maps.
@@ -448,7 +448,7 @@ Since the collection of indicator functions is a basis of $A(S)$ it is a convent
   And now it follows that $\Phi(\xi) = (\xi \circ \iota^S)(x) = \mathds{1}_x(x) \cdot \psi(x) = \psi(x)$ for all $x \in X$ and hence $\Phi(\xi) = \psi$.
 \end{proof}
 
-The Theorem now tells us that any function from $X$ to an abelian group $B$ can be extended into a function from $A(X)$ to $B$ in a unique way. This may become clear looking at the commutative diagram in figure \ref{fig:com1}.
+The Theorem now tells us that any function from $X$ to an abelian group $B$ can be extended into a function from $A(X)$ to $B$ in a unique way. This may become clear looking at the commutative diagram in Figure \ref{fig:com1}.
 
 \begin{figure}[h!]
   \centering
@@ -473,11 +473,11 @@ The Theorem now tells us that any function from $X$ to an abelian group $B$ can 
 \end{defin}
 
 \begin{defin}
-  Let $X$ be a topological space and let $n\in \N$ and $p \in \mathbb{P}$. A \textbf{singular $n$-simplex} in $X$ is a continuous map $\sigma \in \underline{\rm Top}(\Delta_n, X)$.
-  Now the \textbf{singular $n$-chain group} of $X$ is defined as $C_n(X) := A(\underline{\rm Top}(\Delta_n, X); p)$. An element $\sigma \in C_n(X)$ is called a singular $n$-chain in $X$.
+  Let $X$ be a topological space and let $n\in \N$ and $p \in \mathbb{P}$. A \textbf{singular $n$-simplex} in $X$ is a continuous map $\sigma \in C(\Delta_n, X)$.
+  Now the \textbf{singular $n$-chain group} of $X$ is defined as $C_n(X) := A(C(\Delta_n, X); p)$. An element $\sigma \in C_n(X)$ is called a singular $n$-chain in $X$.
   The map \[\partial_n\colon C_n(X) \to C_{n-1}(X),\: \sigma \mapsto \sum\limits_{i=0}^n(-1)^i(\sigma \circ d_i)\] is called the $n$-th boundary map for $n\in\N^+$. It is a homomorphisms of abelian groups. For $n < 1$ define $\partial_n$ as the zero map as well as all $C_n$ as trivial abelian groups.
 
-  If $Y$ is another topological space and $f \in \underline{\rm Top}(X, Y)$ then $C_n(f)\colon C_n(X) \to C_n(Y)$ defined on the generators $\sigma \in C_n(X)$ as
+  If $Y$ is another topological space and $f \in C(X, Y)$ then $C_n(f)\colon C_n(X) \to C_n(Y)$ defined on the generators $\sigma \in C_n(X)$ as
   \begin{equation*}
     C(f)(\sigma) = f \circ \sigma.
   \end{equation*}
@@ -500,11 +500,11 @@ The lemma above is the so called fundamental theorem of homology theory. It allo
 \end{defin}
 
 \begin{lemma}
-  Let $X, Y$ be topological spaces and $f \in \underline{\rm Top}(X, Y)$, then \[\forall n\in \N\colon \partial_n \circ C_n(f) = C_{n-1}(f) \circ \partial_n.\]
+  Let $X, Y$ be topological spaces and $f \in C(X, Y)$, then \[\forall n\in \N\colon \partial_n \circ C_n(f) = C_{n-1}(f) \circ \partial_n.\]
 \end{lemma}
 
 \begin{proof}
-  Let $n \in \N^+$ and let $\sigma \in \underline{\rm Top}(\Delta_n, X)$ then
+  Let $n \in \N^+$ and let $\sigma \in C(\Delta_n, X)$ then
   \begin{align*}
     \partial_n(C_n(f)(\sigma)) &= \partial_n(f\circ\sigma) \\
     &= \sum\limits_{i=0}^n(-1)^if\circ\sigma\circ d_i \\
@@ -522,10 +522,10 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
 
 \begin{proof}
   Let $X$ be a topological space and let $n \in \N$, then \[C_n(\id_X)(\sigma) = \id_X\circ \sigma = \sigma = \id_{C_n(X)}(\sigma)\]
-  for all $\sigma \in \underline{\rm Top}(\Delta_n, X)$ and hence $C_n(\id_X) = \id_{C_n(X)}$.
+  for all $\sigma \in C(\Delta_n, X)$ and hence $C_n(\id_X) = \id_{C_n(X)}$.
   For $n < 0$ this is trivial.
 
-  Let $Y, Z$ be topological spaces and $f \in \underline{\rm Top}(X, Y), g\in \underline{\rm Top}(Y, Z)$, then for $n\in \N$ it follows that \[C_n(g\circ f)(\sigma) = g\circ f \circ \sigma = C_n(g)(f\circ \sigma) = (C_n(g) \circ C_n(f))(\sigma)\] for all $\sigma \in \underline{\rm Top}(\Delta_n, X)$ and thus $C_n(g \circ f) = C_n(g) \circ C_n(f)$.
+  Let $Y, Z$ be topological spaces and $f \in C(X, Y), g\in C(Y, Z)$, then for $n\in \N$ it follows that \[C_n(g\circ f)(\sigma) = g\circ f \circ \sigma = C_n(g)(f\circ \sigma) = (C_n(g) \circ C_n(f))(\sigma)\] for all $\sigma \in C(\Delta_n, X)$ and thus $C_n(g \circ f) = C_n(g) \circ C_n(f)$.
   Again the case for $n < 0$ is trivial.
 \end{proof}
 
@@ -536,11 +536,11 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
 \end{thm}
 
 \begin{proof}
-  Follows from the fact that the composition of functors is again a functor and Theorem \ref{}.
+  Follows from the fact that the composition of functors is again a functor and Lemma \ref{lem:cfunc}.
 \end{proof}
 
 \begin{thm}\label{thm:hhom}
-  Let $X$ and $Y$ be topological spaces. Then if $f, g\in \underline{\rm Top}(X, Y)$ are homotopic maps it follows that \[H_n(f) = H_n(g)\] for all $n \in \N$.
+  Let $X$ and $Y$ be topological spaces. Then if $f, g\in C(X, Y)$ are homotopic maps it follows that \[H_n(f) = H_n(g)\] for all $n \in \N$.
 \end{thm}
 
 \begin{proof}
@@ -548,7 +548,7 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
 \end{proof}
 
 \begin{col}
-  Let $X$ and $Y$ be topological spaces and $f \in \underline{\rm Top}(X, Y)$ is a homotopy equivalence between them, then $H_n(f)\colon H_n(X) \to H_n(Y)$ is an isomorphism for all $n \in \Z$.
+  Let $X$ and $Y$ be topological spaces and $f \in C(X, Y)$ is a homotopy equivalence between them, then $H_n(f)\colon H_n(X) \to H_n(Y)$ is an isomorphism for all $n \in \Z$.
 \end{col}
 
 \begin{proof}
@@ -606,8 +606,6 @@ The dualization in the sense of category theory works be replacing the homology 
   See \cite[Theorem 71.1]{MunAlTop}.
 \end{proof}
 
-A second important tool linking homology and cohomology groups is the \textbf{universal coefficient theorem}. The next theorem is a version of it.
-
 \begin{defin}
   Let $(G_n)_{n\in\N}$ be a sequence of abelian groups and let $(\varphi_n)_{n\in\N}$ be a sequence of homomorphisms such that
   \begin{equation*}
@@ -626,16 +624,25 @@ A second important tool linking homology and cohomology groups is the \textbf{un
   that is exact is called a \textbf{short exact sequence}.
 \end{defin}
 
+A second important tool linking homology and cohomology groups is the \textbf{universal coefficient theorem}. The next theorem is a version of it.
+
 \begin{thm}\label{thm:uct}
 Let $C_n(X)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X)$ of $C_n(X)$ for a topological space $X$, then the cohomology groups $H^n(X; G)$ for a abelian group $G$ are determined by the exact sequence
   \begin{equation*}
     0 \to {\rm Ext}(H_{n-1}(X), G) \to H^n(X; G) \to \underline{\rm Ab}(H_n(X), G) \to 0.
   \end{equation*}
+  For the definition of the ${\rm Ext}$-functor look in \cite[p. 195]{hatcher}.
 \end{thm}
 
 \begin{proof}
   See \cite[Chapter 3.1]{hatcher}.
 \end{proof}
+
+We will need only the following corollary from this theorem.
+
+\begin{col}\label{col:hntriv}
+  Let $C_n(X)$ be a chain complex of free abelian groups and $H_n(X)$ the corresponding homology groups with $H_n(X) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
+\end{col}
 
 \subsection{Theorem of Mayer-Vietoris}
 Often we can calculate the homology of simple subspaces of a larger space and want to deduce the homology of the larger space from them.
