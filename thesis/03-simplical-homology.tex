@@ -46,7 +46,6 @@
     is a simplicial map for all $h \in H$.
 \end{defin}
 
-% TODO: put this in the appendix
 \begin{defin}
     A poset (partially ordered set) is a pair $(P, \preceq)$ where 
     $P$ is a non-empty set and 
@@ -90,10 +89,7 @@ together points, straight line segments, polyhedra and their higher dimensional 
 It will be clear that these two types of objects internally encode the same combinatorical structure. 
 
 \begin{defin}
-    Let $n,k \in \N$ and let $x_0, x_1, \ldots, x_k \in \R^n$. The vectors $x_i$ are called \textbf{linearly independent} if it holds that 
-    \begin{equation*}
-        \sum\limits_{i=0}^k \alpha_i x_i = 0 \; \iff \; \alpha_0 = \alpha_1 = \ldots = \alpha_k = 0,
-    \end{equation*} with $\alpha_j \in \R$ and $j = 0, 1, \ldots, k$.
+    Let $n,k \in \N$ and let $x_0, x_1, \ldots, x_k \in \R^n$. 
     The vectors are called \textbf{affinely independent} if
     \begin{equation*}
         \sum\limits_{i=0}^k \alpha_i = 0 \; \land \; \sum\limits_{i=0}^k \alpha_i x_i = 0 \; \Rightarrow \; \alpha_0 = \alpha_1 = \ldots = \alpha_k = 0, 
@@ -114,6 +110,22 @@ It will be clear that these two types of objects internally encode the same comb
     ({\rm co} A) \cap ({\rm co}B) = {\rm co}(A \cap B).
   \end{equation*}
 \end{rem}
+
+\begin{proof}
+  The inclusion ${\rm co}(A\cap B) \subseteq {\rm co}A \cap {\rm co}B$ is trivial.
+
+  For the other inclusion take $x \in {\rm co}(A) \cap {\rm co}(B)$. This means that there exist to representations of $x$ of the form
+  \begin{align*}
+    x = \sum\limits_{i=1}^m\alpha_i a_i, \\
+    x = \sum\limits_{j=1}^n\beta_j b_j,
+  \end{align*}
+  for $m,n \in \N$, $a_i \in A$ for all $i = 1, \ldots, m$ with $\sum\limits_{i=1}^m \alpha_i = 1$ and $b_j \in B$ for all $j =1, \ldots,n$ with $\sum\limits_{j=1}^n\beta_j = 1$.
+  Now subtract both representations of $x$. It follows that
+  \begin{equation*}
+    \sum\limits_{i=1}^m\alpha_i a_i - \sum\limits_{j=1}^n\beta_j b_j = 0 \: \land \: \sum\limits_{i=1}^m \alpha_i - \sum\limits_{j=1}^n\beta_j = 0.
+  \end{equation*}
+  Since $A \cup B$ are affinely indepent this means that either all coefficients are zero or there exist indicies for which $a_i = b_j$. Since the sum of the coefficients $a_i$ and $b_j$ sum up to one the case that all coefficients are zero is not possible and thus we have that both convex combinations of $x$ can only contain points which lie in $A \cap B$. So $x \in {\rm co}(A\cap B)$.
+\end{proof}
 
 Affine independence of the vectors makes sure that the convex hull of vectors is not degenerated.
 For example it is expected that the convex hull of three vectors in $\R^2$ is a triangle. But in the degenerate case that the points are all the same
@@ -164,7 +176,6 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   See \cite[p. 84]{MunAlTop}.
 \end{proof}
 
-%TODO: white box under text
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[scale=1.7]
@@ -179,9 +190,8 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \node[fill=black, circle, inner sep=2pt, label=above:{$01$}] (G) at (6.5,1) {};
 \node[fill=black, circle, inner sep=2pt, label=above:{$12$}] (H) at (7.5,1) {};
 \node[fill=black, circle, inner sep=2pt, label=below:{$02$}] (I) at (7,0) {};
-\node[fill=black, circle, inner sep=2pt, label=above:{$123$}] (J) at (7,2/3) {}; 
-\node[align=center] at (1,-0.5) (label1) {$\mathcal{K}$};
-
+\node[fill=black, circle, inner sep=2pt] (J) at (7,2/3) {}; 
+\node[align=center] at (7,-0.5) (label1) {$\sd(\mathcal{K})$};
 
 \node at (3, 1) (AS) {};
 \node at (5, 1) (AE) {};
@@ -202,6 +212,10 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \draw (I) -- (J);
 \draw (G) -- (J);
 
+\node[fill=white, inner sep=1.5pt] at (6.5,1.25) {$01$};
+\node[fill=white, inner sep=1.5pt] at (7.5,1.25) {$12$};
+\node[fill=white, inner sep=1.5pt] at (7,-0.25) {$02$};
+\node[fill=white, inner sep=1.1pt] at (7,1) {$123$};
 \draw [|->, thick] (AS) -- node[above] {$\sd$} (AE);
     \end{tikzpicture} 
   \caption{Barycentric subdivision of the 2-dimensional simplex.}
@@ -289,13 +303,12 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
     \caption{Examples of the wedge of simplicial complexes.}\label{fig:simwejo}
 \end{figure}
 
-% TODO: add proof for this
 \begin{lemma}\label{lem:seqhom}
-  Let $\mathcal{K}$ be a simplicial complex and let $(L_i)_{i\in [p]}$ be a sequence of subcomplexes of $\mathcal{K}$ for $p \in \N$. If $L_i$ is empty or contractible for each $i \in [p]$ then \[{\rm Cone}(\mathcal{K}, (L_i)_{i\in [p]}) \simeq \mathcal{K}.\]
+  Let $\mathcal{K}$ be a simplicial complex and let $(L_i)_{i\in [p]}$ be a sequence of subcomplexes of $\mathcal{K}$ for $p \in \N$. If $L_i$ is empty or contractible for each $i \in [p]$ then \[\lVert {\rm Cone}(\mathcal{K}, (L_i)_{i\in [p]}) \rVert \simeq \lVert \mathcal{K} \rVert.\]
 \end{lemma}
 
 \begin{proof}
-  
+  We know that each ${\rm Cone}(L_i)$ for $i \in [p]$ is contratible. So there is a homotopy equivalence to a one point space. Choose a point in $\lVert \mathcal{K} \rVert$ to which ${\rm Cone}(L_i)$ is contracted to for each $L_i$. The we start with $i = 1$ and can define a homotopy equivalence that keeps $\mathcal{K}$ fixed and contracts the cone over $L_i$ to the chosen point in $\mathcal{K}$. This shows that $\lVert \mathcal{K} \cup {\rm Cone}(L_0) \rVert \simeq \lVert \mathcal{K} \rVert$. The statement follows by induction on $i$. 
 \end{proof}
 
 Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathcal{L} = \PowS_{\leq 1}(\{2, 3\})$. The geometric realization of the join $\mathcal{K} \star \mathcal{L}$ of these complexes can be seen in Figure \ref{fig:simjo}. From the figure it becomese apperent that $\lVert \mathcal{K} \star \mathcal{L} \rVert$ is homeomorphic to $\mathbb{S}^1$.
@@ -390,7 +403,7 @@ The fact that the join of a two points with two points results in a simplicial c
 \end{figure}
 
 \subsection{Homology Theory}
-Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the definitions from Category theory used in this section look at Appendix \ref{appendixA}. 
+Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the basic definitions from Category theory and Homological Algebra needed in the following see \cite{rotmann2009}.  
 
 \begin{cons}
   Let $S$ be a finite set and $p \in \mathbb{P}$. Define \[A(S) := \{f \in \Z^S\colon |\im f| < \infty \}\] be maps from $S$ to $Z_p$ with finite image. $A(S)$ is an abelian group together with the operation of pointwise addition of maps.
@@ -562,18 +575,17 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
 The example above implies that the $0$-th homology group of for example a one point space is $\Z$. This complicates some other results in homology theory. Therefore there is a version of the homology groups called \textbf{reduced} homology groups $\tilde{H_n}$ where $\tilde{H}_n(X) = H_n(X)$ for all $n \in\N^+$ and $\tilde{H}_n \oplus \mathbb{Z} = H_n(\Z)$. This means that the $0$-th reduced homology group of a one point space the trivial group is instead of $\mathbb{Z}$.
 A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatcher}.
 
-%TODO: change this definition to an arbitrary index set
 \begin{defin}
-  Let $G_1, \ldots, G_n$ be abelian groups for $n \in \N$. Then the \textbf{external direct sum} of the groups is defined as
+  Let $G_\alpha$ be an abelian group for each $\alpha$ in an arbitrary index set $I$. Then the \textbf{external direct sum} of the groups is defined as
   \begin{equation*}
-    G_1 \oplus \cdots \oplus G_n = \bigoplus_{i=1}^n G_i = \prod_{i=1}^n G_i.
+    \bigoplus\limits_{\alpha \in I}G_\alpha = \{(g_\alpha)_{\alpha\in I}\colon g_i\in G_i \: \land \: g_i \neq e_{G_i} \text{ for only finitely many indicies } i \in I\}.
   \end{equation*}
-  This is again an abelian group with the operation \[g \cdot h = (g_1 \cdot_{G_1} h_1, \ldots, g_n \cdot_{G_n} h_n)\] for $g,h \in \bigoplus_{i=1}^n G_i$.
-  If $f_1, \ldots, f_n$ are homomorphisms with \[f_i\colon G_i \to H_i\] where $H_i$ are abelian groups for $i = 0,\ldots,n$. Then
+  This is again an abelian group with the operation \[(g)_{\alpha \in I} \cdot (h)_{\alpha\in I} = (g_\alpha \cdot_{G_\alpha} h_\alpha)_{\alpha \in I}.\]
+  If $f_\alpha$ is a homomorphism with \[f_\alpha\colon G_\alpha \to H\]  for each $\alpha \in I$ where $H$ is an abelian group. Then
   \begin{equation*}
-    \bigoplus_{i=1}^nf_i\colon \bigoplus_{i=1}^n G_i\to \bigoplus_{i=1}^nH_i,\: g \mapsto (f_1(g_1),\ldots, f_n(g_n))
+    \bigoplus\limits_{\alpha\in I}f_\alpha\colon \bigoplus_{\alpha \in I} G_\alpha\to H,\: (g)_{\alpha \in I} \mapsto \sum\limits_{\alpha \in I}f_\alpha(g_\alpha)
   \end{equation*}
-  is a homomorphisms.
+  is a well-defined homomorphism since only finitely many summands are non-trivial.
 \end{defin}
 
 \begin{defin}

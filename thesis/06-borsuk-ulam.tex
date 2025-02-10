@@ -152,14 +152,16 @@ Now the following decomposition of $K_p(n,n)$ can be proven:
 
 Now note that $K_p(n,l) = J_p(n,l) \cap L_p(n,l)$. We can used this fact for applying the Mayer-Vietoris-sequence for finding the homology groups of $K_p(n,l)$. This means we have to firstly study the complexes $J_p(n,l)$ and $L_p(n,l)$ and show that their homology groups are trivial up to some point.
 
+We start our analysis with the subcomplex $L_p(n,l)$. Notice that if we compare $K_p(l,l)$ to $L_p(n,l)$ than $L_p(n,l)$ contains additional partial functions namely all the functions with a domain not contained in $[l+1]$. We will show that we can extend the complex $K_p(l,l)$ by adding cones to specific subcomplexs such that we get a new complex that is isomorphic to $L_p(n,l)$. The intuitition behind this idea is that the added cone points and the join of already existing partial functions will act like the missing functions with large domain. 
+
 \begin{defin}
-  Let $\mathcal{K}$ be a simplicial complex, $p,m \in \N$ and let $(L_\sigma)_{\sigma \in P([m],[p])}$ be a family of subcomplexes of $\mathcal{K}$ such that $L_\sigma \subseteq L_\tau$ if $\tau \subseteq \sigma$. Define the complex ${\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma\in P([m],[p])})$ inductively. Firstly let $\mathcal{K}^0 = \mathcal{K}$ and let $L_\sigma^0 = L_\sigma$ for all $\sigma \in P([m],[p])$. Now define $X^k$ and $L_\sigma^k$ by induction on $k \leq m$ for $\sigma \in P([k,m], [p])$ as
+  Let $\mathcal{K}$ be a simplicial complex, $p,m \in \N$ and let $(L_\sigma)_{\sigma \in P([m],[p])}$ be a family of subcomplexes of $\mathcal{K}$ such that $L_\sigma \subseteq L_\tau$ if $\tau \subseteq \sigma$. Define the complex ${\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma\in P([m],[p])})$ inductively. Firstly let $\mathcal{K}^0 = \mathcal{K}$ and let $L_\sigma^0 = L_\sigma$ for all $\sigma \in P([m],[p])$. Now define $X^k$ and $L_\sigma^k$ by induction on $k \leq m$ for $\sigma \in P([k+1,m], [p])$ as
   \begin{align*}
-    X^{k+1} &= {\rm Cone}(X^k, (L^k_{\{(k+1,i)\}})_{i\in [p]}), \\
-    L^{k+1}_\sigma &= {\rm Cone}(L^k_\sigma, (L^k_{\{(k,i)\}\uplus \sigma})_{i\in [p]})
+    \mathcal{K}^{k+1} &= {\rm Cone}(\mathcal{K}^k, (L^k_{(k,i)})_{i\in [p]}), \\
+    L^{k+1}_\sigma &= {\rm Cone}(L^k_\sigma, (L^k_{(k,i) \uplus \sigma})_{i\in [p]})
   \end{align*}
-  where $(j,i)$ denotes the partial function $\tau\colon [m] \to [p]$ with $\dom(\tau) = \{j\}$ and $\tau(j) = i$.
-  Addtionally this definition also works for a set $P \subseteq [m]$ and all $\sigma \in P(P, [p])$ only looking at partial functions with a resticted domain because $P$ inherits the natural order of $\N$.
+  where $(j,i)$ denotes the partial function $\tau\colon [m] \to [p]$ with $\dom(\tau) = \{j\}$ and $\tau(j) = i$. Define ${\rm Cone}(K, (L_\sigma)_{\sigma \in P([m],[p])}) =: \mathcal{K}^m$.
+  Addtionally this definition also works for a set $Y \subseteq [m]$ and all $\sigma \in P(Y, [p])$ only looking at partial functions with a resticted domain because $Y$ inherits the natural order of $\N$.
 \end{defin}
 
 The well-definition of the induction step follows from the assumption that $A_\sigma \subseteq A_\tau$ if $\tau \subseteq \sigma$.
@@ -173,12 +175,51 @@ The well-definition of the induction step follows from the assumption that $A_\s
   Suppose that the claim holds for an arbitrary $k \leq m - 1$. Then since the $L^k_\sigma$ are all empty or contractible by lemma \ref{lem:seqhom} we can deduce that $X^{k+1}$ is homotopy equivalent to $X^0$.
 \end{proof}
 
-\begin{col}\label{col:lnpkll}
-  For $n,l \in \N$ and $p \in \mathbb{P}$ it holds that \[\lVert L_p(n,l) \rVert \simeq \lVert {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])})\rVert \] where $L_\sigma$ is defined as \[L_\sigma = \{\tau\in V_p(l,l)\colon \left|\mathbb{I}(\tau\uplus\sigma)\right| \leq l\}.\]
-\end{col}
+\begin{lemma}\label{lem:lnpkll}
+  For $n,l \in \N$ with $n \geq l$ and $p \in \mathbb{P}$ it holds that \[\lVert L_p(n,l) \rVert \simeq \lVert {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])})\rVert \] where $L_\sigma$ is defined as \[L_\sigma = \{\tau\in V_p(l,l)\colon \left|\mathbb{I}(\tau\uplus\sigma)\right| \leq l+1\}.\]
+\end{lemma}
 
 \begin{proof}
+  For $n = l$ this is trivial. So assume that $n > l$ and let \[K = {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])}).\]
   
+  We will construct a combinatorial isomorphism $\Phi\colon V(L_p(n,l)) \to V(K)$ which proves that claim of the lemma since the realizations of the two complexes will be homeomorphic.
+  
+  Firstly notice that all $\tau \in V_p(l,l) \subseteq L_p(n,l)$ are already contained in $K_p(l,l)$. This means that \[\Phi|_{V_p(l,l)} = \id_{V_p(l,l)}.\] 
+  Denote by $\Delta_{(k,i)}$ the cone point over the complex $L^k_{(k,i)}$. Define $\Phi((k,i)) = \Delta_{(k,i)}$ for $k \in [l+1,n+1]$ which means that this cone point will act as the function $(k,i)$ in the complex $K$.
+
+  We prove that $\Phi$ is well-defined by induction over $m$ from $l+1$ to $n$. Let $m = l+1$ and consider $\tau \in L_p(n,l)$ where $\tau \in P([l+2],[p])$. If $l+1 \notin \dom(\tau)$ then $\Phi(\tau) = \tau \in K_p(n,l)$. Otherwise consider the two cases
+  \begin{itemize}
+    \item $\Phi(\tau) = \tau' \sqcup \Delta_{(l+1, i_1)}$ for $\tau' \in V_p(l,l)$, and because of the definition of $L_p(n,l)$ we know that $|\mathbb{I}(\tau)| = |\mathbb{I}(\tau' \uplus (l+1,\tau(l+1)))| \leq l+1$ which means $\tau' \in L_{(l+1,\tau(l+1))}$ and thus $\Phi(\tau) \in {\rm Cone}(L^{l+1}_{(l+1,\tau(l+1))})$,
+    \item $\Phi(\tau) = \Delta_{(l+1,\tau(l+1))}$ which is trivially in ${\rm Cone}(L^{l+1}_{(l+1,\tau(l+1))})$.
+    \end{itemize}
+    Now assume that $\Phi$ is well-defined for an $m < n$ and consider the case $m+1$. Let $\tau \in L_p(n,l)$ with $\tau \in P([m+2, n+1])$. If $m+1 \notin \dom(\tau)$ then the $\Phi$ is well-defined by applying the induction hypothesis. Otherwise consider the cases
+    \begin{itemize}
+      \item $\Phi(\tau) = \tau' \uplus \Delta_{(m+1,i_m)}$ for $\tau' \in V_p(m,l)$. On the one hand, we know that $\Phi(\tau') \in L^m_{(m,\tau'(m))}$ which means that $\tau'\in V_p(l,l)$. On the other hand, we know that $|\mathbb{I}(\tau)| = |\mathbb{I}(\tau'\uplus (m+1,\tau(m+1)))| \leq l+1$ and thus $\tau' \in L^m_{(m,\tau'(m))\uplus(m+1, \tau(m+1))}$ which implies $\tau' \in L^{m+1}_{(m+1,\tau(m+1))}$. It follows that $\Phi(\tau) \in {\rm Cone}(L^{m+1}_{(m+1,\tau(m+1))})$,
+      \item $\Phi(\tau) = \Delta_{(m+1,\tau(m+1))}$ which is trivially in ${\rm Cone}(L^{m+1}_{(m+1,\tau(m+1))})$.
+    \end{itemize}
+    Thus $\Phi$ is well-defined for all $\tau \in L_p(n,l)$.
+
+    Let $\tau, \tau \in L_p(n,l)$ and assume that $\Phi(\tau) = \Phi(\tau')$. If $\tau, \tau' \in K_p(l,l)$ then \[\tau = \Phi(\tau) = \Phi(\tau') = \tau'.\] Now assume that $\tau, \tau'$ are both not in $K_p(l,l)$ and $\tau, \tau' \in V_p(n, l)$. Firstly assume tha t $\dom(\tau) \neq \dom(\tau')$. Then w.l.o.g. we can assume that there is a $k\in [n+1]$ such that $k \in \dom(\tau)$ and $k \notin \dom(\tau')$. This means that $\Delta_{(k,\tau(k))}\in \Phi(\tau)$ and $\Delta_{(k,\tau(k))}\notin \Phi(\tau')$ which contradicts the assumption $\Phi(\tau) = \Phi(\tau')$ so their domains must be equal.
+
+    Now write $\dom(\tau) = I \cup J$ with $I \subseteq [l+1]$ and $J \subseteq [l+1,n+1]$. Define $J = \{k_1, \ldots, k_r\}$ for $r \leq n-l$ such that $I \cup J = \dom(\tau)$ and consider
+    \begin{align*}
+      \Phi(\tau) = \tau_1 \sqcup (k_1, \tau(k_1)) \sqcup \cdots \sqcup (k_r, \tau(k_r)), \\
+      \Phi(\tau') = \tau_2 \sqcup (k_1, \tau'(k_1)) \sqcup \cdots \sqcup (k_r, \tau(k_r)).
+    \end{align*}
+    where $\tau_1 = \tau|_I$ and $\tau_2 = \tau'_I$. Since the images of the functions are equal we get that $\tau_1 = \tau_2$ which means $\tau|_I = \tau'|_I$ and that $\tau(k_i) = \tau'(k_i)$ for all $i \in J$. This means that $\tau = \tau'$ and thus the function $\Phi$ is injective.
+
+    Now take $\sigma \in K$. If $\sigma \in K_p(l,l)$ then $\sigma = \tau \in K_p(l,l)$ and since $K_p(l,l) \subseteq L_p(n,l)$ we get that $\Phi(\tau) = \tau = \sigma$. Now assume that $\tau \notin K_p(l,l)$. By the inductive definition of $K$ we know that we can write $\sigma$ as \[\sigma = \tau' \sqcup \Delta_{(k_1,i_1)} \sqcup \cdots \sqcup \Delta_{(k_r,i_r)}\] for $k_j \in [l+1,n+1]$ and $i_j \in [p]$ for all $j = 1,\ldots,r \leq n-l$ such that $k_{j_1} < k_{j_2}$ for $j_1 < j_2$. Then \[ \tau' \sqcup \Delta_{(k_1,i_1)} \sqcup \cdots \sqcup \Delta_{(k_{r-1},i_{r-1})}\in L^{k_r}_{k_r, i_r}\] and by repeated application of the definition we get that \[\tau' \in L_{(k_1,i_1)\uplus\cdots\uplus(k_r,i_r)}.\] This means \[\tau := \tau' \uplus (k_1, i_1) \uplus \cdots \uplus (k_r,i_r) \in L_p(n,l)\] and $\Phi(\tau) = \sigma$ and thus $\Phi$ is surjective.
+
+    It remains to show that $\Phi$ is a simplicial map. So let $\sigma \in L_p(n,l)$. By definition this is a chain of partial functions with repect to $\subseteq_f$. If this chain in contained in $K_p(l,l)$ then $\Phi(\sigma) = \sigma$ and thus a simplex in $K_p(l,l)$.
+    If not the we know that \begin{equation}\label{eq:subeqsq}
+      \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})} \subseteq \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})} \sqcup \Delta_{(k_r, i_r)}
+    \end{equation}
+    for $\tau'\in V_p(l,l) \subseteq \{\emptyset\}$ and $k_j \in [l+1,n+1], \: i_j \in [p]$ for all $j=1,\ldots,r \leq n-l$. This fact and the definition of $K$ imply that the image of an arbitrary simplex $\sigma\in L_p(n,l)$ is a simplex in $K$. Now consider that inverse map $\Phi^{-1}$. We can see that this is a simplicial map by Equation \ref{eq:subeqsq} and the fact that by definition of $K$ there are no simplicies in $K$ which contain simultaneously contain $\sigma_1$ and $\sigma_2$ of the form
+    \begin{align*}
+\sigma_1 &= \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_s, i_s)}\sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})},\\
+\sigma_2 &= \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_s, i_s')}\sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})} \sqcup \Delta_{(k_r, i_r)},
+    \end{align*}
+    where $\tau'$, $k_j$ and $i_j$ are as above with $i_s \neq i_s'$.
 \end{proof}
 
 \begin{lemma}\label{lem:Lsigsimeq}
@@ -218,7 +259,7 @@ The well-definition of the induction step follows from the assumption that $A_\s
 \end{col}
 
 \begin{proof}
-  We know from Corollary \ref{col:lnpkll} that \[\lVert L_p(n,l) \rVert \simeq \lVert{\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma\in P([l+1,n+1],[p])})\rVert = \lVert K \rVert.\] Now this chain of equivalence follows
+  We know from Corollary \ref{lem:lnpkll} that \[\lVert L_p(n,l) \rVert \simeq \lVert{\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma\in P([l+1,n+1],[p])})\rVert = \lVert K \rVert.\] Now this chain of equivalence follows
   \begin{equation*}
     \lVert K \rVert \underset{\ref{lem:seqhom}}{\overset{\text{\ref{lem:Lsigsimeq}}}{\simeq}} \lVert K_p(l,l) \rVert \overset{\text{\ref{rem:kcongs}}}{\simeq} \lVert \sd(S_p(l)) \rVert \overset{\ref{lem:sdsimeq}}{\simeq} \lVert S_p(l) \rVert.
   \end{equation*}
@@ -241,15 +282,16 @@ The well-definition of the induction step follows from the assumption that $A_\s
   Now by \ref{thm:alex} we get that $\tilde{H}_i(\lVert J_p(n;a) \rVert) = \tilde{H}_i(\rVert K_p(n;a) \rVert \setminus \lVert C \rVert) \cong \tilde{H}^{n-i-1}(\lVert C\rVert)$. We now by that the dimension of $\lVert C \rVert$ is equal to $n-l$ and thus $\tilde{H}^{n-i-1}(\lVert C \rVert) \cong 0$ for all $0\leq i < l-1$. It follows that $\tilde{H}_i(\lVert J_p(n;a) \rVert) \cong 0$ for $0 \leq i < l-1$. The conditions of Theorem \ref{thm:alex} are trivially fulfilled since all spaces involved are geometric realizations of finite simplicial complexes. Now by Lemma \ref{lem:holwe} and equation \ref{eq:simeql} the claim is proven. 
 \end{proof}
 
-\begin{lemma}\label{lem:knp}
+\begin{lemma}[Sabok, {\cite[Lemma 16]{sabok2012}}]\label{lem:knp}
   Let $n, l \in \N$ with $n \geq l$ and let $p \in \mathbb{P}$, then for each $0 \leq i \leq l-2$ it holds that
   \begin{equation*}
     \tilde{H}^i(K_p(n,l); \Z_p) \cong 0.
   \end{equation*}
 \end{lemma}
 
-% TODO: add more reasoning for alexanders duality
 \begin{proof}
+  In the following all homology and cohomogy groups have coefficient in $\Z_p$.
+
   \textbf{Claim:} $K_p(n,l)$ is connected. Consider a $\tau \in V(K_p(n,l))$ which is not a total function. Then this node is contained in a chain with a total function $\tau' \in V(K_p(n,l))$ as its largest element with respect to $\subseteq_f$. Since $K_p(n,l)$ is a simplicial complex it follows that $\{\tau, \tau'\} \in K_p(n,l)$.
   Now let $\tau$ and $\tau'$ be a total functions in $V(K_p(n,l))$ such that
   \begin{align*}
@@ -263,9 +305,9 @@ The well-definition of the induction step follows from the assumption that $A_\s
   Now consider the following Mayer-Vietoris-Sequence (see Theorem \ref{thm:mvs})
   \begin{align*}
     \label{eq:mayvietk}
-    \cdots &\to \tilde{H}_i(J_p(n,l)\cap L_p(n,l), \Z_p) \\ &\to \tilde{H}_i(J_p(n,l), \Z_p) \oplus \tilde{H}_i(L_p(n,l), \Z_p) \\ &\to \tilde{H}_i(J_p(n,l) \cup L_p(n,l), \Z_p) \to \cdots \to 0.
+    \cdots &\to \tilde{H}_i(\lVert J_p(n,l) \rVert \cap \lVert L_p(n,l)\rVert) \\ &\to \tilde{H}_i(\lVert J_p(n,l)\rVert) \oplus \tilde{H}_i(\lVert L_p(n,l) \rVert) \\ &\to \tilde{H}_i(\lVert J_p(n,l)\rVert \cup \lVert L_p(n,l) \rVert) \to \cdots \to 0.
   \end{align*}
-  Remember that $J_p(n,l) \cap L_p(n,l) = K_p(n,l)$. Now by Lemma \ref{lem:jc0} we know that $\tilde{H}_i(J_p(n,l)) \cong 0$ and $\tilde{H}_i(L_p(n,l)) \cong 0$ by Corollary \ref{col:lspl} and by the fact that the realization of $S_p(n)$ is the wedge of $(p-1)^{n+1}$ $n$-dimensional spheres for $0 \leq i < l-1$. Thus the direct sum of these groups is trivial. Also it is clear that $\tilde{H}_i(J_p(n,l) \cup L_p(n,l)) \cong 0$ by an argument involving Alexanders duality like in the proof of Lemma \ref{lem:jc0}. The exactness of the sequence yields that $\tilde{H}_i(K_p(n,l)) \cong 0$ for $0 \leq i \leq l-2$ and thus by Corollary \ref{col:hntriv} it follows that \[\tilde{H}^i(K_p(n,l)) \cong 0\] as claimed.
+  Remember that $J_p(n,l) \cap L_p(n,l) = K_p(n,l)$. Now by Lemma \ref{lem:jc0} we know that $\tilde{H}_i(\lVert J_p(n,l)\rVert) \cong 0$ and $\tilde{H}_i(\lVert L_p(n,l)\rVert) \cong 0$ by Corollary \ref{col:lspl} and by the fact that the realization of $S_p(n)$ is the wedge of $(p-1)^{n+1}$ $n$-dimensional spheres for $0 \leq i < l-1$. Thus the direct sum of these groups is trivial. Also it is clear that $\tilde{H}_i(\lVert J_p(n,l)\rVert \cup \lVert L_p(n,l)\rVert) \cong 0$ by a similiar argument as in \ref{lem:jc0} also using the triviality of the cohomology and then applying Alexanders duality. The exactness of the sequence yields that $\tilde{H}_i(\lVert K_p(n,l)\rVert) \cong 0$ for $0 \leq i \leq l-2$ and thus by Corollary \ref{col:hntriv} it follows that \[\tilde{H}^i(\lVert K_p(n,l)\rVert) \cong 0\] as claimed.
 \end{proof}
 
 Now we can prove Theorem \ref{thm:confun}.

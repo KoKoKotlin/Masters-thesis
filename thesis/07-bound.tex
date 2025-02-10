@@ -2,10 +2,10 @@
 
 In this last section a bound on the chromatic numbers of the graph $\Gamma(\varepsilon, \P, \mu)$ is derived with the help of the main result of the last section.
 
-In this whole section let $X$ be a set, $\varepsilon \in \R_{\geq 0}$ and let $\mu$ be a diffused submeasure on the a subalgebra $\mathcal{B}$ of $\PowS(X)$.
+In this whole section let $X$ be a set, $\varepsilon \in \R_{\geq 0}$ and let $\mu$ be a diffuse submeasure on the a subalgebra $\mathcal{B}$ of $\PowS(X)$.
 
 \begin{defin}
-  Define for each $\delta \in \R_{\geq 0}$ the minimal cardinality of $\P \in \Pi(\mathcal{B})$ for which it holds that \[\forall P \in \P\colon \mu(P) < \delta\] as $k_\mu(\delta)$. This is well-defined since $\mu$ is diffused.
+  Define for each $\delta \in \R_{\geq 0}$ the minimal cardinality of $\P \in \Pi(\mathcal{B})$ for which it holds that \[\forall P \in \P\colon \mu(P) < \delta\] as $k_\mu(\delta)$. This is well-defined since $\mu$ is diffuse.
   Furthermore define the map $K_\mu^\varepsilon\colon \N \to \N$ as \[K_\mu^\varepsilon(n) = k_\mu\left({\varepsilon \over {4n}}\right)\] and define for each $n \in \N$ the element $\Q_\mu^\varepsilon(n) \in \Pi(\mathcal{B})$ as \[\Q_n^\varepsilon := \{I_1^\varepsilon,\ldots, I^\varepsilon_k\}\] where $k = {K_\mu^\varepsilon(n)}$ and $\mu(I_i) < {\varepsilon \over 4n}$ for each $i=1, \ldots, k$.
 \end{defin}
 
@@ -46,7 +46,7 @@ The following lemma is just an equality needed to prove the main theorem of this
 \end{lemma}
 
 \begin{proof}
-  By the Betrand postulate\footnote{This is a theorem from number theory proving the existence of a prime $p$ for any $n\in \N_{>1}$ such that $n < p < 2n$. See \cite{}.}
+  By the Betrand postulate\footnote{This is a theorem from number theory proving the existence of a prime $p$ for any $n\in \N_{>1}$ such that $n < p < 2n$. For a proof of this see \cite{Chebyshev1852}.}
   there exists a prime $p = p(k,d) \in \mathbb{P}$ such that \[k(d+1) < p < 2k(d+1).\]
   Now assume that the claim of the lemma is false. This would imply $dp \geq {n\varepsilon \over 8}$. By Remark \ref{rem:appr} we know that \[k \geq {\varepsilon \over 4d} \cdot \mu(X)\] and thus
   \begin{equation*}
@@ -168,7 +168,7 @@ The following lemma is just an equality needed to prove the main theorem of this
 Theorem \ref{thm:colve} and this theorem now imply the following result.
 
 \begin{thm}
-  For any abelian topological group $G$ and arbitrary diffused submeasure $\mu$ the group $L_0(\mu, G)$ is extremely amenable.
+  For any abelian topological group $G$ and arbitrary diffuse submeasure $\mu$ the group $L_0(\mu, G)$ is extremely amenable.
 \end{thm}
 
 \begin{proof}

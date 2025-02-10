@@ -120,16 +120,23 @@
 \nomenclature{$\Z_p$}{The group of integers modulo a prime $p$ with addition modulo $p$}
 \nomenclature{$\underline{\rm Top}$}{The category of topological spaces with continuous functions a arrows}
 \nomenclature{$\underline{\rm Ab}$}{The category of abelian groups with group homomorphisms a arrows}
+\nomenclature{$\underline{\rm Grp}$}{The category of groups with group homomorphisms a arrows}
 \nomenclature{$\underline{\rm Ab}(G, H)$}{The class of all homomorphisms between the two abelian groups $G$ and $H$}
+\nomenclature{$\underline{\rm Grp}(G, H)$}{The class of all homomorphisms between the two groups $G$ and $H$}
 \nomenclature{$P(X,Y)$}{Set of non-empty partial functions from $X$ to $Y$}
-% Custom format: dots between symbols and descriptions
-\renewcommand{\nompreamble}{\begin{flushleft}} % Align to left
+
+\usepackage{setspace} % Allows control over line spacing
+\renewcommand{\nompreamble}{\begin{flushleft} \setstretch{0.9}} % Align left & reduce line spacing
 \renewcommand{\nompostamble}{\end{flushleft}}  % End alignment
 \renewcommand{\nomlabelwidth}{10em} % Space allocated for symbols
 \renewcommand{\nomlabel}[1]{\hspace{0pt}#1\dotfill} % Dots between symbol and description
 \setlength{\nomitemsep}{-0.8em} % Adjust spacing between entries
 
 \renewcommand{\nomname}{List of Symbols} % Change title
+
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{\printtext{\bibstring{in}\addnbspace}}{}%
+}
 
 \addbibresource{references.bib}
 \linespread{1.5}
