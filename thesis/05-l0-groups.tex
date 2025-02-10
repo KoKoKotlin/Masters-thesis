@@ -1,36 +1,28 @@
-\section{$L_0$-Groups, connection between extrem ameanability and chromatic numbers}\label{sec:l0groups}
-In this chapter, we want to establish a connection between the extrem ameanability of a $L_0$-Group and the boundedness of the chromatic numbers of a sequence of graphs.
+\section{$L_0$-Groups, connection between extreme amenability and chromatic numbers}\label{sec:l0groups}
+In this chapter, we want to establish a connection between the extreme amenability of a $L_0$-group and the boundedness of the chromatic numbers of a sequence of graphs.
 These graphs will be constructed using the structure of the $L_0$-groups.
 
 Firstly we have to define what is meant by the symbol $L_0(\mu, G)$. Some authors already consider the set of simple functions from Defintion \ref{defin:sf} together with the operation $\star$ defined in Theorem \ref{thm:stop} as the topological group $L_0(\mu, G)$. In other works such as \cite{sl2024} this topological group is the Raikov completion (see \cite[Chapter 3.6]{atop2008}) of $S(\mu, G)$. In this case the topological group $S(\mu, G)$ would be a dense subgroup of $L_0(\mu, G)$.   
 
-When talking about extrem ameanability of topological groups it is sufficient to prove it for dense subgroups because of the following theorem: 
+When talking about extreme amenability of topological groups it is sufficient to prove it for dense subgroups because of the following Theorem. 
 \begin{thm}\label{thm:da}
-  Let $G$ be a topological group that is Hausdorff and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely ameanable if and only if $G$ is extremely ameanable. 
+  Let $G$ be a topological group that is Hausdorff and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely amenable if and only if $G$ is extremely amenable. 
 \end{thm}
 
 \begin{proof}
-  Let $g \in G$ and let $X$ be a compact space. Take a continous action \[G \times X \to X, \: (g, x) \mapsto g \anddot x.\] This action restricts to a continous action on $H$. Since $H$ is dense in $G$, by Theorem \ref{thm:fcl} we can find $\mathcal{G} \in {\rm Flt}(H)$ that converges to $g$. Now let $\mathcal{F} \in {\rm UFlt}(X)$ with $\mathcal{G} \subseteq \mathcal{F}$. This exists due to Theorem \ref{thm:ulfil} and this filter still converges to $g$. Furthermore since $H$ is extremely ameanable there exists $x_0 \in X$ such that $h \anddot x_0 = x_0$. Now consider the map $f$ defined as \[f\colon G \to X, \: g \mapsto g\anddot x_0.\] It follows that \[\forall F\in \mathcal{F}\colon f(F) = \{x_0\}\] and thus \[g\anddot x_0 = f(\lim\limits_{F \to \mathcal{F}}F) = \lim\limits_{F\to \mathcal{F}} f(F) = x_0.\] The exchange of function application and limit is possible since $f$ is continuous by definition.
-  Then for the other implication assume that there is a subgroup $H$ that is not extremely ameanable. This means there exists an continous action $H \times X \to X$ which admits no fixed point. It is possible to extend the action in a continous way to the whole group $G$ as above. Then we have constructed an continuous action on $G$ with no fixed point.
+  Let $g \in G$ and let $X$ be a compact space. Take a continous action \[G \times X \to X, \: (g, x) \mapsto g \anddot x.\] This action restricts to a continous action on $H$. Since $H$ is dense in $G$, by Theorem \ref{thm:fcl} we can find $\mathcal{G} \in {\rm Flt}(H)$ that converges to $g$. Now let $\mathcal{F} \in {\rm UFlt}(X)$ with $\mathcal{G} \subseteq \mathcal{F}$. This exists due to Theorem \ref{thm:ulfil} and this filter still converges to $g$. Furthermore since $H$ is extremely amenable there exists $x_0 \in X$ such that $h \anddot x_0 = x_0$. Now consider the map $f$ defined as \[f\colon G \to X, \: g \mapsto g\anddot x_0.\] It follows that \[\forall F\in \mathcal{F}\colon f(F) = \{x_0\}\] and thus \[g\anddot x_0 = f(\lim\limits_{F \to \mathcal{F}}F) = \lim\limits_{F\to \mathcal{F}} f(F) = x_0.\] The exchange of function application and limit is possible since $f$ is continuous by definition.
+  Then for the other implication assume that there is a subgroup $H$ that is not extremely amenable. This means there exists an continous action $H \times X \to X$ which admits no fixed point. It is possible to extend the action in a continuous way to the whole group $G$ like above. Then we have constructed a continuous action on $G$ with no fixed point.
 \end{proof}
 
-This result allows us in the main results of the thesis to only talk about the simple function because the extrem ameanability property is inherited by $L_0(\mu, G)$ from them.
+This result allows us in the main results of the thesis to only talk about the simple function because the extrem amenability property is inherited by $L_0(\mu, G)$ from them.
+
+In the following the symbol $\bar{1}$ represents the constant function which sends each element of $X$ to 1 in the set $S(\mu, \Z)$. 
 
 \begin{defin}
-  Let $X$ and $Y$ be sets. A step function $f\colon X \to Y$ with finite range induces a finite partion on X called $\P_f$ in the following way
-  \begin{equation*}
-    \P_f := \{f^{-1}(\{y\})\colon \forall y \in Y\}.
-  \end{equation*}
-  This is a well-defined finite partion because of the assumption that $f$ has finite range.
-\end{defin}
-
-In the following the symbols $\bar{1}$ represents the constant function which sends each element of $X$ to 1 in the set $S(\mu, \Z)$. 
-
-\begin{defin}
-  Let $X$ be a set and $\mu$ be a submeasure on $X$ define on a subalgebra $\mathcal{B} \subseteq \PowS(X)$. Addtionally let $\varepsilon \in \R_{>0}$ and $\P \in \Pi(\mathcal{B})$ then define the graph $\Gamma(\varepsilon, \P, \mu)$ in the following way
+  Let $X$ be a set and $\mu$ be a submeasure on $X$ defined on a subalgebra $\mathcal{B} \subseteq \PowS(X)$. Addtionally let $\varepsilon \in \R_{>0}$ and $\P \in \Pi(\mathcal{B})$ then define the graph $\Gamma(\varepsilon, \P, \mu)$ in the following way
   \begin{itemize}
     \item the vertex set of $\Gamma(\varepsilon, \P, \mu)$ is $\Z^\P$,
-    \item the vertecies $f, g \in \Z^\P$ are connected in $\Gamma(\varepsilon, \P, \mu)$ if \[\mu(\{P \in \P\colon f(P) \neq g(P) + 1\}) < \varepsilon \: \lor \: \mu(\{P \in \P\colon g(P) \neq f(P) + 1\}) < \varepsilon.\]
+    \item the vertices $f, g \in \Z^\P$ are connected in $\Gamma(\varepsilon, \P, \mu)$ if \[\mu(\{P \in \P\colon f(P) \neq g(P) + 1\}) < \varepsilon.\qedhere\]
   \end{itemize}
 \end{defin}
 
@@ -42,14 +34,14 @@ In the following the symbols $\bar{1}$ represents the constant function which se
   \begin{align*}
     f - g \in \bar{1} + V_\varepsilon   &\iff \mu(\{x \in X\colon (f-g)(x) \neq 1\}) < \varepsilon \\
                                       &\iff \mu(\{x \in X\colon f(x) \neq g(x) + 1\}) < \varepsilon \\
-                                      &\iff \mu(\bigcup \{A \in \P \colon f(A) \neq g(A) + 1\}) < \varepsilon
+                                      &\iff \mu\left(\bigcup \{A \in \P \colon f(A) \neq g(A) + 1\}\right) < \varepsilon.\qedhere
   \end{align*}
 \end{proof}
 
 \begin{thm}[Sabok, {\cite[Lemma 5]{sabok2012}}]\label{thm:colve}
-  Let $X$ a set, $\mu\colon \mathcal{B} \to [0, \infty]$ a diffuse submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$. Then the following are equivalent:
+  Let $X$ be a set, $\mu\colon \mathcal{B} \to [0, \infty]$ a diffuse submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$. Then the following are equivalent:
   \begin{enumerate}
-    \item $S(\mu, G)$ is extremely ameanable for every non-trivial, Hausdorff, abelian topological group $G$,
+    \item $S(\mu, G)$ is extremely amenable for every non-trivial, Hausdorff, abelian topological group $G$,
     \item $\forall \varepsilon > 0\colon \sup\limits_{\P \in \Pi(\mathcal{B})}\chi(\Gamma(\varepsilon, \mathcal{P}, \mu)) = \infty$.
   \end{enumerate}
 \end{thm}
@@ -59,7 +51,7 @@ In the following the symbols $\bar{1}$ represents the constant function which se
   \begin{equation*}
     \forall \P \in \Pi(\mathcal{B})\colon \chi(\Gamma(\varepsilon, {\P}, \mu)) \leq d. 
   \end{equation*}
-  Given this assumption we claim that the the group $S(\mu, \Z)$ is not extremely ameanable. To this end choose a coloring of $\Gamma(\varepsilon, \P, \mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in \Pi(\mathcal{B})$. Now the goal is to define a coloring on the whole set $S(\mu, \Z)$. To this end define the family of sets
+  Given this assumption we claim that the the group $S(\mu, \Z)$ is not extremely amenable. To this end choose a coloring of $\Gamma(\varepsilon, \P, \mu)$ called $c_{\P}\colon \Z^{\P} \to \{1, \ldots, d\}$ for every $\P \in \Pi(\mathcal{B})$. Now the goal is to define a coloring on the whole set $S(\mu, \Z)$. To this end define the family of sets
   \begin{equation*}
     \mathcal{A} := \{\{ \P \in \Pi(X)\colon \P_0 \preccurlyeq \P\}\colon \P_0 \in \Pi(X)\}.
   \end{equation*}
@@ -76,9 +68,9 @@ In the following the symbols $\bar{1}$ represents the constant function which se
   Convergence of the limit above is ensured by the fact that it is a limit in a finite and discrete space and thus the limit has to take one and only one value in $\{1, \ldots, d\}$.
   
   Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. If $f - g\in \bar{1} + V_\varepsilon$ then by Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$.
-  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ and thus $X_i - X_i$ is not dense at $\bar{1}$ for each $i = 1, \ldots, d$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extrem amenability it follows that $S(\mu, \Z)$ is not extremely ameanable. 
+  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ and thus $X_i - X_i$ is not dense at $\bar{1}$ for each $i = 1, \ldots, d$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extreme amenability it follows that $S(\mu, \Z)$ is not extremely amenable. 
 
-  For the second implication suppose that $S(\mu, G)$ is not extremely ameanable. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} we get the existence of a set $S \subseteq S(\mu, G)$ that is big on the left\footnote{This means that there exists a finite set $E \subseteq S(\mu, G)$ such that $S(\mu, G) = E + S.$ Additionally $\{e + S\colon e \in E\}$ is a covering of $S(\mu, G)$.} such that $S(\mu, G) \neq \overline{S - S}$. Let $E \subseteq S(\mu, G)$ finite with an enumeration $E = \{e_1, e_2, \ldots, e_n\}$ with $n \in \N$ such that $S(\mu, G) = E + S$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
+  For the second implication suppose that $S(\mu, G)$ is not extremely amenable. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} we get the existence of a set $S \subseteq S(\mu, G)$ that is big on the left\footnote{This means that there exists a finite set $E \subseteq S(\mu, G)$ such that $S(\mu, G) = E + S.$ Additionally $\{e + S\colon e \in E\}$ is a covering of $S(\mu, G)$.} such that $S(\mu, G) \neq \overline{S - S}$. Let $E \subseteq S(\mu, G)$ finite with an enumeration $E = \{e_1, e_2, \ldots, e_n\}$ with $n \in \N$ such that $S(\mu, G) = E + S$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
   \begin{equation*}
     (f + W_\varepsilon) \cap (S - S) = \emptyset
   \end{equation*}
@@ -93,9 +85,9 @@ In the following the symbols $\bar{1}$ represents the constant function which se
   \begin{equation*}
     g_k\colon X \to G, \: g_k(x) \mapsto k(\iota_\P(x))f(x)
   \end{equation*}
-  which is an element of $S(\mu, G)$. Now we can define the mapping $c\colon \Z^\P \to \{1,\ldots, d\}$ as
+  which is an element of $S(\mu, G)$. Now we can define the mapping $c$ as
   \begin{equation*}
-    c\colon k \mapsto i \iff g_k \in S_i.
+    c\colon \Z^\P \to \{1,\ldots, d\}, \: k \mapsto i \iff g_k \in S_i.
   \end{equation*}
 
   \textbf{Claim:} The mapping $c$ is a coloring of the graph $\Gamma(\varepsilon, \P, \mu)$. To this end suppose there are two nodes $k, l \in \Z^\P$ which are connected and have the same color $i \in \{1, \ldots, d\}$. Let $B := \bigcup\{A\in\P\colon k(A) \neq l(A) + 1\}$. It holds that $\mu(B) \leq \varepsilon$ since $k$ and $l$ are connected in $\Gamma(\varepsilon, \P, \mu)$. For $x \in X\setminus B$ it holds that
@@ -107,5 +99,5 @@ In the following the symbols $\bar{1}$ represents the constant function which se
     \mu(\{x\in X\colon g_k(x) - g_l(x) \neq f(x)\}) < \varepsilon.
   \end{equation*}
   which means $g_k - g_l \in f + V_\varepsilon$. Furthermore we have $g_k, g_l \in S_i$ because of the definition of $c$. Hence $g_k - g_k \in (f + V_\varepsilon) \cap (S_i - S_i) \lightning$.
-  This proofs the claim that $c$ is a coloring of $\Gamma(\varepsilon,\P,\mu)$ with $d$ colors.
+  This proves the claim that $c$ is a coloring of $\Gamma(\varepsilon,\P,\mu)$ with $d$ colors.
 \end{proof}

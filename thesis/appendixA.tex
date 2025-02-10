@@ -1,15 +1,15 @@
-\section{Submeasures and Partitions of unity}\label{appendixA}
+\section{Submeasures}\label{appendixA}
 
 \begin{defin}
   Let $\mathcal{A}$ be a boolean algebra and $\mu\colon \mathcal{A} \to [0, \infty)$. The map $\mu$ is called a \textbf{submeasure} if
-  \begin{enumerate}
+  \begin{enumerate}[label=\roman*.)]
     \item $\mu(0) = 0$,
     \item $\forall A, B \in \mathcal{A}\colon A \leq B \Rightarrow \mu(A) \leq \mu(B)$,
-    \item $\forall A, B \in \mathcal{A}\colon \mu(A \lor B) \leq \mu(A) + \mu(B)$.
+    \item $\forall A, B \in \mathcal{A}\colon \mu(A \lor B) \leq \mu(A) + \mu(B)$.\qedhere
   \end{enumerate}
 \end{defin}
 
-The thesis will assume that every submeasure is a submeasure on the a subalgebra of the power set algebra of a set $X$. This is possible because of the representation theorem of stone \cite{stone}.
+The thesis will assume that every submeasure is a submeasure on the a subalgebra of the power set algebra of a set $X$. This is possible because of the representation Theorem of stone \cite{stone}.
 
 \begin{defin}
   Let $X$ be a set. Then $\Pi(X)$ is the set of all finite partitions of $X$, which means:
@@ -36,14 +36,14 @@ The thesis will assume that every submeasure is a submeasure on the a subalgebra
 \begin{defin}
   Let $X$ be a set and let $\mu$ be a submeasure on a subalgebra $\mathcal{B}$ of $\PowS(X)$. Then $\mu$ is called \textbf{diffuse} if
   \begin{equation*}
-    \forall \varepsilon\in \R_{>0}\exists \P \in \Pi(\mathcal{B})\forall P \in \P: \mu(P) < \varepsilon.
+    \forall \varepsilon\in \R_{>0}\exists \P \in \Pi(\mathcal{B})\forall P \in \P: \mu(P) < \varepsilon.\qedhere
   \end{equation*}
 \end{defin}
 
 \begin{defin}
-  Let $(P, \leq)$ be an ordered set. The set is called directed if for every $p_1, p_2 \in P$ there exists an element $p_3 \in P$ such that
+  Let $(P, \leq)$ be a partially ordered set. The set is called directed if for every $p_1, p_2 \in P$ there exists an element $p_3 \in P$ such that
   \begin{equation*}
-    p_1 \leq p_3 \: \land \: p_2 \leq p_3.
+    p_1 \leq p_3 \: \land \: p_2 \leq p_3.\qedhere
   \end{equation*}
 \end{defin}
 
@@ -56,7 +56,7 @@ The thesis will assume that every submeasure is a submeasure on the a subalgebra
   Now let $\P_1, \P_2 \in \Pi(X)$. Define $\P_3 := \{ P \cap P' \colon P \in \P_1, \:P' \in \P_2 \}$.
   Since for any two sets $A, B$ it holds that $A \cap B \subseteq A$ and $A \cap B \subseteq B$ it follows that
   \begin{equation*}
-    \P_1 \preccurlyeq \P_3 \land \P_2 \preccurlyeq \P_3.
+    \P_1 \preccurlyeq \P_3 \land \P_2 \preccurlyeq \P_3.\qedhere
   \end{equation*}
 \end{proof}
 

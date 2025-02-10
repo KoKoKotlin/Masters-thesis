@@ -1,6 +1,6 @@
 \section{The Borsuk-Ulam Theorem and a generalization}\label{sec:borsuk}
 
-The following section describes the Borsuk-Ulam theorem and an important generelization by Volovikov needed to prove the following claim:
+The following section describes the Borsuk-Ulam Theorem and an important generelization by Volovikov needed to prove the following claim.
 \begin{thm}\label{thm:confun}
   If $p \in \mathbb{P}$ and $n, l \in \mathbb{N}$ with $n \geq l$ such that
   \begin{equation*}
@@ -8,21 +8,20 @@ The following section describes the Borsuk-Ulam theorem and an important generel
   \end{equation*}
   then for every continuous map $f\colon\lVert K_p(n,l)\rVert \to \mathbb{R}^d$ there is a point in $\lVert K_p(n,l)\rVert$ whose $\Z_p$-Orbit is mapped to a single point in $\mathbb{R}^d$ by $f$.
 \end{thm}
-This theorem will be needed later to prove a bound on the chromatic numbers of the graphs $\Gamma(\mu, \P, \varepsilon)$.
-An important tool needed in the proof of Theorem \ref{thm:confun} is a result of Volovikov which he described in \cite{vol1980}. It is a generalization of the Borsuk-Ulam theorem.
+This Theorem will be needed later to prove a bound on the chromatic numbers of the graphs $\Gamma(\mu, \P, \varepsilon)$.
+An important tool needed in the proof of Theorem \ref{thm:confun} is a result of Volovikov which he described in \cite{vol1980}. It is a generalization of the Borsuk-Ulam Theorem.
 \begin{lemma}\label{lem:vol}
-  Let $X$ be a connected paracompact Hausdorff space, acted on without fixed points by a cyclic group $\Z_p$ of prime order $p$. For any continuous function $f\colon X \to M$ and generator of $T \in \Z_p$ let
+  Let $X$ be a connected paracompact Hausdorff space, acted on without fixed points by a cyclic group $\Z_p$ of prime order $p$. For any continuous function $f\colon X \to M$ and generator $T$ of $\Z_p$ let
   \begin{equation*}
     A(f) := \{x\in X\colon f(x) = f(Tx) = \cdots = f(T^{p-1}x)\}
   \end{equation*}
-  be the set of points of which the $\Z_p$-orbit is mapped by $f$ to a single point. Suppose that $\tilde{H}^i(X; \Z_p) = 0$ for $0 < i < n$ and $M$ is a compact $\Z_p$ orientiable topological manifold of dimension $m$. If the map $f^*\colon \tilde{H}^n(X; \Z_p) \to \tilde{H}^n(M; \Z_p)$ has zero image then the cohomological dimension over $\Z_p$ of $A(f)$ is at least $n-m(p-1)$. 
+  be the set of points of which the $\Z_p$-orbit is mapped by $f$ to a single point. Suppose that $\tilde{H}^i(X; \Z_p) = 0$ for $0 < i < n$ and $M$ is a compact $\Z_p$ orientiable topological manifold of dimension $m$. If the map $\tilde{H}^n(f)\colon \tilde{H}^n(X; \Z_p) \to \tilde{H}^n(M; \Z_p)$ has zero image, then the cohomological dimension over $\Z_p$ of $A(f)$ is at least $n-m(p-1)$. 
 \end{lemma}
 
-In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compiled various formulations of the Borsuk-Ulam theorem and described it can be generalized with the concept of $\Z_2$ spaces and more generally whith $E_nG$ spaces, there $G$ is a group. In our case $G = \Z_p$ and instead of two there will be $p \in \mathbb{P}$ points that get mapped to the same point by any continuous function. 
+In his book ``Using the Borsuk-Ulam Theorem'' \cite{using2003} Matoušek compiled various formulations of the Borsuk-Ulam Theorem and described it can be generalized with the concept of $\Z_2$ spaces and more generally with $E_nG$ spaces where $G$ is a group. In our case $G = \Z_p$ and instead of two there will be $p \in \mathbb{P}$ points that get mapped to the same point by any continuous function. 
 
 \subsection{The simplicial complex $K_p(n, l)$}
 
-% TODO: illustration of component interval of a function
 \begin{defin}
   Let $n, p \in \N$, then $\tau \subseteq [n+1] \times [p]$ is called a \textbf{partial function} if \[\restr{\tau}{\dom(\tau)} = \tau \cap (\dom(\tau) \times [p])\] is a function. Let $\tau_1, \tau_2$ be partial functions from $[n+1]$ to $[p]$. Now define
   \begin{equation*}
@@ -34,7 +33,7 @@ In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compile
   \begin{equation*}
     f \uplus g: \dom(f) \cup \dom(g) \to Y, \: x \mapsto \begin{cases}
       f(x), \: x \in \dom(f), \\
-      g(x), \: x \in \dom(g).
+      g(x), \: x \in \dom(g).\qedhere
     \end{cases}
   \end{equation*}
 \end{defin}
@@ -43,7 +42,7 @@ In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compile
   Let $l \in \N$ and $p \in \mathbb{P}$. Let $V_p(n, l) = P([n+1], [p])$ with the additional properties
   \begin{enumerate}[label=\roman*.)]
     \item $\forall \tau \in V_p(n,l)\colon n - l \leq |\dom(\tau)|$,
-    \item $\forall \tau \in V_p(n,l)\colon \left|\mathbb{I}(\tau)\right| \leq l+1$.
+    \item $\forall \tau \in V_p(n,l)\colon \left|\mathbb{I}(\tau)\right| \leq l+1$.\qedhere
   \end{enumerate}
 \end{defin}
 
@@ -51,27 +50,27 @@ In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compile
   Let $K_p(n,l)$ be an abstract simplicial complex with
   \begin{enumerate}[label=\roman*.)]
     \item $V(K_p(n,l)) = V_p(n,l)$,
-    \item the simplicies in $K_p(n,l)$ are chains of $V_p(n,l)$ with repect to $\subseteq_f$.
+    \item the simplices in $K_p(n,l)$ are chains of $V_p(n,l)$ with respect to $\subseteq_f$.
   \end{enumerate}
   This complex is a $\Z_p$ complex with the action
   \begin{equation*}
     \Z_p \times V_p(n,l) \to V_p(n,l), \: (k, \tau) \mapsto \lambda(k, \tau) = k +_f \tau,
   \end{equation*}
-  with $\dom(k +_f \tau) = \dom(\tau)$ and $\forall i\in \dom(k +_f \tau)\colon (k+_f\tau)(i) = k +_p \tau(i)$.
+  with $\dom(k +_f \tau) = \dom(\tau)$ and $\forall i\in \dom(k +_f \tau)\colon (k+_f\tau)(i) = k +_p \tau(i)$.\qedhere
 \end{defin}
 
 \begin{defin}
   Let $n \in \N$ and $p \in \mathbb{P}$. Define $S_p(n)$ as the abstract simplicial complex with
   \begin{enumerate}[label=\roman*.)]
     \item $V(S_p(n)) = \{\tau\colon [n+1]\to [p]\colon |\dom(\tau)| = 1\}$,
-    \item $\sigma \in S_p(n)\setminus\emptyset \: \longeq \: \forall \tau_1,\tau_2\in\sigma\colon \: (\tau_1 \neq \tau_2) \Rightarrow (\dom(\tau_1) \cap \dom(\tau_2) = \emptyset)$.
+    \item $\sigma \in S_p(n)\setminus\emptyset \: \longeq \: \forall \tau_1,\tau_2\in\sigma\colon \: (\tau_1 \neq \tau_2) \Rightarrow (\dom(\tau_1) \cap \dom(\tau_2) = \emptyset)$.\qedhere
   \end{enumerate}
 \end{defin}
 
 \begin{defin}
   Let $n \in \N$ and $p\in\mathbb{P}$. For $a \in (\Z_p\setminus\{0\})^{n+1}$ define $S_p(n,a)$ as
   \begin{equation*}
-    S_p(n,a) := \{0, a(0)\} \star \{0,a(1)\} \star \ldots \star \{0,a(n)\}.
+    S_p(n,a) := \{0, a(0)\} \star \{0,a(1)\} \star \ldots \star \{0,a(n)\}.\qedhere
   \end{equation*}
 \end{defin}
 
@@ -79,7 +78,7 @@ In his book ``Using the Borsuk-Ulam Theorem`` \cite{using2003} Matoušek compile
   By Lemma \ref{lem:simexkn} it holds that $\lVert S_p(n,a) \rVert \cong \mathbb{S}^{n}$ for $n\in\N$.
 \end{rem}
 
-Now, our goal is to show that the complex has all trivial reduced cohomology groups $\tilde{H}^i(K_p(n,l); \Z_p)$ with coefficients in $\Z_p$ such that we can apply lemma \ref{lem:vol}. Since $\Z_p$ together with $+_p$ and the multiplication of the natural numbers $\hspace*{-5px}\mod p$ is a field, it is sufficient to show that the reduced homology groups $\tilde{H}_i(K_p(n,l); \Z_p)$ are trivial. The triviality of the cohomology groups follows from the universal coefficient theorem \ref{thm:uct}. 
+Now, our goal is to show that the complex has trivial reduced cohomology groups $\tilde{H}^i(\lVert K_p(n,l)\rVert; \Z_p)$ with coefficients in $\Z_p$ such that we can apply Lemma \ref{lem:vol}. Since $\Z_p$ together with $+_p$ and the multiplication of the natural numbers $\hspace*{-5px}\mod p$ is a field, it is sufficient to show that the reduced homology groups $\tilde{H}_i(K_p(n,l); \Z_p)$ are trivial. The triviality of the cohomology groups follows from the Universal Coefficient Theorem \ref{thm:uct}. 
 
 \begin{lemma}
   Let $n \in \N$ and let $p \in \mathbb{P}$. Then
@@ -101,31 +100,31 @@ Now, our goal is to show that the complex has all trivial reduced cohomology gro
     \lVert S_p(n) \rVert \simeq \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}} \hspace*{-17px}S_p(n,a) \right\rVert \overset{\ref{rem:s}}{\simeq} \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \right\rVert.
   \end{equation*}
 
-  It is clear that $V(S_p(n)) \cong V_p(n,n)$ because the vertecies in $\sd(S_p(n))$ are maximal chains in $S_p(n)$ which are the total functions from $[n+1]$ to $[p]$ by definition and thus $K_p(n,n) \cong \sd(S_p(n))$. By Lemma \ref{lem:sdsimeq} it follows that
+  It is clear that $V(S_p(n)) \cong V_p(n,n)$ because the vertices in $\sd(S_p(n))$ are maximal chains in $S_p(n)$ which are the total functions from $[n+1]$ to $[p]$ by definition and thus $K_p(n,n) \cong \sd(S_p(n))$. By Lemma \ref{lem:sdsimeq} it follows that
   \begin{equation*}
     \lVert K_p(n, n) \rVert \simeq \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \right\rVert \simeq \left\lVert \bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^n \right\rVert
   \end{equation*}
   since $\left|(\Z_p\setminus\{0\})^{n+1}\right| = (p-1)^{n+1}$.
 \end{proof}
 
-In the following it will be needed to show that $K_p(n,n)$ has also a wedge-decomposition similiar to $S_p(n)$.
+In the following it will be needed to show that $K_p(n,n)$ also has a wedge-decomposition similiar to $S_p(n)$.
 \begin{defin}
   Let $n\in\N$ and $p\in \mathbb{P}$. Define the abstract simplicial complex $K_p(n,a)$ for $a \in (\Z_p\setminus\{0\})^{n+1}$ as
   \begin{equation*}
-    K_p(n,a) = \{\tau \in K_p(n,n)\colon \forall k\colon\dom(\tau)\colon \tau(m) = 0 \: \lor \: t(m) = a(m)\}\}.
+    K_p(n,a) = \{\tau \in K_p(n,n)\colon \forall k\in\dom(\tau)\colon \tau(k) = 0 \: \lor \: \tau(k) = a(k)\}. \qedhere
   \end{equation*}
 \end{defin}
 
 \begin{rem}\label{rem:kcongs}
   Let $n,l\in\N$ with $n \geq l$, $p\in\mathbb{P}$ and $a\in (\Z_p\setminus\{0\})^{n+1}$. It holds that
   \begin{align*}
-    K_p(n,a) &\cong \sd(S_p(n,a)), \\
-    K_p(l,l) &\cong \sd(S_p(l)).
+    \lVert K_p(n,a)\rVert &\cong \lVert \sd(S_p(n,a))\rVert, \\
+    \lVert K_p(l,l)\rVert &\cong \lVert \sd(S_p(l))\lVert.
   \end{align*}
 \end{rem}
 
 \begin{proof}
-  Rememeber that the vertecies of $\sd(S_p(n,a))$ are the total chains in $S_p(n,a)$ which are isomorphic to $V_p(n,n)$ which means they represent total functions which are either 0 or have the same value as the function $a$ which is the definition of an element in $K_p(n,a)$. The same argument can be applied for the second claim $K_p(l,l) \cong \sd(S_p(l))$
+  Rememeber that the vertices of $\sd(S_p(n,a))$ are the total chains in $S_p(n,a)$ which are isomorphic to $V_p(n,n)$ which means they represent total functions which are either 0 or have the same value as the function $a$ which is the definition of an element in $K_p(n,a)$. The same argument can be applied for the second claim $\lVert K_p(l,l)\rVert \cong \lVert \sd(S_p(l))\rVert$.
 \end{proof}
 
 Now the following decomposition of $K_p(n,n)$ can be proven:
@@ -139,18 +138,18 @@ Now the following decomposition of $K_p(n,n)$ can be proven:
   Define $D_n$ as a simplicial complex with
   \begin{itemize}
     \item $V(D_n) = P([m], 0)$,
-    \item the simplicies are chains with respect to $\subseteq_f$,
+    \item the simplices are chains with respect to $\subseteq_f$,
   \end{itemize}
   and define $\bar{0}$ as the total, constant zero function. Note that $D_n \subseteq K_p(n,n)$ and that $D_n \subseteq K_p(n,a)$ for all $a \in (\Z_p\setminus \{0\})^{n+1}$ by definition.
-  Also note that $\bigvee\limits_{a\in(\Z_p\setminus\{0\})^{n+1}}\hspace*{-24px}K_p(n,a) = K$ contains $(p-1)^{n+1}$ copies of $D_n$ glued together at $\bar{0}$ and $K_p(n,n)$ contains one copy of $D_n$. $D_n$ is contractible since it is the barycentric subdivision of $\{0\}^{*(n+1)}$ which is the $(n+1)$-fold join of the one point space which is the same as taking $(n+1)$ nested cones of this space. Since taking a cone always produces a contractible space this space is contractible and the barycentric subdivision keeps the homotopy type. Now collapse all copies of $D_n$ in $K$ and collapse the one copy in $K_p(n,n)$ to $\bar{0}$. Then the two sets $K_p(n,n)$ and $K$ are isomorphic by sending a $\tau \in V(K_p(n,n))$ to the component of $K$ where $\tau \subseteq_f a$. Since the simplicies  in $K_p(n,n)$ are chains with respect to $\subseteq_f$ this means that if the greatest element of a chain lies in the component $K_p(n,a)$ for some $a$ in $K$ the whole chain is contained in this component meaning the simplicies are maintained by this isomorphism. 
+  Also note that $\bigvee\limits_{a\in(\Z_p\setminus\{0\})^{n+1}}\hspace*{-24px}K_p(n,a) =: K$ contains $(p-1)^{n+1}$ copies of $D_n$ glued together at $\bar{0}$ and $K_p(n,n)$ contains one copy of $D_n$. $D_n$ is contractible since it is the barycentric subdivision of $\{0\}^{*(n+1)}$ which is the $(n+1)$-fold join of the one point space which is the same as taking $n+1$ nested cones of this space. Since taking a cone always produces a contractible space this space is contractible and the barycentric subdivision keeps the homotopy type. Now collapse all copies of $D_n$ in $K$ and collapse the one copy in $K_p(n,n)$ to $\bar{0}$. Then the two sets $K_p(n,n)$ and $K$ are isomorphic by sending a $\tau \in V(K_p(n,n))$ to the component of $K$ where $\tau \subseteq_f a$. Since the simplices  in $K_p(n,n)$ are chains with respect to $\subseteq_f$ this means that if the greatest element of a chain lies in the component $K_p(n,a)$ for some $a$ in $K$ the whole chain is contained in this component meaning the simplices are maintained by this isomorphism. 
 \end{proof}
 
 \begin{defin}
-  Define $L_p(n,l)$ as a subcomlex of $K_p(n,n)$ with \[\forall\tau\in V(L_p(n,l))\colon |\mathbb{I}(\tau)| \leq l+1 \]
-  and define $J_p(n,l)$ as a subcomplex of $K_p(n,l)$ with \[\forall \tau \in V(J_p(n,l))\colon |\dom(\tau)| \geq n-l.\]
+  Define $L_p(n,l)$ as a subcomplex of $K_p(n,n)$ with \[\forall\tau\in V(L_p(n,l))\colon |\mathbb{I}(\tau)| \leq l+1 \]
+  and define $J_p(n,l)$ as a subcomplex of $K_p(n,l)$ with \[\forall \tau \in V(J_p(n,l))\colon |\dom(\tau)| \geq n-l.\qedhere\]
 \end{defin}
 
-Now note that $K_p(n,l) = J_p(n,l) \cap L_p(n,l)$. We can used this fact for applying the Mayer-Vietoris-sequence for finding the homology groups of $K_p(n,l)$. This means we have to firstly study the complexes $J_p(n,l)$ and $L_p(n,l)$ and show that their homology groups are trivial up to some point.
+Now note that $K_p(n,l) = J_p(n,l) \cap L_p(n,l)$. We can use this fact for applying the Mayer-Vietoris-Sequence for finding the homology groups of $\lVert K_p(n,l)\rVert$. This means we first have to study the complexes $J_p(n,l)$ and $L_p(n,l)$ and show that their homology groups are trivial up to some point.
 
 We start our analysis with the subcomplex $L_p(n,l)$. Notice that if we compare $K_p(l,l)$ to $L_p(n,l)$ than $L_p(n,l)$ contains additional partial functions namely all the functions with a domain not contained in $[l+1]$. We will show that we can extend the complex $K_p(l,l)$ by adding cones to specific subcomplexs such that we get a new complex that is isomorphic to $L_p(n,l)$. The intuitition behind this idea is that the added cone points and the join of already existing partial functions will act like the missing functions with large domain. 
 
@@ -161,18 +160,18 @@ We start our analysis with the subcomplex $L_p(n,l)$. Notice that if we compare 
     L^{k+1}_\sigma &= {\rm Cone}(L^k_\sigma, (L^k_{(k,i) \uplus \sigma})_{i\in [p]})
   \end{align*}
   where $(j,i)$ denotes the partial function $\tau\colon [m] \to [p]$ with $\dom(\tau) = \{j\}$ and $\tau(j) = i$. Define ${\rm Cone}(K, (L_\sigma)_{\sigma \in P([m],[p])}) =: \mathcal{K}^m$.
-  Addtionally this definition also works for a set $Y \subseteq [m]$ and all $\sigma \in P(Y, [p])$ only looking at partial functions with a resticted domain because $Y$ inherits the natural order of $\N$.
+  Additionally this definition also works for a set $Y \subseteq [m]$ and all $\sigma \in P(Y, [p])$ only looking at partial functions with a resticted domain because $Y$ inherits the natural order of $\N$.
 \end{defin}
 
-The well-definition of the induction step follows from the assumption that $A_\sigma \subseteq A_\tau$ if $\tau \subseteq \sigma$.
+The well-definedness of the induction step follows from the assumption that $A_\sigma \subseteq A_\tau$ if $\tau \subseteq \sigma$.
 
 \begin{lemma}\label{lem:ecsimeq}
   Let $\mathcal{K}$ be a simplicial complex and let $(L_\sigma)_{\sigma \in P(m,p)}$ be a sequence of subcomplexes for $p,m \in \N$ empty or contractible then \[\lVert \mathcal{K} \rVert \simeq \lVert {\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma \in P(m,p)})\rVert.\]  
 \end{lemma}
 
 \begin{proof}
-  We prove the claim by induction. So let $k = 0$. Then the claim follows directly from lemma \ref{lem:seqhom} since the sequence of subcomplexes is finite.
-  Suppose that the claim holds for an arbitrary $k \leq m - 1$. Then since the $L^k_\sigma$ are all empty or contractible by lemma \ref{lem:seqhom} we can deduce that $X^{k+1}$ is homotopy equivalent to $X^0$.
+  We prove the claim by induction. So let $k = 0$. Then the claim follows directly from Lemma \ref{lem:seqhom} since the sequence of subcomplexes is finite.
+  Suppose that the claim holds for an arbitrary $k \leq m - 1$. Then since the $L^k_\sigma$ are all empty or contractible by Lemma \ref{lem:seqhom} we can deduce that $X^{k+1}$ is homotopy equivalent to $X^0$.
 \end{proof}
 
 \begin{lemma}\label{lem:lnpkll}
@@ -180,41 +179,41 @@ The well-definition of the induction step follows from the assumption that $A_\s
 \end{lemma}
 
 \begin{proof}
-  For $n = l$ this is trivial. So assume that $n > l$ and let \[K = {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])}).\]
+  For $n = l$ this is trivial. So assume that $n > l$ and let \[K := {\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma \in P([l+1,n+1],[p])}).\]
   
-  We will construct a combinatorial isomorphism $\Phi\colon V(L_p(n,l)) \to V(K)$ which proves that claim of the lemma since the realizations of the two complexes will be homeomorphic.
+  We will construct a combinatorial isomorphism $\Phi\colon V(L_p(n,l)) \to V(K)$ which proves that claim of the Lemma since the geometric realizations of the two complexes will be homeomorphic.
   
   Firstly notice that all $\tau \in V_p(l,l) \subseteq L_p(n,l)$ are already contained in $K_p(l,l)$. This means that \[\Phi|_{V_p(l,l)} = \id_{V_p(l,l)}.\] 
   Denote by $\Delta_{(k,i)}$ the cone point over the complex $L^k_{(k,i)}$. Define $\Phi((k,i)) = \Delta_{(k,i)}$ for $k \in [l+1,n+1]$ which means that this cone point will act as the function $(k,i)$ in the complex $K$.
 
   We prove that $\Phi$ is well-defined by induction over $m$ from $l+1$ to $n$. Let $m = l+1$ and consider $\tau \in L_p(n,l)$ where $\tau \in P([l+2],[p])$. If $l+1 \notin \dom(\tau)$ then $\Phi(\tau) = \tau \in K_p(n,l)$. Otherwise consider the two cases
   \begin{itemize}
-    \item $\Phi(\tau) = \tau' \sqcup \Delta_{(l+1, i_1)}$ for $\tau' \in V_p(l,l)$, and because of the definition of $L_p(n,l)$ we know that $|\mathbb{I}(\tau)| = |\mathbb{I}(\tau' \uplus (l+1,\tau(l+1)))| \leq l+1$ which means $\tau' \in L_{(l+1,\tau(l+1))}$ and thus $\Phi(\tau) \in {\rm Cone}(L^{l+1}_{(l+1,\tau(l+1))})$,
+    \item $\Phi(\tau) = \tau' \sqcup \Delta_{(l+1, i_1)}$ for $\tau' \in V_p(l,l)$, and because of the definition of $L_p(n,l)$ we know that $|\mathbb{I}(\tau)| = |\mathbb{I}(\tau' \uplus (l+1,\tau(l+1)))| \leq l+1$ which means $\tau' \in L^{l+1}_{(l+1,\tau(l+1))}$ and thus $\Phi(\tau) \in {\rm Cone}(L^{l+1}_{(l+1,\tau(l+1))})$,
     \item $\Phi(\tau) = \Delta_{(l+1,\tau(l+1))}$ which is trivially in ${\rm Cone}(L^{l+1}_{(l+1,\tau(l+1))})$.
     \end{itemize}
     Now assume that $\Phi$ is well-defined for an $m < n$ and consider the case $m+1$. Let $\tau \in L_p(n,l)$ with $\tau \in P([m+2, n+1])$. If $m+1 \notin \dom(\tau)$ then the $\Phi$ is well-defined by applying the induction hypothesis. Otherwise consider the cases
     \begin{itemize}
-      \item $\Phi(\tau) = \tau' \uplus \Delta_{(m+1,i_m)}$ for $\tau' \in V_p(m,l)$. On the one hand, we know that $\Phi(\tau') \in L^m_{(m,\tau'(m))}$ which means that $\tau'\in V_p(l,l)$. On the other hand, we know that $|\mathbb{I}(\tau)| = |\mathbb{I}(\tau'\uplus (m+1,\tau(m+1)))| \leq l+1$ and thus $\tau' \in L^m_{(m,\tau'(m))\uplus(m+1, \tau(m+1))}$ which implies $\tau' \in L^{m+1}_{(m+1,\tau(m+1))}$. It follows that $\Phi(\tau) \in {\rm Cone}(L^{m+1}_{(m+1,\tau(m+1))})$,
+      \item $\Phi(\tau) = \tau' \sqcup \Delta_{(m+1,i_m)}$ for $\tau' \in V_p(m,l)$. On the one hand, we know that $\Phi(\tau') \in L^m_{(m,\tau'(m))}$ which means that $\tau'\in V_p(l,l)$. On the other hand, we know that $|\mathbb{I}(\tau)| = |\mathbb{I}(\tau'\uplus (m+1,\tau(m+1)))| \leq l+1$ and thus $\tau' \in L^m_{(m,\tau'(m))\uplus(m+1, \tau(m+1))}$ which implies $\tau' \in L^{m+1}_{(m+1,\tau(m+1))}$. It follows that $\Phi(\tau) \in {\rm Cone}(L^{m+1}_{(m+1,\tau(m+1))})$,
       \item $\Phi(\tau) = \Delta_{(m+1,\tau(m+1))}$ which is trivially in ${\rm Cone}(L^{m+1}_{(m+1,\tau(m+1))})$.
     \end{itemize}
     Thus $\Phi$ is well-defined for all $\tau \in L_p(n,l)$.
 
-    Let $\tau, \tau \in L_p(n,l)$ and assume that $\Phi(\tau) = \Phi(\tau')$. If $\tau, \tau' \in K_p(l,l)$ then \[\tau = \Phi(\tau) = \Phi(\tau') = \tau'.\] Now assume that $\tau, \tau'$ are both not in $K_p(l,l)$ and $\tau, \tau' \in V_p(n, l)$. Firstly assume tha t $\dom(\tau) \neq \dom(\tau')$. Then w.l.o.g. we can assume that there is a $k\in [n+1]$ such that $k \in \dom(\tau)$ and $k \notin \dom(\tau')$. This means that $\Delta_{(k,\tau(k))}\in \Phi(\tau)$ and $\Delta_{(k,\tau(k))}\notin \Phi(\tau')$ which contradicts the assumption $\Phi(\tau) = \Phi(\tau')$ so their domains must be equal.
+    Let $\tau, \tau' \in L_p(n,l)$ and assume that $\Phi(\tau) = \Phi(\tau')$. If $\tau, \tau' \in K_p(l,l)$ then \[\tau = \Phi(\tau) = \Phi(\tau') = \tau'.\] Now assume that $\tau, \tau'$ are both not in $K_p(l,l)$ and $\tau, \tau' \in V_p(n, l)$. First assume that $\dom(\tau) \neq \dom(\tau')$. Then w.l.o.g. we can assume that there is a $k\in [n+1]$ such that $k \in \dom(\tau)$ and $k \notin \dom(\tau')$. This means that $\Delta_{(k,\tau(k))}\in \Phi(\tau)$ and $\Delta_{(k,\tau(k))}\notin \Phi(\tau')$ which contradicts the assumption $\Phi(\tau) = \Phi(\tau')$ so their domains must be equal.
 
-    Now write $\dom(\tau) = I \cup J$ with $I \subseteq [l+1]$ and $J \subseteq [l+1,n+1]$. Define $J = \{k_1, \ldots, k_r\}$ for $r \leq n-l$ such that $I \cup J = \dom(\tau)$ and consider
+    Now write $\dom(\tau) = I \cup J$ with $I \subseteq [l+1]$ and $J \subseteq [l+1,n+1]$. Define $J = \{k_1, \ldots, k_r\}$ for $r \leq n-l$ and consider
     \begin{align*}
       \Phi(\tau) = \tau_1 \sqcup (k_1, \tau(k_1)) \sqcup \cdots \sqcup (k_r, \tau(k_r)), \\
-      \Phi(\tau') = \tau_2 \sqcup (k_1, \tau'(k_1)) \sqcup \cdots \sqcup (k_r, \tau(k_r)).
+      \Phi(\tau') = \tau_2 \sqcup (k_1, \tau'(k_1)) \sqcup \cdots \sqcup (k_r, \tau(k_r)),
     \end{align*}
     where $\tau_1 = \tau|_I$ and $\tau_2 = \tau'_I$. Since the images of the functions are equal we get that $\tau_1 = \tau_2$ which means $\tau|_I = \tau'|_I$ and that $\tau(k_i) = \tau'(k_i)$ for all $i \in J$. This means that $\tau = \tau'$ and thus the function $\Phi$ is injective.
 
     Now take $\sigma \in K$. If $\sigma \in K_p(l,l)$ then $\sigma = \tau \in K_p(l,l)$ and since $K_p(l,l) \subseteq L_p(n,l)$ we get that $\Phi(\tau) = \tau = \sigma$. Now assume that $\tau \notin K_p(l,l)$. By the inductive definition of $K$ we know that we can write $\sigma$ as \[\sigma = \tau' \sqcup \Delta_{(k_1,i_1)} \sqcup \cdots \sqcup \Delta_{(k_r,i_r)}\] for $k_j \in [l+1,n+1]$ and $i_j \in [p]$ for all $j = 1,\ldots,r \leq n-l$ such that $k_{j_1} < k_{j_2}$ for $j_1 < j_2$. Then \[ \tau' \sqcup \Delta_{(k_1,i_1)} \sqcup \cdots \sqcup \Delta_{(k_{r-1},i_{r-1})}\in L^{k_r}_{k_r, i_r}\] and by repeated application of the definition we get that \[\tau' \in L_{(k_1,i_1)\uplus\cdots\uplus(k_r,i_r)}.\] This means \[\tau := \tau' \uplus (k_1, i_1) \uplus \cdots \uplus (k_r,i_r) \in L_p(n,l)\] and $\Phi(\tau) = \sigma$ and thus $\Phi$ is surjective.
 
-    It remains to show that $\Phi$ is a simplicial map. So let $\sigma \in L_p(n,l)$. By definition this is a chain of partial functions with repect to $\subseteq_f$. If this chain in contained in $K_p(l,l)$ then $\Phi(\sigma) = \sigma$ and thus a simplex in $K_p(l,l)$.
-    If not the we know that \begin{equation}\label{eq:subeqsq}
+    It remains to show that $\Phi$ is a simplicial map. So let $\sigma \in L_p(n,l)$. By definition this is a chain of partial functions with repect to $\subseteq_f$. If this chain is contained in $K_p(l,l)$ then $\Phi(\sigma) = \sigma$ and thus a simplex in $K_p(l,l)$.
+    If not then we know that \begin{equation}\label{eq:subeqsq}
       \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})} \subseteq \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})} \sqcup \Delta_{(k_r, i_r)}
     \end{equation}
-    for $\tau'\in V_p(l,l) \subseteq \{\emptyset\}$ and $k_j \in [l+1,n+1], \: i_j \in [p]$ for all $j=1,\ldots,r \leq n-l$. This fact and the definition of $K$ imply that the image of an arbitrary simplex $\sigma\in L_p(n,l)$ is a simplex in $K$. Now consider that inverse map $\Phi^{-1}$. We can see that this is a simplicial map by Equation \ref{eq:subeqsq} and the fact that by definition of $K$ there are no simplicies in $K$ which contain simultaneously contain $\sigma_1$ and $\sigma_2$ of the form
+    for $\tau'\in V_p(l,l) \cup \{\emptyset\}$ and $k_j \in [l+1,n+1], \: i_j \in [p]$ for all $j=1,\ldots,r \leq n-l$. This fact and the definition of $K$ imply that the image of an arbitrary simplex $\sigma\in L_p(n,l)$ is a simplex in $K$. Now consider that inverse map $\Phi^{-1}$. We can see that this is a simplicial map by Equation \ref{eq:subeqsq} and the fact that by definition of $K$ there are no simplices in $K$ which simultaneously contain $\sigma_1$ and $\sigma_2$ of the form
     \begin{align*}
 \sigma_1 &= \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_s, i_s)}\sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})},\\
 \sigma_2 &= \tau' \sqcup \Delta_{(k_1, i_1)} \sqcup \cdots \sqcup \Delta_{(k_s, i_s')}\sqcup \cdots \sqcup \Delta_{(k_{r-1}, i_{r-1})} \sqcup \Delta_{(k_r, i_r)},
@@ -249,19 +248,19 @@ The well-definition of the induction step follows from the assumption that $A_\s
   There are again two cases
   \begin{itemize}
     \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| > l$ which means that $L_{\sigma,\rho}$ is empty,
-    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| \leq l$ then $L_{\rho, \sigma} \cong {\rm Cone}(B, (B_j)_{j\in [p]})$ as sets and by Lemma \ref{lem:ecsimeq} we get that the realization of ${\rm Cone}(B, (B_j)_{j \in [p]})$ is homotopy equivalent to the realization of $B \cup {\rm Cone}(B_{j_0})$ and since $B = B_{j_0}$ this is the same as ${\rm Cone}(B)$ which is contractible.
+    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| \leq l$ then $L_{\rho, \sigma} \cong {\rm Cone}(B, (B_j)_{j\in [p]})$ as sets and by Lemma \ref{lem:ecsimeq} we get that the realization of ${\rm Cone}(B, (B_j)_{j \in [p]})$ is homotopy equivalent to the geometric realization of $B \cup {\rm Cone}(B_{j_0})$ and since $B = B_{j_0}$ this is the same as ${\rm Cone}(B)$ which is contractible.
     \end{itemize}
     The map between ${\rm Cone}(B, (B_j)_{j\in [p]}) \to L_{\rho, \sigma}$ mentioned above sends each $\tau \in B$ to $\tau \in V_p(i-1, l) \cap L_{\rho, \sigma}$ and sends $\tau \in {\rm Cone}(B_j)$ to $\tau' \in (V(i,l) \setminus V(i-1,l))\cap L_{\rho,\sigma}$ such that $\tau \subseteq_f \tau'$ and $\tau'(i) = j$ for each $j \in [p]$.
 \end{proof}
 
 \begin{col}\label{col:lspl}
-  For $p \in \N$ and $n,l\in \N$ with $n \geq l$ we have that \[L_p(n,l) \simeq S_p(l).\]
+  For $p \in \N$ and $n,l\in \N$ with $n \geq l$ it follows that \[\lVert L_p(n,l) \rVert \simeq \lVert S_p(l) \rVert.\qedhere\]
 \end{col}
 
 \begin{proof}
   We know from Corollary \ref{lem:lnpkll} that \[\lVert L_p(n,l) \rVert \simeq \lVert{\rm Cone}(K_p(l,l), (L_\sigma)_{\sigma\in P([l+1,n+1],[p])})\rVert = \lVert K \rVert.\] Now this chain of equivalence follows
   \begin{equation*}
-    \lVert K \rVert \underset{\ref{lem:seqhom}}{\overset{\text{\ref{lem:Lsigsimeq}}}{\simeq}} \lVert K_p(l,l) \rVert \overset{\text{\ref{rem:kcongs}}}{\simeq} \lVert \sd(S_p(l)) \rVert \overset{\ref{lem:sdsimeq}}{\simeq} \lVert S_p(l) \rVert.
+    \lVert K \rVert \underset{\ref{lem:seqhom}}{\overset{\text{\ref{lem:Lsigsimeq}}}{\simeq}} \lVert K_p(l,l) \rVert \overset{\text{\ref{rem:kcongs}}}{\simeq} \lVert \sd(S_p(l)) \rVert \overset{\ref{lem:sdsimeq}}{\simeq} \lVert S_p(l) \rVert.\qedhere
   \end{equation*}
 \end{proof}
 
@@ -279,7 +278,7 @@ The well-definition of the induction step follows from the assumption that $A_\s
     \lVert J_p(n,l) \rVert \simeq \left\lVert \bigvee\limits_{a \in (\Z_p \setminus \{0\})^{n+1}} \hspace*{-20px}J_p(n;a) \right\rVert
   \end{equation}
   with the same reasoning as in the proof of Lemma \ref{lem:kpka}.
-  Now by \ref{thm:alex} we get that $\tilde{H}_i(\lVert J_p(n;a) \rVert) = \tilde{H}_i(\rVert K_p(n;a) \rVert \setminus \lVert C \rVert) \cong \tilde{H}^{n-i-1}(\lVert C\rVert)$. We now by that the dimension of $\lVert C \rVert$ is equal to $n-l$ and thus $\tilde{H}^{n-i-1}(\lVert C \rVert) \cong 0$ for all $0\leq i < l-1$. It follows that $\tilde{H}_i(\lVert J_p(n;a) \rVert) \cong 0$ for $0 \leq i < l-1$. The conditions of Theorem \ref{thm:alex} are trivially fulfilled since all spaces involved are geometric realizations of finite simplicial complexes. Now by Lemma \ref{lem:holwe} and equation \ref{eq:simeql} the claim is proven. 
+  Now by \ref{thm:alex} we get that $\tilde{H}_i(\lVert J_p(n;a) \rVert) = \tilde{H}_i(\rVert K_p(n;a) \rVert \setminus \lVert C \rVert) \cong \tilde{H}^{n-i-1}(\lVert C\rVert)$. We know that the dimension of $\lVert C \rVert$ is equal to $n-l$ and thus $\tilde{H}^{n-i-1}(\lVert C \rVert) \cong 0$ for all $0\leq i < l-1$. It follows that $\tilde{H}_i(\lVert J_p(n;a) \rVert) \cong 0$ for $0 \leq i < l-1$. The conditions of Theorem \ref{thm:alex} are trivially fulfilled since all spaces involved are geometric realizations of finite simplicial complexes. Now by Lemma \ref{lem:holwe} and Equation \ref{eq:simeql} the claim is proven. 
 \end{proof}
 
 \begin{lemma}[Sabok, {\cite[Lemma 16]{sabok2012}}]\label{lem:knp}
@@ -312,8 +311,8 @@ The well-definition of the induction step follows from the assumption that $A_\s
 
 Now we can prove Theorem \ref{thm:confun}.
 \begin{proof}
-  Firstly by Lemma \ref{lem:knp} we know that for $0 \leq i < l-1$ we have that \[\tilde{H}^i(\lVert K_p(n,l) \rVert, \Z_p) \cong 0.\] Now let $f\in C(\lVert K_p(n,l) \rVert, \mathbb{R}^d)$. Notice that $d < l$ by the assumptions on $d$. Since the simplicial complex is compact the geometric realization is contained in a ball around the origin with finite radius $B = B_r(0)$ for $r \in R_{>0}$ the map $f$ can be resticted to a map $f_B = f|_B$. It remains to be shown that the map $\tilde{f} = \tilde{H}^{l-1}(f_B)\colon \tilde{H}^{l-1}(\lVert K_p(n,l) \rVert) \to \tilde{H}^{l-1}(B)$ has zero image.
+  Firstly by Lemma \ref{lem:knp} we know that for $0 \leq i < l-1$ we have that \[\tilde{H}^i(\lVert K_p(n,l) \rVert, \Z_p) \cong 0.\] Now let $f\in C(\lVert K_p(n,l) \rVert, \mathbb{R}^d)$. Notice that $d < l$ by the assumptions on $d$. Since the simplicial complex is compact the geometric realization is contained in a ball around the origin with finite radius $B = B_r(0)$ for $r \in \R_{>0}$ the map $f$ can be resticted to a map $f_B = f|_B$. It remains to be shown that the map $\tilde{f} = \tilde{H}^{l-1}(f_B)\colon \tilde{H}^{l-1}(\lVert K_p(n,l) \rVert) \to \tilde{H}^{l-1}(B)$ has zero image.
   Since the reduced cohomology groups of this ball are all trivial because the ball is contractible we get that $\tilde{f}$ is the zero map.
 
-  We can conclude that the set $A(f)$ has at least on element and thus the claim of the Theorem is proven.
+  We can conclude that the set $A(f)$ has at least one element and thus the claim of the Theorem is proven.
 \end{proof}

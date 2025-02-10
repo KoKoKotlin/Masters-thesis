@@ -1,4 +1,4 @@
-\section{Simplicial Homology}
+\section{Simplicial complexes and singular homology}
 
 \subsection{Abstract simplicial complexes}
 
@@ -9,8 +9,8 @@
         \item $\bigcup \mathcal{K} = X$,
         \item $\forall \sigma\in\mathcal{K} \colon \tau \subseteq \sigma \; \Rightarrow \; \tau \in \mathcal{K}$.
     \end{itemize}
-    The elements of the set $V(\mathcal{K}) := \bigcup \mathcal{K}$ are the \textbf{vertecies} of $\mathcal{K}$ and
-    elements of $\mathcal{K}$ itself are the \textbf{simplicies}. Given a simplex $\sigma \in \mathcal{K}$ then the sets
+    The elements of the set $V(\mathcal{K}) := \bigcup \mathcal{K}$ are the \textbf{vertices} of $\mathcal{K}$ and
+    elements of $\mathcal{K}$ itself are the \textbf{simplices}. Given a simplex $\sigma \in \mathcal{K}$ then the sets
     $\; \sigma \setminus \{x\} \;$ for $x \in \sigma$ are called the \textbf{faces} of $\sigma$.
 
     Let $\sigma \in \mathcal{K}$ then $\dim \sigma = |\sigma| -1$ is the \textbf{dimension} of $\sigma$. The dimension of $\mathcal{K}$ is
@@ -31,13 +31,13 @@
 \begin{ex}\label{ex:seqcom}
   Let $n \in \N^+$ then $\mathcal{K}_n$ defined as
   \begin{equation*}
-    \mathcal{K}_n = \PowS([n])
+    \mathcal{K}_n := \PowS([n])
   \end{equation*}
-  is a sequence of simplicial complexes. For example $\mathcal{K}_2 := \{\emptyset, \{0\}, \{1\}, \{0,1\}\}$.
+  is a sequence of simplicial complexes. For example $\mathcal{K}_2 = \{\emptyset, \{0\}, \{1\}, \{0,1\}\}$.
 \end{ex}
 
 \begin{defin}
-    Let $X$ be a set, $H$ be a group and $\mathcal{K}$ be a simplicial complex on $X$. If there is an 
+    Let $X$ be a set, $H$ be a group and $\mathcal{K}$ be a simplicial complex on $X$. If there is a 
     group action $\lambda \colon H \times X \to X$ of $H$ on $X$ then
     the complex $\mathcal{K}$ is an \textbf{$H$-complex} if the map
     \begin{equation*}
@@ -57,7 +57,7 @@
     \end{enumerate}
     A chain in $P$ is a subset $C \subseteq P$ which is totally ordered, i.e.
     \begin{equation*}
-        \forall x, y \in C\colon x \preceq y \: \lor \: y \preceq x.
+        \forall x, y \in C\colon x \preceq y \: \lor \: y \preceq x. \qedhere
     \end{equation*}
 \end{defin}
 
@@ -71,7 +71,7 @@ are the elements of the poset and the binary relation of set inclusion is the pa
 
 \begin{defin}
     Let $\mathcal{K}$ be an abstract simplicial complex. The \textbf{barycentric subdivision} $\sd(\mathcal{K})$ of $\mathcal{K}$
-    is the abstract simplicial complex with $\mathcal{K}$ as the set of vertecies and all chains in $P(\mathcal{K})$ as simplicies.
+    is the abstract simplicial complex with $\mathcal{K}$ as the set of vertices and all chains in $P(\mathcal{K})$ as simplices.
 \end{defin}
 
 \begin{thm}
@@ -83,8 +83,8 @@ are the elements of the poset and the binary relation of set inclusion is the pa
     This means that $\tau \in \mathcal{K}$.
 \end{proof}
 
-We need a way to turn an abstract simplicial complex into a geometric structure such that it can be analyzed with the tools provided by algebraic topology. This means that there should be a map from the simplicies of the abstract complex to $n$-dimensional euclidian space. This map is called the \textbf{geometric realization} of the abstract simplicial complex which maps it to a geometric simplicial complex. 
-These geometric complexes consist of polyhedra. They are constructed by "gluing" 
+We need a way to turn an abstract simplicial complex into a geometric structure such that it can be analyzed with the tools provided by algebraic topology. This means that there should be a map from the simplices of the abstract complex to $n$-dimensional euclidian space. This map is called the \textbf{geometric realization} of the abstract simplicial complex which maps it to a geometric simplicial complex. 
+These geometric complexes consist of polyhedra. They are constructed by ``gluing'' 
 together points, straight line segments, polyhedra and their higher dimensional generalizations.
 It will be clear that these two types of objects internally encode the same combinatorical structure. 
 
@@ -92,8 +92,8 @@ It will be clear that these two types of objects internally encode the same comb
     Let $n,k \in \N$ and let $x_0, x_1, \ldots, x_k \in \R^n$. 
     The vectors are called \textbf{affinely independent} if
     \begin{equation*}
-        \sum\limits_{i=0}^k \alpha_i = 0 \; \land \; \sum\limits_{i=0}^k \alpha_i x_i = 0 \; \Rightarrow \; \alpha_0 = \alpha_1 = \ldots = \alpha_k = 0, 
-    \end{equation*} with $\alpha_j \in \R$ and $j = 0, 1, \ldots, k$.
+        \forall \alpha_j\in \R\colon \sum\limits_{i=0}^k \alpha_i = 0 \; \land \; \sum\limits_{i=0}^k \alpha_i x_i = 0 \; \Rightarrow \; \alpha_0 = \alpha_1 = \ldots = \alpha_k = 0, 
+    \end{equation*} with $j = 0, 1, \ldots, k$.
 \end{defin}
 
 \begin{defin}
@@ -101,7 +101,7 @@ It will be clear that these two types of objects internally encode the same comb
     \begin{equation*}
         {\rm co} (A) = {\rm co}(x_0, x_1, \ldots, x_k) := \{ t_0 x_0 + t_1 x_1 + \cdots + t_k x_k \colon t_i \in [0, 1], \sum\limits_{i=0}^k t_i = 1\}
     \end{equation*}
-    where $A = \{x_i\colon i \in [k]\}$.  
+    where $A = \{x_i\colon i \in [k+1]\}$.  
 \end{defin}
 
 \begin{rem}
@@ -127,7 +127,7 @@ It will be clear that these two types of objects internally encode the same comb
   Since $A \cup B$ are affinely indepent this means that either all coefficients are zero or there exist indicies for which $a_i = b_j$. Since the sum of the coefficients $a_i$ and $b_j$ sum up to one the case that all coefficients are zero is not possible and thus we have that both convex combinations of $x$ can only contain points which lie in $A \cap B$. So $x \in {\rm co}(A\cap B)$.
 \end{proof}
 
-Affine independence of the vectors makes sure that the convex hull of vectors is not degenerated.
+Affine independence of the vectors ensures that the convex hull of vectors is not degenerated.
 For example it is expected that the convex hull of three vectors in $\R^2$ is a triangle. But in the degenerate case that the points are all the same
 or the points lie in a straight line, this is not true. When it is assumed that the points are affinely independent, these cases are excluded. 
 
@@ -142,8 +142,8 @@ or the points lie in a straight line, this is not true. When it is assumed that 
     \item $\forall \sigma \in \mathcal{K}\colon f(\sigma)$ affinely independent,
     \item $\forall \sigma_1, \sigma_2\in \mathcal{K}\colon ({\rm co}f(\sigma_1)) \cap ({\rm co} f(\sigma_2)) = {\rm co}f(\sigma_1 \cap \sigma_2)$.
   \end{enumerate}
-    Given a geometric realization $f$ for $\mathcal{K}$, then $\lVert K \rVert_f = f(\mathcal{K})$. The symbol $\lVert \mathcal{K} \rVert$ refers the an arbitrary geometric realization of $\mathcal{K}$ in the smallest dimension $d$ that is possible.
-    Let $x \in \lVert K \rVert_f$. Then $x$ is in ${\rm co}A_x$ for exactly one set $\{f(v_1), f(v_2), \ldots, f(v_k)\} = A_x \subseteq f(V(\mathcal{K}))$ for which the following equations hold 
+    Given a geometric realization $f$ for $\mathcal{K}$, then $\lVert \mathcal{K} \rVert_f = f(\mathcal{K})$. The symbol $\lVert \mathcal{K} \rVert$ refers the an arbitrary geometric realization of $\mathcal{K}$ in the smallest dimension $d$ that is possible.
+    Let $x \in \lVert \mathcal{K} \rVert_f$. Then $x$ is in ${\rm co}A_x$ for exactly one set $\{f(v_1), f(v_2), \ldots, f(v_k)\} = A_x \subseteq f(V(\mathcal{K}))$ for which the following equations hold 
     \begin{equation*}
       x = \sum\limits_{i=1}^k t_i \cdot f(v_i), \hspace*{30px} \sum\limits_{i=1}^k t_i = 1, 
     \end{equation*}
@@ -158,7 +158,7 @@ or the points lie in a straight line, this is not true. When it is assumed that 
     The $\alpha_v(x)$ are which are non-zero are called the \textbf{barycentric coordinates} of $x$.
 \end{defin} 
 
-To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is well-defined, we need the following theorem.
+To show that $\lVert \mathcal{K} \rVert$ for an arbitrary simplicial complex is well-defined, we need the following Theorem.
 
 \begin{thm}
   Let $\mathcal{K}$ be a simplicial complex with $\dim \mathcal{K} = n \in \N$. Then there exists a geometric realization $f\colon V(\mathcal{K}) \to \R^{2d+1}$.
@@ -234,7 +234,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
   \begin{equation*}
     f_n\colon V(\mathcal{K}_n) \to \R^n, k \mapsto e_k 
   \end{equation*}
-  where $e_k$ for $k \in [n]$ is the $k$-th canonical basis vector of $\R^n$. This sequence of complexes have the property that there is a homeomorphism $\psi\colon \lVert \mathcal{K}_n \rVert_f \to \mathbb{S}^{n-1}$.
+  where $e_k$ for $k \in [n]$ is the $k+1$-th canonical basis vector of $\R^n$. This sequence of complexes have the property that there is a homeomorphism $\psi\colon \lVert \mathcal{K}_n \rVert_{f_n} \to \mathbb{S}^{n-1}$.
 \end{ex}
 
 \begin{defin}
@@ -298,7 +298,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \draw (J) -- (I);
 \draw (K) -- (I);
 
-\draw [->, thick] (AS) -- node[above] {$\lor$} (AE);
+\draw [|->, thick] (AS) -- node[above] {$\lor$} (AE);
     \end{tikzpicture} 
     \caption{Examples of the wedge of simplicial complexes.}\label{fig:simwejo}
 \end{figure}
@@ -308,7 +308,7 @@ To show that $\lVert \mathcal{K} \rVert$ for an abrbitrary simplicial complex is
 \end{lemma}
 
 \begin{proof}
-  We know that each ${\rm Cone}(L_i)$ for $i \in [p]$ is contratible. So there is a homotopy equivalence to a one point space. Choose a point in $\lVert \mathcal{K} \rVert$ to which ${\rm Cone}(L_i)$ is contracted to for each $L_i$. The we start with $i = 1$ and can define a homotopy equivalence that keeps $\mathcal{K}$ fixed and contracts the cone over $L_i$ to the chosen point in $\mathcal{K}$. This shows that $\lVert \mathcal{K} \cup {\rm Cone}(L_0) \rVert \simeq \lVert \mathcal{K} \rVert$. The statement follows by induction on $i$. 
+  We know that each ${\rm Cone}(L_i)$ for $i \in [p]$ is contractible. So there is a homotopy equivalence to a one point space. Choose a point in $\lVert \mathcal{K} \rVert$ to which ${\rm Cone}(L_i)$ is contracted to for each $L_i$. Then we start with $i = 1$ and can define a homotopy equivalence that keeps $\lVert \mathcal{K} \rVert$ fixed and contracts the cone over $L_i$ to the chosen point in $\lVert \mathcal{K} \rVert$. This shows that $\lVert \mathcal{K} \cup {\rm Cone}(L_0) \rVert \simeq \lVert \mathcal{K} \rVert$. The statement follows by induction on $i$. 
 \end{proof}
 
 Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathcal{L} = \PowS_{\leq 1}(\{2, 3\})$. The geometric realization of the join $\mathcal{K} \star \mathcal{L}$ of these complexes can be seen in Figure \ref{fig:simjo}. From the figure it becomese apperent that $\lVert \mathcal{K} \star \mathcal{L} \rVert$ is homeomorphic to $\mathbb{S}^1$.
@@ -338,13 +338,13 @@ Now consider the complexes $\mathcal{K} = \PowS_{\leq 1}(\{0, 1\})$ and $\mathca
 \draw (K) -- (I);
 \draw (I) -- (G);
 
-\draw [->, thick] (AS) -- node[above] {$\star$} (AE);
+\draw [|->, thick] (AS) -- node[above] {$\star$} (AE);
   \end{tikzpicture}
   \caption{Example of the join of simplicial complexes.}\label{fig:simjo}
   \end{figure}
 \end{ex}
 
-The fact that the join of a two points with two points results in a simplicial complex that has a geometric realization that is homeomorphic does not only work with $\mathbb{S}^1$. This fact holds more generally for the n-fold join of 2-point simplicial complexes. 
+The fact that the join of two points with two points results in a simplicial complex that has a geometric realization that is homeomorphic to $\mathbb{S}^1$ does not just work for dimension one. This fact holds more generally for the n-fold join of 2-point discrete simplicial complexes. 
 
 \begin{lemma}\label{lem:simexkn}
   Let $\mathcal{K}_n := \PowS_{\leq 1}(\{(-1, n), (1, n)\})$ for $n \in \N^+$, then
@@ -358,10 +358,10 @@ The fact that the join of a two points with two points results in a simplicial c
   \begin{equation*}
     f\colon V(\bigstar_{i=1}^k \mathcal{K}_i) \to \R^n, \: (x, i) \mapsto x \cdot e_i
   \end{equation*}
-  which means that the vertecies get mapped to the canonical basis vectors of $\R^n$ and their negations. 
+  which means that the vertices get mapped to the canonical basis vectors of $\R^n$ and their negations. 
   This geometric realization forms the boundary of the $n$-crosspolytope\footnote{This $n$-crosspolytope is $\{(x_1, \ldots, x_n) \in \R^n\colon |x_1| + \cdots + |x_n| \leq 1 \}$. The boundary $\partial P^n$ of the polytope is formed by all points with $1$-norm equal to $1$.} for each $n \in \N^+$. It is homeomorphic to the sphere by the homeomorphism
   \begin{equation*}
-    \varphi\colon \mathbb{S}^n \to \partial P^n, \: x \mapsto \lVert x \rVert_1^{-1} \cdot x. 
+    \varphi\colon \mathbb{S}^n \to \partial P^n, \: x \mapsto \lVert x \rVert_1^{-1} \cdot x. \qedhere 
   \end{equation*}
 \end{proof}
 
@@ -403,12 +403,12 @@ The fact that the join of a two points with two points results in a simplicial c
 \end{figure}
 
 \subsection{Homology Theory}
-Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the basic definitions from Category theory and Homological Algebra needed in the following see \cite{rotmann2009}.  
+Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the basic definitions from category theory and homological algebra needed in the following see \cite{rotman2009}.  
 
 \begin{cons}
   Let $S$ be a finite set and $p \in \mathbb{P}$. Define \[A(S) := \{f \in \Z^S\colon |\im f| < \infty \}\] be maps from $S$ to $Z_p$ with finite image. $A(S)$ is an abelian group together with the operation of pointwise addition of maps.
   Then the set \[\{\mathds{1}_x\colon x\in S\} \subseteq A(S)\] forms a basis of the abelian group $A(S)$.
-  Let $T$ be another set. For a map $\varphi\colon S \to T$ define the map $A(T; p)$ as
+  Let $T$ be another set. For a map $\varphi\colon S \to T$ define the map $A(T)$ as
   \begin{equation*}
     A(\varphi)\colon A(S) \to A(T),\; f \mapsto \sum\limits_{x \in S}f(x)\cdot \mathds{1}_{\varphi(x)}.
   \end{equation*}
@@ -439,11 +439,13 @@ Since the collection of indicator functions is a basis of $A(S)$ it is a convent
 \end{equation*}
 
 \begin{thm}\label{thm:isoab}
-  Let $S$ be a set and let $B$ be an abelian group. Then \[\Phi\colon \underline{\rm Ab}(A(S), B) \to B^X, \: \varphi \mapsto\varphi \circ \mathds\iota^S\footnote{$\iota^S\colon S \to A(S), \: s \mapsto \mathds{1}_s$}\] is a bijection.
+  Let $S$ be a set and let $B$ be an abelian group. Then \[\Phi\colon \underline{\rm Ab}(A(S), B) \to B^X, \: \varphi \mapsto\varphi \circ \mathds\iota^S\] is a bijection where $\iota^S\colon S \to A(S), \: s \mapsto \mathds{1}_s$.
 \end{thm}
 
 \begin{proof}
-  The map $\Phi$ is a homomorphism in of abelian groups. To this end let $\varphi, \psi \in \underline{\rm Ab}$.
+  The map $\Phi$ is a homomorphism of abelian groups.
+
+  To this end let $\varphi, \psi \in \underline{\rm Ab}$.
   The claim follows from the fact that $\varphi$ and $\psi$ are homomorphisms and \[(\varphi + \psi)(\mathds{1}_x) = \varphi(\mathds{1}_x) + \psi(\mathds{1}_x).\]
   Let $\varphi \in \underline{\rm Ab}(A(S), B)$ and assume that $\varphi \circ \iota^S = 0$. Then it holds that
   \begin{align*}
@@ -470,7 +472,7 @@ The Theorem now tells us that any function from $X$ to an abelian group $B$ can 
     X \arrow[d, "\iota^X"', hook] \arrow[rd, "\varphi"] &   \\
     A(X) \arrow[r, "\exists!\hat{\varphi}"', dashed]    & B
   \end{tikzcd}
-  \caption{Commutative diagram showing the statement of Theorem \ref{thm:isoab}}\label{fig:com1}
+  \caption{Commutative diagram showing the statement of Theorem \ref{thm:isoab}}.\label{fig:com1}
 \end{figure}
 
 \begin{defin}
@@ -478,16 +480,16 @@ The Theorem now tells us that any function from $X$ to an abelian group $B$ can 
   \begin{equation*}
     \Delta_n := {\rm co}\{e_0\, \ldots, e_n\} \subseteq \R^{n+1}
   \end{equation*}
-  where $e_i$ is the $i$-th canonical basis vector of $R_n$ for $i = 0,\ldots,n$. For all $i = 0, \ldots, n$ define the $i$-th face map as
+  where $e_i$ is the $i$-th canonical basis vector of $\R^{n+1}$ for $i = 0,\ldots,n$. For all $i = 0, \ldots, n$ define the $i$-th face map as
   \begin{equation*}
     d_i\colon \Delta_{n-1} \to \Delta_n,\: (t_0,\ldots,t_{n-1}) \mapsto (t_0, \ldots, t_{i-1}, 0, t_i, \ldots, t_{n-1}).
   \end{equation*}
-  Notice that $\im d_i \subseteq \Delta_n$. $\im d_i$ is called the $i$-th face of $\Delta_n$.
+  Notice that $\im d_i \subseteq \Delta_n$. The image of $d_i$ is called the $i$-th face of $\Delta_n$.
 \end{defin}
 
 \begin{defin}
-  Let $X$ be a topological space and let $n\in \N$ and $p \in \mathbb{P}$. A \textbf{singular $n$-simplex} in $X$ is a continuous map $\sigma \in C(\Delta_n, X)$.
-  Now the \textbf{singular $n$-chain group} of $X$ is defined as $C_n(X) := A(C(\Delta_n, X); p)$. An element $\sigma \in C_n(X)$ is called a singular $n$-chain in $X$.
+  Let $X$ be a topological space and let $n\in \N$. A \textbf{singular $n$-simplex} in $X$ is a continuous map $\sigma \in C(\Delta_n, X)$.
+  Now the \textbf{singular $n$-chain group} of $X$ is defined as $C_n(X) := A(C(\Delta_n, X))$. An element $\sigma \in C_n(X)$ is called a singular $n$-chain in $X$.
   The map \[\partial_n\colon C_n(X) \to C_{n-1}(X),\: \sigma \mapsto \sum\limits_{i=0}^n(-1)^i(\sigma \circ d_i)\] is called the $n$-th boundary map for $n\in\N^+$. It is a homomorphisms of abelian groups. For $n < 1$ define $\partial_n$ as the zero map as well as all $C_n$ as trivial abelian groups.
 
   If $Y$ is another topological space and $f \in C(X, Y)$ then $C_n(f)\colon C_n(X) \to C_n(Y)$ defined on the generators $\sigma \in C_n(X)$ as
@@ -505,7 +507,7 @@ The Theorem now tells us that any function from $X$ to an abelian group $B$ can 
   See \cite[Theorem 29.1]{MunAlTop}.
 \end{proof}
 
-The lemma above is the so called fundamental theorem of homology theory. It allows for the following definition.
+The Lemma above is the so called Fundamental Theorem of Homology Theory. It allows for the following definition.
 
 \begin{defin}
   Let $X$ be a topological space, then \[C_\bullet(X) := ((C_n(X))_{n\in \Z}), (\partial_n)_{n\in \Z})\] with
@@ -523,7 +525,7 @@ The lemma above is the so called fundamental theorem of homology theory. It allo
     &= \sum\limits_{i=0}^n(-1)^if\circ\sigma\circ d_i \\
     &= \sum\limits_{i=0}^n(-1)^iC_{n-1}(f)(\sigma\circ d_i) \\
     &= C_{n-1}(f)(\sum\limits_{i=0}^n(-1)^i(\sigma\circ d_i)) \\
-    & = C_{n-1}(f)(\partial_n(\sigma)).
+    & = C_{n-1}(f)(\partial_n(\sigma)).\qedhere
   \end{align*}
 \end{proof}
 
@@ -539,17 +541,17 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
   For $n < 0$ this is trivial.
 
   Let $Y, Z$ be topological spaces and $f \in C(X, Y), g\in C(Y, Z)$, then for $n\in \N$ it follows that \[C_n(g\circ f)(\sigma) = g\circ f \circ \sigma = C_n(g)(f\circ \sigma) = (C_n(g) \circ C_n(f))(\sigma)\] for all $\sigma \in C(\Delta_n, X)$ and thus $C_n(g \circ f) = C_n(g) \circ C_n(f)$.
-  Again the case for $n < 0$ is trivial.
+  The case for $n < 0$ is trivial.
 \end{proof}
 
 \begin{thm}\label{thm:hfunc}
   Let $n \in \N$. Then \[H_n\colon \underline{\rm Top} \to \underline{\rm Ab} \]
   defined by \[H_n(X) := H_n(C_\bullet(X)), \: H_n(f) := H_n(C_\bullet(f))\]
-  for a topological spaces $X$ and $Y$ and $f \in \underline{\rm Top}$ is called the $n$-th singular homology group and  is a functor. 
+  for a topological spaces $X$ and $Y$ and $f \in C(X, Y)$ is called the $n$-th singular homology group and  is a functor. 
 \end{thm}
 
 \begin{proof}
-  Follows from the fact that the composition of functors is again a functor and Lemma \ref{lem:cfunc}.
+  Follows from the fact that the composition of functors is a functor and Lemma \ref{lem:cfunc}.
 \end{proof}
 
 \begin{thm}\label{thm:hhom}
@@ -572,16 +574,16 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
   Take a topological space $X$. Then $H_0(X) \cong \Z^n$ where $n \in \N$ is the number of path-connected components in $X$. 
 \end{ex}
 
-The example above implies that the $0$-th homology group of for example a one point space is $\Z$. This complicates some other results in homology theory. Therefore there is a version of the homology groups called \textbf{reduced} homology groups $\tilde{H_n}$ where $\tilde{H}_n(X) = H_n(X)$ for all $n \in\N^+$ and $\tilde{H}_n \oplus \mathbb{Z} = H_n(\Z)$. This means that the $0$-th reduced homology group of a one point space the trivial group is instead of $\mathbb{Z}$.
+The example above implies that the $0$-th homology group of for example a one point space is $\Z$. This complicates some other results in homology theory. Therefore there is a version of the homology groups called \textbf{reduced} homology groups $\tilde{H_n}$ where $\tilde{H}_n(X) = H_n(X)$ for all $n \in\N^+$ and $\tilde{H}_0(X) \oplus \mathbb{Z} = H_0(X)$. This means that the $0$-th reduced homology group of a one point space is the trivial group instead of $\mathbb{Z}$.
 A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatcher}.
 
 \begin{defin}
   Let $G_\alpha$ be an abelian group for each $\alpha$ in an arbitrary index set $I$. Then the \textbf{external direct sum} of the groups is defined as
   \begin{equation*}
-    \bigoplus\limits_{\alpha \in I}G_\alpha = \{(g_\alpha)_{\alpha\in I}\colon g_i\in G_i \: \land \: g_i \neq e_{G_i} \text{ for only finitely many indicies } i \in I\}.
+    \bigoplus\limits_{\alpha \in I}G_\alpha = \{(g_\alpha)_{\alpha\in I}\colon g_\alpha\in G_\alpha \: \land \: g_\alpha \neq e_{G_\alpha} \text{ for only finitely many indicies } \alpha \in I\}.
   \end{equation*}
-  This is again an abelian group with the operation \[(g)_{\alpha \in I} \cdot (h)_{\alpha\in I} = (g_\alpha \cdot_{G_\alpha} h_\alpha)_{\alpha \in I}.\]
-  If $f_\alpha$ is a homomorphism with \[f_\alpha\colon G_\alpha \to H\]  for each $\alpha \in I$ where $H$ is an abelian group. Then
+  This is an abelian group with the operation \[(g)_{\alpha \in I} \cdot (h)_{\alpha\in I} = (g_\alpha \cdot_{G_\alpha} h_\alpha)_{\alpha \in I}.\]
+  If $f_\alpha$ is a homomorphism with \[f_\alpha\colon G_\alpha \to H\]  for each $\alpha \in I$ where $H$ is an abelian group then
   \begin{equation*}
     \bigoplus\limits_{\alpha\in I}f_\alpha\colon \bigoplus_{\alpha \in I} G_\alpha\to H,\: (g)_{\alpha \in I} \mapsto \sum\limits_{\alpha \in I}f_\alpha(g_\alpha)
   \end{equation*}
@@ -603,8 +605,8 @@ A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatche
   See \cite[Corollary 2.25]{hatcher}.
 \end{proof}
 
-Proofs in the later sections will only involve reasoning about homology groups. Their is a dualized concept of homology called cohomology.
-The dualization in the sense of category theory works be replacing the homology groups in the chain complex by $\underline{\rm Grp}(H_n(X); G)$ where $G \in \underline{\rm Ab}$ is an abelian group. There is no need to also develop the theory of cohomology in this thesis nor a need to use it later in the proofs because of the following result. Its called \textbf{Alexander duality} and connects homology and cohomology groups.
+Proofs in the later sections will only involve reasoning about homology groups. There is a dualized concept of homology called cohomology.
+The dualization in the sense of category theory works be replacing the homology groups in the chain complex by $\underline{\rm Grp}(H_n(X), G)$ where $G \in \underline{\rm Ab}$ is an abelian group. There is no need to also develop the theory of cohomology in this thesis nor a need to use it later in the proofs because of the following result. Its called \textbf{Alexander duality} and connects homology and cohomology groups.
 
 \begin{thm}\label{thm:alex}
   Let $n \in \N$. If $A \subseteq \mathbb{S}^n$ is a compact and non-empty subspace and ($\mathbb{S}^n, A$) is triangulable\footnote{This means that $A \subseteq \mathbb{S}^n$ and that there exists a triangulation $\mathcal{K}$ of $\mathbb{S}^n$ and a subcomplex $\mathcal{K}_0 \subseteq \mathcal{K}$ with an homeomorphism $(\mathcal{K}, \mathcal{K}_0) \to (\mathbb{S}^n, A)$.} then
@@ -633,13 +635,13 @@ The dualization in the sense of category theory works be replacing the homology 
   \begin{equation*}
     0 \to A \to B \to C \to 0
   \end{equation*}
-  that is exact is called a \textbf{short exact sequence}.
+  is called a \textbf{short exact sequence}.
 \end{defin}
 
-A second important tool linking homology and cohomology groups is the \textbf{universal coefficient theorem}. The next theorem is a version of it.
+A second important tool linking homology and cohomology groups is the \textbf{Universal Coefficient Theorem}. The next Theorem is a version of it.
 
 \begin{thm}\label{thm:uct}
-Let $C_n(X)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X)$ of $C_n(X)$ for a topological space $X$, then the cohomology groups $H^n(X; G)$ for a abelian group $G$ are determined by the exact sequence
+Let $C_\bullet(X)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X)$ of $C_n(X)$ for $n \in \N$ and for a topological space $X$, then the cohomology groups $H^n(X; G)$ for a abelian group $G$ are determined by the exact sequence
   \begin{equation*}
     0 \to {\rm Ext}(H_{n-1}(X), G) \to H^n(X; G) \to \underline{\rm Ab}(H_n(X), G) \to 0.
   \end{equation*}
@@ -650,10 +652,10 @@ Let $C_n(X)$ be a chain complex of free abelian groups and the corresponding hom
   See \cite[Chapter 3.1]{hatcher}.
 \end{proof}
 
-We will need only the following corollary from this theorem.
+We will only need the following Corollary from this Theorem.
 
 \begin{col}\label{col:hntriv}
-  Let $C_n(X)$ be a chain complex of free abelian groups and $H_n(X)$ the corresponding homology groups with $H_n(X) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
+  Let $C_\bullet(X)$ be a chain complex of free abelian groups and $H_n(X)$ the corresponding homology groups with $\tilde{H}_n(X) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
 \end{col}
 
 \subsection{Theorem of Mayer-Vietoris}
@@ -661,7 +663,7 @@ Often we can calculate the homology of simple subspaces of a larger space and wa
 This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a homological version of the \textbf{Van Kampen-Theorem} (see \cite[Chapter 1.2]{hatcher}).
 
 \begin{thm}\label{thm:mvs}
-  Let $X$ be a topological space and let $A, B \subseteq X$ subspaces of $X$ such that \[X = \dot{A} \cup \dot{B}, \: A \cap B \neq \emptyset.\]
+  Let $X$ be a topological space and let $A, B \subseteq X$ subspaces of $X$ such that \[X = A \cup B, \: A \cap B \neq \emptyset.\]
   The \textbf{Mayer-Vietoris-Sequence}
   \begin{equation*}
     \ldots \to H_n(A\cap B) \overset{\Phi}{\to} H_n(A) \oplus H_n(B) \overset{\Psi}{\to} H_n(A \cup B) \overset{\partial}{\to} H_{n-1}(A\cap B) \to \ldots \to 0
@@ -678,9 +680,9 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
 \end{proof}
 
 \begin{ex}
-  The homology group of the $n$-dimensional sphere $\mathbb{S}^n$ are as follows
+  The homology groups of the $n$-dimensional sphere $\mathbb{S}^n$ are as follows
   \begin{equation*}
-    H_k(\mathbb{S}^n) \cong \begin{cases}
+    \tilde{H}_k(\mathbb{S}^n) \cong \begin{cases}
       0, &n \neq k, \\
       \mathbb{Z}, &n = k,
     \end{cases}
@@ -698,5 +700,5 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
     0 &= \im \Psi = \ker \partial_k \\
     H_k(\mathbb{S}^{n-1}) &= \ker \Phi = \im \partial_{n+1}.
   \end{align*}
-  We get that the maps $\partial\colon H_k(\mathbb{S}^n) \to H_{k-1}(\mathbb{S}^{n-1})$ are isomorphism. And thus with the fact that $H_1(\mathbb{S}^1) \cong \Z$ the claim is proven by induction on $k$.\footnote{The fact that the first homology group of $\mathbb{S}^1$ is isomorphic to $\Z$ can easily be proven with another type of homology, namely simplicial homology \cite[p. 106]{hatcher}. And since the singular and simplicial homology groups are isomorphic for triangulable spaces it can be deduced that $H_1(\mathbb{S}^1) \cong \Z$ also in the singular case. A triangulation of $\mathbb{S}^1$ is the circle graph with three vertecies.}
+  We get that the maps $\partial\colon H_k(\mathbb{S}^n) \to H_{k-1}(\mathbb{S}^{n-1})$ are isomorphisms. And thus with the fact that $H_1(\mathbb{S}^1) \cong \Z$ the claim is proven by induction on $k$.\footnote{The fact that the first homology group of $\mathbb{S}^1$ is isomorphic to $\Z$ can easily be proven with another type of homology, namely simplicial homology \cite[p. 106]{hatcher}. And since the singular and simplicial homology groups are isomorphic for triangulable spaces it can be deduced that $H_1(\mathbb{S}^1) \cong \Z$ also in the singular case. A triangulation of $\mathbb{S}^1$ is the circle graph with three vertices.}
 \end{proof}

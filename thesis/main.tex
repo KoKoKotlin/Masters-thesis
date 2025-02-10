@@ -60,7 +60,7 @@
 %\newcommand*{\logeq}{\ratio\Leftrightarrow}
 %\newcommand*{\longeq}{\ratio\Longleftrightarrow}
   
-\title{Masters thesis\\Title}
+\title{Master Thesis\\{$L^0$-groups, extreme amenability, and algebraic topology}}
 \author{Yannik Höll}
 \date{\today}
 
@@ -92,8 +92,9 @@
 \makenomenclature
 
 \nomenclature{$\chi(G)$}{The chromatic number of the graph $G$, i.e., the smallest number of colors needed for a proper vertex coloring}
-\nomenclature{$\mathcal{T}_X$}{The topology of a top. space $X$}
-\nomenclature{$B_\varepsilon(x)$}{The open ball with radius $\varepsilon$ in a metric space $X$ around $x \in X$}
+\nomenclature{$\mathcal{T}_X$}{The topology of the top. space $X$}
+\nomenclature{$\mathbb{S}^n$}{The $n$-dimensional sphere for $n \in \N$.}
+\nomenclature{$B_\varepsilon(x)$}{The open ball with radius $\varepsilon \in \R_{>0}$ in a metric space $X$ around $x \in X$}
 \nomenclature{$d_X$}{The metric of the metric space $X$}
 \nomenclature{$X^Y$}{The set of all maps from $Y$ to $X$}
 \nomenclature{$C(X, Y)$}{The set of all continuous functions between top. spaces $X$ and $Y$}
@@ -101,7 +102,7 @@
 \nomenclature{$\{\rm UFlt}(X)$}{The set of all ultrafilters on a set $X$}
 \nomenclature{$\mid \hspace*{-2px} X \hspace*{-2px}\mid$}{The cardinality of the set $X$}
 \nomenclature{$[n]$}{The set $\{0, 1, \ldots, n-1\}$ for a natural number $n$}
-\nomenclature{$[k,n]$}{The set $[n]\setminus[k]$ for a natural numbers $n \geq k$}
+\nomenclature{$[k,n]$}{The set $[n]\setminus[k]$ for natural numbers $n \geq k$}
 \nomenclature{$X^c$}{The complement of the set $X$}
 \nomenclature{$\PowS(X)$}{The set of all subsets of $X$}
 \nomenclature{$\PowS_{\leq n}(X)$}{The set of all subsets of $X$ with cardinality less than or equal to $n \in \N$}
@@ -115,12 +116,12 @@
 \nomenclature{$\mathcal{N}_X(x)$}{The set of all open sets in a top. space $X$ containing the element $x \in X$}
 \nomenclature{$\mathbb{P}$}{The set of prime numbers}
 \nomenclature{$\R$}{The set of real numbers}
-\nomenclature{$\R_{\geq 0}$}{The set of real numbers greater or equal to 0}
+\nomenclature{$\R_{> 0}$}{The set of real numbers greater than 0}
 \nomenclature{$\Z$}{The set of integers}
 \nomenclature{$\Z_p$}{The group of integers modulo a prime $p$ with addition modulo $p$}
-\nomenclature{$\underline{\rm Top}$}{The category of topological spaces with continuous functions a arrows}
-\nomenclature{$\underline{\rm Ab}$}{The category of abelian groups with group homomorphisms a arrows}
-\nomenclature{$\underline{\rm Grp}$}{The category of groups with group homomorphisms a arrows}
+\nomenclature{$\underline{\rm Top}$}{The category of topological spaces with continuous functions as arrows}
+\nomenclature{$\underline{\rm Ab}$}{The category of abelian groups with group homomorphisms as arrows}
+\nomenclature{$\underline{\rm Grp}$}{The category of groups with group homomorphisms as arrows}
 \nomenclature{$\underline{\rm Ab}(G, H)$}{The class of all homomorphisms between the two abelian groups $G$ and $H$}
 \nomenclature{$\underline{\rm Grp}(G, H)$}{The class of all homomorphisms between the two groups $G$ and $H$}
 \nomenclature{$P(X,Y)$}{Set of non-empty partial functions from $X$ to $Y$}
@@ -138,6 +139,15 @@
   \ifentrytype{article}{\printtext{\bibstring{in}\addnbspace}}{}%
 }
 
+
+\usepackage{tocloft}
+
+% Reduce vertical spacing in TOC
+\setlength{\cftbeforesecskip}{0pt} % No space before section entries
+\setlength{\cftbeforesubsecskip}{0pt} % No space before subsection entries
+\setlength{\cftbeforesubsubsecskip}{0pt} % No space before subsubsection entries
+
+
 \addbibresource{references.bib}
 \linespread{1.5}
 \begin{document}
@@ -145,8 +155,21 @@
 \begin{titlingpage}
     \maketitle
 \end{titlingpage}
+\clearpage
+
+\vspace*{\fill}
+\begin{center}
+\textit{
+    I would like to thank all proofreaders that have helped me correcting the errors in this thesis. 
+    And special thanks to Prof. Schneider who has answered many of my questions concerning the material discussed in this thesis.  
+}
+\end{center}
+\vspace*{\fill}
+\thispagestyle{empty}
+\clearpage
 
 \tableofcontents
+\vspace*{11cm}
 \pagebreak
 
 \printnomenclature
@@ -154,7 +177,6 @@
 
 \nocite{*}
 
-\section*{Abstract}
 \input{01-introduction.tex}
 \input{02-topology.tex}
 \input{03-simplical-homology.tex}
@@ -163,6 +185,21 @@
 \input{07-bound.tex}
 \appendix
 \input{appendixA.tex}
+\clearpage
+
+\topskip0pt
+\vspace*{\fill}
+\noindent
+\textbf{Eidesstattliche Versicherung}
+
+\noindent
+Hiermit versichere ich, dass ich die vorliegende Arbeit selbstständig und ohne unerlaubte Hilfe angefertigt und andere als die in der Arbeit angegebenen Hilfsmittel nicht benutzt habe. Alle Stellen, die wörtlich oder sinngemäß aus anderen Schriften entnommen sind, habe ich als solche kenntlich gemacht.
+\vspace*{50px}
+
+\noindent
+Freiberg, 12. Februar, 2025  
+\vspace*{\fill}
+
 \clearpage
 \printbibliography
 

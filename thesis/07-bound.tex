@@ -10,12 +10,12 @@ In this whole section let $X$ be a set, $\varepsilon \in \R_{\geq 0}$ and let $\
 \end{defin}
 
 \begin{rem}\label{rem:appr}
-  The map $K_\mu^\varepsilon$ is increasing and bounded below by \[K^\varepsilon_\mu(n) \geq {4n \over \varepsilon} \cdot \mu(X)\] for each $n\in \N$.
+  The map $K_\mu^\varepsilon$ is increasing and has the lower bound \[K^\varepsilon_\mu(n) \geq {4n \over \varepsilon} \cdot \mu(X)\] for each $n\in \N$.
 \end{rem}
 
 
 \begin{proof}
-  Firstly proof the bound on the map. To this end let consider the measurable partition $\Q_\mu^\varepsilon(n)$. By definition we know that $\mu(P) <  {\varepsilon \over 4n}$ for each $Q \in \Q_\mu^\varepsilon(n)$. Let $k = |\Q_\mu^\varepsilon(n)|$.
+  Firstly prove the bound on the map. To this end consider the measurable partition $\Q_\mu^\varepsilon(n)$. By definition we know that $\mu(P) <  {\varepsilon \over 4n}$ for each $Q \in \Q_\mu^\varepsilon(n)$. Let $k = |\Q_\mu^\varepsilon(n)|$.
   It follows that
   \begin{equation*}
     \mu(X) = \mu\left(\bigcup_{i=1}^k I_k\right) \leq \sum\limits_{i=1}^k \mu(I_k) < \sum\limits_{i=1}^k{\varepsilon \over 4n} = K_\mu^\varepsilon(n) \cdot {\varepsilon \over 4n}
@@ -32,7 +32,7 @@ In this whole section let $X$ be a set, $\varepsilon \in \R_{\geq 0}$ and let $\
 \end{lemma}
 
 \begin{proof}
-  Assume that there exists a bound on $F_\mu^\varepsilon$. Since this map takes values in $\N$ and is increasing this means that the map becomes eventually constant. But since $K_\mu^\varepsilon$ is increasing and unbounded this would be a contradiction to the definition of $F_\mu^\varepsilon$.
+  Assume that there exists a bound on $F_\mu^\varepsilon$. Since this map takes values in $\N$ and is increasing this means that the map eventually becomes constant. But since $K_\mu^\varepsilon$ is increasing and unbounded this would be a contradiction to the definition of $F_\mu^\varepsilon$.
 \end{proof}
 
 \begin{defin}
@@ -40,17 +40,17 @@ In this whole section let $X$ be a set, $\varepsilon \in \R_{\geq 0}$ and let $\
   Additionally define $\P^\varepsilon_\mu(n) \in \Pi(\mathcal{B})$ with cardinality $N_\mu^\varepsilon(n)$ such that $\mu(P) < {1 \over n}$ for each $P \in \P_\mu^\varepsilon(n)$ and \[\Q_\mu^\varepsilon(n) \preccurlyeq \P^\varepsilon_\mu(n)\] for $n \leq F_\mu^\varepsilon(C_\mu^\varepsilon \cdot \sqrt[3]{n})$. 
 \end{defin}
 
-The following lemma is just an equality needed to prove the main theorem of this last section.
+The following Lemma is just an inequality needed to prove the main Theorem of this last section.
 \begin{lemma}\label{lem:approxK}
-  Let $d,n \in \N^+$ with $d < F_\mu^\varepsilon(C_\mu^\varepsilon \cdot \sqrt[3]{n})$ and let $k = K_\mu^\varepsilon(d)$. Then there is a $p(k,d,n) \in \mathbb{P}$ dependent of the choice of $k, d$ and $n$. Now it follows that \[{dp +1 \over n} < {\varepsilon \over 8}.\]
+  Let $d,n \in \N^+$ with $d < F_\mu^\varepsilon(C_\mu^\varepsilon \cdot \sqrt[3]{n})$ and let $k = K_\mu^\varepsilon(d)$. Then there is a $p \in \mathbb{P}$ dependent of the choice of $k$ and $d$ such that \[{dp +1 \over n} < {\varepsilon \over 8}.\]
 \end{lemma}
 
 \begin{proof}
-  By the Betrand postulate\footnote{This is a theorem from number theory proving the existence of a prime $p$ for any $n\in \N_{>1}$ such that $n < p < 2n$. For a proof of this see \cite{Chebyshev1852}.}
-  there exists a prime $p = p(k,d) \in \mathbb{P}$ such that \[k(d+1) < p < 2k(d+1).\]
-  Now assume that the claim of the lemma is false. This would imply $dp \geq {n\varepsilon \over 8}$. By Remark \ref{rem:appr} we know that \[k \geq {\varepsilon \over 4d} \cdot \mu(X)\] and thus
+  By Betrand's postulate\footnote{This is a Theorem from number theory proving the existence of a prime $p$ for any $n\in \N_{>1}$ such that $n < p < 2n$. For a proof of this see \cite{Chebyshev1852}.}
+  there exists a prime $p \in \mathbb{P}$ such that \[k(d+1) < p < 2k(d+1).\]
+  Now assume that the claim of the Lemma is false. This would imply $dp \geq {n\varepsilon \over 8}$. By Remark \ref{rem:appr} we know that \[k \geq {4d \over \varepsilon} \cdot \mu(X)\] and thus
   \begin{equation*}
-    d+1 \leq 4d = {\varepsilon \over \mu(X)}\left({4d \over \varepsilon \mu(X)}\right)\leq {\varepsilon \over \mu(X)} k. 
+    d+1 \leq 4d = {\varepsilon \over \mu(X)}\left({4d \over \varepsilon} \mu(X)\right)\leq {\varepsilon \over \mu(X)} k. 
   \end{equation*}
   Now we can deduce that
   \begin{align*}
@@ -58,41 +58,42 @@ The following lemma is just an equality needed to prove the main theorem of this
     \Rightarrow & {n\varepsilon \over 16} < k(d+1)^2 \overset{*}{\leq} {\varepsilon^2\over (\mu(X))^2}k^3 \\
     \Rightarrow & K_\mu^\varepsilon(d) = k \overset{**}{>} C_\mu^\varepsilon\cdot \sqrt[3]{n}.
   \end{align*}
-  The inequality $*$ follows from the fact that ${\varepsilon \over \mu(X)}k \geq d+1$ and thus the quantity is greater or equal to one. And the inequality $**$ follows be rearranging the inequality $*$ and the definition of $C_\mu^\varepsilon$.
+  The inequality $*$ follows from the fact that ${\varepsilon \over \mu(X)}k \geq d+1$ and thus the quantity is greater or equal to one. And the inequality $**$ follows by rearranging the inequality $*$ and the definition of $C_\mu^\varepsilon$.
 
   Since $F_\mu^\varepsilon$ is increasing by definition we can apply it to both sides yielding us
   \begin{equation*}
     F_\mu^\varepsilon(K_\mu^\varepsilon(d)) = d \geq F_\mu^\varepsilon(C_\mu^\varepsilon\cdot\sqrt[3]{n})
   \end{equation*}
-  contraditing the assumptions on $d$. $\lightning$
+  contradicting the assumptions on $d$. $\lightning$
 \end{proof}
 
-\begin{thm}\label{thm:gammain}
-  For each $\varepsilon \in \R_{\geq 0}$ it holds that \[\chi(\Gamma(\varepsilon, \P^\varepsilon_\mu(n), \mu)) \geq F^\varepsilon_\mu(C^\varepsilon_\mu \cdot \sqrt[3]{n}).\]
+\begin{thm}[Sabok, {\cite[Theorem 18]{sabok2012}}]\label{thm:gammain}
+  For each $\varepsilon \in \R_{>0}$ it holds that \[\chi(\Gamma(\varepsilon, \P^\varepsilon_\mu(n), \mu)) \geq F^\varepsilon_\mu(C^\varepsilon_\mu \cdot \sqrt[3]{n}).\]
 \end{thm}
 
 \newcommand{\h}{h_{m_q-1-q_0}}
 \newcommand{\hh}{h_{m_q-q_0}}
 
 \begin{proof}
-  Let $n \in \N$ and define $k_n := N_\mu^\varepsilon(n) - 1$. Now define the submeasure $\mu_n$ on $[k_n+1]$ as \[\mu_n(A) := \mu\left(\bigcup\limits_{i\in A}A_i\right), \:\: A\in \PowS([k_n+1])\] where $\{A_0, \ldots, A_{k_n}\} = \P_\mu^\varepsilon(n)$.
+  Let $n \in \N$ and define $k_n := N_\mu^\varepsilon(n) - 1$. Define the submeasure $\mu_n$ on $[k_n+1]$ as \[\mu_n(A) := \mu\left(\bigcup\limits_{i\in A}A_i\right), \:\: A\in \PowS([k_n+1])\] where $\{A_0, \ldots, A_{k_n}\} = \P_\mu^\varepsilon(n)$.
 
-  Now suppose that $d < F_\mu^\varepsilon(C_\mu^\varepsilon \cdot \sqrt[3]{n})$ and that there exists a coloring $c\colon Z^{k_n+1}\to \{1,\ldots, d\}$ of $\Gamma(\varepsilon, \P_\mu^\varepsilon(n), \mu)$. Let $k = K_\mu^\varepsilon(d)$.
+  Now suppose that $d < F_\mu^\varepsilon(C_\mu^\varepsilon \cdot \sqrt[3]{n})$ and that there exists a coloring $c\colon \Z^{k_n+1}\to \{1,\ldots, d\}$ of $\Gamma(\varepsilon, \P_\mu^\varepsilon(n), \mu)$. Let $k = K_\mu^\varepsilon(d)$.
 
-  Let $\pi \in {\rm Sym}([k_n+1])$ such that for $\mathcal{I} := \{I_1, \ldots, I_k\} \in \Pi(\pi([k_n+1]))$ where the $I_i$ are consequtive intervals\footnote{This means that they contain a range of numbers $\{i, i+1, \ldots, j-1, j\}$ for $0\leq i \leq j \leq k_n$ and that for each $i \in [k_n+1]\setminus\{0\}$ it holds that $\forall k \in I_i\forall j\in I_{i+1}\colon k < j$.} and $\mathcal{Q} := \{\bigcup\limits_{i \in I} A_i\colon I \in \mathcal{I}\}$ it holds that \[\forall Q \in \mathcal{Q}\colon \mu(Q) < {1 \over 4d}.\] This is possible because $\mathcal{Q} \preccurlyeq \P_\mu^\varepsilon(n)$ and because of the assumption on $d$. In accordance to the last definition write $\mathcal{Q}^1_\mu(d)$ instead of $\mathcal{Q}$.
-  Now let $p\in \mathbb{P}$ as described in the proof of Lemma \ref{lem:approxK} and let $l = dp$. For $f \in V_p(k_n,l)$ define the extension of $f$ to a full functions as
+  Let $\pi \in {\rm Sym}([k_n+1])$ such that for $\mathcal{I} := \{I_1, \ldots, I_k\} \in \Pi(\pi([k_n+1]))$ where the $I_i$ are consecutive intervals\footnote{This means that they contain a range of numbers $\{i, i+1, \ldots, j-1, j\}$ for $0\leq i \leq j \leq k_n$ and that for each $i \in [k_n+1]\setminus\{0\}$ it holds that $\forall k \in I_i\forall j\in I_{i+1}\colon k < j$.} and $\mathcal{Q} := \{\bigcup\limits_{i \in I} A_i\colon I \in \mathcal{I}\}$ it holds that \[\forall Q \in \mathcal{Q}\colon \mu(Q) < {1 \over 4d}.\] This is possible because $\mathcal{Q} \preccurlyeq \P_\mu^\varepsilon(n)$ and because of the assumption on $d$.
+
+  Now let $p\in \mathbb{P}$ as described in the proof of Lemma \ref{lem:approxK} and let $l = dp$. For $f \in V_p(k_n,l)$ define the extension of $f$ to a total function as
   \begin{equation*}
     \bar{f}\colon [k_n+1] \to [p], \:\: \begin{cases}
       f(x), \: x \in \dom(f), \\
       0, \: \text{otherwise}.
     \end{cases}
   \end{equation*}
-  Now we can extend the coloring $c$ to $\bar{c}\colon V_p(k_n,l)\to \{1,\ldots,d\}$ by $\bar{c}(f) = c(\bar{f})$ for each $f \in V_p(k_n,l)$.
+  We can extend the coloring $c$ to $\bar{c}\colon V_p(k_n,l)\to \{1,\ldots,d\}$ by $\bar{c}(f) = c(\bar{f})$ for each $f \in V_p(k_n,l)$.
   Now define the map $\tilde{c}$ as
   \begin{equation*}
     \tilde{c}\colon V_p(k_n,l)\to \R^d, \: f \mapsto e_{\bar{c}(f)}.
   \end{equation*}
-  This map can be affinely extended to a map $\lVert \tilde{c} \rVert$ on the geometric realization $\lVert K_p(k_n,l) \rVert$. This is especially a continuous map. Now since $l > d(p-1)$ we can apply Theorem \ref{thm:confun} and get that there exists $x_0 \in \lVert K_p(k_n, l) \rVert$ such that the $\Z_p$-Orbit\footnote{Define the $\Z_p$ action on $\lVert K_p(k_n, l)\rVert$ as the affine extension of the $\Z_p$-action on $V_p(k_n,l)$ (see \ref{defin:kpnl}).} of this point gets send to a single point by $\lVert \tilde{c} \rVert$. 
+  This map can be affinely extended to a map $\lVert \tilde{c} \rVert$ on the geometric realization $\lVert K_p(k_n,l) \rVert$. Especially, this is a continuous map. Now since $l > d(p-1)$ we can apply Theorem \ref{thm:confun} and get that there exists $x_0 \in \lVert K_p(k_n, l) \rVert$ such that the $\Z_p$-Orbit\footnote{Define the $\Z_p$ action on $\lVert K_p(k_n, l)\rVert$ as the affine extension of the $\Z_p$-action on $V_p(k_n,l)$ (see \ref{defin:kpnl}).} of this point gets send to a single point by $\lVert \tilde{c} \rVert$. 
 
   We know that $x_0$ is contained in the image of a maximal chain $\{h_l, \ldots h_0\}$ where $h_l \subseteq_f \cdots \subseteq_f h_0$.
   Now choose $\N \ni i_0 < d$ such that the $(x_0)_{i_0} \neq 0$ (in the case that $x_0$ is the zero vector just choose another geometric realization which is isometric to the original one and just translated by some small vector). We can conclude that there exists $m \in \{0, \ldots, l\}$ such that $\tilde{c}(h_m) = e_{i_0}$ and thus $\bar{c}(h_m) = i_0$. This follows from the fact that $\lVert \tilde{c} \rVert$ is an affine map which means that it preserves the barycentric coordinates of $x_0$. Also observe that for each $q \in \Z_p$ there is an $m_q \in \{0,\ldots,l\}$ such that $\bar{c}(h_{m_q}+_fq) = i_0$ since $\lVert \tilde{c} \rVert(x_0 +_f q) = \lVert \tilde{c} \rVert(x)$ (we can assume that $(x_0 +_f q)_{i_0} \neq 0$ by the same isometry argument as for the case where $q = 0$ since there are only finitely many $q$). 
@@ -101,10 +102,10 @@ The following lemma is just an equality needed to prove the main theorem of this
     A_h := \{j \in \Z_p\colon &\exists J \in \mathbb{I}(h)\colon\\
     &(h(J) = \{j\}, \exists I_1, I_2 \in \mathcal{I}\colon (I_1\neq I_2 \: \land \: J \cap I_1 \neq \emptyset \neq J \cap I_2)) \}.
   \end{align*}
-  It follows that $\left|A_h\right| \leq k-1$ since the elements of are consequtive and disjoint and $\left|\mathcal{I}\right| = k$. Furthermore define $B_h$ as \[B_h:= [p] \setminus A_h.\] 
+  It follows that $\left|A_h\right| \leq k-1$ since the elements of $\mathcal{I}$ are consecutive and disjoint and $\left|\mathcal{I}\right| = k$. Furthermore define $B_h$ as \[B_h:= [p] \setminus A_h.\] 
   It follows immediately that $\left|B_h \right| \geq p - k + 1$. By definition of $A_h$ it follows for each $j \in B_h$ that
   \begin{equation*}
-    h^{-1}(\{j\}) = \{\bigcup\limits_{m=1}^M J_m\colon \N \ni M \leq l+1, \exists I \in \mathcal{I}\colon J_m \subseteq I\}.
+    h^{-1}(\{j\}) = \left\{\bigcup\limits_{m=1}^M J_m\colon \N \ni M \leq l+1, \exists I \in \mathcal{I}\colon J_m \subseteq I\right\}.
   \end{equation*}
   By the choice of $p$ we get
   \begin{align*}
@@ -114,7 +115,7 @@ The following lemma is just an equality needed to prove the main theorem of this
   \end{align*}
   and hence $(p-k)(d+1) > dp = l$.
   
-  From $(p-k+1)(d+1) > l+1$ and $\left|\mathbb{I}(h)\right| \leq l+1$ we get the existence of an element $q_0 \in B_h$ such that $h^{-1}(\{q_0\})$ contains less then $d+1$ component intervals of $h$.
+  From $(p-k+1)(d+1) > l+1$ and $\left|\mathbb{I}(h)\right| \leq l+1$ we get the existence of an element $q_0 \in B_h$ such that $h^{-1}(\{q_0\})$ contains less than $d+1$ component intervals of $h$.
   It follows by definition of $\mathcal{I}$ that
   \begin{equation}\label{eq:hq0}
     \mu_n(h^{-1}(\{q_0\})) \leq {d \varepsilon \over 4d} = {\varepsilon \over 4}.
@@ -137,7 +138,7 @@ The following lemma is just an equality needed to prove the main theorem of this
   \begin{align*}
     &\mu_n(\{i \in [k_n+1]\colon \bar{f} +_p 1 \neq \bar{f} + 1\}) = \mu_n(\bar{f}^{-1}(\{p-1\})) \\
     \overset{*}{\leq} \hspace*{10px} &\mu_n(f^{-1}(\{p-1\})) + {\varepsilon \over 8} \\
-    \underset{\text{f.}}{\overset{\text{Def.}}{\leq}} \hspace*{10px} &\mu_n(\h^{-1}(\{q_0\})) + {\varepsilon \over 8} \\
+    \overset{\text{Def.f}}{\leq} \hspace*{5px} &\mu_n(\h^{-1}(\{q_0\})) + {\varepsilon \over 8} \\
     \overset{(\ref{eq:h1})}{\leq} \hspace*{10px}&\mu_n(h^{-1}(\{q_0\})) + {\varepsilon \over 8} + {\varepsilon \over 8} \\
     \overset{\text{(\ref{eq:hq0})}}{\leq} \hspace*{10px}&{\varepsilon \over 8} + {\varepsilon \over 4}.
   \end{align*}
@@ -151,7 +152,7 @@ The following lemma is just an equality needed to prove the main theorem of this
     = \hspace*{5px}&\mu_n(\{i \in [k_n+1]\colon \h(i) \neq h(i) \}) + {\varepsilon \over 8} \\
     \overset{(\ref{eq:h1})}{\leq} \hspace*{5px}&{\varepsilon \over 4}.
   \end{align*}
-  The inequality $*$ follows from the same reasoning as above.
+  The inequality $*$ follows from the same reasoning like above.
   Additionally we get that
   \begin{align*}
     &\mu_n(\{i\in [k_n+1]\colon \bar{g}(i) \neq h(i) +_p (p-q_0)\}) \\
@@ -160,15 +161,15 @@ The following lemma is just an equality needed to prove the main theorem of this
     = \hspace*{5px}&\mu_n(\{i\in [k_n+1]\colon \hh(i) \neq h(i) \}) + {\varepsilon \over 8} \\
     \overset{\text{(\ref{eq:h2})}}{\leq} \hspace*{5px} &{\varepsilon \over 4}.
   \end{align*} 
-  Again the inequality $*$ follows as above.
+  Again the inequality $*$ follows like above.
 
   From the last three inequalities the claim in (\ref{eq:cl}) follows as needed.
 \end{proof}
 
-Theorem \ref{thm:colve} and this theorem now imply the following result.
+Theorem \ref{thm:colve} and this Theorem now imply the following result.
 
 \begin{thm}
-  For any abelian topological group $G$ and arbitrary diffuse submeasure $\mu$ the group $L_0(\mu, G)$ is extremely amenable.
+  For any abelian, Hausdorff, topological group $G$ and arbitrary diffuse submeasure $\mu$ the group $L_0(\mu, G)$ is extremely amenable.
 \end{thm}
 
 \begin{proof}
