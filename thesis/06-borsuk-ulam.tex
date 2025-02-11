@@ -27,6 +27,8 @@ In his book ``Using the Borsuk-Ulam Theorem'' \cite{using2003} Matoušek compile
   \begin{equation*}
     \tau_1 \subseteq_f \tau_2 \longeq \dom(\tau_1) \subseteq \dom(\tau_2) \: \land \: \forall k \in \dom(\tau_1)\colon \tau_1(k) = \tau_2(k).
   \end{equation*}
+  If a partial function $\tau$ is defined on every element of the domain $[n+1]$ then it is called a \textbf{total function}.
+  
   A \textbf{component interval} of $\tau$ is any maximal interval $I \subseteq [n+1]$ such that $\tau$ is constant on $I \cap \dom(\tau)$. Define $\mathbb{I}(\tau)$ to be the set of component intervals of $\tau$. 
 
   In addition to that let $f, g$ be partial functions from the set $X$ to set $Y$ with $\dom(f) \cap \dom(g) = \emptyset$ and define 
@@ -226,29 +228,29 @@ The well-definedness of the induction step follows from the assumption that $A_\
 \end{lemma}
 
 \begin{proof}
-  Prove by induction on $\N \ni i \leq l$ that for $\rho \in [p]^{[i+1,l+1]}$ with $l-i-1$ component intervals and $\rho(l) \neq \sigma(l+1)$ that the set \[L_{\sigma,\rho} = \{\tau \in V_p(i,l)\colon \left|\mathbb{I}(\tau \uplus \rho \uplus \sigma)\right| \leq l \}\]
+  Prove by induction on $\N \ni i \leq l+1$ that for $\rho \in [p]^{[i+1,l+1]}$ with $l-i$ component intervals and $\rho(l) \neq \sigma(l+1)$ that the set \[L_{\sigma,\rho} = \{\tau \in V_p(i,l)\colon \left|\mathbb{I}(\tau \uplus \rho \uplus \sigma)\right| \leq l + 1 \}\]
   is either empty or contractible. Note that the set is well-defined since in the definition $\dom(\tau) \subseteq [i+1]$, $\dom(\rho) = [i+1,l+1]$ and $\dom(\sigma) \subseteq [l+1,n+1]$. Additionally if $i = l$ then $L_{\sigma,\rho} = L_{\sigma}$.
 
   Start with $i=0$. Notice that $\left|\mathbb{I}(\rho \uplus \sigma)\right| \geq l$ since $\rho(l) \neq \sigma(l+1)$. Then there are two cases
   \begin{itemize}
-    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| > l$ which means that $L_{\rho, \sigma} = \emptyset$,
-    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| = l$ which means that $L_{\rho,\sigma}$ contains the function $\tau(0) = \rho(1)$ and the empty function and is thus contractible as a one point space.
+    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| > l+1$ which means that $L_{\rho, \sigma} = \emptyset$,
+    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| = l+1$ which means that $L_{\rho,\sigma}$ contains the function $\tau(0) = \rho(1)$ and the empty function and is thus contractible as a one point space.
   \end{itemize}
 
   We consider the induction step $i-1$ to $i$. Define for $\N \ni j < p$ the total function $\tau_j\colon\{i\} \to \{j\}, \: x \mapsto j$ and define
   \begin{equation*}
-    B = \{\tau \in V_p(i-1,l)\colon \left| \mathbb{I}(\tau \uplus \rho \uplus \sigma) \right| \leq l\}
+    B = \{\tau \in V_p(i-1,l)\colon \left| \mathbb{I}(\tau \uplus \rho \uplus \sigma) \right| \leq l+1\}
   \end{equation*}
   and
   \begin{equation*}
-    B_j = \{\tau \in V_p(i-1,l)\colon \left| \mathbb{I}(\tau \uplus \tau_j \uplus \rho \uplus \sigma) \right| \leq l\}.
+    B_j = \{\tau \in V_p(i-1,l)\colon \left| \mathbb{I}(\tau \uplus \tau_j \uplus \rho \uplus \sigma) \right| \leq l+1\}.
   \end{equation*}
   Firstly $B_j$ is well-defined since $\dom(\tau) \subseteq [i]$ and $\dom(\rho) \subseteq [i+1]$ and thus \[\dom(\tau) \cap \dom(\tau_j) \cap \dom(\rho) = \emptyset.\] Next notice that $B_{j_0} = B$ because $\tau_{j_0}(i) = \rho(i+1)$ and that $B_j$ are either contractible or empty by the induction hypothesis.
 
   There are again two cases
   \begin{itemize}
-    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| > l$ which means that $L_{\sigma,\rho}$ is empty,
-    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| \leq l$ then $L_{\rho, \sigma} \cong {\rm Cone}(B, (B_j)_{j\in [p]})$ as sets and by Lemma \ref{lem:ecsimeq} we get that the realization of ${\rm Cone}(B, (B_j)_{j \in [p]})$ is homotopy equivalent to the geometric realization of $B \cup {\rm Cone}(B_{j_0})$ and since $B = B_{j_0}$ this is the same as ${\rm Cone}(B)$ which is contractible.
+    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| > l+1$ which means that $L_{\sigma,\rho}$ is empty,
+    \item $\left|\mathbb{I}(\rho \uplus \sigma)\right| \leq l+1$ then $L_{\rho, \sigma} \cong {\rm Cone}(B, (B_j)_{j\in [p]})$ as sets and by Lemma \ref{lem:ecsimeq} we get that the realization of ${\rm Cone}(B, (B_j)_{j \in [p]})$ is homotopy equivalent to the geometric realization of $B \cup {\rm Cone}(B_{j_0})$ and since $B = B_{j_0}$ this is the same as ${\rm Cone}(B)$ which is contractible.
     \end{itemize}
     The map between ${\rm Cone}(B, (B_j)_{j\in [p]}) \to L_{\rho, \sigma}$ mentioned above sends each $\tau \in B$ to $\tau \in V_p(i-1, l) \cap L_{\rho, \sigma}$ and sends $\tau \in {\rm Cone}(B_j)$ to $\tau' \in (V(i,l) \setminus V(i-1,l))\cap L_{\rho,\sigma}$ such that $\tau \subseteq_f \tau'$ and $\tau'(i) = j$ for each $j \in [p]$.
 \end{proof}

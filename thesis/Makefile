@@ -6,6 +6,9 @@ thesis.pdf:
 	pdflatex main.tex -o thesis.pdf
 	pdflatex main.tex -o thesis.pdf
 
+once:
+	pdflatex main.tex -o thesis.pdf
+
 clean:
 	mv main.tex _main
 	rm -rf main.*

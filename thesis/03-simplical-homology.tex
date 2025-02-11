@@ -79,7 +79,7 @@ are the elements of the poset and the binary relation of set inclusion is the pa
 \end{thm}
 
 \begin{proof}
-    Let $\sigma \in \sd(\mathcal{K})$. Now let $\tau \subseteq \sigma$. Since $\sigma$ was totally ordered $\tau$ is also totally ordered.
+    Since the singleton sets $\{\sigma\}$ for $\sigma \in \mathcal{K}$ are totally ordered we have that \[\forall \sigma\in \mathcal{K}\colon \{\sigma\} \in \sd(\mathcal{K})\] and thus $\bigcup \sd(\mathcal{K}) = \mathcal{K}$. Let $\sigma \in \sd(\mathcal{K})$. Now let $\tau \subseteq \sigma$. Since $\sigma$ was totally ordered $\tau$ is also totally ordered.
     This means that $\tau \in \mathcal{K}$.
 \end{proof}
 
@@ -127,6 +127,7 @@ It will be clear that these two types of objects internally encode the same comb
   Since $A \cup B$ are affinely indepent this means that either all coefficients are zero or there exist indicies for which $a_i = b_j$. Since the sum of the coefficients $a_i$ and $b_j$ sum up to one the case that all coefficients are zero is not possible and thus we have that both convex combinations of $x$ can only contain points which lie in $A \cap B$. So $x \in {\rm co}(A\cap B)$.
 \end{proof}
 
+\vspace*{-10px}
 Affine independence of the vectors ensures that the convex hull of vectors is not degenerated.
 For example it is expected that the convex hull of three vectors in $\R^2$ is a triangle. But in the degenerate case that the points are all the same
 or the points lie in a straight line, this is not true. When it is assumed that the points are affinely independent, these cases are excluded. 
@@ -504,7 +505,7 @@ The Theorem now tells us that any function from $X$ to an abelian group $B$ can 
 \end{lemma}
 
 \begin{proof}
-  See \cite[Theorem 29.1]{MunAlTop}.
+  See \cite[Lemma 8.7]{schneider2023}.
 \end{proof}
 
 The Lemma above is the so called Fundamental Theorem of Homology Theory. It allows for the following definition.
@@ -547,7 +548,7 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
 \begin{thm}\label{thm:hfunc}
   Let $n \in \N$. Then \[H_n\colon \underline{\rm Top} \to \underline{\rm Ab} \]
   defined by \[H_n(X) := H_n(C_\bullet(X)), \: H_n(f) := H_n(C_\bullet(f))\]
-  for a topological spaces $X$ and $Y$ and $f \in C(X, Y)$ is called the $n$-th singular homology group and  is a functor. 
+  for a topological spaces $X$ and $Y$ and $f \in C(X, Y)$ is called the $n$-th singular homology group and is a functor. The definition of this functor is part of homological algebra and can be found in \cite[p. 329f.]{rotman2009}. 
 \end{thm}
 
 \begin{proof}
@@ -574,8 +575,15 @@ From the previous lemma it is clear that $C_\bullet(f) := (C_n(f))_{n\in \Z}$ wi
   Take a topological space $X$. Then $H_0(X) \cong \Z^n$ where $n \in \N$ is the number of path-connected components in $X$. 
 \end{ex}
 
-The example above implies that the $0$-th homology group of for example a one point space is $\Z$. This complicates some other results in homology theory. Therefore there is a version of the homology groups called \textbf{reduced} homology groups $\tilde{H_n}$ where $\tilde{H}_n(X) = H_n(X)$ for all $n \in\N^+$ and $\tilde{H}_0(X) \oplus \mathbb{Z} = H_0(X)$. This means that the $0$-th reduced homology group of a one point space is the trivial group instead of $\mathbb{Z}$.
-A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatcher}.
+In classical homology theory, the \( 0 \)-th homology group of a space counts its connected components, which can sometimes lead to complications in certain results. For example, the homology of a single-point space is typically \( H_0 = \mathbb{Z} \), but this does not always align well with other homological computations.
+
+To address this, we introduce \textbf{reduced homology groups}, denoted \( \tilde{H}_n(X) \). These groups are defined such that:
+\[
+\tilde{H}_n(X) = H_n(X) \quad \text{for all } n \geq 1, \quad \text{and} \quad \tilde{H}_0(X) \oplus \mathbb{Z} = H_0(X).
+\]
+This adjustment ensures that the reduced homology of a single-point space is trivial, \( \tilde{H}_0 = 0 \), rather than \( \mathbb{Z} \), simplifying various theoretical results. A detailed derivation of reduced homology can be found in \cite[p.~110]{hatcher}.
+
+Beyond using integer coefficients, homology can also be defined with coefficients in other groups, such as \( \mathbb{Z}_p \) for a prime \( p \). The fundamental ideas remain the same, with slight modifications in proofs and derivations. Since this thesis focuses on homology over \( \mathbb{Z}_p \), we refer to \cite[p.~153ff.]{hatcher} for a comprehensive discussion of homology with different coefficients.
 
 \begin{defin}
   Let $G_\alpha$ be an abelian group for each $\alpha$ in an arbitrary index set $I$. Then the \textbf{external direct sum} of the groups is defined as
@@ -604,9 +612,12 @@ A detailed derivation of the reduced groups can be found in \cite[p. 110]{hatche
 \begin{proof}
   See \cite[Corollary 2.25]{hatcher}.
 \end{proof}
+\vspace*{-13pt}
+Proofs in the later sections will focus solely on reasoning about homology groups. While there exists a dualized concept known as \textbf{cohomology}, where the $n$-th cohomology group is denoted by \( H^n(X; G) \), where \( G \) is a module over a field, its development is not necessary for this thesis.
 
-Proofs in the later sections will only involve reasoning about homology groups. There is a dualized concept of homology called cohomology.
-The dualization in the sense of category theory works be replacing the homology groups in the chain complex by $\underline{\rm Grp}(H_n(X), G)$ where $G \in \underline{\rm Ab}$ is an abelian group. There is no need to also develop the theory of cohomology in this thesis nor a need to use it later in the proofs because of the following result. Its called \textbf{Alexander duality} and connects homology and cohomology groups.
+In categorical terms, cohomology arises from a dualization of homology, which replaces the homology groups in the chain complex with \( \underline{\rm Grp}(H_n(X), G) \), where \( G \in \underline{\rm Ab} \) is an abelian group. However, there is no need to introduce cohomology explicitly or utilize it in later proofs due to the following fundamental result: 
+
+\textbf{Alexander Duality}, which establishes a connection between homology and cohomology groups.
 
 \begin{thm}\label{thm:alex}
   Let $n \in \N$. If $A \subseteq \mathbb{S}^n$ is a compact and non-empty subspace and ($\mathbb{S}^n, A$) is triangulable\footnote{This means that $A \subseteq \mathbb{S}^n$ and that there exists a triangulation $\mathcal{K}$ of $\mathbb{S}^n$ and a subcomplex $\mathcal{K}_0 \subseteq \mathcal{K}$ with a homeomorphism $(\mathcal{K}, \mathcal{K}_0) \to (\mathbb{S}^n, A)$.} then
@@ -641,9 +652,9 @@ The dualization in the sense of category theory works be replacing the homology 
 A second important tool linking homology and cohomology groups is the \textbf{Universal Coefficient Theorem}. The next Theorem is a version of it.
 
 \begin{thm}\label{thm:uct}
-Let $C_\bullet(X)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X)$ of $C_n(X)$ for $n \in \N$ and for a topological space $X$, then the cohomology groups $H^n(X; G)$ for a abelian group $G$ are determined by the exact sequence
+Let $C_\bullet(X; R)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X; R)$ of $C_n(X; R)$ for $n \in \N$ and for a topological space $X$ and let $R$ be a field, then the cohomology groups $H^n(X; G)$ with coefficients in an $R$-module $G$ are determined by the exact sequence
   \begin{equation*}
-    0 \to {\rm Ext}(H_{n-1}(X), G) \to H^n(X; G) \to \underline{\rm Ab}(H_n(X), G) \to 0.
+    0 \to {\rm Ext}(H_{n-1}(X; R), G) \to H^n(X; G) \to \underline{\rm Ab}(H_n(X; R), G) \to 0.
   \end{equation*}
   For the definition of the ${\rm Ext}$-functor look in \cite[p. 195]{hatcher}.
 \end{thm}
@@ -655,8 +666,10 @@ Let $C_\bullet(X)$ be a chain complex of free abelian groups and the correspondi
 We will only need the following Corollary from this Theorem.
 
 \begin{col}\label{col:hntriv}
-  Let $C_\bullet(X)$ be a chain complex of free abelian groups and $H_n(X)$ the corresponding homology groups with $\tilde{H}_n(X) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
+  Let $C_\bullet(X; R)$ be a chain complex of free abelian groups, let $R$ be a field and $H_n(X; R)$ the corresponding homology groups with $\tilde{H}_n(X; R) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
 \end{col}
+
+We will use this Corollary in the case $R = G = \Z_p$. This works since $\Z_p$ is a field and a free $\Z_p$-module over itself in the case $p \in \mathbb{P}$.
 
 \subsection{Theorem of Mayer-Vietoris}
 Often we can calculate the homology of simple subspaces of a larger space and want to deduce the homology of the larger space from them.
@@ -678,6 +691,8 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
 \begin{proof}
   For a detailed derivation of this Theorem look at \cite[p. 149]{hatcher}. 
 \end{proof}
+
+\vspace*{-17px}
 
 \begin{ex}
   The homology groups of the $n$-dimensional sphere $\mathbb{S}^n$ are as follows

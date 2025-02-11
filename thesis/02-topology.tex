@@ -302,10 +302,10 @@ Now assume that the Lemma is true for a set with cardinality $n \in \N$ and let 
 \subsection{Topological Algebra}
 
 \begin{defin}
-  Let $G$ be a group with group operation $\cdot_G$ and $\T$ a topology on the underlying set of $G$. Additionally define ${\rm mul}\colon G \times G \to G, (g, h) \mapsto g \cdot_G h$ as the multiplication map of $G$ and ${\rm inv}\colon G \to G, g \mapsto g^{-1}$ as the inverse map of $G$. Then $G$ is called a \textbf{topological group} if both ${\rm mul}$ and ${\rm inv}$ are continuous maps with respect to $\T$.
+  Let $G$ be a group with group operation $+_G$ and $\T$ a topology on the underlying set of $G$. Additionally define ${\rm mul}\colon G \times G \to G, (g, h) \mapsto g +_G h$ as the multiplication map of $G$ and ${\rm inv}\colon G \to G, g \mapsto -g$ as the inverse map of $G$. Then $G$ is called a \textbf{topological group} if both ${\rm mul}$ and ${\rm inv}$ are continuous maps with respect to $\T$.
   Let $X$ be a set. An action of $G$ on $X$ is a map $\lambda\colon G\times X \to X, (g, x) \mapsto \lambda(g, x) =: g \anddot x$ that fulfills the following properties
   \begin{enumerate}
-    \item $\forall g, h \in G: h \anddot (g \anddot x) = (h \cdot_G g) \anddot x$,
+    \item $\forall g, h \in G: h \anddot (g \anddot x) = (h +_G g) \anddot x$,
     \item $e_G \in G$: $\lambda(e, x) = x$ for all $x \in X$.
   \end{enumerate}
   If $X$ is a topological space, then the action of $G$ on $X$ is continuous if $\lambda$ is a continuous map.
@@ -334,35 +334,35 @@ Now assume that the Lemma is true for a set with cardinality $n \in \N$ and let 
 \begin{thm}\label{thm:stop}
   The set $S(\mu, G)$ for a submeasure $\mu$ on a set $X$ and an abelian topological group $G$ is a group with group operation
   \begin{equation*}
-    \star\colon S(\mu, G) \times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f \star g
+    S(\mu, G) \times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f + g
   \end{equation*}
-  where $(f\star g)(x) = f(x) \cdot_G g(x)$ for each $x \in X$. If $f$ is an element of $S(\mu, G)$ then define $f^{-1}$ as $f^{-1}(x) = (f(x))^{-1}$ for all $x \in X$. If we put the topology of convergence in submeasure on $S(\mu, G)$ the group
+  where $(f + g)(x) = f(x) +_G g(x)$ for each $x \in X$. If $f$ is an element of $S(\mu, G)$ then define $-f$ as $(-f)(x) = -f(x)$ for all $x \in X$. If we put the topology of convergence in submeasure on $S(\mu, G)$ the group
   becomes a topological group.
 
   A basis element of the topology of convergence in submeasure is given by
   \begin{equation*}
-    V_\varepsilon(f) := \{ h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot_G f(x)\}) < \varepsilon \}
+    V_\varepsilon(f) := \{ h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V +_G f(x)\}) < \varepsilon \}
   \end{equation*}
   where $V$ is a neighborhood of the identity on $G$, $f \in S(\mu, G)$ and $\varepsilon \in \R_{>0}$.
 \end{thm}
 
 \begin{proof}
-  Firstly let $f, g \in S(\mu, G)$. Since $f$ and $g$ induce partitions $\P_f, \P_g$ and the partition $\P = \{A \cap B\colon A \in \P_f, B \in \P_g\}$ is again a measurable partition it is clear that $f \star g \in S(\mu, G)$. The associativity, existence of a neutral element and existence of an inverse element follow from the fact that $\cdot_G$ is a group operation.
-  It remains to show that ${\rm mul}\colon S(\mu, G)\times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f\star g$ and ${\rm inv}\colon S(\mu, G) \to S(\mu, G), f \mapsto f^{-1}$ are continuous. To this end let $V$ be a neighborhood of the identity of $G$, $f \in S(\mu, G)$ and let $\varepsilon \in \R_{>0}$. Consider
+  Firstly let $f, g \in S(\mu, G)$. Since $f$ and $g$ induce partitions $\P_f, \P_g$ and the partition $\P = \{A \cap B\colon A \in \P_f, B \in \P_g\}$ is again a measurable partition it is clear that $f + g \in S(\mu, G)$. The associativity, existence of a neutral element and existence of an inverse element follow from the fact that $+_G$ is a group operation.
+  It remains to show that ${\rm mul}\colon S(\mu, G)\times S(\mu, G) \to S(\mu, G), (f, g) \mapsto f + g$ and ${\rm inv}\colon S(\mu, G) \to S(\mu, G), f \mapsto -f$ are continuous. To this end let $V$ be a neighborhood of the identity of $G$, $f \in S(\mu, G)$ and let $\varepsilon \in \R_{>0}$. Consider
   \begin{align*}
-    {\rm inv}^{-1}(V_\varepsilon(f)) &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon (h(x))^{-1} \notin V\cdot f(x)\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V^{-1}\cdot (f(x))^{-1}\}) < \varepsilon\}
+    {\rm inv}^{-1}(V_\varepsilon(f)) &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon (-h)(x) \notin V +_G f(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin (-V) +_G (-f)(x))\}) < \varepsilon\}
   \end{align*}
-  where $V^{-1} := \{g^{-1}\colon g \in V\}$.
-  This is a neighborhood of $f^{-1}$ since $V^{-1}$ is also a neighborhood of the identity of $G$. 
-  Now consider $M := {\rm mul}^{-1}(V_\varepsilon(f))$ which is the set \[M = \{(h, g) \in S(\mu, G) \times S(\mu, G)\colon \mu(\{x \in X\colon (h \star g)(x) \notin V\cdot f(x)\}) < \varepsilon\}.\]
+  where $V^{-1} := \{-g\colon g \in V\}$.
+  This is a neighborhood of $-f$ since $-V$ is also a neighborhood of the identity of $G$. 
+  Now consider $M := {\rm mul}^{-1}(V_\varepsilon(f))$ which is the set \[M = \{(h, g) \in S(\mu, G) \times S(\mu, G)\colon \mu(\{x \in X\colon (h + g)(x) \notin V +_G f(x)\}) < \varepsilon\}.\]
   This set is open since
   \begin{align*}
-    \pi_1(M) &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon (h \star g)(x) \notin V\cdot f(x)\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \cdot g(x) \notin V\cdot f(x)\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot f(x) \cdot (g(x))^{-1}\}) < \varepsilon\} \\
-    &= \{h \in S(\mu, G)\colon \exists \tilde{f}\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot \tilde{f}(x)\}) < \varepsilon\} \\
-    &= \bigcup\limits_{\tilde{f} \in S(\mu, G)}\{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V\cdot \tilde{f}(x)\}) < \varepsilon\}
+    \pi_1(M) &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon (h + g)(x) \notin V +_G f(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) + g(x) \notin V+_G f(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \exists g\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V +_G f(x) +_G (-g)(x)\}) < \varepsilon\} \\
+    &= \{h \in S(\mu, G)\colon \exists \tilde{f}\in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V+_G \tilde{f}(x)\}) < \varepsilon\} \\
+    &= \bigcup\limits_{\tilde{f} \in S(\mu, G)}\{h \in S(\mu, G)\colon \mu(\{x \in X\colon h(x) \notin V+_G \tilde{f}(x)\}) < \varepsilon\}
   \end{align*}
   where $\pi_1$ is the projection to the first component. By symmetry reasons this also works for the second component.
 \end{proof}
@@ -386,20 +386,20 @@ In the following section let $Y$ be a topological space and let $X$ be a metric 
     \forall t\in[0,1]\forall i\in \{1,2\}\colon H(0, t) = \gamma_i(0) \: \land \: H(1, t) = \gamma_i(1).
   \end{equation*}
 
-  If a free homotopy $H$ between the two paths $\gamma_1$ and $\gamma_2$ exists they are called \textbf{freely homotopic} $\gamma_1 \overset{\cdot}{\sim}_H \gamma_2$.
+  If a free homotopy $H$ between the two paths $\gamma_1$ and $\gamma_2$ exists they are called \textbf{freely homotopic} $\gamma_1 \overset{\cdot}{\simeq}_H \gamma_2$.
   If the two paths $\gamma_1$ and $\gamma_2$ have the same start and end point and there exists an endpoint preserving homotopy $H$ between them then they are called 
-  \textbf{homotopic} $\gamma_1 \sim_H \gamma_2$. If a path is (freely) homotopic to a constant path ($[0,1] \to Y, t \mapsto y \in Y$) then it is called \textbf{null-homotopic}.
+  \textbf{homotopic} $\gamma_1 \simeq_H \gamma_2$. If a path is (freely) homotopic to a constant path ($[0,1] \to Y, t \mapsto y \in Y$) then it is called \textbf{null-homotopic}.
 
-  Lastly define the homotopy relation $\sim$ on $C([0,1], Y)$ where 
+  Lastly define the homotopy relation $\simeq$ on $C([0,1], Y)$ where 
   \begin{equation*}
-    \forall\gamma_1, \gamma_2 \in C([0,1], Y)\colon \gamma_1 \sim \gamma_2 \iff \exists H \text{ homotopy between } \gamma_1 \text{ and } \gamma_2.
+    \forall\gamma_1, \gamma_2 \in C([0,1], Y)\colon \gamma_1 \simeq \gamma_2 \iff \exists H \text{ homotopy between } \gamma_1 \text{ and } \gamma_2.
   \end{equation*}
 \end{defin}
 
 In this thesis all homotopies are endpoint preserving if it is not explicitly stated that they should be free homotopies.
 
 \begin{lemma} \label{lem:homotopy-equivalence}
-  The homotopy relation $\sim$ of paths is an equivalence relation on the set $C([0,1],Y)$.
+  The homotopy relation $\simeq$ of paths is an equivalence relation on the set $C([0,1],Y)$.
 \end{lemma}
 
 \begin{proof}
@@ -408,10 +408,10 @@ In this thesis all homotopies are endpoint preserving if it is not explicitly st
   \textit{Reflexivity:}
   Consider the homotopy $H\colon [0,1]^2 \to Y, \: (s, t) \mapsto \gamma_1(s)$. 
   
-  It holds that for all $s\in [0,1]\colon H(s, 0) = \gamma_1(s),\: H(s, 1) = \gamma_1(s)$. And thus $\gamma_1 \sim_H \gamma_1 \Rightarrow \gamma_1 \sim \gamma_1$.
+  It holds that for all $s\in [0,1]\colon H(s, 0) = \gamma_1(s),\: H(s, 1) = \gamma_1(s)$. And thus $\gamma_1 \simeq_H \gamma_1 \Rightarrow \gamma_1 \simeq \gamma_1$.
 
   \textit{Symmetry:} 
-  Assume that $\gamma_1 \sim \gamma_2$. This means there exists a homotopy $H$ such that $\gamma_1 \sim_H \gamma_2$. 
+  Assume that $\gamma_1 \simeq \gamma_2$. This means there exists a homotopy $H$ such that $\gamma_1 \simeq_H \gamma_2$. 
   Now define the homotopy $F\colon [0,1]^2 \to Y, \: (s, t) \mapsto H(s, 1-t)$. 
   
   From this definition it follows that for all $s \in [0,1]:$
@@ -419,10 +419,10 @@ In this thesis all homotopies are endpoint preserving if it is not explicitly st
     F(s, 0) &= H(s, 1 - 0) = \gamma_2(s) \\
     F(s, 1) &= H(s, 1 - 1) = \gamma_1(s)
   \end{align*}
-  and hence $\gamma_2 \sim_F \gamma_1 \Rightarrow \gamma_2 \sim \gamma_1$.
+  and hence $\gamma_2 \simeq_F \gamma_1 \Rightarrow \gamma_2 \simeq \gamma_1$.
 
   \textit{Transitivity:}
-  Assume that $\gamma_1 \sim \gamma_2$ and $\gamma_2 \sim \gamma_3$. Let $H$ be a homotopy between $\gamma_1$ and $\gamma_2$ and let $F$ be a homotopy between $\gamma_2$ and $\gamma_3$. 
+  Assume that $\gamma_1 \simeq \gamma_2$ and $\gamma_2 \simeq \gamma_3$. Let $H$ be a homotopy between $\gamma_1$ and $\gamma_2$ and let $F$ be a homotopy between $\gamma_2$ and $\gamma_3$. 
   Define the homotopy
   \begin{equation*} 
     G: [0,1]^2 \to Y, \: (s,t) \mapsto \begin{cases}
@@ -437,11 +437,11 @@ In this thesis all homotopies are endpoint preserving if it is not explicitly st
     G\left(s, \tfrac{1}{2}\right) &= H(s, 1) = \gamma_2(s) = F(s, 0), \\
     G(s, 1) &= F(s, 1) = \gamma_3(s),
   \end{align*}
-  and thus $\gamma_1 \sim_G \gamma_3 \Rightarrow \gamma_1 \sim \gamma_3$.
+  and thus $\gamma_1 \simeq_G \gamma_3 \Rightarrow \gamma_1 \simeq \gamma_3$.
 \end{proof}
 
 \begin{defin}
-  Let $X$ and $Y$ be topological spaces. The \textbf{homotopy class} of $f \in C(X, Y)$ is $[f]_{\sim} = \{g \in C(X, Y)\colon f \simeq g\}$. A continuous function $f \in C(X, Y)$ is called a \textbf{homotopy equivalence} if there exists a $g \in C(Y, X)$ such that
+  Let $X$ and $Y$ be topological spaces. The \textbf{homotopy class} of $f \in C(X, Y)$ is $[f]_{\simeq} = \{g \in C(X, Y)\colon f \simeq g\}$. A continuous function $f \in C(X, Y)$ is called a \textbf{homotopy equivalence} if there exists a $g \in C(Y, X)$ such that
   \begin{equation*}
     g \circ f \simeq \id_X \: \land \: f \circ g \simeq \id_Y.
   \end{equation*}
