@@ -1,0 +1,37 @@
+name: Build LaTeX document
+
+on:
+  push:
+    paths:
+      - '**.tex'
+      - 'Makefile'
+  pull_request:
+    paths:
+      - '**.tex'
+      - 'Makefile'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up LaTeX environment
+        uses: dante-ev/latex-action@v2
+        with:
+          root_file: ""  # leave empty since you're using a Makefile
+          latexmk_use_lualatex: false
+          pre_compile: |
+            cd thesis
+            make
+
+      # Optional: Upload PDF as artifact
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: latex-output
+          path: |
+            **/*.pdf
+
