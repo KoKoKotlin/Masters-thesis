@@ -1,4 +1,0 @@
- - ask about abstract
-
-## Chapter 5
- - Lemma 5.9 \simeq von S_p(n) to S_p(a) and S_p(n) to \Z_p
