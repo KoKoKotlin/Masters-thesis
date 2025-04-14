@@ -1,6 +1,6 @@
 \section{The Borsuk-Ulam Theorem and a generalization}\label{sec:borsuk}
 
-The following section describes the Borsuk-Ulam Theorem and an important generelization by Volovikov needed to prove the following claim.
+The following section describes the Borsuk-Ulam Theorem and an important generalization by Volovikov needed to prove the following claim.
 \begin{thm}\label{thm:confun}
   If $p \in \mathbb{P}$ and $n, l \in \mathbb{N}$ with $n \geq l$ such that
   \begin{equation*}
@@ -27,7 +27,7 @@ In his book ``Using the Borsuk-Ulam Theorem'' \cite{using2003} Matoušek compile
   \begin{equation*}
     \tau_1 \subseteq_f \tau_2 \longeq \dom(\tau_1) \subseteq \dom(\tau_2) \: \land \: \forall k \in \dom(\tau_1)\colon \tau_1(k) = \tau_2(k).
   \end{equation*}
-  If a partial function $\tau$ is defined on every element of the domain $[n+1]$ then it is called a \textbf{total function}.
+  If a partial function $\tau$ is defined on every element of the domain $[n+1]$ then it is called a \textbf{total function}. The set of all partial functions from a set $X$ to a set $Y$ will be denoted by $P(X, Y)$.
   
   A \textbf{component interval} of $\tau$ is any maximal interval $I \subseteq [n+1]$ such that $\tau$ is constant on $I \cap \dom(\tau)$. Define $\mathbb{I}(\tau)$ to be the set of component intervals of $\tau$. 
 
@@ -49,7 +49,7 @@ In his book ``Using the Borsuk-Ulam Theorem'' \cite{using2003} Matoušek compile
 \end{defin}
 
 \begin{defin}\label{defin:kpnl}
-  Let $K_p(n,l)$ be an abstract simplicial complex with
+  Let $K_p(n,l)$ be the abstract simplicial complex with
   \begin{enumerate}[label=\roman*.)]
     \item $V(K_p(n,l)) = V_p(n,l)$,
     \item the simplices in $K_p(n,l)$ are chains of $V_p(n,l)$ with respect to $\subseteq_f$.
@@ -85,7 +85,7 @@ Now, our goal is to show that the complex has trivial reduced cohomology groups 
 \begin{lemma}
   Let $n \in \N$ and let $p \in \mathbb{P}$. Then
   \begin{equation*}
-    \lVert K_p(n,n) \rVert \: \simeq \: \left\lVert\bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^{n}\right\rVert.
+    \lVert K_p(n,n) \rVert \: \simeq \: \bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^{n}.
   \end{equation*}
 \end{lemma}
 
@@ -97,14 +97,14 @@ Now, our goal is to show that the complex has trivial reduced cohomology groups 
       &[(-1,k)]_\sim, \: k \neq 0.
     \end{cases}
   \end{equation*}
-  Furthermore it holds that $\lVert S_p(n) \rVert \simeq \left\lVert \bigvee_{i=0}^n\Z_p \right\rVert \simeq \left\lVert \bigvee_{i=0}^n\bigvee_{j=1}^{p-1}\mathbb{S}^0 \right\rVert$ and thus
+  Furthermore it holds that $\lVert S_p(n) \rVert \simeq \left\lVert \bigvee_{i=0}^n\Z_p \right\rVert \simeq \bigvee_{i=0}^n\bigvee_{j=1}^{p-1}\mathbb{S}^0$ and thus
   \begin{equation*}
-    \lVert S_p(n) \rVert \simeq \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}} \hspace*{-17px}S_p(n,a) \right\rVert \overset{\ref{rem:s}}{\simeq} \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \right\rVert.
+    \lVert S_p(n) \rVert \simeq \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}} \hspace*{-17px}S_p(n,a) \right\rVert \overset{\ref{rem:s}}{\simeq} \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n.
   \end{equation*}
 
   It is clear that $V(S_p(n)) \cong V_p(n,n)$ because the vertices in $\sd(S_p(n))$ are maximal chains in $S_p(n)$ which are the total functions from $[n+1]$ to $[p]$ by definition and thus $K_p(n,n) \cong \sd(S_p(n))$. By Lemma \ref{lem:sdsimeq} it follows that
   \begin{equation*}
-    \lVert K_p(n, n) \rVert \simeq \left\lVert \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \right\rVert \simeq \left\lVert \bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^n \right\rVert
+    \lVert K_p(n, n) \rVert \simeq \bigvee_{a\in(\Z_p \setminus {0})^{n+1}}\hspace*{-15px}\mathbb{S}^n \simeq \bigvee_{i=1}^{(p-1)^{n+1}}\hspace*{-10px}\mathbb{S}^n
   \end{equation*}
   since $\left|(\Z_p\setminus\{0\})^{n+1}\right| = (p-1)^{n+1}$.
 \end{proof}
@@ -156,7 +156,9 @@ Now note that $K_p(n,l) = J_p(n,l) \cap L_p(n,l)$. We can use this fact for appl
 We start our analysis with the subcomplex $L_p(n,l)$. Notice that if we compare $K_p(l,l)$ to $L_p(n,l)$ than $L_p(n,l)$ contains additional partial functions namely all the functions with a domain not contained in $[l+1]$. We will show that we can extend the complex $K_p(l,l)$ by adding cones to specific subcomplexs such that we get a new complex that is isomorphic to $L_p(n,l)$. The intuitition behind this idea is that the added cone points and the join of already existing partial functions will act like the missing functions with large domain. 
 
 \begin{defin}
-  Let $\mathcal{K}$ be a simplicial complex, $p,m \in \N$ and let $(L_\sigma)_{\sigma \in P([m],[p])}$ be a family of subcomplexes of $\mathcal{K}$ such that $L_\sigma \subseteq L_\tau$ if $\tau \subseteq \sigma$. Define the complex ${\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma\in P([m],[p])})$ inductively. Firstly let $\mathcal{K}^0 = \mathcal{K}$ and let $L_\sigma^0 = L_\sigma$ for all $\sigma \in P([m],[p])$. Now define $X^k$ and $L_\sigma^k$ by induction on $k \leq m$ for $\sigma \in P([k+1,m], [p])$ as
+  Let $\mathcal{K}$ be a simplicial complex, $p,m \in \N$ and let $(L_\sigma)_{\sigma \in P([m],[p])}$ be a family of subcomplexes of $\mathcal{K}$ such that $L_\sigma \subseteq L_\tau$ if $\tau \subseteq \sigma$.
+
+  Define the complex ${\rm Cone}(\mathcal{K}, (L_\sigma)_{\sigma\in P([m],[p])})$ inductively. Firstly let $\mathcal{K}^0 = \mathcal{K}$ and let $L_\sigma^0 = L_\sigma$ for all $\sigma \in P([m],[p])$. Now define $X^k$ and $L_\sigma^k$ by induction on $k \leq m$ for $\sigma \in P([k+1,m], [p])$ as
   \begin{align*}
     \mathcal{K}^{k+1} &= {\rm Cone}(\mathcal{K}^k, (L^k_{(k,i)})_{i\in [p]}), \\
     L^{k+1}_\sigma &= {\rm Cone}(L^k_\sigma, (L^k_{(k,i) \uplus \sigma})_{i\in [p]})
@@ -310,8 +312,7 @@ The well-definedness of the induction step follows from the assumption that $A_\
   \end{align*}
   Remember that $J_p(n,l) \cap L_p(n,l) = K_p(n,l)$. Now by Lemma \ref{lem:jc0} we know that $\tilde{H}_i(\lVert J_p(n,l)\rVert) \cong 0$ and $\tilde{H}_i(\lVert L_p(n,l)\rVert) \cong 0$ by Corollary \ref{col:lspl} and by the fact that the realization of $S_p(n)$ is the wedge of $(p-1)^{n+1}$ $n$-dimensional spheres for $0 \leq i < l-1$. Thus the direct sum of these groups is trivial. Also it is clear that $\tilde{H}_i(\lVert J_p(n,l)\rVert \cup \lVert L_p(n,l)\rVert) \cong 0$ by a similiar argument as in \ref{lem:jc0} also using the triviality of the cohomology and then applying Alexanders duality. The exactness of the sequence yields that $\tilde{H}_i(\lVert K_p(n,l)\rVert) \cong 0$ for $0 \leq i \leq l-2$ and thus by Corollary \ref{col:hntriv} it follows that \[\tilde{H}^i(\lVert K_p(n,l)\rVert) \cong 0\] as claimed.
 \end{proof}
-
-Now we can prove Theorem \ref{thm:confun}.
+\noindent Now we can prove Theorem \ref{thm:confun}.
 \begin{proof}
   Firstly by Lemma \ref{lem:knp} we know that for $0 \leq i < l-1$ we have that \[\tilde{H}^i(\lVert K_p(n,l) \rVert, \Z_p) \cong 0.\] Now let $f\in C(\lVert K_p(n,l) \rVert, \mathbb{R}^d)$. Notice that $d < l$ by the assumptions on $d$. Since the simplicial complex is compact the geometric realization is contained in a ball around the origin with finite radius $B = B_r(0)$ for $r \in \R_{>0}$ the map $f$ can be resticted to a map $f_B = f|_B$. It remains to be shown that the map $\tilde{f} = \tilde{H}^{l-1}(f_B)\colon \tilde{H}^{l-1}(\lVert K_p(n,l) \rVert) \to \tilde{H}^{l-1}(B)$ has zero image.
   Since the reduced cohomology groups of this ball are all trivial because the ball is contractible we get that $\tilde{f}$ is the zero map.

@@ -31,19 +31,13 @@
 \begin{ex}\label{ex:seqcom}
   Let $n \in \N^+$ then $\mathcal{K}_n$ defined as
   \begin{equation*}
-    \mathcal{K}_n := \PowS([n])
+    \mathcal{K}_n := \PowS_{<n}([n])
   \end{equation*}
-  is a sequence of simplicial complexes. For example $\mathcal{K}_2 = \{\emptyset, \{0\}, \{1\}, \{0,1\}\}$.
+  is a sequence of simplicial complexes. For example $\mathcal{K}_2 = \{\emptyset, \{0\}, \{1\} \}$.
 \end{ex}
 
 \begin{defin}
-    Let $X$ be a set, $H$ be a group and $\mathcal{K}$ be a simplicial complex on $X$. If there is a 
-    group action $\lambda \colon H \times X \to X$ of $H$ on $X$ then
-    the complex $\mathcal{K}$ is an \textbf{$H$-complex} if the map
-    \begin{equation*}
-        \lambda_h \colon \mathcal{K} \to \mathcal{K}, \: \sigma \mapsto \{ \lambda(h, \tau)\colon \tau \in \sigma \}
-    \end{equation*}
-    is a simplicial map for all $h \in H$.
+    Let $X$ be a set, $H$ be a group and $\mathcal{K}$ be a simplicial complex on $X$. If there is a group action $\lambda \colon H \times X \to X$ of $H$ on $X$ such that $\lambda(h, \cdot)\colon X\to X$ is a simplicial map for each $h \in H$ then the complex $\mathcal{K}$ is an \textbf{$H$-complex}.
 \end{defin}
 
 \begin{defin}
@@ -124,10 +118,9 @@ It will be clear that these two types of objects internally encode the same comb
   \begin{equation*}
     \sum\limits_{i=1}^m\alpha_i a_i - \sum\limits_{j=1}^n\beta_j b_j = 0 \: \land \: \sum\limits_{i=1}^m \alpha_i - \sum\limits_{j=1}^n\beta_j = 0.
   \end{equation*}
-  Since $A \cup B$ are affinely indepent this means that either all coefficients are zero or there exist indicies for which $a_i = b_j$. Since the sum of the coefficients $a_i$ and $b_j$ sum up to one the case that all coefficients are zero is not possible and thus we have that both convex combinations of $x$ can only contain points which lie in $A \cap B$. So $x \in {\rm co}(A\cap B)$.
+  Since $A \cup B$ are affinely indepent this means that either all coefficients are zero or there exist indices for which $a_i = b_j$. Since the sum of the coefficients $a_i$ and $b_j$ sum up to one the case that all coefficients are zero is not possible and thus we have that both convex combinations of $x$ can only contain points which lie in $A \cap B$. So $x \in {\rm co}(A\cap B)$.
 \end{proof}
 
-\vspace*{-10px}
 Affine independence of the vectors ensures that the convex hull of vectors is not degenerated.
 For example it is expected that the convex hull of three vectors in $\R^2$ is a triangle. But in the degenerate case that the points are all the same
 or the points lie in a straight line, this is not true. When it is assumed that the points are affinely independent, these cases are excluded. 
@@ -144,22 +137,14 @@ or the points lie in a straight line, this is not true. When it is assumed that 
     \item $\forall \sigma_1, \sigma_2\in \mathcal{K}\colon ({\rm co}f(\sigma_1)) \cap ({\rm co} f(\sigma_2)) = {\rm co}f(\sigma_1 \cap \sigma_2)$.
   \end{enumerate}
     Given a geometric realization $f$ for $\mathcal{K}$, then $\lVert \mathcal{K} \rVert_f = f(\mathcal{K})$. The symbol $\lVert \mathcal{K} \rVert$ refers the an arbitrary geometric realization of $\mathcal{K}$ in the smallest dimension $d$ that is possible.
-    Let $x \in \lVert \mathcal{K} \rVert_f$. Then $x$ is in ${\rm co}A_x$ for exactly one set $\{f(v_1), f(v_2), \ldots, f(v_k)\} = A_x \subseteq f(V(\mathcal{K}))$ for which the following equations hold 
-    \begin{equation*}
-      x = \sum\limits_{i=1}^k t_i \cdot f(v_i), \hspace*{30px} \sum\limits_{i=1}^k t_i = 1, 
+    Let $x \in \lVert \mathcal{K} \rVert_f$. There exist maps $\alpha_v\colon \lVert \mathcal{K} \rVert_f \to [0, 1]$ for each $v \in V(\mathcal{K})$ such that \begin{equation*}
+      x = \sum\limits_{v \in V(\mathcal{K})} \alpha_v(x) \cdot f(v_i), \hspace*{30px} \sum\limits_{v \in V(\mathcal{K})} \alpha_v(x) = 1, 
     \end{equation*}
-    where $k\in \N^+$ and $t_i \in [0, 1]$ for all $i \in \{1, 2, \ldots, k\}$. Define $\alpha_v(x)$ as
-    \begin{equation*}
-      \alpha_v(x) = \begin{cases}
-        &t_i, \: v \in A_x, \\
-        &0, \: \text{otherwise}
-      \end{cases}
-    \end{equation*}
-    for $v \in V(\mathcal{K})$.
-    The $\alpha_v(x)$ are which are non-zero are called the \textbf{barycentric coordinates} of $x$.
+
+    The $\alpha_v(x)$ are called the \textbf{barycentric coordinates} of $x$.
 \end{defin} 
 
-To show that $\lVert \mathcal{K} \rVert$ for an arbitrary simplicial complex is well-defined, we need the following Theorem.
+To show that $\lVert \mathcal{K} \rVert$ for an arbitrary simplicial complex is well-defined, we need the following theorem.
 
 \begin{thm}
   Let $\mathcal{K}$ be a simplicial complex with $\dim \mathcal{K} = n \in \N$. Then there exists a geometric realization $f\colon V(\mathcal{K}) \to \R^{2d+1}$.
@@ -407,7 +392,7 @@ The fact that the join of two points with two points results in a simplicial com
 Now a very important tool in algebraic topology is introduced, namely \textbf{Homology Theory} of topological spaces. For the basic definitions from category theory and homological algebra needed in the following see \cite{rotman2009}.  
 
 \begin{cons}
-  Let $S$ be a finite set and $p \in \mathbb{P}$. Define \[A(S) := \{f \in \Z^S\colon |\im f| < \infty \}\] be maps from $S$ to $Z_p$ with finite image. $A(S)$ is an abelian group together with the operation of pointwise addition of maps.
+  Let $S$ be a finite set. Define \[A(S) := \{f \in \Z^S\colon |\im f| < \infty \}\] be maps from $S$ to $\Z$ with finite image. $A(S)$ is an abelian group together with the operation of pointwise addition of maps.
   Then the set \[\{\mathds{1}_x\colon x\in S\} \subseteq A(S)\] forms a basis of the abelian group $A(S)$.
   Let $T$ be another set. For a map $\varphi\colon S \to T$ define the map $A(T)$ as
   \begin{equation*}
@@ -440,7 +425,7 @@ Since the collection of indicator functions is a basis of $A(S)$ it is a convent
 \end{equation*}
 
 \begin{thm}\label{thm:isoab}
-  Let $S$ be a set and let $B$ be an abelian group. Then \[\Phi\colon \underline{\rm Ab}(A(S), B) \to B^X, \: \varphi \mapsto\varphi \circ \mathds\iota^S\] is a bijection where $\iota^S\colon S \to A(S), \: s \mapsto \mathds{1}_s$.
+  Let $S$ be a set and let $B$ be an abelian group. Then \[\Phi\colon \underline{\rm Ab}(A(S), B) \to B^S, \: \varphi \mapsto\varphi \circ \mathds\iota^S\] is a bijection where $\iota^S\colon S \to A(S), \: s \mapsto \mathds{1}_s$.
 \end{thm}
 
 \begin{proof}
@@ -461,7 +446,7 @@ Since the collection of indicator functions is a basis of $A(S)$ it is a convent
     &= \sum\limits_{x \in S}(f+g)\psi(x) \\
     &= \sum\limits_{x \in S} f(x)\psi(x) + \sum\limits_{x \in S}g(x)\psi(x) = \xi(f) + \xi(g).
   \end{align*}
-  And now it follows that $\Phi(\xi) = (\xi \circ \iota^S)(x) = \mathds{1}_x(x) \cdot \psi(x) = \psi(x)$ for all $x \in X$ and hence $\Phi(\xi) = \psi$.
+  And now it follows that $\Phi(\xi) = (\xi \circ \iota^S)(x) = \mathds{1}_x(x) \cdot \psi(x) = \psi(x)$ for all $x \in S$ and hence $\Phi(\xi) = \psi$.
 \end{proof}
 
 The Theorem now tells us that any function from $X$ to an abelian group $B$ can be extended into a function from $A(X)$ to $B$ in a unique way. This may become clear looking at the commutative diagram in Figure \ref{fig:com1}.
@@ -479,7 +464,7 @@ The Theorem now tells us that any function from $X$ to an abelian group $B$ can 
 \begin{defin}
   Let $n\in\N$. The \textbf{geometric n-simplex} $\Delta_n$ is defined as
   \begin{equation*}
-    \Delta_n := {\rm co}\{e_0\, \ldots, e_n\} \subseteq \R^{n+1}
+    \Delta_n := {\rm co}\{e_0, \ldots, e_n\} \subseteq \R^{n+1}
   \end{equation*}
   where $e_i$ is the $i$-th canonical basis vector of $\R^{n+1}$ for $i = 0,\ldots,n$. For all $i = 0, \ldots, n$ define the $i$-th face map as
   \begin{equation*}
@@ -588,7 +573,7 @@ Beyond using integer coefficients, homology can also be defined with coefficient
 \begin{defin}
   Let $G_\alpha$ be an abelian group for each $\alpha$ in an arbitrary index set $I$. Then the \textbf{external direct sum} of the groups is defined as
   \begin{equation*}
-    \bigoplus\limits_{\alpha \in I}G_\alpha = \{(g_\alpha)_{\alpha\in I}\colon g_\alpha\in G_\alpha \: \land \: g_\alpha \neq e_{G_\alpha} \text{ for only finitely many indicies } \alpha \in I\}.
+    \bigoplus\limits_{\alpha \in I}G_\alpha = \{(g_\alpha)_{\alpha\in I}\colon g_\alpha\in G_\alpha \: \land \: g_\alpha \neq e_{G_\alpha} \text{ for only finitely many indices } \alpha \in I\}.
   \end{equation*}
   This is an abelian group with the operation \[(g)_{\alpha \in I} \cdot (h)_{\alpha\in I} = (g_\alpha \cdot_{G_\alpha} h_\alpha)_{\alpha \in I}.\]
   If $f_\alpha$ is a homomorphism with \[f_\alpha\colon G_\alpha \to H\]  for each $\alpha \in I$ where $H$ is an abelian group then
@@ -612,7 +597,6 @@ Beyond using integer coefficients, homology can also be defined with coefficient
 \begin{proof}
   See \cite[Corollary 2.25]{hatcher}.
 \end{proof}
-\vspace*{-13pt}
 Proofs in the later sections will focus solely on reasoning about homology groups. While there exists a dualized concept known as \textbf{cohomology}, where the $n$-th cohomology group is denoted by \( H^n(X; G) \), where \( G \) is a module over a field, its development is not necessary for this thesis.
 
 In categorical terms, cohomology arises from a dualization of homology, which replaces the homology groups in the chain complex with \( \underline{\rm Grp}(H_n(X), G) \), where \( G \in \underline{\rm Ab} \) is an abelian group. However, there is no need to introduce cohomology explicitly or utilize it in later proofs due to the following fundamental result: 
@@ -652,9 +636,9 @@ In categorical terms, cohomology arises from a dualization of homology, which re
 A second important tool linking homology and cohomology groups is the \textbf{Universal Coefficient Theorem}. The next Theorem is a version of it.
 
 \begin{thm}\label{thm:uct}
-Let $C_\bullet(X; R)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X; R)$ of $C_n(X; R)$ for $n \in \N$ and for a topological space $X$ and let $R$ be a field, then the cohomology groups $H^n(X; G)$ with coefficients in an $R$-module $G$ are determined by the exact sequence
+Let $X$ be a topological space and let $R$ be a ring. Let $C_\bullet(X; R)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X; R)$ of $C_n(X; R)$ for $n \in \N$, then the cohomology groups $H^n(X; G)$ with coefficients in an $R$-module $G$ are determined by the exact sequence
   \begin{equation*}
-    0 \to {\rm Ext}(H_{n-1}(X; R), G) \to H^n(X; G) \to \underline{\rm Ab}(H_n(X; R), G) \to 0.
+    0 \to {\rm Ext}_R(H_{n-1}(X; R), G) \to H^n(X; G) \to \underline{\rm Hom}_R(H_n(X; R), G) \to 0.
   \end{equation*}
   For the definition of the ${\rm Ext}$-functor look in \cite[p. 195]{hatcher}.
 \end{thm}
@@ -666,7 +650,7 @@ Let $C_\bullet(X; R)$ be a chain complex of free abelian groups and the correspo
 We will only need the following Corollary from this Theorem.
 
 \begin{col}\label{col:hntriv}
-  Let $C_\bullet(X; R)$ be a chain complex of free abelian groups, let $R$ be a field and $H_n(X; R)$ the corresponding homology groups with $\tilde{H}_n(X; R) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
+  Let $X$ be a topological space. Let $C_\bullet(X; R)$ be a chain complex of free abelian groups, let $R$ be a field and $H_n(X; R)$ the corresponding homology groups with $\tilde{H}_n(X; R) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
 \end{col}
 
 We will use this Corollary in the case $R = G = \Z_p$. This works since $\Z_p$ is a field and a free $\Z_p$-module over itself in the case $p \in \mathbb{P}$.
@@ -691,8 +675,6 @@ This can be accomplished with the \textbf{Mayer-Vietoris-Sequence} which is a ho
 \begin{proof}
   For a detailed derivation of this Theorem look at \cite[p. 149]{hatcher}. 
 \end{proof}
-
-\vspace*{-17px}
 
 \begin{ex}
   The homology groups of the $n$-dimensional sphere $\mathbb{S}^n$ are as follows

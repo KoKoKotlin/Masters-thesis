@@ -19,7 +19,8 @@
 \usepackage{graphicx}
 \usepackage{caption}
 
-\setlength{\parindent}{0mm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{5px}
 \setcounter{MaxMatrixCols}{100}
 
 \newcommand{\N}[0]{\mathbb{N}}
@@ -70,6 +71,28 @@
 {\bfseries}{:}% % Note that final punctuation is omitted.
 {\newline}{}
 
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{%
+  \par\vspace{0pt}% Kein zusätzlicher Abstand davor
+  \pushQED{\qed}%
+  \normalfont%
+  \topsep0pt \partopsep0pt % <--- hier wird Abstand nach dem Beweis unterdrückt
+  \trivlist%
+  \item[\hskip\labelsep\itshape#1\@addpunct{.}]%
+}{%
+  \popQED\endtrivlist\@endpefalse%
+}
+\makeatother
+
+\usepackage{titlesec}
+
+\titlespacing*{\section}
+  {0pt}    % Einzug links
+  {0pt}    % Abstand darüber
+  {1ex}    % Abstand darunter
+
+\allowdisplaybreaks % this will allow pagebreaking equation/align envs
+  
 \theoremstyle{break}
 \newtheorem{thm}{Theorem}[section]
 
@@ -80,6 +103,7 @@
 \newtheorem{col}[thm]{Corollary}
 \newtheorem{ex}[thm]{Example}
 \newtheorem{cons}[thm]{Construction}
+\newtheorem{assert}[thm]{Assertion}
 
 \newenvironment{defin}
     {\renewcommand{\qedsymbol}{$\spadesuit$}\pushQED{\qed}\begin{defin/}}
@@ -179,12 +203,18 @@
 \nocite{*}
 
 \input{01-introduction.tex}
+\pagebreak
 \input{02-topology.tex}
+\pagebreak
 \input{03-simplical-homology.tex}
+\pagebreak
 \input{05-l0-groups.tex}
+\pagebreak
 \input{06-borsuk-ulam.tex}
+\pagebreak
 \input{07-bound.tex}
 \appendix
+\pagebreak
 \input{appendixA.tex}
 \clearpage
 

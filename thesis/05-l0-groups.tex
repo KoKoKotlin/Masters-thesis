@@ -6,12 +6,12 @@ Firstly we have to define what is meant by the symbol $L_0(\mu, G)$. Some author
 
 When talking about extreme amenability of topological groups it is sufficient to prove it for dense subgroups because of the following Theorem. 
 \begin{thm}\label{thm:da}
-  Let $G$ be a topological group that is Hausdorff and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely amenable if and only if $G$ is extremely amenable. 
+  Let $G$ be a topological group and let $H \subseteq G$ be a dense subgroup. Then $H$ is extremely amenable if and only if $G$ is extremely amenable. 
 \end{thm}
 
 \begin{proof}
-  Let $g \in G$ and let $X$ be a compact space. Take a continuous action \[G \times X \to X, \: (g, x) \mapsto g \anddot x.\] This action restricts to a continous action on $H$. Since $H$ is dense in $G$, by Theorem \ref{thm:fcl} we can find $\mathcal{G} \in {\rm Flt}(H)$ that converges to $g$. Now let $\mathcal{F} \in {\rm UFlt}(X)$ with $\mathcal{G} \subseteq \mathcal{F}$. This exists due to Theorem \ref{thm:ulfil} and this filter still converges to $g$. Furthermore since $H$ is extremely amenable there exists $x_0 \in X$ such that $h \anddot x_0 = x_0$. Now consider the map $f$ defined as \[f\colon G \to X, \: g \mapsto g\anddot x_0.\] It follows that \[\forall F\in \mathcal{F}\colon f(F) = \{x_0\}\] and thus \[g\anddot x_0 = f(\lim\limits_{F \to \mathcal{F}}F) = \lim\limits_{F\to \mathcal{F}} f(F) = x_0.\] The exchange of function application and limit is possible since $f$ is continuous by definition.
-  Then for the other implication assume that there is a subgroup $H$ that is not extremely amenable. This means there exists an continuous action $H \times X \to X$ which admits no fixed point. It is possible to extend the action in a continuous way to the whole group $G$ like above. Then we have constructed a continuous action on $G$ with no fixed point.
+  Let $g \in G$ and let $X$ be a compact space. Take a continuous action \[G \times X \to X, \: (g, x) \mapsto g \anddot x.\] This action restricts to a continous action on $H$. Since $H$ is dense in $G$, by Theorem \ref{thm:fcl} we can find $\mathcal{G} \in {\rm Flt}(H)$ that converges to $g$. Now let $\mathcal{F} \in {\rm UFlt}(X)$ with $\mathcal{G} \subseteq \mathcal{F}$. This exists due to Theorem \ref{thm:ulfil} and this filter still converges to $g$. Furthermore since $H$ is extremely amenable there exists $x_0 \in X$ such that $h \anddot x_0 = x_0$. Now consider the map $f$ defined as \[f\colon G \to X, \: g \mapsto g\anddot x_0.\] It follows that \[\forall F\in \mathcal{F}\colon f(F) = \{x_0\}\] and thus \[g\anddot x_0 = f(g) = \lim\limits_{F\to \mathcal{F}} f(F) = x_0.\] The exchange of function application and limit is possible since $f$ is continuous by definition.
+  Then for the other implication assume that the subgroup is not extremely amenable $H$. This means there exists an continuous action $H \times X \to X$ which admits no fixed point. It is possible to extend the action in a continuous way to the whole group $G$ like above. Then we have constructed a continuous action on $G$ with no fixed point.
 \end{proof}
 
 This result allows us in the main results of the thesis to only talk about the simple function because the extreme amenability property is inherited by $L_0(\mu, G)$ from them.
@@ -39,7 +39,7 @@ In the following the symbol $\bar{1}$ represents the constant function which sen
 \end{proof}
 
 \begin{thm}[Sabok, {\cite[Lemma 5]{sabok2012}}]\label{thm:colve}
-  Let $X$ be a set, $\mu\colon \mathcal{B} \to [0, \infty]$ a diffuse submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$. Then the following are equivalent:
+  Let $X$ be a set, $\mu\colon \mathcal{B} \to [0, \infty)$ a diffuse submeasure on $X$ where $\mathcal{B}$ is a subalgebra of $\PowS(X)$. Then the following are equivalent:
   \begin{enumerate}
     \item $S(\mu, G)$ is extremely amenable for every non-trivial, Hausdorff, abelian topological group $G$,
     \item $\forall \varepsilon > 0\colon \sup\limits_{\P \in \Pi(\mathcal{B})}\chi(\Gamma(\varepsilon, \mathcal{P}, \mu)) = \infty$.
@@ -47,7 +47,7 @@ In the following the symbol $\bar{1}$ represents the constant function which sen
 \end{thm}
 
 \begin{proof}
-  Let $\varepsilon \in \R_{>0}$ and assume that there exists $d \in \N$ such that
+  $(1) \Rightarrow (2)$: Let $\varepsilon \in \R_{>0}$ and assume that there exists $d \in \N$ such that
   \begin{equation*}
     \forall \P \in \Pi(\mathcal{B})\colon \chi(\Gamma(\varepsilon, {\P}, \mu)) \leq d. 
   \end{equation*}
@@ -58,7 +58,7 @@ In the following the symbol $\bar{1}$ represents the constant function which sen
   This is a well-defined filter basis by Theorem \ref{thm:algdirected} and Lemma \ref{lem:filbas}. From Theorem \ref{thm:ulfil} it follows that there is an ultrafilter $\mathcal{U}$ containing the filter $\mathcal{F}(\mathcal{A})$.
  Let $f \in S(\mu, \Z)$. Define $f_\P \in \Z^\P$ for all finite partitions $\P$ refining the partion $\P_f$ as
   \begin{equation*}
-    f_\P(A) = k \iff \exists B \in f^{-1}(\{k\})\colon A \subseteq B. 
+    f_\P(A) = k \iff A \subseteq f^{-1}(\{k\}). 
   \end{equation*}
   This functions is well-defined because of the definition of refinment of partitions and thus also $f_\P \in S(\mu, \Z)$.
   Now define a coloring $c\colon S(\mu, \Z) \to \{1, \ldots, d\}$ of $S(\mu, \Z)$ as the limit over the ultrafilter
@@ -67,23 +67,23 @@ In the following the symbol $\bar{1}$ represents the constant function which sen
   \end{equation*}
   Convergence of the limit above is ensured by the fact that it is a limit in a finite and discrete space and thus the limit has to take one and only one value in $\{1, \ldots, d\}$.
   
-  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. If $f - g\in \bar{1} + V_\varepsilon$ then by Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$.
-  In the limit of the ultrafilter $\mathcal{U}$ we get $(\bar{1} + V_\varepsilon) \cap (X_i - X_i)$ and thus $X_i - X_i$ is not dense at $\bar{1}$ for each $i = 1, \ldots, d$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extreme amenability it follows that $S(\mu, \Z)$ is not extremely amenable. 
+  Let $X_i := \{f \in S(\mu, \Z)\colon c(f) = i\}$ for each $i = 1, \ldots, d$ which is a cover of $S(\mu, \Z)$ and let $f, g \in \Z^\P$. If $f - g\in V_\varepsilon(\bar{1})$ then by Lemma \ref{lem:1} it follows that $c_\P(f) \neq c_\P(g)$.
+  In the limit of the ultrafilter $\mathcal{U}$ we get $V_\varepsilon(\bar{1}) \cap (X_i - X_i)$ and thus $X_i - X_i$ is not dense at $\bar{1}$ for each $i = 1, \ldots, d$. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} of extreme amenability it follows that $S(\mu, \Z)$ is not extremely amenable. 
 
-  For the second implication suppose that $S(\mu, G)$ is not extremely amenable. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} we get the existence of a set $S \subseteq S(\mu, G)$ that is big on the left\footnote{This means that there exists a finite set $E \subseteq S(\mu, G)$ such that $S(\mu, G) = E + S.$ Additionally $\{e + S\colon e \in E\}$ is a covering of $S(\mu, G)$.} such that $S(\mu, G) \neq \overline{S - S}$. Let $E \subseteq S(\mu, G)$ finite with an enumeration $E = \{e_1, e_2, \ldots, e_n\}$ with $n \in \N$ such that $S(\mu, G) = E + S$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
+  $(2) \Rightarrow (1)$: For the second implication suppose that $S(\mu, G)$ is not extremely amenable. By Pestovs characterization \cite[Theorem 3.4.9]{PestovDyn} we get the existence of a set $S \subseteq S(\mu, G)$ that is big on the left\footnote{This means that there exists a finite set $E \subseteq S(\mu, G)$ such that $S(\mu, G) = E + S.$ Additionally $\{e + S\colon e \in E\}$ is a covering of $S(\mu, G)$.} such that $S(\mu, G) \neq \overline{S - S}$. Let $E \subseteq S(\mu, G)$ finite with an enumeration $E = \{e_1, e_2, \ldots, e_n\}$ with $n \in \N$ such that $S(\mu, G) = E + S$ and let $f \in S(\mu, G) \setminus \overline{S - S}$. It follows that there exist $W \in \mathcal{N}_G(e_G)$ and $\varepsilon \in \R_{>0}$ such that
   \begin{equation*}
-    (f + W_\varepsilon) \cap (S - S) = \emptyset
+    W_\varepsilon(f) \cap (S - S) = \emptyset
   \end{equation*}
-  for $W_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \notin W\}) < \varepsilon\}$ since $f$ is not in the closure of $S - S$. 
-  Now let $V_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \neq e_G\}) < \varepsilon\}$. Since $e_G \in W$ it follows that $V_\varepsilon \subseteq W_\varepsilon$ and hence
+  since $f$ is not in the closure of $S - S$. 
+  Now let $V_\varepsilon := \{h \in S(\mu, G)\colon \mu(\{x\in X\colon h(x) \neq e_G\}) < \varepsilon\}$. Since $e_G \in W$ it follows that $V_\varepsilon + f \subseteq W_\varepsilon(f)$ and hence
   \begin{equation*}
-    (f + V_\varepsilon) \cap (S - S) = \emptyset.
+    (V_\varepsilon + f) \cap (S - S) = \emptyset.
   \end{equation*}
   Define the partition $\P_f$ induced by $f$.
   Now let $\P \in \Pi(\mathcal{B})$ with $\P_f \preccurlyeq \P$ and let $k \in \Z^\P$.
   Define $S_i := e_i + S$ for $i=1,\ldots,n$ and
   \begin{equation*}
-    g_k\colon X \to G, \: g_k(x) \mapsto k(\iota_\P(x))f(x)
+    g_k\colon X \to G, \: x \mapsto k(\iota_\P(x))f(x)
   \end{equation*}
   which is an element of $S(\mu, G)$. Now we can define the mapping $c$ as
   \begin{equation*}

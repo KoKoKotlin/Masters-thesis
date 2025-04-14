@@ -1,7 +1,7 @@
 \section{Submeasures}\label{appendixA}
 
 \begin{defin}
-  Let $\mathcal{A}$ be a boolean algebra and $\mu\colon \mathcal{A} \to [0, \infty)$. The map $\mu$ is called a \textbf{submeasure} if
+  Let $\mathcal{A}$ be a Boolean algebra and $\mu\colon \mathcal{A} \to [0, \infty)$. The map $\mu$ is called a \textbf{submeasure} if
   \begin{enumerate}[label=\roman*.)]
     \item $\mu(0) = 0$,
     \item $\forall A, B \in \mathcal{A}\colon A \leq B \Rightarrow \mu(A) \leq \mu(B)$,
@@ -14,7 +14,7 @@ The thesis will assume that every submeasure is a submeasure on the a subalgebra
 \begin{defin}
   Let $X$ be a set. Then $\Pi(X)$ is the set of all finite partitions of $X$, which means:
   \begin{equation*}
-    \Pi(X) := \left\{ \mathcal{A} \subseteq \P(X)\colon (\forall A,B \in \mathcal{A}\colon A \cap B = \emptyset) \: \land \: \bigcup\mathcal{A} = X \: \land \: \left| \mathcal{A} \right| < \infty \right\}.
+    \Pi(X) := \left\{ \mathcal{A} \subseteq \PowSF(X)\colon (\forall A,B \in \mathcal{A}\colon A \cap B = \emptyset) \: \land \: \bigcup\mathcal{A} = X \right\}.
   \end{equation*}
   Let $\P_1, \P_2 \in \Pi(X)$. $\P_1$ is said to \textbf{refine} $\P_2$ ($\P_2 \preccurlyeq \P_1$) if
   \begin{equation*}
@@ -30,7 +30,7 @@ The thesis will assume that every submeasure is a submeasure on the a subalgebra
     \end{cases}
   \end{equation*}
   where $k = \left|\P\right|$.    
-  The set $\Pi(\mathcal{B})$ contains all finite partitions of $X$ but with the additional constraint that they have to be measurable with respect to a submeasure $\mu$ on the boolean algebra of subsets $\mathcal{B}$ of $X$.
+  The set $\Pi(\mathcal{B})$ contains all finite partitions of $X$ but with the additional constraint that they have to be measurable with respect to a submeasure $\mu$ on the Boolean algebra of subsets $\mathcal{B}$ of $X$.
 
   Let $f\colon X \to Y$ be a step function for a set $Y$. Then $f$ is \textbf{measurable} if \[\forall P \in \P_f\colon f^{-1}(P) \in \mathcal{B}.\qedhere\]
 \end{defin}
@@ -102,7 +102,7 @@ The thesis will assume that every submeasure is a submeasure on the a subalgebra
 \begin{proof}
   Define $\P \subseteq \Pi(X)$ as follows
   \begin{equation*}
-    \P := \Big\{ \{ \{x\}, \: X\setminus\{x\}\}\colon \: \forall x \in X \Big\}.
+    \P := \Big\{ \{ \{x\}, \: X\setminus\{x\}\}\colon \: x \in X \Big\}.
   \end{equation*}
   It is now clear that $\left| \P \right| = \left| X \right|$ and since $\P \subseteq \Pi(X)$ it follows that 
   \begin{equation*}
