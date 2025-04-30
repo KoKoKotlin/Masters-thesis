@@ -299,6 +299,81 @@ Indeed the new definition of convergence extends the old one from \ref{def:convt
 Now assume that the Lemma is true for a set with cardinality $n \in \N$ and let $X$ be a set with cardinality $n+1$ and additionally let $\mathcal{F}$ be an ultrafilter on $X$. Write $X = \{1, \ldots, n\} \cup \{n+1\}$. By Theorem \ref{lem:ufltlemma} either $\{n+1\} \in \mathcal{F}$ which ends the proof by the definition of convergence of an ultrafilter or $\{1,\ldots,n\} \in \mathcal{F}$ which ends the proof by the inductive assumption.
 \end{proof}
 
+\subsubsection{Uniform spaces}
+
+\begin{defin}
+  Let $X$ be a set and let $A, B \subseteq X \times X$ be realtions on $X$.
+  Define the following other relations on $X$
+  \begin{itemize}
+    \item $A^{-1} := \{(a_2, a_1)\colon (a_1, a_2) \in A\}$,
+    \item $A \circ B := \{(a, b)\colon \exists c \in X\colon (a, c) \in A \: \land \: (c, b) \in B\}$.
+  \end{itemize}
+  Additionally, define $A^2 := A \circ A$.  
+\end{defin}
+
+So far, we have discussed a generalized concept of convergence in general topological spaces. In the analysis of topological groups, we also need the a generalized concept of completness of a space in terms of filters. This means a general notion of \textit{cauchy sequences} is needed called \textit{cauchy filters}. It will also be possible to say that a space is complete similiar to the metric case using this new notion.
+
+Firstly, we will define a structure that arises naturally in the analysis of topological groups and is also compatible with filters and cauchy filters.
+\begin{defin}
+  Let $X$ be a set. A non-empty subset $\mathcal{U} \subseteq \PowS(X\times X)$ is called a \textbf{uniform structure} on $X$ if
+  \begin{enumerate}
+    \item $\mathcal{U}$ is a filter,
+    \item\label{def:unif3} $U\in\mathcal{U}\colon \{(x,x)\colon x\in X\} = \Delta_X \subseteq U$,
+    \item\label{def:unif1} $U \in \mathcal{U}\colon U^{-1} \in \mathcal{U}$,
+    \item\label{def:unif2} $U \in \mathcal{U}\exists V\in \mathcal{U}\colon V^2 \subseteq U$.
+  \end{enumerate}
+  The elements of the uniform structure are called \textbf{entourages}. Let $E \in \mathcal{U}$ and let $x, y \in X$. The points $x$ and $y$ are called $E$-close if $(x, y) \in E$. Similiarly a subset $A \subseteq X$ is called $E$-small if $A\times A \subseteq E$.
+  
+  Let $X$ and $Y$ be uniform spaces with uniform structures $\mathcal{U}_X$ and $\mathcal{U}_Y$. A map $f\colon X \to Y$ is called \textbf{uniformly continuous} if for each $W \in \mathcal{U}_Y$ there is $V \in \mathcal{U}_X$ such that $$(f\times f)(V) \subseteq W$$ where $$(f\times f) \colon X\times X \to Y \times Y, (x_1, x_2) \mapsto (f(x_1), f(x_2)).$$
+
+  A set $\mathcal{B} \subseteq X\times X$ is called \textbf{fundamental system of neighborhoods} of the uniform structure of $X$ if every entourage $E$ of $X$ contains a set $B \in \mathcal{B}$. A non-empty fundamental system of neighborhoods is a filter basis for a uniform structure on $X$.
+
+  Let $A \subseteq X$ be a subset of $X$. Then the set $$\mathcal{U}_A := \{E \cap (A\times A)\colon E\in \mathcal{U}_X\}$$ is a uniform structure on $A$ induced by the uniform structure on $X$.  
+\end{defin}
+The definition of uniform structures generalize metric spaces in a similiar sense that filter convergence generalizes convergence in metric spaces to a broader range of topological spaces. The axiom \ref{def:unif3} of a uniform space reflects the fact that every point should be close to itself with respect to every entourage. This is similiar to the metric case, where the distance from a point to itself should be 0. In the case of uniform spaces, this condition is more general because we can have uniform spaces that are not Hausdorff. Axiom \ref{def:unif1} of a uniform space is the equivalent to the axiom of symmetry a metric has to fulfill and axiom \ref{def:unif2} is the equivalent to the triangle inequality.  
+
+A uniform space comes naturally equipped with a topology, that is induced by the uniformity of the space. This can easily be seen when considering a uniform space $X$ with uniform structure $\mathcal{U}$. Then we can define a system of neighborhoods $$ \mathcal{N}_X(x) := \{V(x)\colon V \in \mathcal{U}\}, \: V(x) := \{ (x,y) \in X \times X\colon (x,y) \in V\} $$ for each point $x \in X$. The inverse is not true in general. But if the uniformity induces a topology, this topology is unique.
+
+\begin{thm}
+  Let $X$ be a uniform space with uniformity $\mathcal{U}$. Then this uniformity induces a unique topology on $X$.
+\end{thm}
+
+\begin{proof}
+  See \cite[Satz 11.5]{BvQMT}.
+\end{proof}
+
+It is important to notice that there is not a one-to-one relation between uniform structures and the topologies induced by them. There can be multiple different uniformities that induce the same topology on the underlying space. This is especially true for topological groups which are equipped with three uniform structures that arise in a canonical way from the group topology and the group operation but all induce the same topology, namely the group topology.
+
+\begin{definthm}
+  Let $X$ be a compact topological space. Then the set $\mathcal{E}(X)$ defined as $$ \mathcal{E}(X) := \mathcal{N}_{X\times X}(\Delta_X)$$ is a uniform structure on $X$ which naturally arises from the topology on $X$.
+\end{definthm}
+
+\begin{proof}
+  See \cite[p. 199f.]{bour1998}.
+\end{proof}
+
+\begin{defin}
+  Let $X$ be a uniform space with uniformity $\mathcal{U}$. A filter $\mathcal{F} \in {\rm Flt}(X)$ is called \textbf{cauchy} with respect to the uniform structure $\mathcal{U}$ if for each entourage $U \in \mathcal{U}$ there exists an element $F \in \mathcal{F}$ such that $F$ is $U$-small, i.e., $F \times F \subseteq U$.
+
+  The uniform space $X$ is called \textbf{Raikov-complete} (or \textbf{complete}) if every cauchy filter in $X$ converges to a point in $X$.
+\end{defin}
+
+\begin{ex}\label{ex:cxycomp}
+  Let $X$ be a topological space and let $Y$ be uniform space with uniform structure $\mathcal{U}_Y$. Define for every $V \in \mathcal{U}_Y$ the following set $$ W(V) = \{(f,g) \in C(X,Y)\times C(X,Y)\colon \forall x\in X\colon (f(x),g(x)) \in V\}.$$ Then the set $\{W(V)\colon V\in \mathcal{U}_Y\}$ is a fundamental system of neighborhoods for the uniform structure of uniform convergence $C_u(X,Y)$ on the set $C(X, Y)$ of all continuous functions form $X$ to $Y$. This space is Raikov-complete if $Y$ is Raikov-complete. 
+\end{ex}
+
+\begin{proof}
+  See \cite[p.183ff.]{BvQMT}.
+\end{proof}
+
+\begin{lemma}
+  Let $X$ and $Y$ be uniform spaces and let $f\colon X \to Y$ be a uniformly continuous map between them. If $\mathcal{F} \in {\rm Flt}(X)$ is cauchy in $X$ then the image filter $f(\mathcal{F})$ is cauchy in $Y$.
+\end{lemma}
+
+\begin{proof}
+  Let $E'$ be a entourage of $Y$ and define $E := (f\times f)^{-1}(E')$ which is an entourage of $X$. Since $\mathcal{F}$ is cauchy in $X$ there exists a filter element $F \in \mathcal{F}$ such that $F \times F \subseteq E$. But now it follows that $$ F \times F \subseteq E = (f \times f)^{-1}(E') \Rightarrow (f\times f)(F\times F) \subseteq (f\times f)(E) \subseteq E'.$$ We can conclude that $f(\mathcal{F})$ is cauchy in $Y$ because $f(F) \in f(\mathcal{F})$.
+\end{proof}
+
 \subsection{Topological Algebra}
 
 \begin{defin}
@@ -310,6 +385,46 @@ Now assume that the Lemma is true for a set with cardinality $n \in \N$ and let 
   \end{enumerate}
   If $X$ is a topological space, then the action of $G$ on $X$ is continuous if $\lambda$ is a continuous map.
 \end{defin}
+
+\begin{ex}
+  Let $X$ be a compact, Hausdorff topological space. The set $\Homeo(X)$ of all homeomorphism from $X$ to $X$ together with the operation of composition of functions and taking inverses of functions is a group. It becomes a topological group when equipped with the compact-open topology.
+\end{ex}
+
+\begin{proof}
+  \todo{add the proof}
+\end{proof}
+
+\begin{thm}\label{thm:homeocomp}
+  Let $X$ be a compact, Hausdorff topological space. The topological group $\Homeo(X)$ is Raikov-complete with respect to the two-sided uniformity $\mathfrak{S}$ of $\Homeo(X)$. 
+\end{thm}
+
+\begin{proof}
+  Let $\mathcal{F} \in {\rm Flt}(X)$ be a cauchy filter with respect to $\mathfrak{S}$. Since the inverse map is uniformly continuous, the filter $\mathcal{F}^{-1}$ defined as ${\rm inv}(\mathcal{F})$ is also a cauchy filter. Since the space $C(X, X)$ contains $\Homeo(X)$ and is complete (see \ref{ex:cxycomp}) the filter limits $g := \lim \mathcal{F}$ and $h := \lim \mathcal{F}^{-1}$ exist in $C(X,X)$. Now consider $$ g \circ h = (\lim \mathcal{F}) \circ (\lim \mathcal{F}^{-1}) = \lim {\mathcal{F} \circ \mathcal{F}^{-1}}. $$ The exchange of function composition and the limit of filters is possible since the function composition is a jointly continuous map.
+
+  Let $E_0, E \in \mathcal{E}(X)$ such that $$ E^{-1} = E \quad \land \quad E \circ E \subseteq E_0.$$ Let $U := \{f \in \Homeo(X)\colon \forall x \in X: (g(x), f(x)) \in E\}$ which is a neighborhood of $g$ in $\Homeo(X)$. By the definition of filter convergence we know that there exists $F \in \mathcal{F}$ such that $F \subseteq U$. Now let $(f, \tilde{f}) \in F \times F$ and observe for all $x \in X$ that $$ \left(f(\tilde{f}^{-1}(x)), g(\tilde{f}^{-1}(x))\right) \in E \: \land \: \left(g(\tilde{f}^{-1}(x)), x\right) \in E \: \Rightarrow \: \left(f(\tilde{f}^{-1}(x)), x\right) \in E_0.$$ The fact that $\left(g(\tilde{f}^{-1}(x)), x\right) \in E$ for all $x \in X$ follows by $\left(g(x), \tilde{f}(x)\right) \in E$ for all $x \in X$ and the substitution $y = \tilde{f}^{-1}(x)$. We can conclude that $F \circ F \subseteq \tilde{E}_0({\rm id}_X)$. 
+
+  From this is follows that $\lim \mathcal{F} \circ \mathcal{F}^{-1} = {\rm id}_X$ and thus $h = g^{-1}$, hence $g \in \Homeo(X)$.
+\end{proof}
+
+
+In every topological group there arise three uniform structures in a natural way that all induce the group topology.
+
+\begin{defin}
+  Let $G$ be a topological group. Define for each $V \in \mathcal{N}(G)$ the sets
+  \begin{align*}
+    R_V := \{(x, y) \in G\times G\colon xy^{-1} \in V\}, \\
+    L_V := \{(x, y) \in G\times G\colon x^{-1}y \in V\}.
+  \end{align*}
+  Now we can define the \textbf{right uniform structure} $\mathcal{R}$ and the \textbf{left uniform structure} $\mathcal{L}$ in the following way
+  \begin{align*}
+    \mathfrak{R} := \{ E \subseteq G\times G \colon \exists V \in \mathcal{N}(G)\colon R_V \subseteq E \}, \\
+    \mathfrak{L} := \{ E \subseteq G\times G \colon \exists V \in \mathcal{N}(G)\colon L_V \subseteq E \}.
+  \end{align*}
+
+  The two \textbf{sided uniform structure} $\mathfrak{S}$ on $G$ can now be defined as $$\mathfrak{S}:= \mathfrak{R} \cap \mathfrak{L}.\qedhere$$
+\end{defin}
+
+\subsubsection{Extreme Amenability}
 
 \begin{defin}
   A topological group $G$ is called \textbf{extremely amenable} if every continuous action of G on a non-empty, compact, Hausdorff space admits a fixed point.
@@ -386,6 +501,38 @@ Now assume that the Lemma is true for a set with cardinality $n \in \N$ and let 
     \geq \: &\mu(\{x \in X\colon \tilde{f}(x) \notin (f(x))^{-1}V\})             
   \end{align*}
   which means that $\tilde{f} \in V_{\varepsilon}({\rm inv}(f))$ and thus ${\rm inv}(Q_\varepsilon(f)) \subseteq V_{\varepsilon}({\rm inv}(f))$.
+\end{proof}
+
+\begin{lemma}\label{lem:contextrai}
+  Let $H$ be a dense subgroup of a topological group $G$ and let $f\colon H \to K$ be a homomorphism of $H$ to a Raikov-complete topological group $K$, then there exists an extension of $f$ to a continuous homomorphism $\hat{f}\colon G \to K$.
+\end{lemma}
+
+\begin{proof}
+  See \cite[Proposition 3.6.12]{atop2008}.
+\end{proof}
+
+\begin{thm}
+  Let $G$ be a topological group, let $H \subseteq G$ be a dense subgroup and let $X$ be an arbitrary compact, Hausdorff topological space.
+  Then every continuous action $H \curvearrowright X$ can be extended to a continuous action $G \curvearrowright X$.
+\end{thm}
+
+\begin{proof}
+  Let $\lambda\colon H\times X \to X$ be a continuous action of $H$ on $X$. Define the map $\varphi\colon H \to \Homeo(X)$ as $$ \varphi\colon H \to \Homeo(X), \: h \mapsto \left( x \mapsto \lambda(h, x) \right). $$ This map is well-defined since it is easy to show that every map $\lambda_h = \lambda(h, \cdot)\colon X\to X$ is a homeomorphism for each $h \in H$.
+
+  \textbf{Claim:} The map $\varphi$ is a continuous homomorphism of topological groups.
+  The fact that $\varphi$ is a homomorphism of groups trivially follows from the fact of $\lambda$ being a group action. It remains to be shown that the map is continuous. To this end let $K \subseteq X$ be non-empty and compact and let $U \subseteq X$ be non-empty and open and define $V := \lambda^{-1}(U) \subseteq H \times X$. Let $h \in \varphi^{-1}(W(K,U))$. 
+
+  Firstly notice that $$ \forall x \in K\colon (h, x) \in V $$ since $K$ is compact and since the map $\lambda$ is continuous by assumption the set $V$ is open in $H \times X$. This means we can choose $W_x \in \mathcal{N}_h(G)$ and $O_x \in \mathcal{T}_X$ such that $(h, x) \in W_x \times O_x \subseteq V$ for each $x \in K$. The sets $O_x$ are an open covering of $K$. Hence, we can find a finite subcover $(O_{x_i})_{i\in \{1,\ldots,n\}}$ with $n \in \mathbb{N}$.   
+  Next define the set $$W := \bigcap\limits_{i = 1}^n W_{x_i}$$ which is an open neighborhood of $h$ in $H$ and define $$ O := \bigcup\limits_{i=1}^n O_{x_i}.$$ We know that by definition $$ \forall g \in W\forall i \in \{1,\ldots,n\}\colon \lambda(g, O_{x_i}) \subseteq U \Rightarrow \forall g\in W:\lambda(g,O) \subseteq U$$ and since $K \subseteq O$ it follows that $$\forall g\in W\colon \lambda(g, K) \subseteq U$$ and thus $h \in W \subseteq \varphi^{-1}(W(K,U))$. Hence, the claim is proven.
+
+  Since $H$ is a dense subgroup of the group $G$ and by \ref{thm:homeocomp} the group $\Homeo(X)$ is Raikov-complete by \ref{lem:contextrai} there exists a continuous extension of $\varphi$ called $\hat{\varphi}\colon G \to \Homeo(X)$. 
+  The last step is to prove, that the map $$\hat{\lambda}\colon G \times X \to X, \: (g, x) \mapsto \hat{\varphi}(g)(x)$$ is a continuous group action.
+  The fact that this a group action follows trivially from the fact the $\hat{\varphi}$ is a homomorphism of groups.
+
+  It remains to show that the group action $\hat{\lambda}$ is continuous.
+  To this end let $(g,x) \in G\times X$, choose $U \in \mathcal{T}_x$ with $\hat{\lambda}(g, x) \in U$.
+
+  Now consider $V := (\hat{\varphi}(g))^{-1}(U)$. This set is open since $\hat{\varphi}(g)$ is a homeomorphism and the set contains the point $x$ since $\hat{\varphi}(g)(x) = \lambda(g, x) \in U$. The set $K := \bar{V}$ is compact because it is a closed subset of a compact space. Now take the basis element $W(K, U)$ of the compact open topology on $\Homeo(X)$ and define $$W := \hat{\varphi}^{-1}(W(K,U)).$$ Again this set is open since $\hat{\varphi}$ is continuous and it contains $g$. Furthermore it is true that $$ \forall \tilde{g}\in W\colon \hat{\lambda}(\tilde{g}, K) = \hat{\varphi}(\tilde{g})(K) \subseteq U$$ and since $V \subseteq K$ thus $$\forall \tilde{g}\in W\colon \hat{\lambda}(\tilde{g}, V) = \hat{\varphi}(\tilde{g})(V) \subseteq U.$$ We can now conclude that $\hat{\lambda}(W \times V) \subseteq U$ and since $(g, x) \in W\times V \in \mathcal{T}_{G\times X}$ the map $\hat{\lambda}$ is continuous.
 \end{proof}
 
 \subsection{Algebraic Topology}
