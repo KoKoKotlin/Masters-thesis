@@ -69,6 +69,8 @@ In many cases it is not possible to describe the topology on $X$ directly and on
 
 \begin{defin}
   Let $X$ be a topological space and $A \subseteq X$. $A$ is called \textbf{compact} if every open cover of $A$ has a finite subcover. 
+
+  Furthermore $X$ is called \textbf{locally-compact} if there exists a neighborhood basis of compact sets at each point $x \in X$. 
 \end{defin}
 
 \subsubsection{Filters}
@@ -391,7 +393,36 @@ It is important to notice that there is not a one-to-one relation between unifor
 \end{ex}
 
 \begin{proof}
-  \todo{add the proof}
+  Take $f,g \in \Homeo(X)$. Since the composition of two continuous functions is continuous (see \cite[Satz 2.20]{BvQMT}) and composition of two bijections is again a bijection, $f\circ g$ is a continuous bijection. And since the inverses of $f$ and $g$ are continuous it is even a homeomorphism, which means that $f\circ g \in \Homeo(X)$. Since $\id_X \in \Homeo(X)$ it follows that
+  \begin{equation*}
+    \id_X \circ f = f = f \circ \id_X.
+  \end{equation*}
+  This means that $\id_X$ is the neutral element of the group. Lastely it is clear that $f \circ f^{-1} = \id_X$ and $f^{-1} \circ f = \id_X$, so every element has an inverse.
+Next we have to show that $\circ$ and taking function inverses are continuous maps. To this end assume that $W(C, W)$ is an open neighborhood of $g\circ f$. Firstly we now that $f(C) \subseteq g^{-1}(W)$ and that $f(C)$ is a compact set. We can choose for each $x \in f(C)$ a compact neighborhood $V_x$ of $x$ with $V_x \subseteq g^{-1}(W)$ since $X$ is compact and thus locally-compact. Since $f(C)$ is compact there exists a finite set $F \subseteq f(C)$ such that
+\begin{equation*}
+  f(C) \subseteq \bigcup\limits_{f\in F}\overset{\circ}{V_f} =: W'.
+\end{equation*}
+Also define the set $C' := \bigcup\limits_{f\in F} V_f$ which is compact.
+
+So we can conclude that $f \in W(C, W')$ and $g \in W(C', W)$. And since $W' \subseteq C'$ it follows for all $f' \in W(C, W')$ and $g \in W(C', W)$ that
+\begin{equation*}
+  g' \circ f' \in W(C, W),
+\end{equation*}
+and hence $W(C, W') \circ W(C', W) \subseteq W(C, W)$. It follows that $\circ$ is continuous.
+
+  And it is also clear by definition that $f^{-1} \in \Homeo(X)$ by definition of a homeomorphism.
+  Let $W(K,U)$ be an open neighborhood of $f^{-1}$ with $K \subseteq X$ compact and $U \subseteq X$ open. Define the closed set $A := U^c$ and the open set $V := K^c$. Since $A$ is closed in $X$ it follows that $A$ is also compact in $X$. Also note that $K\cap f(A) = \emptyset$ since $K \subseteq f(U)$. 
+
+  Now it follows that
+  \begin{equation*}
+    f^{-1}(K)  \subseteq U \iff K \subseteq f(U) \iff f(U)^c \subseteq K^c \iff f(A) \subseteq V, 
+  \end{equation*}
+  hence $f\in W(A, V)$. Furthermore, for each $g\in W(A, V)$ it holds that
+  \begin{equation*}
+    g(A) \subseteq V \iff V^c \subseteq g(A)^c \iff K \subseteq g(U) \iff g^{-1}(K) \subseteq U
+  \end{equation*}
+  and thus we get $g^{-1} \in W(K, U)$.
+  We can conclude that $W(A, V)^{-1} \subseteq W(K, U)$ which means that taking inverses is continuous.
 \end{proof}
 
 \begin{thm}\label{thm:homeocomp}
@@ -421,7 +452,10 @@ In every topological group there arise three uniform structures in a natural way
     \mathfrak{L} := \{ E \subseteq G\times G \colon \exists V \in \mathcal{N}(G)\colon L_V \subseteq E \}.
   \end{align*}
 
-  The two \textbf{sided uniform structure} $\mathfrak{S}$ on $G$ can now be defined as $$\mathfrak{S}:= \mathfrak{R} \cap \mathfrak{L}.\qedhere$$
+  The two \textbf{sided uniform structure} $\mathfrak{S}$ on $G$ can now be defined as
+  \begin{equation*}
+    \mathfrak{S}:= \mathfrak{R} \cap \mathfrak{L}.\qedhere
+  \end{equation*}
 \end{defin}
 
 \subsubsection{Extreme Amenability}
