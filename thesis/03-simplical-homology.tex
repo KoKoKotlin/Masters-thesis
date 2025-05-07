@@ -633,24 +633,10 @@ In categorical terms, cohomology arises from a dualization of homology, which re
   is called a \textbf{short exact sequence}.
 \end{defin}
 
-A second important tool linking homology and cohomology groups is the \textbf{Universal Coefficient Theorem}. The next Theorem is a version of it.
-
-\begin{thm}\label{thm:uct}
-Let $X$ be a topological space and let $R$ be a ring. Let $C_\bullet(X; R)$ be a chain complex of free abelian groups and the corresponding homology groups $H_n(X; R)$ of $C_n(X; R)$ for $n \in \N$, then the cohomology groups $H^n(X; G)$ with coefficients in an $R$-module $G$ are determined by the exact sequence
-  \begin{equation*}
-    0 \to {\rm Ext}_R(H_{n-1}(X; R), G) \to H^n(X; G) \to \underline{\rm Hom}_R(H_n(X; R), G) \to 0.
-  \end{equation*}
-  For the definition of the ${\rm Ext}$-functor look in \cite[p. 195]{hatcher}.
-\end{thm}
-
-\begin{proof}
-  See \cite[Chapter 3.1]{hatcher}.
-\end{proof}
-
-We will only need the following Corollary from this Theorem.
+A second important tool linking homology and cohomology groups is the \textbf{Universal Coefficient Theorem}. An in-depth derivation of it can be found in \cite[Chapter 3.1]{hatcher}. For the purpose of this thesis, we only need the following corollary from the theorem. 
 
 \begin{col}\label{col:hntriv}
-  Let $X$ be a topological space. Let $C_\bullet(X; R)$ be a chain complex of free abelian groups, let $R$ be a field and $H_n(X; R)$ the corresponding homology groups with $\tilde{H}_n(X; R) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
+  Let $X$ be a topological space. Let $C_\bullet(X; R)$ be a chain complex of free abelian groups and let $R$ be a field and $H_n(X; R)$ the corresponding homology groups with $\tilde{H}_n(X; R) \cong 0$ for $0 \leq n \leq k \in \N$. Then the cohomology groups are all trivial up to $k$. 
 \end{col}
 
 We will use this Corollary in the case $R = G = \Z_p$. This works since $\Z_p$ is a field and a free $\Z_p$-module over itself in the case $p \in \mathbb{P}$.
